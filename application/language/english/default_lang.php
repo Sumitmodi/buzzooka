@@ -836,7 +836,9 @@ $lang['lang_save_url'] = 'Save url';
 $lang['file_categories'] = 'File categories';
 $lang['lang_new_tab'] = 'Open in new tab';
 $lang['lang_preview'] = 'Preview';
-
+$lang['lang_start_date'] = 'Start date';
+$lang['quote_deleted'] = 'Quotation deleted successfully.';
+$lang['quote_not_deleted'] = 'Quotation could not be deleted.';
 //$lang['lang_milestones'] = 'Reports';
 /* End of file default_lang.php */
 /* Location: ./application/language/english/default_lang.php */

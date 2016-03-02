@@ -662,8 +662,7 @@
 </script>
 <!--JS_ADD_NEW_FILE_MODAL-->
 <!--JS_SIMPLE_AJAX_UPLOADER -->
-<script type="text/javascript"
-        src="[conf.site_url_themes_common;noerr]/js/simpleajaxuploader/SimpleAjaxUploader.js"></script>
+<script type="text/javascript" src="[conf.site_url_themes_common;noerr]/js/simpleajaxuploader/SimpleAjaxUploader.js"></script>
 <!--JS_SIMPLE_AJAX_UPLOADER -->
 <!--JS_LANG_AJAX_FILE_UPLOAD-->
 <script>
@@ -671,17 +670,9 @@
     //[DYNAMIC (TBS) VARIABLES & LANGUAGE]
     //-------------------------------------------------------------------------------
     //variabled
-    var upload_url = '[conf.site_url;noerr]/common/ajax/upload-project-file/[vars.project_id;noerr]/team';
-    var js_files_project_allowed_types = [vars.js_allowed_types;
-    protect = no;
-    noerr
-    ]
-    ;
-    var js_file_size_limit = [vars.js_file_size_limit;
-    noerr
-    ]
-    ;
-
+    var upload_url = "[conf.site_url;noerr]/common/ajax/upload-project-file/[vars.project_id;noerr]/team";
+    var js_files_project_allowed_types =[vars.js_allowed_types;protect = no;noerr];
+    var js_file_size_limit = [vars.js_file_size_limit;noerr];
     //language
     var lang_file_too_big = "[lang.lang_upload_invalid_filesize;noerr]";
     var lang_your_file_has_been_uploaded = "[lang.lang_file_has_been_attached;noerr]";

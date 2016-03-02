@@ -433,8 +433,7 @@ class Projects extends MY_Controller
                 'projects_clients_id' => $this->data['lang']['lang_client'],
                 'projects_start' => $this->data['lang']['lang_project_start'],
                 'projects_end' => $this->data['lang']['lang_project_end'],
-                'projects_service' => $this->data['lang']['lang_service'],
-                'projects_description' => $this->data['lang']['lang_description']);
+                'projects_service' => $this->data['lang']['lang_service']);
 
             if (! $this->form_processor->validateFields($fields, 'required')) {
                 return false;

@@ -62,8 +62,12 @@ class Ajax extends MY_Controller
                 break;
 
             case 'upload-project-file':
+            case 'upload-quotation-file':
             case 'upload-report-file':
                 $this->__uploadProjectFile();
+                break;
+            case 'delete-quote-file':
+                $this->__deleteQuoteFile();
                 break;
 
             case 'delete-project-file':
@@ -79,6 +83,33 @@ class Ajax extends MY_Controller
         //log debug data
         $this->__ajaxdebugging();
 
+    }
+
+    protected function __deleteQuoteFile()
+    {
+        $id = $this->input->post('data_mysql_record_id');
+        $this->load->model('myquotation_model');
+        $record = $this->myquotation_model->getQuote($id);
+        if (false == $record) {
+            $this->jsondata = array(
+                'result' => 'error',
+                'message' => 'Quotation not found.');
+        } else {
+            if(!$this->myquotation_model->unlink_record($record)){
+                $this->jsondata = array('results'=>'success','message'=>lang('quote_not_deleted'));
+            } else {
+                $file = ROOTDIR . $record->quotations_file_url;
+                $folder = pathinfo($file, PATHINFO_BASENAME);
+                if (file_exists($file) && is_file($file)) {
+                    unlink($file);
+                }
+                if (file_exists($folder) && is_dir($folder)) {
+                    unlink($folder);
+                }
+                $this->jsondata = array('results'=>'success','message'=>lang('quote_deleted'));
+            }
+        }
+        $this->__flmView('common/json');
     }
 
     // -- __isEmailAlreadyInUse- -------------------------------------------------------------------------------------------------------
@@ -691,6 +722,8 @@ class Ajax extends MY_Controller
         //load the models that we will use
         if ($this->uri_action == 'upload-report-file') {
             $this->load->model('reports_model', 'files_model');
+        } elseif ($this->uri_action == 'upload-quotation-file') {
+            $this->load->model('myquotation_model', 'files_model');
         } else {
             $this->load->model('files_model');
         }

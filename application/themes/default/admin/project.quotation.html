@@ -1,16 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
-<link href="../common/style/bootstrap.css" rel="stylesheet">
-<link href="../common/style/style.css" rel="stylesheet">
-<!--[onshow;block=head;when [visible.foo] == bar;comm]-->
-<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+    <!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+    <link href="../common/style/bootstrap.css" rel="stylesheet">
+    <link href="../common/style/style.css" rel="stylesheet">
+    <!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+    <!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
 </head>
 <!--HEAD - ONLOAD-->
 <!--[onload;file=../common/common.head.html;getbody;comm]-->
 <!--HEAD - ONLOAD-->
 <body>
+<style type="text/css">
+    .youtube, .vimeo {
+        font-size: 36px;
+    }
+
+    .youtube {
+        color: #cd201f;
+    }
+
+    .vimeo {
+        color: #1ab7ea;
+    }
+
+    .nav-pills > li.active > a,
+    .nav-pills > li.active > a:hover,
+    .nav-pills > li.active > a:focus {
+        background: transparent;
+        color: #8b0000;
+    }
+
+    .nav-pills > li > a {
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        border-radius: 0;
+    }
+
+    .navbar-nav > li > a {
+        padding: 0;
+    }
+
+    .dropdown-menu {
+        background-color: #fff;
+    }
+
+    .dropdown-menu li:hover a {
+        background-color: #1aaada;
+    }
+
+    .file-card {
+        margin: 15px auto;
+    }
+
+    .file-card > div {
+        border-bottom: 1px solid #ddd;
+        border-top: 1px solid #ddd;
+        box-shadow: 0 1px 2px #ddd;
+        height: 235px;
+    }
+
+    .file-card:hover > div {
+        -webkit-transition: box-shadow 1s;
+        -moz-transition: box-shadow 1s;
+        -ms-transition: box-shadow 1s;
+        -o-transition: box-shadow 1s;
+        transition: box-shadow 1s;
+        box-shadow: 0 1px 1px #8b0000;
+    }
+
+    .card-header {
+        padding: 5px;
+        border-bottom: 1px solid #dedede;
+    }
+
+    .card-body {
+        padding: 20px;
+        position: relative;
+        height: 75%;
+    }
+
+    .card-footer {
+        border-top: 1px solid #ddd;
+        bottom: 0;
+        padding: 5px 0;
+        position: absolute;
+        width: 93%;
+    }
+
+    .card-footer ul li {
+        padding: 0 5px;
+    }
+    .modal-full-screen{
+        min-height:768px;
+        padding-top: 0;
+    }
+    .card-img{
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        max-height: 170px;
+        max-width: 100%;
+        min-width: 48px;
+        position: absolute;
+        right: 0;
+        top: -20px;
+        width: auto;
+        height: 48px;
+    }
+    a[data-type=jpg] img,
+    a[data-type=png] img,
+    a[data-type=gif] img,
+    a[data-type=tiff] img,
+    a[data-type=JPG] img,
+    a[data-type=PNG] img,
+    a[data-type=GIF] img,
+    a[data-type=TIFF] img{
+        width: 100%;
+        max-height: 145px;
+        height: auto;
+    }
+    .dropdown-caret{
+        background-color: #eee;
+        border-radius: 50%;
+        height: 22px;
+        text-align: center;
+        width: 23px;
+    }
+</style>
 <!--JS SECTION - ONLOAD-->
 <!--[onload;file=../common/common.javascript.html;getbody;comm]-->
 <!--JS SECTION - ONLOAD-->
@@ -22,104 +139,354 @@
 <!--HEADER SECTION - ONLOAD-->
 <!-- Main content starts -->
 <div class="content">
-  <!-- Sidebar -->
-  <div class="sidebar">
-    <!--SIDE MENU - ONLOAD -->
-    <!--[onload;file=common.menu.html;getbody;comm]-->
-    <!--SIDE MENU - ONLOAD -->
-  </div>
-  <!-- Sidebar ends -->
-  <div class="mainbar">
-    <!----------------------COMMON PAGE HEADING--------------------------------->
-    <!--[onload;file=common.heading.html;getbody;comm]-->
-    <!----------------------COMMON PAGE HEADING--------------------------------->
-    <div class="matter">
-      <!----------------------COMMON PROJECT HEAD--------------------------------->
-      <!--[onload;file=common.project.header.html;getbody;comm]-->
-      <!----------------------COMMON PROJECT HEAD--------------------------------->
-      <div class="container">
-        <div class="row">
-          <!--WI_PROJECT_NAV_CONTENT-->
-          <div class="col-lg-3">
-            <!----------------------COMMON PROJECT MENU--------------------------------->
-            <!--[onload;file=common.project.navigation.html;getbody;comm]-->
-            <!----------------------COMMON PROJECT MENU--------------------------------->
-          </div>
-          <!--WI_PROJECT_NAV_CONTENT-->
-          <div class="col-lg-9">
-            <div class="widget">
-              <div class="widget-content widget-content-project">
-                <!-----------------------------------------------TABS-FILES------------------------------------------------------------------>
-                <div class="project-info-tabs">
-                      <!--[onshow;block=div;when [visible.wi_project_quotations]==1;comm] -->
-                    <div class="box side-menu-main">                    	
-                    	<div class="box-head-dark"><i class="icon-list"></i> [lang.lang_my_project_quotation]</div>
-                    	<div class="box-content">                    		
-		                    <table class="table table-bordered">
-		                      <tbody>
-		                      	<tr>
-		                      		<td>[lang.lang_title]</td>
-		                      		<td>[lang.lang_date]</td>
-		                      		<td>[lang.lang_status]</td>
-		                      		<td>[lang.lang_action]</td>
-		                      	</tr>
-		                        <tr>
-		                          <td>
-		                          	<a href="[conf.site_url]/admin/myquotation/[quotations.project_id]/view/[quotations.quotation_id]">
-		                          		<!--[quotations.quotations_form_title;block=tr;]-->
-                                  [quotations.quotations_form_title]
-		                          	</a>
-		                          </td>
-		                          <td><!--[quotations.quotations_date;noerr;comm;onformat=runtime_date]--></td>
-		                          <td><!--[quotations.quotations_status;noerr;comm;onformat=runtime_status_colors;htmlconv=no]--></td>
-		                          <td>
-		                          	<a href="[conf.site_url]/admin/quotation/download/[quotations.quotation_id]"><i class="fa fa-download"></i> Download</a>
-		                          </td>
-		                        </tr>
-		                      </tbody>
-		                    </table> 
-                    	</div>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!--SIDE MENU - ONLOAD -->
+        <!--[onload;file=common.menu.html;getbody;comm]-->
+        <!--SIDE MENU - ONLOAD -->
+    </div>
+    <!-- Sidebar ends -->
+    <div class="mainbar">
+        <!----------------------COMMON PAGE HEADING--------------------------------->
+        <!--[onload;file=common.heading.html;getbody;comm]-->
+        <!----------------------COMMON PAGE HEADING--------------------------------->
+        <div class="matter">
+            <!----------------------COMMON PROJECT HEAD--------------------------------->
+            <!--[onload;file=common.project.header.html;getbody;comm]-->
+            <!----------------------COMMON PROJECT HEAD--------------------------------->
+            <div class="container">
+                <div class="row">
+                    <!--WI_PROJECT_NAV_CONTENT-->
+                    <div class="col-lg-3">
+                        <!----------------------COMMON PROJECT MENU--------------------------------->
+                        <!--[onload;file=common.project.navigation.html;getbody;comm]-->
+                        <!----------------------COMMON PROJECT MENU--------------------------------->
                     </div>
-                    <div class="box side-menu-main">
-                    	<!--[onshow;block=div;when [visible.is_visible_quotationform]==1;comm] -->
-                    	<div class="box-head-dark"><i class="icon-list"></i> [quotation.quotations_form_title]</div>
-                    	<div class="box-content">
-			                <table class="table table-bordered quotation-extra-padd">
-			                  <tbody>
-			                    <tr>
-			                      <td><label>
-			                        <!--[quotationform.question;block=tr;onformat=runtime_check_blank;comm]-->
-			                        </label>
-			                        <div>
-			                          <!--[quotationform.answer;block=tr;onformat=runtime_check_blank;comm;htmlconv=no]-->
-			                        </div></td>
-			                    </tr>
-			                  </tbody>
-			                </table>
-                		</div>
+                    <!--WI_PROJECT_NAV_CONTENT-->
+                    <div class="col-lg-9">
+                        <div class="widget">
+                            <div class="widget-content widget-content-project">
+                                <!-----------------------------------------------TABS-FILES------------------------------------------------------------------>
+                                <div class="project-info-tabs">
+                                    <!--[onshow;block=div;when [visible.wi_project_quotations]==1;comm] -->
+                                    <div class="box">
+                                        <div class="box-head-dark">
+                                            <i class="icon-list"></i> [lang.lang_my_project_quotation]
+                                            <button data-toggle="modal" class="btn btn-mid btn-success pull-right"
+                                                    href="#addNewFileModal" style="margin-left: 10px;">
+                                                <!--[onshow;block=button;when [project_permissions.add_item_my_project_files] == 1;comm]-->
+                                                <!--permissions-->
+                                                <i class="icon-plus"></i> [lang.lang_upload_new_file]
+                                            </button>
+                                            &nbsp;
+                                            <button data-toggle="modal" class="btn btn-mid btn-success pull-right"
+                                                    href="#add-link">
+                                                <!--[onshow;block=button;when [project_permissions.add_item_my_project_files] == 1;comm]-->
+                                                <!--permissions-->
+                                                <i class="icon-plus"></i> [lang.lang_new_url]
+                                            </button>
+                                        </div>
+                                        <div class="box-content">
+                                            <div class="row">
+                                                <div class="col-lg-12 col-sm-12 col-xs-12  col-md-12">
+                                                    <div class="col-md-4 col-sm-12 col-xs-12 col-lg-4 file-card card-[quotations.file_type_id]">
+                                                        <!--[quotations.quotations_id;block=div;]-->
+                                                        <div class="col-md-12">
+                                                            <div class="card-header">
+                                                                <a href="#" class="file-preview" data-toggle="modal"
+                                                                   data-target="#previewFileModal" data-url="[quotations.download_url;]">
+                                                                    <span>[quotations.quotations_form_title;ope=max:20]</span>
+                                                                </a>
+                                                                <ul class="pull-right nav navbar-nav">
+                                                                    <li class="dropdown">
+                                                                        <a href="#" class="dropdown-caret">
+                                                                            <i class="fa fa-ellipsis-v"></i>
+                                                                        </a>
+                                                                        <ul class="dropdown-menu" role="menu">
+                                                                            <li>
+                                                                                <a href="#" class="file-preview" data-toggle="modal"
+                                                                                   data-target="#previewFileModal" data-url="[quotations.download_url;]">
+                                                                                    <i class="fa fa-eye"></i>
+                                                                                    [lang.lang_preview]
+                                                                                </a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a href="[quotations.open_url]">
+                                                                                    <i class="fa fa-eye-slash"></i>
+                                                                                    [lang.lang_open]
+                                                                                </a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a href="[quotations.download_url]">
+                                                                                    <i class="fa fa-download"></i>
+                                                                                    [lang.lang_download]
+                                                                                </a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a href="#" class="ajax-delete-record"
+                                                                                   data-popconfirm-yes="[lang.lang_yes;noerr]"
+                                                                                   data-popconfirm-no="[lang.lang_no;noerr]"
+                                                                                   data-popconfirm-title="[lang.lang_confirm_delete_item;noerr]"
+                                                                                   data-popconfirm-placement="left"
+                                                                                   data-mysql-record-id="[quotations.quotations_id;block=tr]"
+                                                                                   data-ajax-url="[conf.site_url]/common/ajax/delete-quote-file">
+                                                                                    <i class="fa fa-trash-o"></i>
+                                                                                    [lang.lang_delete]
+                                                                                </a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="card-body text-center">
+                                                                <a href="#" class="file-preview" data-toggle="modal"
+                                                                   data-target="#previewFileModal" data-url="[quotations.download_url;]">
+                                                                    <img class="file-icon-mid card-img"
+                                                                         src="[quotations.icon]"/>
+                                                                </a>
+                                                            </div>
+                                                            <div class="card-footer">
+                                                                <ul class="nav nav-pills">
+                                                                    <li><i class="fa fa-cog"></i>
+                                                                        <!--[quotations.quotations_status;noerr;comm;onformat=runtime_status_colors;htmlconv=no]-->
+                                                                    </li>
+                                                                    <li><i class="fa fa-calendar-o"></i>
+                                                                        <!--[quotations.quotations_date;noerr;comm;onformat=runtime_date]-->
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="box side-menu-main">
+                                        <!--[onshow;block=div;when [visible.is_visible_quotationform]==1;comm] -->
+                                        <div class="box-head-dark"><i class="icon-list"></i>
+                                            [quotation.quotations_form_title]
+                                        </div>
+                                        <div class="box-content">
+                                            <table class="table table-bordered quotation-extra-padd">
+                                                <tbody>
+                                                <tr>
+                                                    <td><label>
+                                                        <!--[quotationform.question;block=tr;onformat=runtime_check_blank;comm]-->
+                                                    </label>
+                                                        <div>
+                                                            <!--[quotationform.answer;block=tr;onformat=runtime_check_blank;comm;htmlconv=no]-->
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--WI_TABS_NOTIFICATIONS-->
+                                <!--WI_TABS_NOTIFICATIONS-->
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
                     </div>
                 </div>
-                <!--WI_TABS_NOTIFICATIONS-->
-                <!--WI_TABS_NOTIFICATIONS-->
-              </div>
-              <div class="clearfix"></div>
+                <!--WI_NOTIFICATION-->
+                <div class="col-md-9">
+                    <!--[onshow;block=div;when [visible.wi_notification] == 1;comm]-->
+                    <div class="widget">
+                        <div class="widget-content widget-big-box">[vars.notification;noerr]</div>
+                    </div>
+                </div>
+                <!--WI_NOTIFICATION-->
             </div>
-          </div>
         </div>
-        <!--WI_NOTIFICATION-->
-        <div class="col-md-9">
-          <!--[onshow;block=div;when [visible.wi_notification] == 1;comm]-->
-          <div class="widget">
-            <div class="widget-content widget-big-box">[vars.notification;noerr]</div>
-          </div>
-        </div>
-        <!--WI_NOTIFICATION-->
-      </div>
     </div>
-  </div>
 </div>
 <div class="clearfix"></div>
 </div>
+<!-- Upload a video from youtube or vimeo -->
+<div class="row">
+    <!--[onshow;block=div;when [project_permissions.add_item_my_project_files] == 1;comm]--><!--permissions-->
+    <div id="add-link" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <form class="form-horizontal" action="[conf.site_url]/admin/myquotation/[vars.project_id;noerr]/add"
+                  method="post"
+                  id="addNewLink">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                        <!--full screen icon - custom.js-->
+                        <button type="button" class="full-screen-modal close" aria-hidden="true"><i
+                                class="icon-fullscreen"></i></button>
+                        <!--full screen icon - custom.js-->
+                        <h4 class="modal-title"> [lang.lang_new_url]</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group" style="margin-bottom:10px;">
+                            <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_title]</label>
+                            <div class="col-lg-12">
+                                <input type="text" class="form-control" id="link_title" name="link_title"
+                                       autocomplete="off" required>
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-bottom:10px;">
+                            <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_description]</label>
+                            <div class="col-lg-12">
+                                <input type="text" class="form-control" id="link_description" name="files_description"
+                                       autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-bottom:10px;">
+                            <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_file_url]</label>
+                            <div class="col-lg-12">
+                                <input type="text" class="form-control" id="files_link" name="files_link"/>
+                            </div>
+                        </div>
+                        <div>
+                            <input type="hidden" name="files_project_id" value="[vars.project_id;noerr]">
+                            <input type="hidden" name="files_client_id" value="[vars.client_id;noerr]">
+                            <input type="hidden" name="files_events_id" value="[vars.new_events_id;noerr]">
+                            <input type="hidden" name="files_uploaded_by" value="[vars.my_user_type;noerr]">
+                            <input type="hidden" name="files_uploaded_by_id" value="[vars.my_id;noerr]">
+                            <input type="hidden" name="files_islink" id="files_islink" value="1">
+                            <div>
+                                <input class="btn btn-primary" type="submit" value="[lang.lang_save_url]" id=""
+                                       name="submit">
+                            </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--WI_ADD_NEW_FILE_MODAL-->
+<!-- Scroll to top -->
+<span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>
+<!--WI_ADD_NEW_FILE_MODAL-->
+<div class="row">
+    <!--[onshow;block=div;when [project_permissions.add_item_my_project_files] == 1;comm]--><!--permissions-->
+    <div id="addNewFileModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <form class="form-horizontal" action="[conf.site_url]/admin/myquotation/[vars.project_id;noerr]/add" method="post"
+                  id="addNewFile">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                        <!--full screen icon - custom.js-->
+                        <button type="button" class="full-screen-modal close" aria-hidden="true"><i
+                                class="icon-fullscreen"></i></button>
+                        <!--full screen icon - custom.js-->
+                        <h4 class="modal-title"> [lang.lang_add_new_file]</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group" style="margin-bottom:10px;">
+                            <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_description]</label>
+                            <div class="col-lg-12">
+                                <input type="text" class="form-control" id="files_description" name="files_description"
+                                       autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-bottom:10px;">
+                            <label class="control-label col-lg-12" style="width:150px;">
+                                [lang.[lang.lang_file_name]]</label>
+                            <div class="col-lg-12">
+                                <input type="text" class="form-control" id="files_name" name="files_name"
+                                       autocomplete="off" readonly="readonly">
+                            </div>
+                        </div>
+                        <!--[conditional] - for project leader only-->
+                        <div class="form-group" style="margin-bottom:10px;">
+                            <div class="col-lg-12">
+                                <!---------------------------SIMPLE AJAX FILEUPLOAD---------------------->
+                                <div>
+                                    <!--upload button-->
+                                    <div id="upload-button-container">
+                                        <input id="upload-button" class="btn btn-mid btn-primary clearfix" type="button"
+                                               value="[lang.lang_attach_a_new_file]">
+                                    </div>
+                                    <!--upload button end-->
+                                    <!--file info-->
+                                    <div id="file-info-div"></div>
+                                    <!--file info end-->
+                                    <!--progress bar-->
+                                    <div id="progress-container">
+                                        <div class="progress active progress-table">
+                                            <div id="progress-bar"
+                                                 class="progress-bar progress-bar-primary progress-bar-table"
+                                                 role="progressbar"
+                                                 aria-valuenow="100"
+                                                 aria-valuemin="0"
+                                                 aria-valuemax="100"
+                                                 style="width:0%"></div>
+                                        </div>
+                                    </div>
+                                    <!--progress bar end-->
+                                    <!--results div-->
+                                    <div id="results-container" style="display:none;"></div>
+                                    <!--results info end-->
+                                </div>
+                                <!---------------------------SIMPLE AJAX FILEUPLOAD END---------------------->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">
+                            [lang.lang_close]
+                        </button>
+                        <input type="hidden" name="files_project_id" value="[vars.project_id;noerr]">
+                        <input type="hidden" name="files_client_id" value="[vars.client_id;noerr]">
+                        <input type="hidden" name="files_events_id" value="[vars.new_events_id;noerr]">
+                        <input type="hidden" name="files_uploaded_by" value="[vars.my_user_type;noerr]">
+                        <input type="hidden" name="files_uploaded_by_id" value="[vars.my_id;noerr]">
+                        <input type="hidden" name="files_foldername" id="files_foldername" value="">
+                        <input type="hidden" name="files_extension" id="files_extension" value="">
+                        <input type="hidden" name="files_size" id="files_size" value="">
+                        <div id="form-submit-button-container" style="display:none;">
+                            <input class="btn btn-primary" type="submit" value="[lang.lang_save_new_file]" id=""
+                                   name="submit">
+                        </div>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--WI_ADD_NEW_FILE_MODAL-->
+
+<!--WI_FILE_PREVIEW_MODAL-->
+<div class="row">
+    <div id="previewFileModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="previewFileModal"
+         aria-hidden="true" aria-expanded="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                    <!--full screen icon - custom.js-->
+                    <button type="button" class="full-screen-modal close" aria-hidden="true"><i
+                            class="icon-fullscreen"></i></button>
+                    <!--full screen icon - custom.js-->
+                    <h4 class="modal-title file-name" id="modal-iframe-title"></h4>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="modal-body" id="preview-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">
+                        [lang.lang_close]
+                    </button>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--WI_FILE_PREVIEW_MODAL_END-->
+
 <!----------------------COMMON FOOTER--------------------------------->
 <!--[onload;file=../common/common.footer.html;getbody;comm]-->
 <!----------------------COMMON FOOTER--------------------------------->
@@ -131,5 +498,98 @@
 <!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
 <!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
 <!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+
+<script type="text/javascript">
+    $(function () {
+        $('.dropdown > a').click(function (e) {
+            e.preventDefault();
+            //$('ul.dropdown-menu').hide();
+            $(this).parent().children('ul.dropdown-menu').toggle(500);
+        });
+        $('[data-toggle=tab]').click(function (e) {
+            e.preventDefault();
+            var cls = $(this).attr('href').replace('#', '').toLowerCase();
+            if (cls == 'all') {
+                $('.file-card').show(500);
+            } else {
+                var card = '.card-' + cls;
+                $('.file-card').hide(500);
+                $(card).show(500);
+            }
+        });
+        $('a.file-preview').click(function () {
+            var target = $('div#preview-body');
+            if ($(this).data('video') != '' || ['youtube', 'vimeo'].indexOf($(this).data('video').toLowerCase()) > -1) {
+                var url = $(this).data('url');
+                $(target).html('<iframe src="' + url + '" frameborder="0" allowfullscreen width="100%" height="640"></iframe>');
+                return;
+            }
+            var file = $(this).attr('data-file');
+            var type = $(this).attr('data-type');
+            var url = $(this).attr('data-url');
+            $('.file-name').html(file);
+            if (['jpg', 'rpg', 'png', 'tiff', 'jpeg'].indexOf(type.toLowerCase()) > -1) {
+                $(target).html('<img src="' + url + '" class="img-responsive"/>');
+            } else if (['xls', 'xlsx', 'doc', 'docx', 'ppt', 'pptx'].indexOf(type.toLowerCase()) > -1) {
+                var msUrl = 'https://view.officeapps.live.com/op/view.aspx?src=';
+                var preUrl = msUrl + encodeURIComponent(url);
+                $(target).html('<iframe src="' + preUrl + '" frameborder="0" style="width:100%;min-height:640px;"></iframe>');
+            } else if (['pdf'].indexOf(type.toLowerCase()) > -1) {
+                $(target).html('<iframe src="' + url + '" frameborder="0" style="width:100%;min-height:640px;"></iframe>');
+            } else if (['mp4'].indexOf(type.toLowerCase()) > -1) {
+                $(target).html('<video width="100%" height="100%" controls style="max-height:480px;"><source src="' + url + '"Your browser does not support the video tag.</video>');
+            } else {
+                $(target).html('[lang.lang_no_preview]');
+            }
+        });
+    });
+</script>
+
+<!--JS_SIMPLE_AJAX_UPLOADER -->
+<script type="text/javascript"
+        src="[conf.site_url_themes_common;noerr]/js/simpleajaxuploader/SimpleAjaxUploader.js">
+
+</script>
+<!--JS_SIMPLE_AJAX_UPLOADER -->
+<!--JS_LANG_AJAX_FILE_UPLOAD-->
+<script>
+    //-------------------------------------------------------------------------------
+    //[DYNAMIC (TBS) VARIABLES & LANGUAGE]
+    //-------------------------------------------------------------------------------
+    //variabled
+    var upload_url = '[conf.site_url;noerr]/common/ajax/upload-quotation-file/[vars.project_id;noerr]/team';
+    var js_files_project_allowed_types = [vars.js_allowed_types;protect = no;noerr];
+    var js_file_size_limit = [vars.js_file_size_limit;noerr];
+    //language
+    var lang_file_too_big = "[lang.lang_upload_invalid_filesize;noerr]";
+    var lang_your_file_has_been_uploaded = "[lang.lang_file_has_been_attached;noerr]";
+    var lang_upload_invalid_filetype = "[lang.lang_upload_invalid_filetype;noerr]";
+    var lang_upload_invalid_filesize = "[lang.lang_upload_invalid_filesize;noerr]";
+    var lang_upload_system_error = "[lang.lang_upload_system_error;noerr]";
+
+</script>
+<script type="text/javascript"
+        src="[conf.site_url_themes_common;noerr]/js/custom/custom.upload.projectfile.js">
+</script>
+<!--JS_LANG_AJAX_FILE_UPLOAD-->
+<!--JS_ADD_NEW_FILE_MODAL-->
+
+<script type="text/javascript">
+    $().ready(function () {
+        $("#addNewFile").validate({
+            rules: {
+                files_description: "required",
+                files_name: "required",
+            },
+            messages: {
+                files_description: "[lang.lang_field_is_required]",
+                files_name: "[lang.lang_field_is_required]",
+            },
+            submitHandler: function (form) {
+                form.submit();
+            }
+        });
+    });
+</script>
 </body>
 </html>

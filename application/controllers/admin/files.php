@@ -303,6 +303,15 @@ class Files extends MY_Controller
             if ($thedata[$i]['files_islink']) {
                 $thedata[$i]['is_video'] = true;
                 $thedata[$i]['file_type_id'] = 'links';
+                $url = parse_url($thedata[$i]['files_link']);
+                switch($url['host']){
+                    case 'www.drive.google.com':
+                    case 'drive.google.com':
+                    case 'www.docs.google.com':
+                    case 'docs.google.com':
+                    $thedata[$i]['image_url'] = site_url(sprintf('/files/filetype_icons/%s.png', 'drive'));
+                        break;
+                }
                 $thedata[$i]['file_url'] = $thedata[$i]['files_link'];
             } else {
                 $thedata[$i]['is_video'] = 0;
@@ -384,7 +393,6 @@ class Files extends MY_Controller
             }
 
         }
-
         //---return the processed array--------
         return $thedata;
 
