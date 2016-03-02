@@ -1,0 +1,15 @@
+#NEXTLOOP
+#.HACCESS FILE FOR CODEIGNITER
+
+# Enable Rewrite
+RewriteEngine on
+
+RewriteRule ^(application/themes|application/language|assets|updates|files|install)($|/) - [L]
+
+#Allow direct access to images and robots.txt
+RewriteCond $1 !^(index\.php|images|robots\.txt|png|gif|jpg)
+
+#redirect everything else
+RewriteRule ^(.*)$ ./index.php?/$1 [L]
+
+

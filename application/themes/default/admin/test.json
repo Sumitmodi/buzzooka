@@ -1,0 +1,60 @@
+[ {
+        "type": "dropdown",
+        "quantity": "1",
+        "label": "Week",
+        "name": "week",
+        "props": [{
+                "attrs": {
+                    "class": "week",
+                    "id": "week",
+                    "title": "week",
+"placeholder":"Week"
+                }
+            }]
+    }, {
+        "type": "text",
+        "quantity": "1",
+        "text_limit": "150",
+        "label": "Enter Feed quantity",
+        "name": "feed_quantity",
+        "props": [{
+                "attrs": {
+                    "class": "feed_quantity",
+                    "id": "feed_quantity",
+                    "placeholder": "Weekly average feed consumption",
+                    "title": "Feed Quantity"
+                }
+            }]
+    }, {
+        "type": "text",
+        "quantity": "1",
+        "text_limit": "150",
+        "label": "Enter Body weight",
+        "name": "body_weight",
+        "props": [{
+                "attrs": {
+                    "class": "body_weight",
+                    "id": "body_weight",
+                    "placeholder": "Weekly average body weight",
+                    "title": "Body weight (gms)"
+                }
+            }]
+    }, {
+        "type": "text",
+        "quantity": "1",
+        "text_limit": "150",
+        "label": "Hen",
+        "name": "Hen",
+        "props": [{
+                "attrs": {
+                    "class": "hen",
+                    "id": "hen",
+                    "placeholder": "Weekly egg production ",
+                    "title": "Hen"
+                }
+            }]
+    }
+    ]
+
+
+

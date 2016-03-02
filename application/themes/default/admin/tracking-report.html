@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+    <link href="../common/style/bootstrap.css" rel="stylesheet">
+    <link href="../common/style/style.css" rel="stylesheet">
+    <!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+    <!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<body>
+<!--JS SECTION - ONLOAD-->
+<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+<!--JS SECTION - ONLOAD-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--[onload;file=../common/include.debug.html;getbody;comm]-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--HEADER SECTION - ONLOAD-->
+<!--[onload;file=common.header.html;getbody;comm]-->
+<!--HEADER SECTION - ONLOAD-->
+<!-- Main content starts -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/r/bs/jqc-1.11.3,jszip-2.5.0,pdfmake-0.1.18,dt-1.10.9,af-2.0.0,b-1.0.3,b-flash-1.0.3,b-html5-1.0.3,b-print-1.0.3,cr-1.2.0,r-1.0.7/datatables.min.css"/>
+<script type="text/javascript" src="https://cdn.datatables.net/r/bs/jqc-1.11.3,jszip-2.5.0,pdfmake-0.1.18,dt-1.10.9,af-2.0.0,b-1.0.3,b-flash-1.0.3,b-html5-1.0.3,b-print-1.0.3,cr-1.2.0,r-1.0.7/datatables.min.js"></script>
+<div class="content">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!--SIDE MENU - ONLOAD -->
+        <!--[onload;file=common.menu.html;getbody;comm]-->
+        <!--SIDE MENU - ONLOAD -->
+    </div>
+    <!-- Sidebar ends -->
+    <div class="mainbar">
+        <!-- --------------------COMMON PAGE HEADING------------------------------- -->
+        <!-- [onload;file=common.heading.html;getbody;comm]-->
+        <!-- --------------------COMMON PAGE HEADING------------------------------- -->
+
+        <style type="text/css">
+          .widget .table-bordered thead tr > th
+          {
+            background-color: #fff;
+            color: #444;
+            font-weight: bold;
+          }
+        </style>
+        <div class="matter">
+            <div class="container">
+
+                <div class="col-md-12">
+                  <div class="widget">
+                    <div class="widget-content">           
+                        <table class="table table-bordered table-vcenter  default footable-loaded">
+                          <thead>
+                            <tr>
+                              <th>URL</th>
+                              <th>Top rank</th>
+                              <th>Total Terms</th>
+                              <th>Groups</th>
+                              <th>Created date</th>
+                              <th>Alexa rank</th>
+                              <th>Pagerank</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <th>
+                                <a href="[info.url]" target="_blank">[info.url]</a>
+                              </th>
+                              <td>[info.toprank]</td>
+                              <td>[info.terms]</td>
+                              <td>[info.groups]</td>
+                              <td>[info.date]</td>
+                              <td>[info.alexa]</td>
+                              <td>[info.pagerank]</td>
+                            </tr>
+                          </tbody>
+                        </table>  
+                    </div>
+                  </div>
+                </div>    
+                <div class="col-md-12">
+                  <div class="widget">
+                    <div class="widget-content">                
+                        <table class="table table-bordered table-vcenter table-hover default footable-loaded table-striped" id="api-report">
+                          <thead>
+                            <tr>
+                              <th>Term</th>
+                              <th>Type</th>
+                              <th style="width:150px;">Indexed URL</th>
+                              <th>Engine</th>
+                              <th>Co/Lang</th>
+                              <th>City</th>
+                              <th>Rank</th>
+                              <th>Day</th>
+                              <th>Week</th>
+                              <th>Month</th>
+                              <th>Local</th>
+                              <th>Global</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <!--[terms.sno;block=tr;]-->
+                              <th>[terms.term]</th>
+                              <td>[terms.type]</td>
+                              <td class="tr-link-excluded">
+                                <a href="[terms.url]" target="_blank">[terms.url]</a>
+                              </td>
+                              <td>[terms.engine]</td>
+                              <td>[terms.country_code]</td>
+                              <td>[terms.city]</td>
+                              <td>[terms.rank]</td>
+                              <td>[terms.day]</td>
+                              <td>[terms.week]</td>
+                              <td>[terms.month]</td>
+                              <td>[terms.local]</td>
+                              <td>[terms.global]</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+</div>
+<!----------------------COMMON FOOTER--------------------------------->
+<!--[onload;file=../common/common.footer.html;getbody;comm]-->
+<!----------------------COMMON FOOTER--------------------------------->
+<!-- Scroll to top -->
+
+<!----------------------COMMON PROJECT FOOTER--------------------------------->
+<!--[onload;file=common.project.footer.html;getbody;comm]-->
+<!----------------------COMMON PROJECT FOOTER--------------------------------->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+
+<script type="text/javascript">
+  $(function(){
+    $('#api-report').DataTable();
+  });
+</script>
+
+</body>
+</html>

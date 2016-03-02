@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/application/third_party/phppdf/vendor/psliwa/php-pdf/lib" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/application/third_party/phppdf/vendor/psliwa/php-pdf/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/application/third_party/phppdf/vendor/zendframework/zendpdf/tests/ZendPdf" isTestSource="false" packagePrefix="ZendPdfTest" />
+      <sourceFolder url="file://$MODULE_DIR$/application/third_party/phppdf/vendor/zendframework/zendpdf/library" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/application/third_party/dropbox/dropbox/dropbox-sdk/lib" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

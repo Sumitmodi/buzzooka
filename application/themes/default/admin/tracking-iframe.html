@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+    <link href="../common/style/bootstrap.css" rel="stylesheet">
+    <link href="../common/style/style.css" rel="stylesheet">
+    <!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+    <!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<body>
+<!--JS SECTION - ONLOAD-->
+<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+<!--JS SECTION - ONLOAD-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--[onload;file=../common/include.debug.html;getbody;comm]-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--HEADER SECTION - ONLOAD-->
+<!--[onload;file=common.header.html;getbody;comm]-->
+<!--HEADER SECTION - ONLOAD-->
+<!-- Main content starts -->
+<div class="content">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!--SIDE MENU - ONLOAD -->
+        <!--[onload;file=common.menu.html;getbody;comm]-->
+        <!--SIDE MENU - ONLOAD -->
+    </div>
+    <!-- Sidebar ends -->
+    <div class="mainbar">
+        <!-- --------------------COMMON PAGE HEADING------------------------------- -->
+        <!-- [onload;file=common.heading.html;getbody;comm]-->
+        <!-- --------------------COMMON PAGE HEADING------------------------------- -->
+
+        <style type="text/css">
+          .widget .table-bordered thead tr > th
+          {
+            background-color: #fff;
+            color: #444;
+            font-weight: bold;
+          }
+        </style>
+        <div class="matter">
+            <div class="container">
+            <iframe src="https://proranktracker.com/members/clientarea.php" width="100%" height="200px" id="iframe1" marginheight="0" frameborder="0" onLoad="autoResize('iframe1');"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+</div>
+<!----------------------COMMON FOOTER--------------------------------->
+<!--[onload;file=../common/common.footer.html;getbody;comm]-->
+<!----------------------COMMON FOOTER--------------------------------->
+<!-- Scroll to top -->
+
+<!----------------------COMMON PROJECT FOOTER--------------------------------->
+<!--[onload;file=common.project.footer.html;getbody;comm]-->
+<!----------------------COMMON PROJECT FOOTER--------------------------------->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+
+<script type="text/javascript">
+$(function(){
+  //console.log($('#nav').height());
+  $('#iframe1').attr('height',$('.mainbar').height()+'px');
+});
+/*function autoResize(id){
+    var newheight;
+    var newwidth;
+
+    if(document.getElementById){
+        newheight = document.getElementById(id).contentWindow.document.body.scrollHeight;
+        newwidth = document.getElementById(id).contentWindow.document.body.scrollWidth;
+    }
+
+    document.getElementById(id).height = (newheight) + "px";
+    document.getElementById(id).width = (newwidth) + "px";
+}*/
+</script>
+
+</body>
+</html>

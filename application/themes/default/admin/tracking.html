@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+    <link href="../common/style/bootstrap.css" rel="stylesheet">
+    <link href="../common/style/style.css" rel="stylesheet">
+    <!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+    <!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+    <style type="text/css">
+      th
+      {
+        font-weight: bold;
+      }
+    </style>
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<body>
+<!--JS SECTION - ONLOAD-->
+<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+<!--JS SECTION - ONLOAD-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--[onload;file=../common/include.debug.html;getbody;comm]-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--HEADER SECTION - ONLOAD-->
+<!--[onload;file=common.header.html;getbody;comm]-->
+<!--HEADER SECTION - ONLOAD-->
+<!-- Main content starts -->
+<div class="content">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!--SIDE MENU - ONLOAD -->
+        <!--[onload;file=common.menu.html;getbody;comm]-->
+        <!--SIDE MENU - ONLOAD -->
+    </div>
+    <!-- Sidebar ends -->
+    <div class="mainbar">
+        <!-- --------------------COMMON PAGE HEADING------------------------------- -->
+        <!-- [onload;file=common.heading.html;getbody;comm]-->
+        <!-- --------------------COMMON PAGE HEADING------------------------------- -->
+        <div class="matter">
+            <div class="container">
+                <div class="col-md-12">
+                  <div class="widget">
+                    <div class="widget-content">                  
+                        <table class="table table-bordered table-vcenter  default footable-loaded table-hover">
+                          <thead>
+                            <tr>
+                              <th>#</th>
+                              <th>URL</th>
+                              <th>Top rank</th>
+                              <th>Total Terms</th>
+                              <th>Groups</th>
+                              <th>Created date</th>
+                              <th>Last update</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr class="tr-link" data-link="[conf.site_url]/admin/tracking/[tracking.id]">
+                              <!--[tracking.sno;block=tr;]-->
+                              <td>[tracking.sno]</td>
+                              <td class="tr-link-excluded">
+                                <a href="[tracking.url]" target="_blank">[tracking.url]</a>
+                              </td>
+                              <td>[tracking.rank]</td>
+                              <td>[tracking.terms]</td>
+                              <td>[tracking.groups]</td>
+                              <td>[tracking.date]</td>
+                              <td>[tracking.updated] hours ago</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+</div>
+<!----------------------COMMON FOOTER--------------------------------->
+<!--[onload;file=../common/common.footer.html;getbody;comm]-->
+<!----------------------COMMON FOOTER--------------------------------->
+<!-- Scroll to top -->
+
+<!----------------------COMMON PROJECT FOOTER--------------------------------->
+<!--[onload;file=common.project.footer.html;getbody;comm]-->
+<!----------------------COMMON PROJECT FOOTER--------------------------------->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+</body>
+</html>

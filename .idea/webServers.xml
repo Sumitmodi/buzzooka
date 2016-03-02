@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="2651cbf0-2cab-4b56-a5b5-b0a3ee8dabae" name="buzzooka" url="http://buzzooka.ca/project-management/">
+        <fileTransfer host="ftp.merritthousemedia.ca" port="21" username="sandeep@merritthousemedia.ca">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

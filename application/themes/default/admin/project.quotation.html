@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+<link href="../common/style/bootstrap.css" rel="stylesheet">
+<link href="../common/style/style.css" rel="stylesheet">
+<!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<body>
+<!--JS SECTION - ONLOAD-->
+<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+<!--JS SECTION - ONLOAD-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--[onload;file=../common/include.debug.html;getbody;comm]-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--HEADER SECTION - ONLOAD-->
+<!--[onload;file=common.header.html;getbody;comm]-->
+<!--HEADER SECTION - ONLOAD-->
+<!-- Main content starts -->
+<div class="content">
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <!--SIDE MENU - ONLOAD -->
+    <!--[onload;file=common.menu.html;getbody;comm]-->
+    <!--SIDE MENU - ONLOAD -->
+  </div>
+  <!-- Sidebar ends -->
+  <div class="mainbar">
+    <!----------------------COMMON PAGE HEADING--------------------------------->
+    <!--[onload;file=common.heading.html;getbody;comm]-->
+    <!----------------------COMMON PAGE HEADING--------------------------------->
+    <div class="matter">
+      <!----------------------COMMON PROJECT HEAD--------------------------------->
+      <!--[onload;file=common.project.header.html;getbody;comm]-->
+      <!----------------------COMMON PROJECT HEAD--------------------------------->
+      <div class="container">
+        <div class="row">
+          <!--WI_PROJECT_NAV_CONTENT-->
+          <div class="col-lg-3">
+            <!----------------------COMMON PROJECT MENU--------------------------------->
+            <!--[onload;file=common.project.navigation.html;getbody;comm]-->
+            <!----------------------COMMON PROJECT MENU--------------------------------->
+          </div>
+          <!--WI_PROJECT_NAV_CONTENT-->
+          <div class="col-lg-9">
+            <div class="widget">
+              <div class="widget-content widget-content-project">
+                <!-----------------------------------------------TABS-FILES------------------------------------------------------------------>
+                <div class="project-info-tabs">
+                      <!--[onshow;block=div;when [visible.wi_project_quotations]==1;comm] -->
+                    <div class="box side-menu-main">                    	
+                    	<div class="box-head-dark"><i class="icon-list"></i> [lang.lang_my_project_quotation]</div>
+                    	<div class="box-content">                    		
+		                    <table class="table table-bordered">
+		                      <tbody>
+		                      	<tr>
+		                      		<td>[lang.lang_title]</td>
+		                      		<td>[lang.lang_date]</td>
+		                      		<td>[lang.lang_status]</td>
+		                      		<td>[lang.lang_action]</td>
+		                      	</tr>
+		                        <tr>
+		                          <td>
+		                          	<a href="[conf.site_url]/admin/myquotation/[quotations.project_id]/view/[quotations.quotation_id]">
+		                          		<!--[quotations.quotations_form_title;block=tr;]-->
+                                  [quotations.quotations_form_title]
+		                          	</a>
+		                          </td>
+		                          <td><!--[quotations.quotations_date;noerr;comm;onformat=runtime_date]--></td>
+		                          <td><!--[quotations.quotations_status;noerr;comm;onformat=runtime_status_colors;htmlconv=no]--></td>
+		                          <td>
+		                          	<a href="[conf.site_url]/admin/quotation/download/[quotations.quotation_id]"><i class="fa fa-download"></i> Download</a>
+		                          </td>
+		                        </tr>
+		                      </tbody>
+		                    </table> 
+                    	</div>
+                    </div>
+                    <div class="box side-menu-main">
+                    	<!--[onshow;block=div;when [visible.is_visible_quotationform]==1;comm] -->
+                    	<div class="box-head-dark"><i class="icon-list"></i> [quotation.quotations_form_title]</div>
+                    	<div class="box-content">
+			                <table class="table table-bordered quotation-extra-padd">
+			                  <tbody>
+			                    <tr>
+			                      <td><label>
+			                        <!--[quotationform.question;block=tr;onformat=runtime_check_blank;comm]-->
+			                        </label>
+			                        <div>
+			                          <!--[quotationform.answer;block=tr;onformat=runtime_check_blank;comm;htmlconv=no]-->
+			                        </div></td>
+			                    </tr>
+			                  </tbody>
+			                </table>
+                		</div>
+                    </div>
+                </div>
+                <!--WI_TABS_NOTIFICATIONS-->
+                <!--WI_TABS_NOTIFICATIONS-->
+              </div>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+        </div>
+        <!--WI_NOTIFICATION-->
+        <div class="col-md-9">
+          <!--[onshow;block=div;when [visible.wi_notification] == 1;comm]-->
+          <div class="widget">
+            <div class="widget-content widget-big-box">[vars.notification;noerr]</div>
+          </div>
+        </div>
+        <!--WI_NOTIFICATION-->
+      </div>
+    </div>
+  </div>
+</div>
+<div class="clearfix"></div>
+</div>
+<!----------------------COMMON FOOTER--------------------------------->
+<!--[onload;file=../common/common.footer.html;getbody;comm]-->
+<!----------------------COMMON FOOTER--------------------------------->
+<!-- Scroll to top -->
+
+<!----------------------COMMON PROJECT FOOTER--------------------------------->
+<!--[onload;file=common.project.footer.html;getbody;comm]-->
+<!----------------------COMMON PROJECT FOOTER--------------------------------->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+    <link href="../common/style/bootstrap.css" rel="stylesheet">
+    <link href="../common/style/style.css" rel="stylesheet">
+    <!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+    <!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<body>
+<!--JS SECTION - ONLOAD-->
+<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+<!--JS SECTION - ONLOAD-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--[onload;file=../common/include.debug.html;getbody;comm]-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--HEADER SECTION - ONLOAD-->
+<!--[onload;file=common.header.html;getbody;comm]-->
+<!--HEADER SECTION - ONLOAD-->
+<!-- Main content starts -->
+<div class="content">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!--SIDE MENU - ONLOAD -->
+        <!--[onload;file=common.menu.html;getbody;comm]-->
+        <!--SIDE MENU - ONLOAD -->
+    </div>
+    <!-- Sidebar ends -->
+    <div class="mainbar">
+        <!-- --------------------COMMON PAGE HEADING------------------------------- -->
+        <!-- [onload;file=common.heading.html;getbody;comm]-->
+        <!-- --------------------COMMON PAGE HEADING------------------------------- -->
+        <div class="matter">
+            <div class="container">
+            <a href="javascript:void(0)" data-target="#api-iframe" data-toggle="modal" class="btn btn-success" id="open-modal">Open modal</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+</div>
+
+<style type="text/css">
+    .modal-dialog{
+      width: 100%;
+      left: 0;
+    }
+    .modal-dialog,.modal-body{
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+    #api-iframe{
+      overflow: hidden;
+    }
+</style>
+
+<div class="row">
+  <div id="api-iframe" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="api-iframe" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+          <!--full screen icon - custom.js-->
+          <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+          <!--full screen icon - custom.js-->
+          <h4 class="modal-title" id="modal-iframe-title"> [lang.lang_track_api]</h4>
+          <div class="clearfix"></div>
+        </div>
+        <div class="modal-body">
+            <iframe src="https://proranktracker.com/members/clientarea.php" width="100%" height="200px" id="iframe1" marginheight="0" frameborder="0" ></iframe>
+        </div>
+        <!--<div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+          </button>
+        </div>-->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!----------------------COMMON FOOTER--------------------------------->
+<!--[onload;file=../common/common.footer.html;getbody;comm]-->
+<!----------------------COMMON FOOTER--------------------------------->
+<!-- Scroll to top -->
+
+<!----------------------COMMON PROJECT FOOTER--------------------------------->
+<!--[onload;file=common.project.footer.html;getbody;comm]-->
+<!----------------------COMMON PROJECT FOOTER--------------------------------->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+
+<script type="text/javascript">
+  function getScrollBarWidth () {  
+      var inner = document.createElement('p');  
+      inner.style.width = "100%";  
+      inner.style.height = "200px";  
+    
+      var outer = document.createElement('div');  
+      outer.style.position = "absolute";  
+      outer.style.top = "0px";  
+      outer.style.left = "0px";  
+      outer.style.visibility = "hidden";  
+      outer.style.width = "200px";  
+      outer.style.height = "150px";  
+      outer.style.overflow = "hidden";  
+      outer.appendChild (inner);  
+    
+      document.body.appendChild (outer);  
+      var w1 = inner.offsetWidth;  
+      outer.style.overflow = 'scroll';  
+      var w2 = inner.offsetWidth;  
+      if (w1 == w2) w2 = outer.clientWidth;  
+    
+      document.body.removeChild (outer);  
+    
+      return (w1 - w2);  
+  };  
+  $(function(){
+    $('a#open-modal').trigger('click');
+    var doc_width = $(document).width();
+    var doc_height = $(document).height();
+    console.log(doc_width-getScrollBarWidth());
+    console.log(parseInt(doc_height)-250);
+    $('#iframe1').width(doc_width);
+    $('#iframe1').height(parseInt(doc_height)-195);
+  });
+</script>
+
+</body>
+</html>

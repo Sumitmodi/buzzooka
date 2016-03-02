@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+<link href="../common/style/bootstrap.css" rel="stylesheet">
+<link href="../common/style/style.css" rel="stylesheet">
+<!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<body>
+<!--JS SECTION - ONLOAD-->
+<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+<!--JS SECTION - ONLOAD-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--[onload;file=../common/include.debug.html;getbody;comm]-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--HEADER SECTION - ONLOAD-->
+<!--[onload;file=common.header.html;getbody;comm]-->
+<!--HEADER SECTION - ONLOAD-->
+<!-- Main content starts -->
+<div class="content">
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <!--SIDE MENU - ONLOAD -->
+    <!--[onload;file=common.menu.html;getbody;comm]-->
+    <!--SIDE MENU - ONLOAD -->
+  </div>
+  <!-- Sidebar ends -->
+  <!-- Main bar -->
+  <div class="mainbar">
+    <!----------------------COMMON PAGE HEADING--------------------------------->
+    <!--[onload;file=common.heading.html;getbody;comm]-->
+    <!----------------------COMMON PAGE HEADING--------------------------------->
+    <!-- Matter -->
+    <div class="matter">
+      <div class="container">
+  <!----------------------COMMON NOTICES--------------------------------->
+  <!--[onload;file=../common/common.notices.html;getbody;comm]-->
+  <!----------------------COMMON NOTICES--------------------------------->
+        <!--WI_QUOTATIONS_TABLE-->
+        <div class="row fullscreen-mode">
+          <div class="col-md-12">
+            <a data-toggle="modal" data-target="#addNewList" class="btn btn-success">Add new milestone</a>
+          </div>
+          <div class="col-md-12">
+            <div class="widget">
+              <div class="widget-content">
+                <table class="footable table table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <th  style="width:65px;" data-hide="phone"><a href="[vars.sortby_id;noerr]">
+                        [lang.lang_id]<i class="icon-sort bns-padded-left"></i></a></th>
+                      <th><a href="[vars.sortby_form_title;noerr]" data-hide="phone">Title<i class="icon-sort bns-padded-left"></i></a></th>
+                      <th  style="width:150px;">Start date </th>
+                      <th  style="width:150px;">End date </th>
+                      <th style="width:55px; text-align:center; font-size:14px;">
+                        <i class="icon-reorder"></i> </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <!--[milestones.id;block=tr]-->
+                      <td>[milestones.id;]</td>
+                      <td>[milestones.title;]</td>
+                      <td>[milestones.start_date;]</td>
+                      <td>[milestones.end_date;]</td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="widget-foot">
+                  <ul class="pagination pull-right">
+                    [vars.pagination;noerr;htmlconv=no]
+                  </ul>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <!--[onshow;block=div;when [visible.wi_notification] == 1;comm]-->
+          <div class="col-md-12">
+            <div class="widget">
+              <div class="widget-content widget-big-box">[vars.notification;noerr]</div>
+            </div>
+          </div>
+        </div>
+        <!--WI_NOTIFICATION-->
+      </div>
+    </div>
+    <!-- Matter ends -->
+  </div>
+  <!-- Mainbar ends -->
+  <div class="clearfix"></div>
+</div>
+<!-- Content ends -->
+<!----------------------COMMON FOOTER--------------------------------->
+<!--[onload;file=../common/common.footer.html;getbody;comm]-->
+<!----------------------COMMON FOOTER--------------------------------->
+<!-- Scroll to top -->
+<span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>
+
+<!--WI_IFRAME_MODAL-->
+<div class="row">
+  <div id="addNewList" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <form action="" method="post">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <!--full screen icon - custom.js-->
+            <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+            <!--full screen icon - custom.js-->
+            <h4 class="modal-title" id="modal-iframe-title">
+              [lang.lang_edit]</h4>
+            <div class="clearfix"></div>
+          </div>
+          <div class="modal-body">
+              <div class="form-group">
+                <label class="label label-info">Milestone title</label>
+                <input type="text" name="title" class="form-control" placeholder="Enter milestone title" required="required"/>
+              </div>
+              <div class="form-group">
+                <label class="label label-info">Start date</label>
+                <input type="text" name="start_date" class="form-control pickadate" placeholder="Start date" required="required"/>
+              </div>
+              <div class="form-group">
+                <label class="label label-info">End date</label>
+                <input type="text" name="end_date" class="form-control pickadate" placeholder="End date" required="required"/>
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-default" aria-hidden="true">Add</button>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!--WI_IFRAME_MODAL-->
+<div class="row">
+  <div id="modalIframe" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+          <!--full screen icon - custom.js-->
+          <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+          <!--full screen icon - custom.js-->
+          <h4 class="modal-title" id="modal-iframe-title">
+            [lang.lang_edit]</h4>
+          <div class="clearfix"></div>
+        </div>
+        <div class="modal-body">
+          <iframe frameborder="0" class="slimScrollBarModal----"></iframe>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--WI_IFRAME_MODAL-->
+<!--JS_SELECT_LISTS-->
+<!--JS_SELECT_LISTS-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+</body>
+</html>

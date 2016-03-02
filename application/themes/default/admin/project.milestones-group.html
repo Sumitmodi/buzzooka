@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+<link href="../common/style/bootstrap.css" rel="stylesheet">
+<link href="../common/style/style.css" rel="stylesheet">
+<!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+<!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<body>
+<!--JS SECTION - ONLOAD-->
+<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+<!--JS SECTION - ONLOAD-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--[onload;file=../common/include.debug.html;getbody;comm]-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--HEADER SECTION - ONLOAD-->
+<!--[onload;file=common.header.html;getbody;comm]-->
+<!--HEADER SECTION - ONLOAD-->
+<!-- Main content starts -->
+<div class="content">
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <!--SIDE MENU - ONLOAD -->
+    <!--[onload;file=common.menu.html;getbody;comm]-->
+    <!--SIDE MENU - ONLOAD -->
+  </div>
+  <!-- Sidebar ends -->
+  <!-- Main bar -->
+  <div class="mainbar">
+    <!----------------------COMMON PAGE HEADING--------------------------------->
+    <!--[onload;file=common.heading.html;getbody;comm]-->
+    <!----------------------COMMON PAGE HEADING--------------------------------->
+    <!-- Matter -->
+    <div class="matter">
+      <div class="container">
+  <!----------------------COMMON NOTICES--------------------------------->
+  <!--[onload;file=../common/common.notices.html;getbody;comm]-->
+  <!----------------------COMMON NOTICES--------------------------------->
+        <!--WI_QUOTATIONS_TABLE-->
+        <div class="row fullscreen-mode">
+          <div class="col-md-12">
+            <a data-toggle="modal" data-target="#addNewGroup" class="btn btn-success">Add new group</a>
+          </div>
+          <div class="col-md-12">
+            <div class="widget">
+              <div class="widget-content">
+                <table class="footable table table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <th  style="width:65px;" data-hide="phone"><a href="[vars.sortby_id;noerr]">
+                        [lang.lang_id]<i class="icon-sort bns-padded-left"></i></a></th>
+                      <th><a href="[vars.sortby_form_title;noerr]" data-hide="phone">Title<i class="icon-sort bns-padded-left"></i></a></th>
+                      <th  style="width:150px;">
+                        [lang.lang_user]                        
+                      </th>
+                      <th  style="width:85px;"><a href="[vars.sortby_date;noerr]" data-hide="phone">
+                        [lang.lang_date]<i class="icon-sort bns-padded-left"></i></a></th>
+                      <th  style="width:70px;"><a href="[vars.sortby_status;noerr]">
+                        [lang.lang_status]<i class="icon-sort bns-padded-left"></i></a></th>
+                      <th style="width:55px; text-align:center; font-size:14px;">
+                        <i class="icon-reorder"></i> </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="tr-link" data-link="[conf.site_url]/admin/milestone/list-milestones/[groups.id]">
+                      <!--[groups.id;block=tr]-->
+                      <td>[groups.id;]</td>
+                      <td>[groups.title;]</td>
+                      <td>[groups.user;]</td>
+                      <td>[groups.date_added;]</td>
+                      <td>
+                          <span id="bns-status-badge" class="label label-[onshow.status;if[groups.status]=1; then 'success'; else 'danger']">[onshow;if[groups.status]=1; then 'Active'; else 'Inactive']</span>                     
+                       </td>
+                      <td class="tr-link-excluded">
+                        <a data-group="[groups.id;]" data-target="#addToProject" data-toggle="modal" class="addToProject">
+                          <span class="icon icon-add icon-plus"></span>
+                        </a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="widget-foot">
+                  <ul class="pagination pull-right">
+                    [vars.pagination;noerr;htmlconv=no]
+                  </ul>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <!--[onshow;block=div;when [visible.wi_notification] == 1;comm]-->
+          <div class="col-md-12">
+            <div class="widget">
+              <div class="widget-content widget-big-box">[vars.notification;noerr]</div>
+            </div>
+          </div>
+        </div>
+        <!--WI_NOTIFICATION-->
+      </div>
+    </div>
+    <!-- Matter ends -->
+  </div>
+  <!-- Mainbar ends -->
+  <div class="clearfix"></div>
+</div>
+<!-- Content ends -->
+<!----------------------COMMON FOOTER--------------------------------->
+<!--[onload;file=../common/common.footer.html;getbody;comm]-->
+<!----------------------COMMON FOOTER--------------------------------->
+<!-- Scroll to top -->
+<span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>
+
+<!--WI_IFRAME_MODAL-->
+<div class="row">
+  <div id="addNewGroup" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <form action="[conf.site_url]/admin/milestone/add-milestone-groups" method="post">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <!--full screen icon - custom.js-->
+            <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+            <!--full screen icon - custom.js-->
+            <h4 class="modal-title" id="modal-iframe-title">
+              [lang.lang_edit]</h4>
+            <div class="clearfix"></div>
+          </div>
+          <div class="modal-body">
+              <div class="form-group">
+                <label class="label label-info">Title of group</label>
+                <input type="text" name="title" class="form-control" placeholder="Enter title of milestone group" required="required"/>
+              </div>
+              <div class="form-group">
+                <label class="label label-info">Status</label>
+                <select class="form-control" name="status">
+                  <option value="1">Active</option>
+                  <option value="0">Inctive</option>
+                </select>
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-default" aria-hidden="true">Create</button>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div id="addToProject" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <form action="[conf.site_url]/admin/milestone/add-to-project" method="post">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <!--full screen icon - custom.js-->
+            <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+            <!--full screen icon - custom.js-->
+            <h4 class="modal-title" id="modal-iframe-title">
+              [lang.lang_add_to_project]</h4>
+            <div class="clearfix"></div>
+          </div>
+          <div class="modal-body">
+              <div class="form-group">
+              <input type="hidden" name="groud_id" id="group_id" value="0"/>
+                <label class="label label-info">Select a project</label>
+                <!--select2.js pulldown-->
+                  <select id="projects-list" name="projects_title" data-placeholder="[lang.lang_add_to_project]" class="form-control">
+                  <option selected=""></option>
+                    <option value="[projects.projects_id]">
+                    <!--[projects.projects_title;block=option;comm]-->
+                    </option>
+                  </select>
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-default" aria-hidden="true">Confirm</button>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!--WI_IFRAME_MODAL-->
+<div class="row">
+  <div id="modalIframe" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+          <!--full screen icon - custom.js-->
+          <button type="button" class="full-screen-modal close" aria-hidden="true"><i class="icon-fullscreen"></i></button>
+          <!--full screen icon - custom.js-->
+          <h4 class="modal-title" id="modal-iframe-title">
+            [lang.lang_edit]</h4>
+          <div class="clearfix"></div>
+        </div>
+        <div class="modal-body">
+          <iframe frameborder="0" class="slimScrollBarModal----"></iframe>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">[lang.lang_close]</button>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--WI_IFRAME_MODAL-->
+<!--JS_SELECT_LISTS-->
+<!--JS_SELECT_LISTS-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<script type="text/javascript">
+  $(function(){
+    $('a.addToProject').click(function(e){
+      $('input#group_id').val($(this).attr('data-group'));
+    });
+  });
+</script>
+</body>
+</html>
