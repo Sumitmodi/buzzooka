@@ -38,7 +38,7 @@ class Reports_Model extends Super_Model
      */
     public function getSeoUrl($project_id, $type)
     {
-        $res = $this->db->where('projects_id', $project_id)->where('projects_seo_type', $type)->get('projects');
+        $res = $this->db->where('project_id', $project_id)->where('type', $type)->get('seo_reports');
         if ($res->num_rows() == 0) {
             return false;
         }
@@ -50,12 +50,24 @@ class Reports_Model extends Super_Model
      * @param int $project_id
      * @return bool
      */
-    public function saveSeoUrl($project_id)
+    public function saveSeoUrl($project_id, $type)
     {
-        return $this
-            ->db
-            ->where('projects_id', $project_id)
-            ->update('projects', array('projects_seo_link' => $this->input->post('projects_seo_link', TRUE)));
+        if ($this->db->where('project_id', $project_id)->where('type', $type)->get('seo_reports')->num_rows() == 0) {
+            return $this
+                ->db
+                ->insert('seo_reports',
+                    array(
+                        'project_id' => $project_id,
+                        'type' => $type,
+                        'url' => $this->input->post('projects_seo_link')
+                    )
+                );
+        } else {
+            return $this
+                ->db
+                ->where('project_id', $project_id)
+                ->update('seo_reports', array('url' => $this->input->post('projects_seo_link', TRUE), 'type' => $type));
+        }
     }
 
     // -- searchreports ----------------------------------------------------------------------------------------------

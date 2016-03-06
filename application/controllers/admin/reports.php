@@ -135,7 +135,7 @@ class Reports extends MY_Controller
     function __seoView()
     {
         if (!empty($_POST)) {
-            $this->model->saveSeoUrl($this->project_id);
+            $this->model->saveSeoUrl($this->project_id,$_POST['type']);
             redirect(current_url());
         }
 
@@ -153,7 +153,7 @@ class Reports extends MY_Controller
             $this->data['reg_blocks'][] = 'project';
             $this->data['blocks']['project'] = $link;
             $this->data['project'] = $link;
-            $this->data['vars']['link'] = $link['projects_seo_link'];
+            $this->data['vars']['link'] = $link['url'];
         } else {
             $this->data['visible']['wi_tabs_notification'] = 1;
             $this->data['visible']['wi_notification'] = true;
