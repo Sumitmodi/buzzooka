@@ -32,40 +32,28 @@
     <li><a href="[conf.site_url]/admin/home" class="[vars.css_menu_dashboard;noerr]"> <i class="icon-home"></i>
         [lang.lang_dashboard]<span class="pull-right"></span></a></li>
     <!--DASHBOARD END-->
-    <!--MY PROJECTS-->
-    <li><a href="[conf.site_url]/admin/myprojects" class="[vars.css_menu_myprojects;noerr]"> <i
-            class="icon-folder-open-alt"></i> [lang.lang_my_projects]
-        <label class="label label-info  pull-right"> [vars.count_my_projects;;onformat=runtime_number] </label>
-    </a></li>
-    <!--MY PROJECTS END-->
-    <!--ALL PROJECTS-->
-    <li>
-        <!--[onshow;block=li;when [vars.my_group] == 1;comm]--><!--permissions-->
-        <a href="[conf.site_url]/admin/projects/list" class="[vars.css_menu_projects;noerr]">
-            <i class="icon-folder-open"></i> [lang.lang_all_projects]
-            <label class="label label-success  pull-right">
-                [projects_count.all_projects;onformat=runtime_number] </label>
-        </a>
-    </li>
-    <!--ALL PROJECTS END-->
-
-    <li>
-        <!--[onshow;block=li;when [vars.my_group] == 1;comm]--><!--permissions-->
-        <a href="[conf.site_url]/admin/services/list" class="[vars.css_menu_services;noerr]">
-            <i class="icon-folder-open"></i> [lang.lang_services]
-            <label class="label label-success  pull-right">
-                [vars.count_services;onformat=runtime_number] </label>
-        </a>
-    </li>
-
-    <li class="has_sub">
-        <a href="javascript:void(0)">
-            <i class="icon-list-alt"></i> Cloud storage <span class="pull-right">
+    <li class="has-sub">
+        <a href="javascript:void(0)" class="[vars.css_menu_projects;noerr]">
+            <i class="icon-list-alt"></i> [lang.lang_projects] <span class="pull-right">
     	<i class="icon-chevron-right" style="font-size:12px"></i></span>
         </a>
-        <ul>
-            <li><a href="[conf.site_url]/admin/dropbox">Dropbox</a></li>
-            <li><a href="[conf.site_url]/admin/google-drive">Google drive</a></li>
+        <ul [vars.css_submenu_projects;noerr;htmlconv=no]>
+            <!--MY PROJECTS-->
+            <li><a href="[conf.site_url]/admin/myprojects"> <i
+                    class="icon-folder-open-alt"></i> [lang.lang_personal]
+                <label class="label label-info  pull-right"> [vars.count_my_projects;;onformat=runtime_number] </label>
+            </a></li>
+            <!--MY PROJECTS END-->
+            <!--ALL PROJECTS-->
+            <li>
+                <!--[onshow;block=li;when [vars.my_group] == 1;comm]--><!--permissions-->
+                <a href="[conf.site_url]/admin/projects/list">
+                    <i class="icon-folder-open"></i> [lang.lang_all]
+                    <label class="label label-success  pull-right">
+                        [projects_count.all_projects;onformat=runtime_number] </label>
+                </a>
+            </li>
+            <!--ALL PROJECTS END-->
         </ul>
     </li>
 
@@ -77,6 +65,41 @@
             <label class="label label-purple  pull-right"> [vars.clients_count;onformat=runtime_number] </label>
         </a></li>
     <!--ALL CLIENTS END-->
+
+    <li>
+        <a href="[conf.site_url]/admin/milestone/list-milestone-groups" class="[vars.css_menu_milestone;noerr]">
+            <i class="icon-list-alt"></i> [lang.lang_milestones]
+        </a>
+    </li>
+
+    <li class="has-sub">
+        <a href="javascript:void(0)" class="[vars.css_menu_quotations;noerr] [vars.css_menu_quotationforms;noerr]">
+            <!--[onshow;block=li;when [permission.view_item_quotations] == 1;comm]-->
+            <i class="icon-file-text"></i> [lang.lang_forms]
+            <span class="pull-right"><i class="icon-chevron-right" style="font-size:12px"></i></span>
+        </a>
+        <!--QUOTATIONS-->
+        <ul [vars.css_submenu_quotations;noerr;htmlconv=no] [vars.css_submenu_quotationforms;noerr;htmlconv=no]>
+            <li>
+                <!--[onshow;block=li;when [permission.view_item_quotations] == 1;comm]--><!--permissions-->
+                <a href="[conf.site_url]/admin/quotations/list" class=""> <i
+                        class="icon-paste"></i> [lang.lang_quotations]
+                    <label class="label label-success  pull-right">
+                        [quotations_count.all_open;onformat=runtime_number] </label>
+                </a></li>
+            <!--QUOTATIONS-->
+            <!--QUOTATION FORM-->
+            <li>
+                <!--[onshow;block=li;when [vars.my_group] == 1;comm]--><!--permissions-->
+                <a href="[conf.site_url]/admin/quotationforms/list" class=""> <i
+                        class="icon-paste"></i> [lang.lang_quotation_forms]
+                    <label class="label label-success  pull-right">
+                        [vars.quotation_forms_count;onformat=runtime_number] </label>
+                </a>
+            </li>
+            <!--QUOTATION FORMS-->
+        </ul>
+    </li>
     <!--INVOICES-->
     <li class="has_sub"><a href="javascript:void(0)" class="[vars.css_menu_invoices;noerr]">
         <!--[onshow;block=li;when [vars.my_group] == 1;comm]--><!--permissions-->
@@ -89,10 +112,22 @@
     </li>
     <!--INVOICES END-->
 
-    <li>
-        <a href="[conf.site_url]/admin/milestone/list-milestone-groups" class="[vars.css_menu_milestone;noerr]">
-            <i class="icon-list-alt"></i> [lang.lang_milestones]
+    <!--PAYMENTS-->
+    <!--[onshow;block=li;when [vars.my_group] == 1;comm]--><!--permissions-->
+    <li><a href="[conf.site_url]/admin/allpayments/all" class="[vars.css_menu_payments;noerr]"> <i
+            class="icon-credit-card"></i> [lang.lang_payments]</a></li>
+    <!--PAYMENTS END-->
+
+
+    <li class="has_sub">
+        <a href="javascript:void(0)">
+            <i class="icon-list-alt"></i> Cloud storage <span class="pull-right">
+    	<i class="icon-chevron-right" style="font-size:12px"></i></span>
         </a>
+        <ul>
+            <li><a href="[conf.site_url]/admin/dropbox">Dropbox</a></li>
+            <li><a href="[conf.site_url]/admin/google-drive">Google drive</a></li>
+        </ul>
     </li>
 
     <!--TICKETS-->
@@ -132,39 +167,19 @@
         </ul>
     </li>
     <!--TICKETS END-->
-    <!--PAYMENTS-->
-    <!--[onshow;block=li;when [vars.my_group] == 1;comm]--><!--permissions-->
-    <li><a href="[conf.site_url]/admin/allpayments/all" class="[vars.css_menu_payments;noerr]"> <i
-            class="icon-credit-card"></i> [lang.lang_payments]</a></li>
-    <!--PAYMENTS END-->
-    <li class="has-sub">
-        <a href="javascript:void(0)" class="[vars.css_menu_quotations;noerr] [vars.css_menu_quotationforms;noerr]">
-            <!--[onshow;block=li;when [permission.view_item_quotations] == 1;comm]-->
-            <i class="icon-file-text"></i> [lang.lang_forms]
-            <span class="pull-right"><i class="icon-chevron-right" style="font-size:12px"></i></span>
-        </a>
-        <!--QUOTATIONS-->
-        <ul class="[vars.css_menu_quotations;noerr;htmlconv=no] [vars.css_menu_quotationforms;noerr;htmlconv=no]">
-            <li>
-                <!--[onshow;block=li;when [permission.view_item_quotations] == 1;comm]--><!--permissions-->
-                <a href="[conf.site_url]/admin/quotations/list" class=""> <i
-                        class="icon-paste"></i> [lang.lang_quotations]
-                    <label class="label label-success  pull-right">
-                        [quotations_count.all_open;onformat=runtime_number] </label>
-                </a></li>
-            <!--QUOTATIONS-->
-            <!--QUOTATION FORM-->
-            <li>
-                <!--[onshow;block=li;when [vars.my_group] == 1;comm]--><!--permissions-->
-                <a href="[conf.site_url]/admin/quotationforms/list" class=""> <i
-                        class="icon-paste"></i> [lang.lang_quotation_forms]
-                    <label class="label label-success  pull-right">
-                        [vars.quotation_forms_count;onformat=runtime_number] </label>
-                </a>
-            </li>
-            <!--QUOTATION FORMS-->
-        </ul>
+
+
+
     <li>
+        <!--[onshow;block=li;when [vars.my_group] == 1;comm]--><!--permissions-->
+        <a href="[conf.site_url]/admin/services/list" class="[vars.css_menu_services;noerr]">
+            <i class="icon-folder-open"></i> [lang.lang_services]
+            <label class="label label-success  pull-right">
+                [vars.count_services;onformat=runtime_number] </label>
+        </a>
+    </li>
+
+
         <!--BUGS-->
     <li>
         <!--[onshow;block=li;when [permission.view_item_bugs] == 1;comm]--><!--permissions-->
@@ -174,17 +189,17 @@
         </a></li>
     <!--BUGS-->
     <!--TEAM-->
-    <li>
+    <!--<li>-->
         <!--[onshow;block=li;when [permission.view_item_team] == 1;comm]--><!--permissions-->
-        <a href="[conf.site_url]/admin/team" class="[vars.css_menu_team;noerr]"> <i class="icon-group"></i>
-            [lang.lang_team_members]</a></li>
+        <!--<a href="[conf.site_url]/admin/team" class="[vars.css_menu_team;noerr]"> <i class="icon-group"></i>
+            [lang.lang_team_members]</a></li>-->
     <!--TEAM-->
 
-    <li>
+    <!--<li>
         <a href="[conf.site_url]/admin/tracking" class="[vars.css_menu_track;noerr]"> <i class="icon-list-alt"></i>
             [lang.lang_track_api]</a>
     </li>
-    <!--<li>
+    <li>
         <a href="[conf.site_url]/admin/tracking/2" class="[vars.css_menu_track;noerr]"> <i class="icon-list-alt"></i>
             Tracking v2</a>
     </li>

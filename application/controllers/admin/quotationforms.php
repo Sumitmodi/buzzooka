@@ -31,6 +31,7 @@ class Quotationforms extends MY_Controller
         //css settings
         $this->data['vars']['css_menu_topnav_quotation_forms'] = 'nav_alternative_controls_active'; //menu
         $this->data['vars']['css_menu_quotationforms'] = 'open'; //menu
+        $this->data['vars']['css_submenu_quotationforms'] = 'style="display:block; visibility:visible;"';
 
         //js settings
         $this->data['visible']['formbuilder_js'] = 1;

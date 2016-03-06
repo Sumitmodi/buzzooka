@@ -2,34 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3957fda6-7fa6-4c6b-83e8-c54d9197b69c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/models/model.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/themes/default/admin/services.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/webServers.xml" afterPath="$PROJECT_DIR$/.idea/webServers.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/config/autoload.php" afterPath="$PROJECT_DIR$/application/config/autoload.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/config/constants.php" afterPath="$PROJECT_DIR$/application/config/constants.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/admin/client.php" afterPath="$PROJECT_DIR$/application/controllers/admin/client.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/admin/clients.php" afterPath="$PROJECT_DIR$/application/controllers/admin/clients.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/admin/messages.php" afterPath="$PROJECT_DIR$/application/controllers/admin/messages.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/admin/myprojects.php" afterPath="$PROJECT_DIR$/application/controllers/admin/myprojects.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/admin/projects.php" afterPath="$PROJECT_DIR$/application/controllers/admin/projects.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/admin/quotationforms.php" afterPath="$PROJECT_DIR$/application/controllers/admin/quotationforms.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/admin/services.php" afterPath="$PROJECT_DIR$/application/controllers/admin/services.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/core/MY_Controller.php" afterPath="$PROJECT_DIR$/application/core/MY_Controller.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/admin/quotations.php" afterPath="$PROJECT_DIR$/application/controllers/admin/quotations.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/admin/reports.php" afterPath="$PROJECT_DIR$/application/controllers/admin/reports.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/admin/tasks.php" afterPath="$PROJECT_DIR$/application/controllers/admin/tasks.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/admin/teammessages.php" afterPath="$PROJECT_DIR$/application/controllers/admin/teammessages.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/language/english/default_lang.php" afterPath="$PROJECT_DIR$/application/language/english/default_lang.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/clients_model.php" afterPath="$PROJECT_DIR$/application/models/clients_model.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/project_members_model.php" afterPath="$PROJECT_DIR$/application/models/project_members_model.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/projects_model.php" afterPath="$PROJECT_DIR$/application/models/projects_model.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/settings_emailtemplates_model.php" afterPath="$PROJECT_DIR$/application/models/settings_emailtemplates_model.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/users_model.php" afterPath="$PROJECT_DIR$/application/models/users_model.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/themes/default/admin/client.html" afterPath="$PROJECT_DIR$/application/themes/default/admin/client.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/themes/default/admin/clients.html" afterPath="$PROJECT_DIR$/application/themes/default/admin/clients.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/reports_model.php" afterPath="$PROJECT_DIR$/application/models/reports_model.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/themes/default/admin/common.menu.html" afterPath="$PROJECT_DIR$/application/themes/default/admin/common.menu.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/themes/default/admin/common.project.navigation.html" afterPath="$PROJECT_DIR$/application/themes/default/admin/common.project.navigation.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/themes/default/admin/myprojects.html" afterPath="$PROJECT_DIR$/application/themes/default/admin/myprojects.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/themes/default/admin/projects.html" afterPath="$PROJECT_DIR$/application/themes/default/admin/projects.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/themes/default/admin/quotationforms.html" afterPath="$PROJECT_DIR$/application/themes/default/admin/quotationforms.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/themes/default/admin/quotations.html" afterPath="$PROJECT_DIR$/application/themes/default/admin/quotations.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/themes/default/admin/project.seo.html" afterPath="$PROJECT_DIR$/application/themes/default/admin/project.seo.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/style/style.css" afterPath="$PROJECT_DIR$/assets/style/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
     </list>
     <ignored path="buzzooka.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -50,22 +37,7 @@
     <favorites_list name="buzzooka" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="common.menu.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/application/themes/default/admin/common.menu.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6783981">
-              <caret line="147" column="16" selection-start-line="147" selection-start-column="16" selection-end-line="147" selection-end-column="16" />
-              <folding>
-                <element signature="n#style#0;n#i#0;n#span#0;n#a#0;n#li#6;n#ul#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#i#0;n#span#0;n#a#0;n#li#10;n#ul#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#i#0;n#span#0;n#a#0;n#li#12;n#ul#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -87,21 +59,17 @@
         <option value="$PROJECT_DIR$/application/models/myquotation_model.php" />
         <option value="$PROJECT_DIR$/application/themes/default/admin/project.quotation.html" />
         <option value="$PROJECT_DIR$/application/config/constants.php" />
-        <option value="$PROJECT_DIR$/application/themes/default/admin/common.project.navigation.html" />
         <option value="$PROJECT_DIR$/application/config/autoload.php" />
         <option value="$PROJECT_DIR$/application/controllers/admin/services.php" />
         <option value="$PROJECT_DIR$/application/themes/default/admin/services.php" />
         <option value="$PROJECT_DIR$/application/models/model.php" />
-        <option value="$PROJECT_DIR$/application/controllers/admin/projects.php" />
         <option value="$PROJECT_DIR$/application/themes/default/admin/projects.html" />
         <option value="$PROJECT_DIR$/application/models/projects_model.php" />
         <option value="$PROJECT_DIR$/application/themes/default/admin/myprojects.html" />
         <option value="$PROJECT_DIR$/application/models/project_members_model.php" />
         <option value="$PROJECT_DIR$/application/models/settings_emailtemplates_model.php" />
         <option value="$PROJECT_DIR$/application/themes/default/admin/quotationforms.html" />
-        <option value="$PROJECT_DIR$/application/controllers/admin/quotationforms.php" />
         <option value="$PROJECT_DIR$/application/themes/default/admin/quotations.html" />
-        <option value="$PROJECT_DIR$/assets/style/style.css" />
         <option value="$PROJECT_DIR$/application/themes/default/admin/clients.html" />
         <option value="$PROJECT_DIR$/application/models/users_model.php" />
         <option value="$PROJECT_DIR$/application/themes/default/admin/client.html" />
@@ -110,8 +78,20 @@
         <option value="$PROJECT_DIR$/application/models/clients_model.php" />
         <option value="$PROJECT_DIR$/application/controllers/admin/client.php" />
         <option value="$PROJECT_DIR$/application/controllers/admin/clients.php" />
-        <option value="$PROJECT_DIR$/application/language/english/default_lang.php" />
+        <option value="$PROJECT_DIR$/application/controllers/admin/quotationforms.php" />
+        <option value="$PROJECT_DIR$/application/controllers/admin/quotations.php" />
+        <option value="$PROJECT_DIR$/application/controllers/admin/myprojects.php" />
+        <option value="$PROJECT_DIR$/application/controllers/admin/projects.php" />
         <option value="$PROJECT_DIR$/application/themes/default/admin/common.menu.html" />
+        <option value="$PROJECT_DIR$/application/controllers/admin/tasks.php" />
+        <option value="$PROJECT_DIR$/application/controllers/admin/messages.php" />
+        <option value="$PROJECT_DIR$/application/controllers/admin/teammessages.php" />
+        <option value="$PROJECT_DIR$/application/language/english/default_lang.php" />
+        <option value="$PROJECT_DIR$/application/models/reports_model.php" />
+        <option value="$PROJECT_DIR$/application/themes/default/admin/project.seo.html" />
+        <option value="$PROJECT_DIR$/application/controllers/admin/reports.php" />
+        <option value="$PROJECT_DIR$/application/themes/default/admin/common.project.navigation.html" />
+        <option value="$PROJECT_DIR$/assets/style/style.css" />
       </list>
     </option>
   </component>
@@ -185,46 +165,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="buzzooka" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="buzzooka" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="themes" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="buzzooka" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="buzzooka" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="themes" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="default" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -368,69 +308,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application/themes/default/admin/common.project.navigation.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="60" selection-start-line="14" selection-start-column="60" selection-end-line="14" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/config/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2936893">
-          <caret line="11" column="21" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/themes/default/admin/services.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/themes/default/admin/quotation.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.48058254">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/themes/default/admin/project.quotation.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="3.3907766">
-          <caret line="249" column="97" selection-start-line="249" selection-start-column="97" selection-end-line="249" selection-end-column="97" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/themes/default/admin/team.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.096774">
-          <caret line="37" column="24" selection-start-line="0" selection-start-column="0" selection-end-line="362" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/themes/default/admin/common.heading.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.1290324">
-          <caret line="3" column="20" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/helpers/view_helper.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34587377">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/themes/default/admin/cloud.google.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.0">
-          <caret line="82" column="33" selection-start-line="82" selection-start-column="33" selection-end-line="96" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/core/MY_Router.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.6699029">
@@ -463,13 +340,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="2.5218446">
           <caret line="831" column="9" selection-start-line="831" selection-start-column="9" selection-end-line="831" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/admin/files.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3616505">
-          <caret line="89" column="10" selection-start-line="89" selection-start-column="10" selection-end-line="89" selection-end-column="10" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -477,6 +348,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-11.967742">
           <caret line="41" column="13" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -491,6 +363,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7063107">
           <caret line="124" column="0" selection-start-line="124" selection-start-column="0" selection-end-line="124" selection-end-column="0" />
+          <folding>
+            <element signature="e#1055#1153#0#PHP" expanded="false" />
+            <element signature="e#3494#3622#0#PHP" expanded="false" />
+            <element signature="n#__flmFormValidation#0;n#Services#0;n#!!top" expanded="false" />
+            <element signature="e#4358#4442#0#PHP" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -505,6 +383,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-78.3871">
           <caret line="119" column="29" selection-start-line="119" selection-start-column="29" selection-end-line="119" selection-end-column="29" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -512,6 +391,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-19.161291">
           <caret line="27" column="79" selection-start-line="27" selection-start-column="79" selection-end-line="27" selection-end-column="79" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -519,13 +399,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-13.4838705">
           <caret line="76" column="55" selection-start-line="76" selection-start-column="55" selection-end-line="76" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/admin/myprojects.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.612904">
-          <caret line="103" column="67" selection-start-line="103" selection-start-column="52" selection-end-line="103" selection-end-column="67" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -554,6 +428,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2936893">
           <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -578,17 +453,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/admin/quotationforms.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.64516">
-          <caret line="375" column="58" selection-start-line="375" selection-start-column="36" selection-end-line="375" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/themes/default/common/js/formbuilder/dist/formbuilder.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -596,6 +465,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.27953216">
           <caret line="835" column="12" selection-start-line="835" selection-start-column="12" selection-end-line="835" selection-end-column="12" />
+          <folding>
+            <marker date="1456421304736" expanded="true" signature="41373:41384" placeholder="..." />
+            <marker date="1456421304736" expanded="true" signature="41594:41605" placeholder="..." />
+            <marker date="1456421304736" expanded="true" signature="42077:42088" placeholder="..." />
+            <marker date="1456421304736" expanded="true" signature="42302:42313" placeholder="..." />
+            <marker date="1456421304736" expanded="true" signature="42471:42483" placeholder="..." />
+            <marker date="1456421304736" expanded="true" signature="49534:50167" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -610,13 +487,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-7.806452">
           <caret line="128" column="65" selection-start-line="128" selection-start-column="65" selection-end-line="128" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/style/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8886076">
-          <caret line="3438" column="24" selection-start-line="3438" selection-start-column="24" selection-end-line="3438" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -648,15 +518,8 @@
             <element signature="n#table#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#table#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#table#0;n#div#0;n#div#3;n#div#1;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#img#0;n#td#0;n#tr#12;n#tbody#0;n#table#0;n#div#0;n#div#0;n#form#0;n#div#4;n#div#1;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#td#0;n#tr#12;n#tbody#0;n#table#0;n#div#0;n#div#0;n#form#0;n#div#4;n#div#1;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/admin/projects.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.7888349">
-          <caret line="532" column="25" selection-start-line="532" selection-start-column="25" selection-end-line="532" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -789,24 +652,189 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/language/english/default_lang.php">
+    <entry file="file://$PROJECT_DIR$/application/controllers/admin/quotationforms.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.75970876">
-          <caret line="861" column="30" selection-start-line="861" selection-start-column="30" selection-end-line="861" selection-end-column="30" />
+        <state vertical-scroll-proportion="-14.903226">
+          <caret line="33" column="102" selection-start-line="33" selection-start-column="102" selection-end-line="33" selection-end-column="102" />
           <folding>
-            <marker date="1457290758376" expanded="true" signature="24639:24667" placeholder="Select an it... the" />
+            <element signature="e#2785#4106#0#PHP" expanded="false" />
+            <element signature="e#4194#4853#0#PHP" expanded="false" />
+            <element signature="e#4920#7627#0#PHP" expanded="false" />
+            <element signature="e#13402#13449#0#PHP" expanded="false" />
+            <element signature="e#13454#16832#0#PHP" expanded="false" />
+            <element signature="e#16838#17052#0#PHP" expanded="false" />
+            <element signature="e#17057#17687#0#PHP" expanded="false" />
+            <element signature="e#17693#17821#0#PHP" expanded="false" />
+            <element signature="e#17826#19522#0#PHP" expanded="false" />
+            <element signature="e#19528#19695#0#PHP" expanded="false" />
+            <element signature="e#19700#20116#0#PHP" expanded="false" />
+            <element signature="e#20122#20206#0#PHP" expanded="false" />
+            <element signature="e#20211#20518#0#PHP" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/admin/quotations.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.903226">
+          <caret line="33" column="51" selection-start-line="33" selection-start-column="29" selection-end-line="33" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/admin/myprojects.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-17.032259">
+          <caret line="33" column="49" selection-start-line="33" selection-start-column="49" selection-end-line="33" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/admin/projects.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.354838">
+          <caret line="31" column="49" selection-start-line="31" selection-start-column="49" selection-end-line="31" selection-end-column="49" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/themes/default/admin/common.menu.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6783981">
-          <caret line="147" column="16" selection-start-line="147" selection-start-column="16" selection-end-line="147" selection-end-column="16" />
+        <state vertical-scroll-proportion="-12.258064">
+          <caret line="191" column="15" selection-start-line="191" selection-start-column="15" selection-end-line="191" selection-end-column="15" />
           <folding>
+            <element signature="n#style#0;n#i#0;n#span#0;n#a#0;n#li#3;n#ul#0;n#!!top" expanded="true" />
+            <element signature="n#li#6;n#ul#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#i#0;n#span#0;n#a#0;n#li#6;n#ul#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#span#0;n#a#0;n#li#9;n#ul#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#i#0;n#span#0;n#a#0;n#li#10;n#ul#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#i#0;n#span#0;n#a#0;n#li#12;n#ul#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/admin/tasks.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-18.451612">
+          <caret line="38" column="47" selection-start-line="38" selection-start-column="47" selection-end-line="38" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/admin/messages.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.193548">
+          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="39" selection-end-column="50" />
+          <folding>
+            <marker date="1457294977357" expanded="true" signature="37647:37686" placeholder="..." />
+            <marker date="1457294977357" expanded="true" signature="37687:38180" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/admin/teammessages.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.064516">
+          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+          <folding>
+            <marker date="1457295094275" expanded="true" signature="30700:30739" placeholder="..." />
+            <marker date="1457295094275" expanded="true" signature="30740:31237" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/language/english/default_lang.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.78640777">
+          <caret line="867" column="38" selection-start-line="867" selection-start-column="38" selection-end-line="867" selection-end-column="38" />
+          <folding>
+            <marker date="1457295835917" expanded="true" signature="24639:24667" placeholder="Select an it... the" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/admin/files.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3616505">
+          <caret line="118" column="55" selection-start-line="118" selection-start-column="55" selection-end-line="118" selection-end-column="76" />
+          <folding>
+            <marker date="1456929623294" expanded="false" signature="26188:26227" placeholder="..." />
+            <marker date="1456929623294" expanded="true" signature="26228:26731" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/reports_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3883495">
+          <caret line="40" column="93" selection-start-line="40" selection-start-column="93" selection-end-line="40" selection-end-column="93" />
+          <folding>
+            <marker date="1457296195019" expanded="true" signature="3769:5100" placeholder="SELECT repor... reports" />
+            <marker date="1457296195019" expanded="true" signature="3862:4034" placeholder="SELECT COUNT... reportdownloads" />
+            <marker date="1457296195019" expanded="true" signature="4099:4271" placeholder="SELECT COUNT... report_comments" />
+            <marker date="1457296195019" expanded="true" signature="7139:8795" placeholder="INSERT INTO reports... " />
+            <marker date="1457296195019" expanded="true" signature="10771:11079" placeholder="SELECT repor... reports" />
+            <marker date="1457296195019" expanded="true" signature="13221:13429" placeholder="UPDATE repor... " />
+            <marker date="1457296195019" expanded="true" signature="16945:17061" placeholder="DELETE FROM " />
+            <marker date="1457296195019" expanded="true" signature="19093:20160" placeholder="SELECT repor... reports" />
+            <marker date="1457296195019" expanded="true" signature="19189:19424" placeholder="SELECT COUNT... reportdownloads" />
+            <marker date="1457296195019" expanded="true" signature="22942:23624" placeholder="INSERT INTO reportdownloads... " />
+            <marker date="1457296195019" expanded="true" signature="25461:25666" placeholder="SELECT * FRO... reports" />
+            <marker date="1457296195019" expanded="true" signature="27556:27661" placeholder="DELETE FROM " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/admin/reports.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.868932">
+          <caret line="149" column="48" selection-start-line="149" selection-start-column="48" selection-end-line="149" selection-end-column="48" />
+          <folding>
+            <element signature="e#1290#3490#0#PHP" expanded="false" />
+            <marker date="1457296599189" expanded="false" signature="23504:23543" placeholder="..." />
+            <marker date="1457296599189" expanded="true" signature="23544:24051" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/themes/default/admin/project.seo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="3.0169902">
+          <caret line="149" column="14" selection-start-line="149" selection-start-column="14" selection-end-line="149" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/themes/default/admin/common.project.header.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.8387096">
+          <caret line="4" column="20" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/style/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.41262135">
+          <caret line="1311" column="1" selection-start-line="1311" selection-start-column="1" selection-end-line="1311" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/themes/default/admin/common.project.navigation.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.13349515">
+          <caret line="5" column="42" selection-start-line="5" selection-start-column="42" selection-end-line="5" selection-end-column="42" />
+          <folding>
+            <element signature="n#div#0;n#li#2;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#ul#0;n#div#0;n#li#2;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#li#3;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#ul#0;n#div#0;n#li#3;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#li#4;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#li#5;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#ul#0;n#div#0;n#li#5;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#li#6;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#li#7;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#ul#0;n#div#0;n#li#8;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

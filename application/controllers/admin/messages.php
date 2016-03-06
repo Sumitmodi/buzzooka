@@ -31,10 +31,13 @@ class Messages extends MY_Controller
         //css settings
         $this->data['vars']['css_submenu_projects'] = 'style="display:block; visibility:visible;"';
         $this->data['vars']['css_menu_projects'] = 'open'; //menu
+        $this->data['vars']['css_active_tab_messages'] = 'open';
 
         //default page title
         $this->data['vars']['main_title'] = $this->data['lang']['lang_project_messages'];
         $this->data['vars']['main_title_icon'] = '<i class="icon-folder-open"></i>';
+
+        $this->data['visible']['wi_messages'] = 1;
 
     }
 

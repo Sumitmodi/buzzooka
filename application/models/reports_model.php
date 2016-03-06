@@ -1,6 +1,6 @@
 <?php
 
-if (! defined('BASEPATH')) {
+if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
 
@@ -34,14 +34,15 @@ class Reports_Model extends Super_Model
     /**
      * Get the report project seo url
      * @param int $project_id
-     * @return array 
+     * @return array
      */
-    public function getSeoUrl($project_id){
-      $res = $this->db->where('projects_id',$project_id)->get('projects');
-      if($res->num_rows() == 0){
-        return false;
-      }
-      return $res->row_array();
+    public function getSeoUrl($project_id, $type)
+    {
+        $res = $this->db->where('projects_id', $project_id)->where('projects_seo_type', $type)->get('projects');
+        if ($res->num_rows() == 0) {
+            return false;
+        }
+        return $res->row_array();
     }
 
     /**
@@ -49,17 +50,18 @@ class Reports_Model extends Super_Model
      * @param int $project_id
      * @return bool
      */
-    public function saveSeoUrl($project_id){
-      return $this
-              ->db
-              ->where('projects_id',$project_id)
-              ->update('projects',array('projects_seo_link'=> $this->input->post('projects_seo_link',TRUE)));
+    public function saveSeoUrl($project_id)
+    {
+        return $this
+            ->db
+            ->where('projects_id', $project_id)
+            ->update('projects', array('projects_seo_link' => $this->input->post('projects_seo_link', TRUE)));
     }
 
     // -- searchreports ----------------------------------------------------------------------------------------------
     /**
      * search reports for a particular project or for searched reports (can be any project etc)
-     * @return	array
+     * @return    array
      */
 
     function searchfiles($offset = 0, $type = 'search', $project_id = '')
@@ -92,7 +94,7 @@ class Reports_Model extends Super_Model
             'sortby_uploadedby' => 'reports.reports_uploaded_by_id',
             'sortby_date' => 'reports.reports_date_uploaded',
             'sortby_size' => 'reports.reports_size');
-        $sort_by = (array_key_exists(''.$this->uri->segment(7), $sort_columns)) ? $sort_columns[$this->uri->segment(7)] : 'reports.reports_id';
+        $sort_by = (array_key_exists('' . $this->uri->segment(7), $sort_columns)) ? $sort_columns[$this->uri->segment(7)] : 'reports.reports_id';
         $sorting_sql = "ORDER BY $sort_by $sort_order";
 
         //are we searching records or just counting rows
@@ -160,8 +162,8 @@ class Reports_Model extends Super_Model
     // -- addreport ----------------------------------------------------------------------------------------------
     /**
      * add project report to database from post data
-     *   
-     * @return	numeric [insert id]
+     *
+     * @return    numeric [insert id]
      */
 
     function addfile($id = '')
@@ -246,7 +248,7 @@ class Reports_Model extends Super_Model
      * return a array of all users who have edit/delete access for this report
      *
      * @param numeric $report_id
-     * @return	array
+     * @return    array
      */
 
     function superUsers($report_id = '')
@@ -259,7 +261,7 @@ class Reports_Model extends Super_Model
         $conditional_sql = '';
 
         //if no valie client id, return false
-        if (! is_numeric(reports_id)) {
+        if (!is_numeric(reports_id)) {
             $this->__debugging(__line__, __function__, 0, "Invalid Data [report id=$report_id]", '');
             return false;
         }
@@ -311,8 +313,8 @@ class Reports_Model extends Super_Model
     /**
      * edit a reports details
      *
-     * @param	void
-     * @return	numeric [affected rows]
+     * @param    void
+     * @return    numeric [affected rows]
      */
 
     function editfile()
@@ -325,7 +327,7 @@ class Reports_Model extends Super_Model
         $conditional_sql = '';
 
         //if task id value exists in the post data
-        if (! is_numeric($this->input->post('reports_id'))) {
+        if (!is_numeric($this->input->post('reports_id'))) {
             $this->__debugging(__line__, __function__, 0, "Invalid Data [report id: is not numeric/is unavailable]", '');
             return false;
         }
@@ -381,9 +383,9 @@ class Reports_Model extends Super_Model
     /**
      * delete a report(s) based on a 'delete_by' id
      *
-     * @param numeric   $id reference id of item(s) 
-     * @param   string    $delete_by report-id, milestone-id, project-id, client-id 
-     * @return	bool
+     * @param numeric $id reference id of item(s)
+     * @param   string $delete_by report-id, milestone-id, project-id, client-id
+     * @return    bool
      */
 
     function deletefile($id = '', $delete_by = '')
@@ -396,7 +398,7 @@ class Reports_Model extends Super_Model
         $conditional_sql = '';
 
         //if no valie client id, return false
-        if (! is_numeric($id)) {
+        if (!is_numeric($id)) {
             $this->__debugging(__line__, __function__, 0, "Invalid Data [report_id=$id]", '');
             //ajax-log error to report
             log_message('error', '[report: ' . __FILE__ . ']  [FUNCTION: ' . __function__ . ']  [LINE: ' . __line__ . "]  [MESSAGE: deleting report(s) failed (report_id: $id is invalid)]");
@@ -409,7 +411,7 @@ class Reports_Model extends Super_Model
             'project-id',
             'client-id');
 
-        if (! in_array($delete_by, $valid_delete_by)) {
+        if (!in_array($delete_by, $valid_delete_by)) {
             $this->__debugging(__line__, __function__, 0, "Invalid Data [delete_by=$delete_by]", '');
             //ajax-log error to report
             log_message('error', '[report: ' . __FILE__ . ']  [FUNCTION: ' . __function__ . ']  [LINE: ' . __line__ . "]  [MESSAGE: deleting report(s) failed (delete_by: $delete_by is invalid)]");
@@ -486,7 +488,7 @@ class Reports_Model extends Super_Model
      * return a single reports record based on its ID
      *
      * @param numeric $id
-     * @return	array
+     * @return    array
      */
 
     function getfile($id = '')
@@ -499,7 +501,7 @@ class Reports_Model extends Super_Model
         $conditional_sql = '';
 
         //if no valie client id, return false
-        if (! is_numeric($id)) {
+        if (!is_numeric($id)) {
             $this->__debugging(__line__, __function__, 0, "Invalid Data [report id=$id]", '');
             return false;
         }
@@ -559,7 +561,7 @@ class Reports_Model extends Super_Model
      * increase the reports download count by 1
      *
      * @param numeric $id
-     * @return	numeric [insert id]
+     * @return    numeric [insert id]
      */
 
     function downloadCounter($id)
@@ -572,7 +574,7 @@ class Reports_Model extends Super_Model
         $conditional_sql = '';
 
         //if no valie client id, return false
-        if (! is_numeric($id)) {
+        if (!is_numeric($id)) {
             $this->__debugging(__line__, __function__, 0, "Invalid Data [report id=$id]", '');
             return false;
         }
@@ -584,7 +586,7 @@ class Reports_Model extends Super_Model
         $client_id = $this->data['vars']['client_id'];
 
         //validate data
-        if (! is_numeric($id) || ! is_numeric($my_id) || ! is_numeric($project_id) || ! is_numeric($client_id) || $my_user_type == '') {
+        if (!is_numeric($id) || !is_numeric($my_id) || !is_numeric($project_id) || !is_numeric($client_id) || $my_user_type == '') {
             //log this
             log_message('error', '[report: ' . __FILE__ . ']  [FUNCTION: ' . __function__ . ']  [LINE: ' . __line__ . "]  [MESSAGE: Download counter failed. Invalid input data]");
             //return
@@ -650,7 +652,7 @@ class Reports_Model extends Super_Model
      *
      * @param numeric $resource_id
      * @param   numeric $client_id
-     * @return	bool
+     * @return    bool
      */
 
     function validateClientOwner($resource_id = '', $client_id)
@@ -663,7 +665,7 @@ class Reports_Model extends Super_Model
         $conditional_sql = '';
 
         //validate id
-        if (! is_numeric($resource_id) || ! is_numeric($client_id)) {
+        if (!is_numeric($resource_id) || !is_numeric($client_id)) {
             $this->__debugging(__line__, __function__, 0, "Invalid Input Data", '');
             return false;
         }
@@ -698,10 +700,10 @@ class Reports_Model extends Super_Model
     // -- bulkDelete ----------------------------------------------------------------------------------------------
     /**
      * bulk delete based on list of project ID's
-     * typically used when deleting project/s 
+     * typically used when deleting project/s
      *
-     * @param	string $projects_list a mysql array/list formatted projects list] [e.g. 1,2,3,4]
-     * @return	bool
+     * @param    string $projects_list a mysql array/list formatted projects list] [e.g. 1,2,3,4]
+     * @return    bool
      */
 
     function bulkDelete($projects_list = '')
@@ -719,7 +721,7 @@ class Reports_Model extends Super_Model
         //sanity check - ensure we have a valid projects_list, with only numeric id's
         $lists = explode(',', $projects_list);
         for ($i = 0; $i < count($lists); $i++) {
-            if (! is_numeric(trim($lists[$i]))) {
+            if (!is_numeric(trim($lists[$i]))) {
                 //log error
                 log_message('error', '[report: ' . __FILE__ . ']  [FUNCTION: ' . __function__ . ']  [LINE: ' . __line__ . "]  [MESSAGE: Bulk Deleting reports, for projects($clients_projects) failed. Invalid projects list]");
                 //exit

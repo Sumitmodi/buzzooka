@@ -29,8 +29,10 @@ class Myprojects extends MY_Controller
         $this->data['template_file'] = PATHS_ADMIN_THEME . 'myprojects.html';
 
         //css settings
-        $this->data['vars']['css_menu_heading_myprojects'] = 'heading-menu-active'; //menu
-        $this->data['vars']['css_menu_myprojects'] = 'open'; //menu
+        //$this->data['vars']['css_menu_heading_myprojects'] = 'heading-menu-active'; //menu
+        //$this->data['vars']['css_menu_myprojects'] = 'open'; //menu
+        $this->data['vars']['css_submenu_projects'] = 'style="display:block; visibility:visible;"';
+        $this->data['vars']['css_menu_projects'] = 'open';
 
         //default page title
         $this->data['vars']['main_title'] = $this->data['lang']['lang_my_projects'];

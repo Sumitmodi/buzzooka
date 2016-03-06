@@ -1307,7 +1307,7 @@ header .header-data .hdata em {
 	padding: 15px;
 }
 .box p {
-	margin: 3px 0px 5px 0px !important;
+	margin: 3px 0 5px 0;
 	line-height: 20px;
 }
 .box hr {
@@ -3437,4 +3437,29 @@ a[data-toggle=tab]{
 }
 .nav_logo{
 	margin-bottom: 56px;
+}
+.box-head-primary{
+	padding:6px 10px;
+}
+.client-logo{
+	max-width: 60px;
+	max-height: 60px;
+}
+.side-menu-main{
+	margin-top:5px;
+}
+.client-name,
+.service-name{
+    line-height: 15px !important;
+    margin:0 !important;
+}
+.service-name{
+    font-size:13px;
+}
+.client-info{
+    margin-left:65px;
+}
+.client-logo-container{
+    width: 60px;
+    float: left;
 }

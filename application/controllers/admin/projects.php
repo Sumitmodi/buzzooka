@@ -30,7 +30,7 @@ class Projects extends MY_Controller
 
         //css settings
         $this->data['vars']['css_submenu_projects'] = 'style="display:block; visibility:visible;"';
-        $this->data['vars']['css_menu_projects'] = 'open'; //menu
+        $this->data['vars']['css_menu_projects'] = 'open';
 
         //default page title
         $this->data['vars']['main_title'] = $this->data['lang']['lang_project'];

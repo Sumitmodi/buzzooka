@@ -36,6 +36,8 @@ class Tasks extends MY_Controller
         $this->data['vars']['main_title'] = $this->data['lang']['lang_project_tasks'];
         $this->data['vars']['main_title_icon'] = '<i class="icon-folder-open"></i>';
 
+        $this->data['visible']['wi_tasks'] = 1;
+
     }
 
     /**

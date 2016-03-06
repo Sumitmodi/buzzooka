@@ -31,6 +31,7 @@ class Quotations extends MY_Controller
 
         //css settings
         $this->data['vars']['css_menu_quotations'] = 'open'; //menu
+        $this->data['vars']['css_submenu_quotations'] = 'style="display:block; visibility:visible;"'; //menu
 
         //default page title
         $this->data['vars']['main_title'] = $this->data['lang']['lang_quotations'];

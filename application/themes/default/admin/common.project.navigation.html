@@ -3,16 +3,24 @@
     <!--WI_PROJECT_MENU-->
     <div class="col-lg-12 project-menu">
         <div class="box side-menu-main">
-            <div class="box-head-primary"><i class="icon-list"></i> [lang.lang_project_menu]</div>
+            <div class="box-head-primary">
+                <div class="client-logo-container">
+                    <img src="[conf.site_url][rows4.logo_url]" alt="" class="client-logo">
+                </div>
+                <div class="client-info">
+                    <p class="client-name">[rows4.clients_company_name]</p>
+                    <p class="service-name"><small>[rows4.services_name;noerr]</small></p>
+                </div>
+            </div>
             <div class="box-content">
                 <ul>
                     <li><a class="[vars.css_active_tab_details;noerr]"
-                           href="[conf.site_url]/admin/project/[vars.project_id;noerr]/view"> [lang.lang_details]</a>
+                           href="[conf.site_url]/admin/project/[vars.project_id;noerr]/view"> [lang.lang_overview]</a>
                     </li>
                     <li>
                         <a class="[vars.css_active_tab_quotation;noerr]"
                            href="[conf.site_url]/admin/myquotation/[vars.project_id;noerr]/view">
-                        [lang.lang_my_project_quotation]</a>
+                            [lang.lang_my_project_quotation]</a>
                     </li>
                     <li>
                         <!--[onshow;block=li;when [project_permissions.view_item_my_project_files] == 1;comm]-->
@@ -40,53 +48,90 @@
                     </li>
 
                     <li>
-                        <!--permissions-->
-                        <a class="[vars.css_active_tab_files;noerr]"
-                           href="[conf.site_url]/admin/reports/[vars.project_id;noerr]/view"> [lang.lang_reports]</a>
+                        <a class="[vars.css_active_tab_tasks;noerr] [vars.css_active_tab_mytasks;noerr]"
+                           href="[conf.site_url]/admin/tasks/[vars.project_id;noerr]/view"> [lang.lang_tasks]</a>
+                        <div class="split-info-panel-header">
+                            <!--[onshow;block=div;when [visible.wi_tasks] == 1;comm]-->
+                            <ul class="nav nav-pills nav-stacked" style="background-color: #FFF;">
+                                <li>
+                                    <!--[onshow;block=li;when [project_permissions.view_item_my_project_my_tasks] == 1;comm]-->
+                                    <a href="[conf.site_url]/admin/tasks/[vars.project_id;noerr]/view">[lang.lang_all_tasks]</a>
+                                </li>
+                                <li>
+                                    <!--[onshow;block=li;when [project_permissions.view_item_my_project_my_tasks] == 1;comm]-->
+                                    <a href="[conf.site_url]/admin/tasks/[vars.project_id;noerr]/view/0/asc/sortby_end_date/my/all/0">
+                                        [lang.lang_my_tasks]</a>
+                                </li>
+                            </ul>
+                        </div>
                     </li>
+
                     <li>
 
                         <!--[onshow;block=li;when [project_permissions.view_item_my_project_milestones] == 1;comm]-->
                         <!--permissions-->
                         <a class="[vars.css_active_tab_milestones;noerr]"
                            href="[conf.site_url]/admin/milestones/[vars.project_id;noerr]/view">
-                            [lang.lang_milestones]</a></li>
+                            [lang.lang_milestones]</a>
+                    </li>
+
                     <li>
-                        <!--[onshow;block=li;when [project_permissions.view_item_my_project_my_tasks] == 1;comm]-->
-                        <!--permissions-->
-                        <a class="[vars.css_active_tab_tasks;noerr]"
-                           href="[conf.site_url]/admin/tasks/[vars.project_id;noerr]/view"> [lang.lang_all_tasks]
-                            ([lang.lang_everyone])</a></li>
-                    <li>
-                        <!--[onshow;block=li;when [project_permissions.view_item_my_project_messages] == 1;comm]-->
-                        <!--permissions-->
                         <a class="[vars.css_active_tab_messages;noerr]"
-                           href="[conf.site_url]/admin/messages/[vars.project_id;noerr]/view"> [lang.lang_messages]</a>
+                           href="[conf.site_url]/admin/messages/[vars.project_id;noerr]/view"> [lang.lang_tasks]</a>
+                        <div class="split-info-panel-header">
+                            <!--[onshow;block=div;when [visible.wi_messages] == 1;comm]-->
+                            <ul class="nav nav-pills nav-stacked" style="background-color: #FFF;">
+                                <li>
+                                    <!--[onshow;block=li;when [project_permissions.view_item_my_project_messages] == 1;comm]-->
+                                    <!--permissions-->
+                                    <a class="[vars.css_active_tab_messages;noerr]"
+                                       href="[conf.site_url]/admin/messages/[vars.project_id;noerr]/view">
+                                        [lang.lang_messages]</a>
+                                </li>
+                                <li>
+                                    <!--[onshow;block=li;when [project_permissions.view_item_my_project_team_messages] == 1;comm]-->
+                                    <!--permissions-->
+                                    <a class="[vars.css_active_tab_teammessages;noerr]"
+                                       href="[conf.site_url]/admin/teammessages/[vars.project_id;noerr]/view">
+                                        [lang.lang_team_messages]</a>
+                                </li>
+                            </ul>
+                        </div>
                     </li>
                     <li>
-                        <!--[onshow;block=li;when [project_permissions.view_item_my_project_team_messages] == 1;comm]-->
-                        <!--permissions-->
-                        <a class="[vars.css_active_tab_teammessages;noerr]"
-                           href="[conf.site_url]/admin/teammessages/[vars.project_id;noerr]/view">
-                            [lang.lang_team_messages]</a></li>
-                    <li>
                         <!--[onshow;block=li;when [project_permissions.view_item_my_project_invoices] == 1;comm]-->
-                        <!--permissions-->
                         <a class="[vars.css_active_tab_invoices;noerr]"
                            href="[conf.site_url]/admin/invoices/[vars.project_id;noerr]/view"> [lang.lang_invoices]</a>
                     </li>
-                    <li><a class="[vars.css_active_tab_members;noerr]"
-                           href="[conf.site_url]/admin/members/[vars.project_id;noerr]/view">
-                        [lang.lang_project_members]</a></li>
+
                     <li>
-                        <!--[onshow;block=li;when [project_permissions.view_item_my_project_my_tasks] == 1;comm]-->
-                        <!--permissions-->
-                        <a class="[vars.css_active_tab_mytasks;noerr]"
-                           href="[conf.site_url]/admin/tasks/[vars.project_id;noerr]/view/0/asc/sortby_end_date/my/all/0">
-                            [lang.lang_my_tasks]</a></li>
-                    <li><a class="[vars.css_active_tab_mynotes;noerr]"
+                        <a class="[vars.css_active_tab_members;noerr]"
+                           href="[conf.site_url]/admin/members/[vars.project_id;noerr]/view">
+                        [lang.lang_project_members]</a>
+                    </li>
+
+                    <li>
+                        <a class="[vars.css_active_tab_reports;noerr]"
+                           href="[conf.site_url]/admin/reports/[vars.project_id;noerr]/view"> [lang.lang_reports]</a>
+                        <div class="split-info-panel-header">
+                            <!--[onshow;block=div;when [visible.wi_reports] == 1;comm]-->
+                            <ul class="nav nav-pills nav-stacked" style="background-color: #FFF;">
+                                <li>
+                                    <a href="[conf.site_url]/admin/reports/[vars.project_id;noerr]/view" class="[vars.css_active_ranking_reports;noerr]">
+                                        [lang.lang_ranking]
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="[conf.site_url]/admin/reports/[vars.project_id;noerr]/view/backlinks" class="[vars.css_active_backlinks_reports;noerr]">
+                                        [lang.lang_backlinks]
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <!--<li><a class="[vars.css_active_tab_mynotes;noerr]"
                            href="[conf.site_url]/admin/mynotes/[vars.project_id;noerr]/view">
-                        [lang.lang_my_project_notes]</a></li>
+                        [lang.lang_my_project_notes]</a></li>-->
                 </ul>
             </div>
         </div>

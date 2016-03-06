@@ -31,18 +31,22 @@ class Reports extends MY_Controller
         //css settings
         $this->data['vars']['css_submenu_projects'] = 'style="display:block; visibility:visible;"';
         $this->data['vars']['css_menu_projects'] = 'open'; //menu
+        $this->data['vars']['css_active_tab_reports'] = 'side-menu-main-active'; //menu
 
         //default page title
         $this->data['vars']['main_title'] = $this->data['lang']['lang_reports'];
         $this->data['vars']['main_title_icon'] = '<i class="icon-folder-open"></i>';
-        $this->load->model('reports_model','model');
+
+        $this->data['visible']['wi_reports'] = 1;
+
+        $this->load->model('reports_model', 'model');
 
     }
 
     /**
      * This is our re-routing function and is the inital function called
      *
-     * 
+     *
      */
     function index()
     {
@@ -118,7 +122,7 @@ class Reports extends MY_Controller
         }
 
         //css - active tab
-        $this->data['vars']['css_active_tab_files'] = 'side-menu-main-active';
+        //$this->data['vars']['css_active_tab_files'] = 'side-menu-main-active';
 
         //load view
         $this->__flmView('admin/main');
@@ -130,15 +134,21 @@ class Reports extends MY_Controller
      */
     function __seoView()
     {
-        if(!empty($_POST)){
+        if (!empty($_POST)) {
             $this->model->saveSeoUrl($this->project_id);
             redirect(current_url());
         }
 
-        $link = $this->model->getSeoUrl($this->project_id);
+        $type = $this->uri->segment(5);
+        $type = empty($type) ? 'ranking' : 'backlinks';
+
+        $this->data['vars']['css_active_'.$type.'_reports'] = 'side-menu-main-active';
+
+        $link = $this->model->getSeoUrl($this->project_id, $type);
 
         $this->data['vars']['has_link'] = false;
-        if(false != $link){
+        $this->data['vars']['seo_type'] = $type;
+        if (false != $link) {
             $this->data['vars']['has_link'] = true;
             $this->data['reg_blocks'][] = 'project';
             $this->data['blocks']['project'] = $link;
@@ -147,7 +157,7 @@ class Reports extends MY_Controller
         } else {
             $this->data['visible']['wi_tabs_notification'] = 1;
             $this->data['visible']['wi_notification'] = true;
-            $this->data['vars']['notification'] = lang('lang_no_seolink');
+            $this->data['vars']['notification'] = $this->data['lang']['lang_no_seolink'];
         }
     }
 
@@ -275,28 +285,27 @@ class Reports extends MY_Controller
             $visibility_control = 0;
 
             $thedata[$i]['reports_size_human'] = ($thedata[$i]['reports_size'] / 1024);
-            if($thedata[$i]['reports_size_human'] > 1024){
-                $thedata[$i]['reports_size_human'] = number_format(($thedata[$i]['reports_size_human'] / 2014),2) . 'MB';
+            if ($thedata[$i]['reports_size_human'] > 1024) {
+                $thedata[$i]['reports_size_human'] = number_format(($thedata[$i]['reports_size_human'] / 2014), 2) . 'MB';
             } else {
-                $thedata[$i]['reports_size_human'] = number_format($thedata[$i]['reports_size_human'],2).' KB';
+                $thedata[$i]['reports_size_human'] = number_format($thedata[$i]['reports_size_human'], 2) . ' KB';
             }
 
             $thedata[$i]['reports_url'] = site_url('files/projects/' . $thedata[$i]['reports_project_id'] . '/' . $thedata[$i]['reports_foldername'] . '/' . $thedata[$i]['reports_name']);
-            if(in_array($thedata[$i]['reports_extension'],array('jpg','rpg','png','tiff','jpeg')))            
-            {
+            if (in_array($thedata[$i]['reports_extension'], array('jpg', 'rpg', 'png', 'tiff', 'jpeg'))) {
                 $thedata[$i]['has_preview'] = 1;
-            }else{
+            } else {
                 $thedata[$i]['has_preview'] = 0;
             }
 
             //file preview url
-            if(in_array($thedata[$i]['reports_extension'],array('doc','docx','ppt','pptx','xls','xlsx'))){
-                $thedata[$i]['preview_url'] = 'https://view.officeapps.live.com/op/view.aspx?src='.urlencode(site_url('files/projects/' . $thedata[$i]['reports_project_id'] . '/' . $thedata[$i]['reports_foldername'] . '/' . $thedata[$i]['reports_name']));
-            }elseif(in_array($thedata[$i]['reports_extension'],array('pdf'))){
+            if (in_array($thedata[$i]['reports_extension'], array('doc', 'docx', 'ppt', 'pptx', 'xls', 'xlsx'))) {
+                $thedata[$i]['preview_url'] = 'https://view.officeapps.live.com/op/view.aspx?src=' . urlencode(site_url('files/projects/' . $thedata[$i]['reports_project_id'] . '/' . $thedata[$i]['reports_foldername'] . '/' . $thedata[$i]['reports_name']));
+            } elseif (in_array($thedata[$i]['reports_extension'], array('pdf'))) {
                 $thedata[$i]['preview_url'] = site_url('files/projects/' . $thedata[$i]['reports_project_id'] . '/' . $thedata[$i]['reports_foldername'] . '/' . $thedata[$i]['reports_name']);
-            }else{
+            } else {
                 //[conf.site_url;noerr]/admin/file/[vars.project_id]/view/[files.files_id;block=tr;noerr]
-                $thedata[$i]['preview_url'] = site_url('admin/report/'.$thedata[$i]['reports_project_id'].'/view/'.$thedata[$i]['reports_id']);
+                $thedata[$i]['preview_url'] = site_url('admin/report/' . $thedata[$i]['reports_project_id'] . '/view/' . $thedata[$i]['reports_id']);
             }
 
 
@@ -540,7 +549,7 @@ class Reports extends MY_Controller
 
     /**
      * validates forms for various methods in this class
-     * @param	string $form identify the form to validate
+     * @param    string $form identify the form to validate
      */
     function __flmFormValidation($form = '')
     {
@@ -608,9 +617,9 @@ class Reports extends MY_Controller
     /**
      * send out an email
      *
-     * @access	private
-     * @param	string
-     * @return	void
+     * @access    private
+     * @param    string
+     * @return    void
      */
     function __emailer($email = '', $vars = array())
     {
@@ -668,8 +677,8 @@ class Reports extends MY_Controller
     /**
      * records new project events (timeline)
      *
-     * @param	string   $type identify the loop to run in this function
-     * @param   array    $vents_data an optional array that can be used to directly pass data]      
+     * @param    string $type identify the loop to run in this function
+     * @param   array $vents_data an optional array that can be used to directly pass data]
      */
     function __eventsTracker($type = '', $events_data = array())
     {

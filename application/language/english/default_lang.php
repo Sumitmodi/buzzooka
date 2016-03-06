@@ -860,6 +860,12 @@ $lang['email_empty'] = 'Email is empty.';
 $lang['email_send_success'] = 'Email sent successfully.';
 $lang['lang_logo'] = 'Logo';
 $lang['lang_forms'] = 'Forms';
+$lang['lang_projects'] = 'Projects';
+$lang['lang_personal'] = 'Personal';
+$lang['lang_all'] = 'All';
+$lang['lang_overview'] = 'Overview';
+$lang['lang_ranking'] = 'Ranking';
+$lang['lang_backlinks'] = 'Backlinks';
 //$lang['lang_milestones'] = 'Reports';
 /* End of file default_lang.php */
 /* Location: ./application/language/english/default_lang.php */
