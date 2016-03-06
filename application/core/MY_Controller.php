@@ -110,6 +110,8 @@ class MY_Controller extends CI_Controller
         $this->load->model('mynotes_model');
         $this->load->model('email_queue_model');
 
+        $this->load->model('model', 'crm');
+
         /*
         |----------------------------------------------------------------------------
         | SETS ALL COMMON DYNAMIC (DATABASE) DATA
@@ -1192,6 +1194,37 @@ class MY_Controller extends CI_Controller
 
     }
 
+
+    function __uploadAllowedFileTypes()
+    {
+
+        //profiling
+        $this->data['controller_profiling'][] = __function__;
+
+        //check if allow all file types
+        if ($this->config->item('files_tickets_max_size') === 0) {
+
+            return array();
+        }
+
+        //explode array from settings.php config file
+        $allowed = explode("|", $this->config->item('files_tickets_max_size'));
+
+        //loop through and create new flat array of file types
+        for ($i = 0; $i < count($allowed); $i++) {
+            $file_extension = strtolower(trim(str_replace("'", '', $allowed[$i])));
+
+            //if $file_extension is valid alphabetic
+            if (ctype_alpha($file_extension) || ctype_alnum($file_extension)) {
+                $allowed_array[] = $file_extension;
+            }
+        }
+
+        return $allowed_array;
+
+    }
+
+
     // -- __preRun_Dynamic_Data- -------------------------------------------------------------------------------------------------------
     /**
      * system wide database stored information set into data arary
@@ -1203,6 +1236,7 @@ class MY_Controller extends CI_Controller
      */
     function __preRun_Dynamic_Data()
     {
+        $this->data['vars']['count_services'] = $this->crm->count_services();
 
         /* ADMIN - THIS TEAM MEMBERS GLOBALLY ACCESSIBLE DATA
         * --only do this if a team member user is logged in---

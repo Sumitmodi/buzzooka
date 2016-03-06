@@ -65,10 +65,10 @@
                             </div>
                             <div class="form-group">
                                 <!--select2.js pulldown-->
-                                <select id="projects-list" name="projects_title"
-                                        data-placeholder="[lang.lang_project_title]">
+                                <select id="projects-list" name="services_id"
+                                        data-placeholder="[lang.lang_service_name]">
                                     <option></option>
-                                    <!--[lists.all_projects;noerr;htmlconv=no;protect=no;comm]-->
+                                    <!--[lists.all_services;noerr;htmlconv=no;protect=no;comm]-->
                                 </select>
                             </div>
                             <div class="form-group">
@@ -117,11 +117,21 @@
                                     <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th><a href="[vars.sortby_projectservice;noerr]">[lang.lang_service]<i
-                                                class="icon-sort bns-padded-left"></i></a></th>
-                                        <th data-hide="phone"><a href="[vars.sortby_companyname;noerr]">[lang.lang_client_name]<i
-                                                class="icon-sort bns-padded-left"></i></a></th>
-                                        <th>[lang.lang_start_date]</th>
+                                        <th>
+                                            <a href="[vars.sortby_projectservice;noerr]">[lang.lang_service]
+                                                <i class="icon-sort bns-padded-left"></i>
+                                            </a>
+                                        </th>
+                                        <th data-hide="phone">
+                                            <a href="[vars.sortby_companyname;noerr]">[lang.lang_client_name]
+                                                <i class="icon-sort bns-padded-left"></i>
+                                            </a>
+                                        </th>
+                                        <th>
+                                            <a href="[vars.sortby_startdate;noerr]">[lang.lang_start_date]
+                                                <i class="icon-sort bns-padded-left"></i>
+                                            </a>
+                                        </th>
                                         <th data-hide="phone"><a href="[vars.sortby_projects;noerr]">
                                             [lang.lang_progress]<i class="icon-sort bns-padded-left"></i></a></th>
                                         <th data-hide="phone">[lang.lang_time_spent]</th>
@@ -479,11 +489,7 @@
         ]
             //[js_validation_message.wi_projects_optionalfield2;noerr;protect=no;htmlconv=no]
             //[js_validation_message.wi_projects_optionalfield3;noerr;protect=no;htmlconv=no]
-            [js_validation_message.wi_projects_optionalfield4;
-            noerr;
-            protect = no;
-            htmlconv = no
-        ]
+            [js_validation_message.wi_projects_optionalfield4;noerr;protect = no;htmlconv = no]
             [js_validation_message.wi_projects_optionalfield5;
             noerr;
             protect = no;

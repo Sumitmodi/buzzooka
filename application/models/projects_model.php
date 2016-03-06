@@ -155,7 +155,6 @@ class Projects_model extends Super_Model
 
     function searchProjects($offset = 0, $type = 'search', $clients_id = '', $status = '')
     {
-
         //profiling::
         $this->debug_methods_trail[] = __function__;
 
@@ -186,6 +185,10 @@ class Projects_model extends Super_Model
         if ($this->input->get('projects_status') && $this->input->get('projects_status') != 'all') {
             $projects_status = $this->db->escape($this->input->get('projects_status'));
             $conditional_sql .= " AND projects.projects_status = $projects_status";
+        }
+        if (is_numeric($this->input->get('services_id'))) {
+            $projects_service = $this->db->escape($this->input->get('services_id'));
+            $conditional_sql .= " AND projects.projects_service = $projects_service";
         }
         //---------------URL QUERY - CONDITONAL SEARCH STATMENTS---------------
         //client id
@@ -223,7 +226,8 @@ class Projects_model extends Super_Model
             'sortby_companyname' => 'clients.clients_company_name',
             'sortby_dueinvoices' => 'unpaid_invoices',
             'sortby_allinvoices' => 'all_invoices',
-            'sortby_progress' => 'projects_progress');
+            'sortby_progress' => 'projects_progress',
+            'sortby_startdate' => 'projects_start');
         //validate if passed sort is valid
         $sort_by = (array_key_exists('' . $this->uri->segment(6), $sort_columns)) ? $sort_columns[$this->uri->segment(6)] : 'projects.projects_id';
         $sorting_sql = "ORDER BY $sort_by $sort_order";
@@ -861,6 +865,12 @@ class Projects_model extends Super_Model
         } else {
             return false;
         }
+    }
+
+    public function allServices()
+    {
+        $res = $this->db->order_by('services_name', 'asc')->get('services');
+        return $res->num_rows() == 0 ? false : $res->result_array();
     }
 }
 

@@ -95,7 +95,8 @@ $autoload['helper'] = array(
     'sessions',              //APPLICATION 
     'toolbox',               //APPLICATION 
     'view',                  //APPLICATION
-    'tickets'                //APPLICATION
+    'tickets',                //APPLICATION
+    'language'
     );
 
 

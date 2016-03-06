@@ -3432,3 +3432,9 @@ li.my-notes {
 a[data-toggle=tab]{
 	font-weight:normal !important;
 }
+.nav_logo .img-responsive{
+	padding:4px 12px 11px 5px;
+}
+.nav_logo{
+	margin-bottom: 56px;
+}

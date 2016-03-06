@@ -159,7 +159,8 @@ class Projects extends MY_Controller
             'sortby_status',
             'sortby_dueinvoices',
             'sortby_allinvoices',
-            'sortby_progress');
+            'sortby_progress',
+            'sortby_startdate');
         foreach ($link_sort_by_column as $column) {
             $this->data['vars'][$column] = site_url("admin/projects/list/$search_id/$link_sort_by/$column/$offset");
         }
@@ -406,6 +407,11 @@ class Projects extends MY_Controller
         $data = $this->projects_model->allProjects('projects_title', 'ASC');
         $this->data['debug'][] = $this->projects_model->debug_data;
         $this->data['lists']['all_projects'] = create_pulldown_list($data, 'projects', 'name');
+
+
+        $data = $this->projects_model->allServices();
+        $this->data['debug'][] = $this->projects_model->debug_data;
+        $this->data['lists']['all_services'] = create_pulldown_list($data, 'services','');
 
     }
 

@@ -35,7 +35,7 @@ class Clients extends MY_Controller
 
     /**
      * This is our re-routing function and is the inital function called
-     * 
+     *
      */
     function index()
     {
@@ -226,7 +226,7 @@ class Clients extends MY_Controller
         $this->data['debug'][] = $this->users_model->debug_data;
 
         //create editable.js data set
-		$this->data['vars']['editable_users_list'] = '';
+        $this->data['vars']['editable_users_list'] = '';
         for ($i = 0; $i < count($blk2); $i++) {
             $this->data['vars']['editable_users_list'] .= "{value: '" . $blk2[$i]['client_users_id'] . "', text: '" . $blk2[$i]['client_users_full_name'] . "'},";
         }
@@ -271,7 +271,6 @@ class Clients extends MY_Controller
         //validate form & display any errors
         $validation = $this->__flmFormValidation('add_client');
         if (!$validation) {
-
             //show error
             $this->notices('error', $this->form_processor->error_message);
 
@@ -282,6 +281,18 @@ class Clients extends MY_Controller
                 $next = false;
             }
             $this->data['debug'][] = $this->clients_model->debug_data;
+
+            if ($next && isset($_FILES['clients_logo'])) {
+                $this->data['field_name'] = 'clients_logo';
+                $this->load->library('fileupload');
+                $this->data['allowed_extensions'] = $this->__uploadAllowedFileTypes();
+                $this->fileupload->allowedExtensions = $this->data['allowed_extensions'];
+                $path = BASEDIR . '/files/clients/' . $client_id;
+                $result = $this->fileupload->handleUpload($path);
+                if ($result) {
+                    $this->clients_model->updateLogoUrl($client_id, '/files/clients/' . $client_id.'/'.$this->fileupload->getFileName());
+                }
+            }
 
             //save user details & get the id of this new user
             if ($next) {
@@ -317,7 +328,7 @@ class Clients extends MY_Controller
 
     /**
      * validates forms for various methods in this class
-     * @param	string $form identify the form to validate
+     * @param    string $form identify the form to validate
      */
     function __flmFormValidation($form = '')
     {

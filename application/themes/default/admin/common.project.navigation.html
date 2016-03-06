@@ -13,24 +13,6 @@
                         <a class="[vars.css_active_tab_quotation;noerr]"
                            href="[conf.site_url]/admin/myquotation/[vars.project_id;noerr]/view">
                         [lang.lang_my_project_quotation]</a>
-
-                        <div class="split-info-panel-header">
-                            <!--[onshow;block=div;when [visible.wi_quotation_table] == 1;comm]-->
-                            <ul class="nav nav-pills nav-stacked" style="background-color: #FFF;">
-                                <li class="active">
-                                    <a data-toggle="tab" href="#all">
-                                        <i class="fa fa-fw fa-folder-open themed-color-dark icon-push"></i>
-                                        All
-                                    </a>
-                                </li>
-                                <li>
-                                    <a data-toggle="tab" href="#[quote_cats.name]">
-                                        <i class="fa fa-[quote_cats.icon] themed-color-dark icon-push"></i>
-                                        [quote_cats.value]<!--[quote_cats.value;block=li;]-->
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
                     </li>
                     <li>
                         <!--[onshow;block=li;when [project_permissions.view_item_my_project_files] == 1;comm]-->

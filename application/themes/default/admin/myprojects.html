@@ -59,9 +59,9 @@
                   <thead>
                     <tr>
                       <th>#</th>
-                      <th>[lang.lang_project]</th>
+                      <th>[lang.lang_service]</th>
                       <th>[lang.lang_client]</th>
-                      <th>[lang.lang_deadline]</th>
+                      <th>[lang.lang_start_date]</th>
                       <th>[lang.lang_progress]</th>
                       <th>[lang.lang_my_time]</th>
                       <th>[lang.lang_my_tasks]</th>
@@ -71,10 +71,10 @@
                   <tbody class="">
                     <tr class="tr-link" data-link="[conf.site_url]/admin/project/[myprojects.projects_id;block=tr;noerr]/view">
                       <td><!--[myprojects.projects_id;block=tr;comm]--></td>
-                      <td><!--[myprojects.projects_title;block=tr;comm;ope=max:120]--></td>
+                      <td><!--[myprojects.services_name;block=tr;comm;ope=max:120]--></td>
                       <td><span class="label label-purple">
                         <!--[myprojects.clients_company_name;block=tr;comm;ope=max:20]--></span> </td>
-                      <td><!--[myprojects.project_deadline;block=tr;comm;onformat=runtime_date]--></td>
+                      <td><!--[myprojects.project_start;block=tr;comm;onformat=runtime_date]--></td>
                       <td class="progress-bar-td"><!--progress bar-->
                         <div class="progress active progress-table">
                           <div class="progress-bar progress-bar-primary progress-bar-table" 

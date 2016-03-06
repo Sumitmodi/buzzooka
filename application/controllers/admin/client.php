@@ -713,8 +713,22 @@ class Client extends MY_Controller
             $result = $this->clients_model->editProfile($this->input->post('clients_id'), $mysql_client_optional_fields);
             $this->data['debug'][] = $this->clients_model->debug_data;
 
+            if (isset($_FILES['clients_logo'])) {
+                $client_id = $this->input->post('clients_id');
+                $this->data['field_name'] = 'clients_logo';
+                $this->load->library('fileupload');
+                $this->data['allowed_extensions'] = $this->__uploadAllowedFileTypes();
+                $this->fileupload->allowedExtensions = $this->data['allowed_extensions'];
+                $path = BASEDIR . '/files/clients/' . $client_id;
+                $res = $this->fileupload->handleUpload($path);
+                if ($res) {
+                    $this->clients_model->updateLogoUrl($client_id, '/files/clients/' . $client_id.'/'.$this->fileupload->getFileName());
+                }
+            }
+
             //did this update of
             if ($result) {
+
                 $this->notices('success', $this->data['lang']['lang_request_has_been_completed'], 'noty');
             } else {
                 $this->notices('error', $this->data['lang']['lang_request_could_not_be_completed'], 'html');

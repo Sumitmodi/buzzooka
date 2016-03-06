@@ -577,6 +577,10 @@ class Clients_model extends Super_Model
         }
     }
 
+    public function updateLogoUrl($client_id,$url){
+        return $this->db->where('clients_id',$client_id)->update('clients',array('logo_url'=>$url));
+    }
+
 }
 /* End of file clients_model.php */
 /* Location: ./application/models/clients_model.php */

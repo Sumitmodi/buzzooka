@@ -207,7 +207,7 @@ class Project_members_model extends Super_Model
         $this->benchmark->mark('code_start');
 
         //_____SQL QUERY_______
-        $query = $this->db->query("SELECT project_members.*,projects.*,
+        $query = $this->db->query("SELECT project_members.*,projects.*,services.*,
                                                (SELECT timer_seconds 
                                                        FROM timer 
                                                        WHERE timer_project_id = projects.projects_id AND timer_team_member_id = $members_id LIMIT 1) AS timer,
@@ -221,6 +221,8 @@ class Project_members_model extends Super_Model
                                                        AS pending_tasks
                                              FROM project_members
                                              RIGHT JOIN projects
+                                             LEFT OUTER JOIN services
+                                             ON services.services_id = projects.projects_service
                                              ON projects.projects_id = project_members.project_members_project_id
                                              WHERE project_members.project_members_team_id = $members_id
                                              $conditional_sql

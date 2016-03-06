@@ -1403,6 +1403,10 @@ class Users_model extends Super_Model
         return $results;
 
     }
+
+    public function updateLogoUrl($client_id,$url){
+        return $this->db->where('clients_id',$client_id)->update('clients',array('logo_url'=>$url));
+    }
 }
 
 /* End of file users_model.php */

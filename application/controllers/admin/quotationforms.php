@@ -49,7 +49,7 @@ class Quotationforms extends MY_Controller
     /**
      * This is our re-routing function and is the inital function called
      *
-     * 
+     *
      */
     function index()
     {
@@ -85,6 +85,10 @@ class Quotationforms extends MY_Controller
                 $this->__viewQuotationForm();
                 break;
 
+            case 'email':
+                $this->__emailQuote();
+                break;
+
             case 'edit':
                 $this->__editQuotationForm();
                 break;
@@ -102,6 +106,33 @@ class Quotationforms extends MY_Controller
         //load view
         $this->__flmView('admin/main');
 
+    }
+
+    protected function __emailQuote()
+    {
+        $template = $this->settings_emailtemplates_model->getBySettingsId('questionnare_email');
+        if (false == $template) {
+            $this->notices('error', $this->data['lang']['template_404']);
+            $this->__listQuotationForms();
+            return;
+        }
+        $email_message = parse_email_template($template->message, array('quotation_link' => site_url('common/quotation/load/' . $this->input->post('id', true))));
+        $email_subject = $this->input->post('subject', true);
+        $emails = array_map(function ($row) {
+            return filter_var($row, FILTER_VALIDATE_EMAIL) == false ? false : filter_var($row, FILTER_SANITIZE_EMAIL);
+        }, explode(',', $this->input->post('emails')));
+        $emails = array_unique(array_filter($emails));
+        if (empty($emails)) {
+            $this->notices('error', $this->data['lang']['email_empty']);
+        } else {
+            email_default_settings(); //defaults (from emailer helper)
+            $this->email->to($emails);
+            $this->email->subject($email_subject);
+            $this->email->message($email_message);
+            $this->email->send();
+            $this->notices('success', $this->data['lang']['email_send_success']);
+        }
+        $this->__listQuotationForms();
     }
 
     /**
@@ -474,7 +505,7 @@ class Quotationforms extends MY_Controller
 
     /**
      * validates forms for various methods in this class
-     * @param	string $form identify the form to validate
+     * @param    string $form identify the form to validate
      */
     function __flmFormValidation($form = '')
     {

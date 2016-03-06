@@ -37,7 +37,6 @@ if (!@date_default_timezone_set(TIMEZONE)) {
 }
 
 
-
 /*
 *---------------------------------------------------------------
 * ERROR REPORTING
@@ -142,7 +141,6 @@ $application_folder = 'application';
 // $assign_to_config['name_of_config_item'] = 'value of config item';
 
 
-
 // --------------------------------------------------------------------
 // END OF USER CONFIGURABLE SETTINGS.  DO NOT EDIT BELOW THIS LINE
 // --------------------------------------------------------------------
@@ -191,6 +189,7 @@ define('FCPATH', str_replace(SELF, '', __file__));
 // Name of the "system folder"
 define('SYSDIR', trim(strrchr(trim(BASEPATH, '/'), '/'), '/'));
 
+define('BASEDIR', dirname(__FILE__));
 
 // The path to the "application" folder
 if (is_dir($application_folder)) {

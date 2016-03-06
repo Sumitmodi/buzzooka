@@ -3,7 +3,7 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="2651cbf0-2cab-4b56-a5b5-b0a3ee8dabae" name="buzzooka" url="http://buzzooka.ca/project-management/">
-        <fileTransfer host="ftp.merritthousemedia.ca" port="21" username="sandeep@merritthousemedia.ca">
+        <fileTransfer host="ftp.merritthousemedia.ca" port="21" password="dfc8dfecdfc7df82dff5dfeddffedfcedf8bdfd4df87dfdf" username="sandeep@merritthousemedia.ca">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>

@@ -71,7 +71,7 @@ define('CLIENT_SECRET_PATH', FCPATH.'client_secret.json');
 define('SCOPES', "https://www.googleapis.com/auth/drive");
 
 defined('TRACK_EMAIL') or define('TRACK_EMAIL','rossmosqueda@yahoo.ca');
-defined('TRACK_PASSWORD') or define('TRACK_PASSWORD','GinilingNaBaka123!');
+defined('TRACK_PASSWORD') or define('TRACK_PASSWORD','GalunggongTo12!!');
 
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */

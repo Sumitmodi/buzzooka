@@ -1,6 +1,6 @@
 <?php
 
-if (! defined('BASEPATH')) {
+if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
 
@@ -28,7 +28,7 @@ class Settings_emailtemplates_model extends Super_Model
     // -- allTemplates ----------------------------------------------------------------------------------------------
     /**
      * get all templates
-     * @return	array
+     * @return    array
      */
 
     function allTemplates($template_type = 'admin')
@@ -68,8 +68,8 @@ class Settings_emailtemplates_model extends Super_Model
     // -- getEmailTemplate ----------------------------------------------------------------------------------------------
     /**
      * return html of a single email template, based on template unique name (settings_id)
-     * @param	string [id: unique template name (settings_id) field]
-     * @return	string [whole table row]
+     * @param    string [id: unique template name (settings_id) field]
+     * @return    string [whole table row]
      */
 
     function getEmailTemplate($template_id = '')
@@ -110,7 +110,7 @@ class Settings_emailtemplates_model extends Super_Model
     /**
      * return a single message record based on its ID
      * @param numeric $item ID]
-     * @return	array
+     * @return    array
      */
 
     function getMessage($id = '')
@@ -123,7 +123,7 @@ class Settings_emailtemplates_model extends Super_Model
         $conditional_sql = '';
 
         //if no valie client id, return false
-        if (! is_numeric($id)) {
+        if (!is_numeric($id)) {
             $this->__debugging(__line__, __function__, 0, "Invalid Data [id=$id]", '');
             return false;
         }
@@ -156,8 +156,8 @@ class Settings_emailtemplates_model extends Super_Model
     // -- editSettings ----------------------------------------------------------------------------------------------
     /**
      * edit settings
-     * @param	void
-     * @return	numeric [affected rows]
+     * @param    void
+     * @return    numeric [affected rows]
      */
 
     function editSettings()
@@ -206,7 +206,7 @@ class Settings_emailtemplates_model extends Super_Model
     /**
      * restores thesettings to the default data
      * default data is stored in fields in the same row, with 'restore_' prefix
-     * @return	bool
+     * @return    bool
      */
 
     function restoreDefaultSettings($id = '')
@@ -244,6 +244,12 @@ class Settings_emailtemplates_model extends Super_Model
         } else {
             return false;
         }
+    }
+
+    public function getBySettingsId($id)
+    {
+        $res = $this->db->where('settings_id', $id)->get('settings_emailtemplates');
+        return $res->num_rows() == 0 ? false : $res->row();
     }
 }
 

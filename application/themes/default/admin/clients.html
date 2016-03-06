@@ -189,7 +189,7 @@
 <div class="row">
   <div id="addNewClientModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-      <form class="form-horizontal" action="[conf.site_url]/admin/clients/add" method="post" id="addNewClient">
+      <form class="form-horizontal" action="[conf.site_url]/admin/clients/add" method="post" id="addNewClient" enctype="multipart/form-data">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
@@ -240,6 +240,12 @@
               <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_website]</label>
               <div class="col-lg-12">
                 <input type="text" class="form-control" id="clients_website" name="clients_website" autocomplete="off">
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_logo]</label>
+              <div class="col-lg-12">
+                <input type="file" class="form-control" id="clients_logo" name="clients_logo" autocomplete="off">
               </div>
             </div>
             <div class="col-lg-12 heading-modal"> [lang.lang_main_contact]</div>
