@@ -159,19 +159,38 @@ class Files extends MY_Controller
         $this->data['debug'][] = $this->files_model->debug_data;
         $cats = array_unique(array_map(function (&$file) {
             if ($file['files_islink']) {
-                return 'Links';
+                $url = parse_url($file['files_link']);
+                switch ($url['host']) {
+                    case 'youtube.com':
+                    case 'www.youtube.com':
+                    case 'player.vimeo.com':
+                    case 'www.player.vimeo.com':
+                    case 'screencast.com':
+                    case 'www.screencast.com':
+                        $ret = 'Videos';
+                        break;
+                    case 'docs.google.com':
+                    case 'drive.google.com':
+                    case 'www.docs.google.com':
+                    case 'www.drive.google.com':
+                        $ret = 'Google docs';
+                        break;
+                    default :
+                        $ret = 'Links';
+                }
+                return $ret;
             }
             $ext = strtolower($file['files_extension']);
             if (in_array($ext, array('jpg', 'rpg', 'png', 'tiff', 'jpeg', 'gif'))) {
                 return 'Images';
             }
-            if ($ext == 'pdf') {
+            /*if ($ext == 'pdf') {
                 return 'PDF';
-            }
+            }*/
             if ($ext == 'swf') {
                 return 'Videos';
             }
-            if (in_array($ext, array('doc', 'docx', 'ppt', 'pptx', 'xls', 'xlsx'))) {
+            if (in_array($ext, array('doc', 'docx', 'ppt', 'pptx', 'xls', 'xlsx', 'pdf'))) {
                 return 'Docs';
             }
             return 'Videos';
@@ -182,6 +201,9 @@ class Files extends MY_Controller
             switch (strtolower($row)) {
                 case 'videos':
                     $icon = 'file-video-o';
+                    break;
+                case 'google docs':
+                    $icon = 'google';
                     break;
                 case 'docs':
                     $icon = 'file-word-o';
@@ -304,12 +326,22 @@ class Files extends MY_Controller
                 $thedata[$i]['is_video'] = true;
                 $thedata[$i]['file_type_id'] = 'links';
                 $url = parse_url($thedata[$i]['files_link']);
-                switch($url['host']){
+                switch ($url['host']) {
                     case 'www.drive.google.com':
                     case 'drive.google.com':
                     case 'www.docs.google.com':
                     case 'docs.google.com':
-                    $thedata[$i]['image_url'] = site_url(sprintf('/files/filetype_icons/%s.png', 'drive'));
+                        $thedata[$i]['file_type_id'] = 'google-docs';
+                        $thedata[$i]['image_url'] = site_url(sprintf('/files/filetype_icons/%s.png', 'drive'));
+                        break;
+
+                    case 'youtube.com':
+                    case 'www.youtube.com':
+                    case 'player.vimeo.com':
+                    case 'www.player.vimeo.com':
+                    case 'screencast.com':
+                    case 'www.screencast.com':
+                        $thedata[$i]['file_type_id'] = 'videos';
                         break;
                 }
                 $thedata[$i]['file_url'] = $thedata[$i]['files_link'];
@@ -331,7 +363,7 @@ class Files extends MY_Controller
                 $thedata[$i]['file_type_id'] = str_replace(' ', '-', 'docs');
                 $thedata[$i]['preview_url'] = 'https://view.officeapps.live.com/op/view.aspx?src=' . urlencode(site_url('files/projects/' . $thedata[$i]['files_project_id'] . '/' . $thedata[$i]['files_foldername'] . '/' . $thedata[$i]['files_name']));
             } elseif (in_array($thedata[$i]['files_extension'], array('pdf'))) {
-                $thedata[$i]['file_type_id'] = str_replace(' ', '-', 'pdf');
+                $thedata[$i]['file_type_id'] = str_replace(' ', '-', 'docs');
                 $thedata[$i]['preview_url'] = site_url('files/projects/' . $thedata[$i]['files_project_id'] . '/' . $thedata[$i]['files_foldername'] . '/' . $thedata[$i]['files_name']);
             } else {
                 $thedata[$i]['preview_url'] = site_url('admin/file/' . $thedata[$i]['files_project_id'] . '/view/' . $thedata[$i]['files_id']);

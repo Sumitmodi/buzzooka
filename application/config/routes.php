@@ -33,6 +33,8 @@ $route['api'] = "api/home";
 $route['api/([a-z]+)'] = "api/$1";
 $route['api/([a-z]+)/(.*)'] = "api/$1";
 
+//flash
+$route['flash'] = 'flash';
 
 //default
 $route['default_controller'] = "common/welcome";

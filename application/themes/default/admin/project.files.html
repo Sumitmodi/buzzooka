@@ -603,7 +603,9 @@
 <!--[onload;file=common.project.footer.html;getbody;comm]-->
 <!----------------------COMMON PROJECT FOOTER--------------------------------->
 <!--JS_ADD_NEW_FILE_MODAL-->
-
+<style type="text/css">
+    object { margin: 0px; padding: 0px; position: absolute; height: 100%; width: 100%; overflow: hidden; background-color: #000; }
+</style>
 <script type="text/javascript">
     $(function () {
         $('.dropdown > a').click(function (e) {
@@ -632,7 +634,6 @@
             var file = $(this).attr('data-file');
             var type = $(this).attr('data-type');
             var url = $(this).attr('data-url');
-            console.log(type);
             $('.file-name').html(file);
             if (['jpg', 'rpg', 'png', 'tiff', 'jpeg'].indexOf(type.toLowerCase()) > -1) {
                 $(target).html('<img src="' + url + '" class="img-responsive"/>');
@@ -642,6 +643,8 @@
                 $(target).html('<iframe src="' + preUrl + '" frameborder="0" style="width:100%;min-height:640px;"></iframe>');
             } else if (['pdf'].indexOf(type.toLowerCase()) > -1) {
                 $(target).html('<iframe src="' + url + '" frameborder="0" style="width:100%;min-height:640px;"></iframe>');
+            } else if (['swf'].indexOf(type.toLowerCase()) > -1) {
+                $(target).html('<iframe src="' + url + '" frameborder="0" style="width:100%;min-height:640px;" allow-scripts allow-same-origin></iframe>');
             } else if (['mp4'].indexOf(type.toLowerCase()) > -1) {
                 $(target).html('<video width="100%" height="100%" controls style="max-height:480px;"><source src="' + url + '"Your browser does not support the video tag.</video>');
             } else {
