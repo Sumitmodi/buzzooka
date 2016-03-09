@@ -1,6 +1,6 @@
 <?php
 
-if (! defined('BASEPATH')) {
+if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
 
@@ -47,7 +47,7 @@ class Projects extends MY_Controller
     /**
      * This is our re-routing function and is the inital function called
      *
-     * 
+     *
      */
     function index()
     {
@@ -88,6 +88,10 @@ class Projects extends MY_Controller
                 $this->__formSearchProjects();
                 break;
 
+            case 'optional-fields':
+                $this->__optionalFields();
+                break;
+
             default:
                 $this->__listProjects();
         }
@@ -95,6 +99,21 @@ class Projects extends MY_Controller
         //load view
         $this->__flmView('admin/main');
 
+    }
+
+    protected function __optionalFields()
+    {
+        $services = $this->projects_model->allServices();
+        $this->data['debug'][] = $this->projects_model->debug_data;
+        $this->data['lists']['all_services'] = create_pulldown_list($services, 'services', '');
+
+        $this->data['template_file'] = PATHS_ADMIN_THEME . 'details.html';
+        $this->data['vars']['css_submenu_projects'] = '';
+        $this->data['vars']['css_menu_projects'] = '';
+
+        //change this to appropriate terms. Quotations doesn't sound good.
+        $this->data['vars']['css_submenu_quotations'] = 'style="display:block; visibility:visible;"';
+        $this->data['vars']['css_menu_quotations'] = 'open';
     }
 
     /**
@@ -120,11 +139,11 @@ class Projects extends MY_Controller
 
         //get results and save for tbs block merging
         $data = $this->projects_model->searchProjects($offset, 'search', '', 'all');//OR set to 'pending'.
-        $data = array_map(function($row){
+        $data = array_map(function ($row) {
             static $count = 0;
             $row['index'] = ++$count;
             return $row;
-        },$data);
+        }, $data);
 
         $this->data['blk1'] = $data;
         $this->data['debug'][] = $this->projects_model->debug_data;
@@ -173,7 +192,7 @@ class Projects extends MY_Controller
 
 
         //visibility - show table or show nothing found
-        if ($rows_count > 0 && ! empty($this->data['blk1'])) {
+        if ($rows_count > 0 && !empty($this->data['blk1'])) {
             $this->data['visible']['wi_projects_table'] = 1;
         } else {
             $this->notifications('wi_notification', $this->data['lang']['lang_no_results_found']);
@@ -278,7 +297,7 @@ class Projects extends MY_Controller
         $next = true;
 
         //prevent direct access
-        if (! isset($_POST['submit'])) {
+        if (!isset($_POST['submit'])) {
             //redirect to form instead
             redirect('admin/projects');
         }
@@ -290,7 +309,7 @@ class Projects extends MY_Controller
         }
 
         //form validation
-        if (! $this->__flmFormValidation('add_project')) {
+        if (!$this->__flmFormValidation('add_project')) {
             //show error
             $this->notices('error', $this->form_processor->error_message, 'html');
             //halt
@@ -326,7 +345,7 @@ class Projects extends MY_Controller
             }
 
             //show error
-            if (! $next) {
+            if (!$next) {
                 $this->notices('error', $error, 'html');
             }
         }
@@ -411,13 +430,13 @@ class Projects extends MY_Controller
 
         $data = $this->projects_model->allServices();
         $this->data['debug'][] = $this->projects_model->debug_data;
-        $this->data['lists']['all_services'] = create_pulldown_list($data, 'services','');
+        $this->data['lists']['all_services'] = create_pulldown_list($data, 'services', '');
 
     }
 
     /**
      * validates forms for various methods in this class
-     * @param	string $form identify the form to validate
+     * @param    string $form identify the form to validate
      */
     function __flmFormValidation($form = '')
     {
@@ -441,7 +460,7 @@ class Projects extends MY_Controller
                 'projects_end' => $this->data['lang']['lang_project_end'],
                 'projects_service' => $this->data['lang']['lang_service']);
 
-            if (! $this->form_processor->validateFields($fields, 'required')) {
+            if (!$this->form_processor->validateFields($fields, 'required')) {
                 return false;
             }
 
@@ -472,8 +491,8 @@ class Projects extends MY_Controller
     /**
      * records new project events (timeline)
      *
-     * @param	string   $type identify the loop to run in this function
-     * @param   array    $vents_data an optional array that can be used to directly pass data]      
+     * @param    string $type identify the loop to run in this function
+     * @param   array $vents_data an optional array that can be used to directly pass data]
      */
     function __eventsTracker($type = '', $events_data = array())
     {

@@ -86,17 +86,23 @@
                         class="icon-paste"></i> [lang.lang_quotations]
                     <label class="label label-success  pull-right">
                         [quotations_count.all_open;onformat=runtime_number] </label>
-                </a></li>
+                </a>
+            </li>
+            <li>
+                <a href="[conf.site_url]/admin/projects/optional-fields" class="">
+                    <i class="icon-paste"></i> [lang.lang_project_details]
+                </a>
+            </li>
             <!--QUOTATIONS-->
             <!--QUOTATION FORM-->
-            <li>
-                <!--[onshow;block=li;when [vars.my_group] == 1;comm]--><!--permissions-->
+            <!--<li>
+                [onshow;block=li;when [vars.my_group] == 1;comm]
                 <a href="[conf.site_url]/admin/quotationforms/list" class=""> <i
                         class="icon-paste"></i> [lang.lang_quotation_forms]
                     <label class="label label-success  pull-right">
                         [vars.quotation_forms_count;onformat=runtime_number] </label>
                 </a>
-            </li>
+            </li>-->
             <!--QUOTATION FORMS-->
         </ul>
     </li>

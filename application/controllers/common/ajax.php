@@ -57,6 +57,10 @@ class Ajax extends MY_Controller
                 $this->__deleteClientUser();
                 break;
 
+            case 'upload-form-file':
+                $this->_uploadFormFile();
+                break;
+
             case 'upload-ticket-file':
                 $this->__uploadTicketsFile();
                 break;
@@ -95,8 +99,8 @@ class Ajax extends MY_Controller
                 'result' => 'error',
                 'message' => 'Quotation not found.');
         } else {
-            if(!$this->myquotation_model->unlink_record($record)){
-                $this->jsondata = array('results'=>'success','message'=>lang('quote_not_deleted'));
+            if (!$this->myquotation_model->unlink_record($record)) {
+                $this->jsondata = array('results' => 'success', 'message' => lang('quote_not_deleted'));
             } else {
                 $file = ROOTDIR . $record->quotations_file_url;
                 $folder = pathinfo($file, PATHINFO_BASENAME);
@@ -106,7 +110,7 @@ class Ajax extends MY_Controller
                 if (file_exists($folder) && is_dir($folder)) {
                     unlink($folder);
                 }
-                $this->jsondata = array('results'=>'success','message'=>lang('quote_deleted'));
+                $this->jsondata = array('results' => 'success', 'message' => lang('quote_deleted'));
             }
         }
         $this->__flmView('common/json');

@@ -121,9 +121,9 @@ class Project extends MY_Controller
 
         //get team leaders contacts
         $this->data['rows3'] = $this->project_leaders_details;
-
         //display optional fields data
-        $optional_fields = $this->projectsoptionalfields_model->optionalFields('enabled');
+        $optional_fields = $this->projectsoptionalfields_model->optionalFields('enabled',$this->project_details);
+
         $this->data['debug'][] = $this->projectsoptionalfields_model->debug_data;
         $this->data['blk2'] = projects_optionalfields($optional_fields, $this->project_details);
 
@@ -460,7 +460,7 @@ class Project extends MY_Controller
     {
 
         //check optional form fields & and set visibility of form field widget
-        $optional_fields = $this->projectsoptionalfields_model->optionalFields('enabled');
+        $optional_fields = $this->projectsoptionalfields_model->optionalFields('enabled',$this->project_details);
         $this->data['debug'][] = $this->projectsoptionalfields_model->debug_data;
         projects_optionalfield_visibility($optional_fields);
     }

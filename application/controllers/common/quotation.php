@@ -140,6 +140,7 @@ class Quotation extends MY_Controller
         //load 'enabled' [formbuilder.js] form data from database
         if ($next) {
             $formdata = $this->quotationforms_model->getQuotationForm($form_id, 'enabled');
+            $this->data['vars']['logo_url'] = $formdata['logo_url'];
             $this->data['debug'][] = $this->quotationforms_model->debug_data;
             if (!$formdata) {
                 //show error

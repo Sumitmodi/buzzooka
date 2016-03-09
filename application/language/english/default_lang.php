@@ -851,7 +851,7 @@ $lang['data_expected'] = 'Data expected with this request.';
 $lang['update_failed'] = 'Operation failed.';
 $lang['update_success'] = 'Operation completed.';
 $lang['lang_email_quote'] = 'Email Questionnare';
-$lang['lang_send'] = 'Semd';
+$lang['lang_send'] = 'Send';
 $lang['message_email_separate'] = 'Separate multiple emails by a comma (,)';
 $lang['lang_email_subject'] = 'Email subject';
 $lang['lang_emails'] = 'Emails';
@@ -866,6 +866,7 @@ $lang['lang_all'] = 'All';
 $lang['lang_overview'] = 'Overview';
 $lang['lang_ranking'] = 'Ranking';
 $lang['lang_backlinks'] = 'Backlinks';
+$lang['lang_project_details'] = 'Project details';
 //$lang['lang_milestones'] = 'Reports';
 /* End of file default_lang.php */
 /* Location: ./application/language/english/default_lang.php */

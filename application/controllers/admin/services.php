@@ -70,8 +70,16 @@ class Services extends MY_Controller
                 $this->__addService();
                 break;
 
+            case 'load-fields':
+                $this->load_fields();
+                break;
+
             case 'delete-service':
                 $this->__deleteService();
+                break;
+
+            case 'save-fields':
+                $this->saveFields();
                 break;
 
             default:
@@ -81,6 +89,34 @@ class Services extends MY_Controller
         //load view
         $this->__flmView('admin/main');
 
+    }
+
+    protected function saveFields()
+    {
+        $id = $this->input->post('service');
+        $res = $this->crm->save_fields($id);
+        if (false == $res) {
+            $this->session->set_flashdata('message', $this->data['lang']['update_failed']);
+        } else {
+            $this->session->set_flashdata('message', $this->data['lang']['update_success']);
+        }
+        redirect('/admin/services/list');
+    }
+
+    protected function load_fields()
+    {
+        if ($this->input->is_ajax_request() && $this->uri->segment(4) != null) {
+            $id = $this->uri->segment(4);
+            $fields = $this->crm->load_fields($id);
+            echo json_encode(array('code' => 200, 'data' => $fields));
+            exit;
+        }
+        $id = $this->input->post('id');
+        $fields = $this->crm->load_fields($id);
+        $this->lang->load('default');
+        $out = $this->load->view('admin/services/fields', array('fields' => $fields), true);
+        echo $out;
+        exit;
     }
 
     public function __addService()

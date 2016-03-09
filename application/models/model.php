@@ -35,4 +35,41 @@ class Model extends CI_Model
         return $this->db->insert('services', $update);
     }
 
+    public function update_form_logo($url, $id)
+    {
+        return $this->db->where('quotationforms_id', $id)->update('quotationforms', array('logo_url' => $url));
+    }
+
+    public function load_fields($id)
+    {
+        $res = $this->db->where('service_id', $id)->order_by('projects_optionalfield_name','asc')->get('projects_optionalfields');
+        if ($res->num_rows() == 0) {
+            $res = $this->db->where('service_id is null')->order_by('projects_optionalfield_name','asc')->get('projects_optionalfields');
+        }
+        return $res->num_rows() == 0 ? false : $res->result_array();
+    }
+
+    public function service_fields($id)
+    {
+        $res = $this->db->where('service_id', $id)->get('projects_optionalfields');
+        return $res->num_rows() > 0;
+    }
+
+    public function save_fields($id)
+    {
+        $data = array();
+        foreach ($_POST['projects_optionalfield_title'] as $k => $field) {
+            $data[] = array(
+                'projects_optionalfield_name' => 'projects_optionalfield' . ($k + 1),
+                'projects_optionalfield_title' => $field,
+                'projects_optionalfield_status' => $_POST['projects_optionalfield_status'][$k],
+                'projects_optionalfield_require' => $_POST['projects_optionalfield_require'][$k],
+                'service_id' => $id
+            );
+        }
+        if (false != $this->service_fields($id)) {
+            $this->db->where('service_id', $id)->delete('projects_optionalfields');
+        }
+        return $this->db->insert_batch('projects_optionalfields', $data);
+    }
 }

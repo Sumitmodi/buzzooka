@@ -162,6 +162,10 @@
                                                data-target="#email-form" data-id="[quotationforms.quotationforms_id]">
                                                 <i class="fa fa-envelope"></i>
                                             </a>
+                                            <a class="btn btn-xs btn-warning change-logo" data-toggle="modal"
+                                               data-target="#change-logo" data-id="[quotationforms.quotationforms_id]" title="Apply logo">
+                                                <i class="fa fa-picture-o"></i>
+                                            </a>
                                             <!--WI_CONTROL_BUTTONS_END-->
                                         </td>
                                     </tr>
@@ -252,7 +256,7 @@
                                                value="[vars.quotationform_id]">
                                         <input type="hidden" name="form_submitted_check" value="yes">
                                         <input class="btn btn-primary" type="submit" value="[lang.lang_save_changes]"
-                                               id="" name="submit">
+                                               name="submit">
                                     </div>
                                     <div class="clearfix"></div>
                                 </div>
@@ -313,6 +317,46 @@
                             <label for="">[lang.lang_emails]</label>
                             <textarea autocomplete="off" name="emails" rows="10" class="form-control"
                                       placeholder="[lang.message_email_separate]" required></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-default" aria-hidden="true">
+                            [lang.lang_send]
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div id="change-logo" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="[conf.site_url]/admin/quotationforms/upload-logo/" method="post" enctype="multipart/form-data">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                        <!--full screen icon - custom.js-->
+                        <button type="button" class="full-screen-modal close" aria-hidden="true"><i
+                                class="icon-fullscreen"></i></button>
+                        <!--full screen icon - custom.js-->
+                        <h4 class="modal-title">
+                            [lang.lang_email_quote]</h4>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" name="id"/>
+                        <div class="form-group" style="margin-bottom:10px;">
+                            <label class="control-label col-lg-12" style="width:150px;">
+                                [lang.lang_logo]
+                            </label>
+                            <div class="col-lg-12">
+                                <div>
+                                        <input class="btn btn-mid btn-primary clearfix" type="file" name="fileupload">
+                                        <input type="hidden" name="form_id" value="" id="form_id">
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -481,6 +525,14 @@
     }
 </style>
 <!--CSS_FORMBUILDER-->
+<script type="text/javascript">
+    $(function(){
+        $('.change-logo').click(function(e){
+            e.preventDefault();
+            $('#form_id').val($(this).data('id'));
+        })
+    })
+</script>
 <!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
 <!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
 <!--------------------COMMON FOOTER JAVASCRIPT---------------------------->

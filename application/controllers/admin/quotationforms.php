@@ -94,6 +94,10 @@ class Quotationforms extends MY_Controller
                 $this->__editQuotationForm();
                 break;
 
+            case 'upload-logo':
+                $this->_uploadFormFile();
+                break;
+
             case 'search':
                 $this->__cachedFormSearch();
                 break;
@@ -107,6 +111,34 @@ class Quotationforms extends MY_Controller
         //load view
         $this->__flmView('admin/main');
 
+    }
+
+    protected function _uploadFormFile()
+    {
+        $this->load->model('model', 'crm');
+        $id = $this->input->post('form_id', true);
+        $this->data['file_foldername'] = random_string('alnum', 20);
+        $this->data['file_folder_path'] = BASEDIR . '/files/forms/' . $id . '/' . $this->data['file_foldername'];
+
+        //start the upload
+        $this->data['field_name'] = 'fileupload';
+        $this->load->library('fileupload');
+        $this->fileupload->allowedExtensions = $this->data['allowed_extensions'];
+        //$this->fileupload->newFileName = 'newFile.jpg'; //(optional)
+        $result = $this->fileupload->handleUpload($this->data['file_folder_path']);
+        if ($result) {
+            $logo_url = '/files/forms/' . $id . '/' . $this->data['file_foldername'] . '/' . $this->fileupload->getFileName();
+            if ($this->crm->update_form_logo($logo_url, $id)) {
+                $jsondata = array('result' => 'success', 'message' => 'Logo updated');
+            } else {
+                $jsondata = array('result' => 'success', 'message' => 'Logo could not be updated');
+            }
+        } else {
+            $jsondata = array('result' => 'success', 'message' => 'Logo could not be updated');
+        }
+
+        $this->session->set_flashdata('message', $jsondata['message']);
+        redirect('/admin/quotationforms/list');
     }
 
     protected function __emailQuote()
@@ -297,6 +329,10 @@ class Quotationforms extends MY_Controller
             'sortby_status');
         foreach ($link_sort_by_column as $column) {
             $this->data['vars'][$column] = site_url("admin/quotationforms/list/$search_id/$link_sort_by/$column/$offset");
+        }
+
+        if($this->session->flashdata('message')){
+            $this->notices('success',$this->session->flashdata('message'));
         }
 
         //visibility - show table or show nothing found

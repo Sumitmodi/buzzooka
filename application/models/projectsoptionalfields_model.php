@@ -37,9 +37,8 @@ class Projectsoptionalfields_model extends Super_Model
      * @return array
      */
 
-    function optionalFields($status = 'all')
+    function optionalFields($status = 'all',$project = array())
     {
-
         //profiling::
         $this->debug_methods_trail[] = __function__;
 
@@ -49,6 +48,12 @@ class Projectsoptionalfields_model extends Super_Model
         //check if tvalid status has been passed
         if (in_array($status, array('enabled', 'disabled'))) {
             $conditional_sql .= " AND projects_optionalfield_status = '$status'";
+        }
+
+        if(is_null($project['projects_service'])){
+            $conditional_sql .= sprintf(' AND service_id is null');
+        } elseif(!is_null($project['projects_service'])){
+            $conditional_sql .= sprintf(' AND service_id = %d',$project['projects_service']);
         }
 
         //escape data

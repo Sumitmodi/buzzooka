@@ -272,7 +272,7 @@
                                             <td style="vertical-align: top !important;">[lang.lang_description]</td>
                                             <td>
                                                 <div class="col-sm-12 col-md-8 col-lg-12 no-padding-both">
-                            <textarea name="projects_description" id="projects_description">
+                                        <textarea name="projects_description" id="projects_description">
                                       [post.projects_description;noerr;htmlconv=no]</textarea>
                                                     <script>
                                                         document.addEventListener('DOMContentLoaded', function () {
@@ -287,7 +287,7 @@
                                                 </div>
                                             </td>
                                         </tr>
-                                        <tr>
+                                        <tr class="optional-field">
                                             <!--[onshow;block=tr;when [visible.wi_projects_optionalfield1] == 1;comm]-->
                                             <td> [row.wi_projects_optionalfield1]</td>
                                             <td>
@@ -299,7 +299,7 @@
                                                 </div>
                                             </td>
                                         </tr>
-                                        <tr>
+                                        <tr class="optional-field">
                                             <!--[onshow;block=tr;when [visible.wi_projects_optionalfield2] == 1;comm]-->
                                             <td> [row.wi_projects_optionalfield2]</td>
                                             <td>
@@ -311,7 +311,7 @@
                                                 </div>
                                             </td>
                                         </tr>
-                                        <tr>
+                                        <tr class="optional-field">
                                             <!--[onshow;block=tr;when [visible.wi_projects_optionalfield3] == 1;comm]-->
                                             <td> [row.wi_projects_optionalfield3]</td>
                                             <td>
@@ -323,7 +323,7 @@
                                                 </div>
                                             </td>
                                         </tr>
-                                        <tr>
+                                        <tr class="optional-field">
                                             <!--[onshow;block=tr;when [visible.wi_projects_optionalfield4] == 1;comm]-->
                                             <td> [row.wi_projects_optionalfield4]</td>
                                             <td>
@@ -335,7 +335,7 @@
                                                 </div>
                                             </td>
                                         </tr>
-                                        <tr>
+                                        <tr class="optional-field">
                                             <!--[onshow;block=tr;when [visible.wi_projects_optionalfield5] == 1;comm]-->
                                             <td> [row.wi_projects_optionalfield5]</td>
                                             <td>
@@ -489,7 +489,11 @@
         ]
             //[js_validation_message.wi_projects_optionalfield2;noerr;protect=no;htmlconv=no]
             //[js_validation_message.wi_projects_optionalfield3;noerr;protect=no;htmlconv=no]
-            [js_validation_message.wi_projects_optionalfield4;noerr;protect = no;htmlconv = no]
+            [js_validation_message.wi_projects_optionalfield4;
+            noerr;
+            protect = no;
+            htmlconv = no
+        ]
             [js_validation_message.wi_projects_optionalfield5;
             noerr;
             protect = no;
@@ -516,6 +520,29 @@
 
 
     });
+</script>
+<script type="text/javascript">
+    $(function () {
+        $('#projects_service').change(function () {
+            $.ajax({
+                url: '[conf.site_url]/admin/services/load-fields/' + $(this).val(),
+                type: 'GET',
+                dataType : 'json',
+                success: function (res) {
+                    if (res.code == 200) {
+                        var fields = res.data;
+                        var target = $(".optional-field");
+                        for (var key in fields) {
+                            target.eq(key).children('td').eq(0).html(fields[key].projects_optionalfield_title);
+                            if (fields[key].projects_optionalfield_require == 'yes') {
+                                target.find('input').attr('required', 'required');
+                            }
+                        }
+                    }
+                }
+            })
+        });
+    })
 </script>
 <!--JS_WI_ADD_PROJECT_VALIDATION-->
 <!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
