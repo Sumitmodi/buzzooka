@@ -142,7 +142,7 @@ class Reports extends MY_Controller
         $type = $this->uri->segment(5);
         $type = empty($type) ? 'ranking' : 'backlinks';
 
-        $this->data['vars']['css_active_'.$type.'_reports'] = 'side-menu-main-active';
+        $this->data['vars']['css_active_'.$type.'_reports'] = 'active';//side-menu-main-
 
         $link = $this->model->getSeoUrl($this->project_id, $type);
 

@@ -107,7 +107,7 @@ class Services extends MY_Controller
     {
         if ($this->input->is_ajax_request() && $this->uri->segment(4) != null) {
             $id = $this->uri->segment(4);
-            $fields = $this->crm->load_fields($id);
+            $fields = $this->crm->load_fields($id,true);
             echo json_encode(array('code' => 200, 'data' => $fields));
             exit;
         }

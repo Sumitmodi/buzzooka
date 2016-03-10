@@ -2697,7 +2697,7 @@ border-color: #FFFFFF !important;
 	padding: 6px 8px;
 	text-decoration: none;
 }
-.side-menu-main ul li>a:hover, .side-menu-main-active {
+.side-menu-main > ul li > a:hover, .side-menu-main-active {
 	display: block;
 	padding: 6px 4px !important;
 	text-decoration: none;
@@ -3462,4 +3462,33 @@ a[data-toggle=tab]{
 .client-logo-container{
     width: 60px;
     float: left;
+}
+.project-submenu-container{
+	background-color: #373d48
+}
+.project-submenu{
+	background: transparent;
+}
+.project-submenu li{
+	border:none !important;
+}
+.project-submenu li a,
+.project-submenu li:active a{
+	color: #aaa9a9;
+	padding:10px 0 10px 20px;
+	border-radius: 0 !important;
+}
+.project-submenu li:active a:hover,
+.project-submenu li a:hover{
+	 background: #5e5e5e;
+	 color:#ffffff;
+}
+.project-submenu li a i{
+	padding-right:10px;
+}
+
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:hover,
+.nav-pills > li.active > a:focus {
+	background: #5e5e5e;
 }

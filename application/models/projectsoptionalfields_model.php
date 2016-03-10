@@ -55,7 +55,6 @@ class Projectsoptionalfields_model extends Super_Model
         } elseif(!is_null($project['projects_service'])){
             $conditional_sql .= sprintf(' AND service_id = %d',$project['projects_service']);
         }
-
         //escape data
         $status = $this->db->escape($status);
 

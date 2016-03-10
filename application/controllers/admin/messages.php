@@ -31,7 +31,7 @@ class Messages extends MY_Controller
         //css settings
         $this->data['vars']['css_submenu_projects'] = 'style="display:block; visibility:visible;"';
         $this->data['vars']['css_menu_projects'] = 'open'; //menu
-        $this->data['vars']['css_active_tab_messages'] = 'open';
+        $this->data['vars']['css_active_tab_messages'] = 'active';
 
         //default page title
         $this->data['vars']['main_title'] = $this->data['lang']['lang_project_messages'];
@@ -116,7 +116,7 @@ class Messages extends MY_Controller
         }
 
         //css - active tab
-        $this->data['vars']['css_active_tab_messages'] = 'side-menu-main-active';
+        $this->data['vars']['css_active_tab_messages'] = 'active';
 
         //load view
         $this->__flmView('admin/main');

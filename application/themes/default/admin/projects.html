@@ -527,16 +527,30 @@
             $.ajax({
                 url: '[conf.site_url]/admin/services/load-fields/' + $(this).val(),
                 type: 'GET',
-                dataType : 'json',
+                dataType: 'json',
                 success: function (res) {
                     if (res.code == 200) {
                         var fields = res.data;
-                        var target = $(".optional-field");
-                        for (var key in fields) {
-                            target.eq(key).children('td').eq(0).html(fields[key].projects_optionalfield_title);
-                            if (fields[key].projects_optionalfield_require == 'yes') {
-                                target.find('input').attr('required', 'required');
+                        var target = $("tr.optional-field");
+                        if (target.length > fields.length) {
+                            for (var j = target.length - fields.length; j <= fields.length; j++) {
+                                target.eq(j-1).remove();
                             }
+                        }
+                        target = $('tr.optional-field');
+                        var i = 0;
+                        for (var key in fields) {
+                            if ((i + 1) > target.length) {
+                                target.eq(target.length - 1).after('<tr class="optional-field"><td>' + fields[key].projects_optionalfield_title + '</td><td><div class="col-sm-12 col-md-8 no-padding-both"><input type="text" autocomplete="off" value="" name="' + (fields[key].projects_optionalfield_name) + '" class="form-control"' + (fields[key].projects_optionalfield_require == 'yes' ? 'required' : '') + '></div></td></tr>');
+                                target = $('tr.optional-field');
+                            } else {
+                                target.eq(key).children('td').eq(0).html(fields[key].projects_optionalfield_title);
+                                target.eq(key).children('td').eq(1).find('input').attr('name',fields[key].projects_optionalfield_name);
+                                if (fields[key].projects_optionalfield_require == 'yes') {
+                                    target.find('input').attr('required', 'required');
+                                }
+                            }
+                            ++i;
                         }
                     }
                 }

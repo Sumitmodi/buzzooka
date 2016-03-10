@@ -9,7 +9,7 @@ if (false == $fields) {
     );
 }
 ?>
-<form class="form-horizontal" action="<?php echo base_url('admin/services/save-fields');?>" method="post">
+<form class="form-horizontal" action="<?php echo base_url('admin/services/save-fields'); ?>" method="post">
     <input type="hidden" name="service" value="<?php echo $this->input->post('id'); ?>">
     <!--WI_CLIENT_FIELDS-->
     <div class="row" style="padding-bottom:20px;">
@@ -40,8 +40,8 @@ if (false == $fields) {
                                     <div class="col-sm-12 col-md-8 no-padding-both">
                                         <select name="projects_optionalfield_require[<?php echo $k; ?>]"
                                                 class="field-required form-control">
-                                            <option value="yes"><?php echo $this->lang->line('lang_yes'); ?></option>
-                                            <option value="no"><?php echo $this->lang->line('lang_no'); ?></option>
+                                            <option value="yes" <?php echo isset($field['projects_optionalfield_require']) && $field['projects_optionalfield_require'] == 'yes' ? 'selected="selected"' : null;?>;?><?php echo $this->lang->line('lang_yes'); ?></option>
+                                            <option value="no" <?php echo isset($field['projects_optionalfield_require']) && $field['projects_optionalfield_require'] == 'no' ? 'selected="selected"' : null;?>><?php echo $this->lang->line('lang_no'); ?></option>
                                         </select>
                                     </div>
                                 </td>
@@ -49,10 +49,8 @@ if (false == $fields) {
                                     <div class="col-sm-12 col-md-8 no-padding-both">
                                         <select name="projects_optionalfield_status[<?php echo $k; ?>]"
                                                 class="field-status form-control">
-                                            <option
-                                                value="enabled"><?php echo $this->lang->line('lang_enabled'); ?></option>
-                                            <option
-                                                value="disabled"><?php echo $this->lang->line('lang_disabled'); ?></option>
+                                            <option value="enabled" <?php echo isset($field['projects_optionalfield_status']) && $field['projects_optionalfield_status'] == 'enabled' ? 'selected="selected"' : null;?>><?php echo $this->lang->line('lang_enabled'); ?></option>
+                                            <option value="disabled" <?php echo isset($field['projects_optionalfield_status']) && $field['projects_optionalfield_status'] == 'disabled' ? 'selected="selected"' : null;?>><?php echo $this->lang->line('lang_disabled'); ?></option>
                                         </select>
                                     </div>
                                 </td>

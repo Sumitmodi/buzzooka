@@ -173,7 +173,7 @@ class Files extends MY_Controller
                     case 'drive.google.com':
                     case 'www.docs.google.com':
                     case 'www.drive.google.com':
-                        $ret = 'Google docs';
+                        $ret = 'Google Docs';
                         break;
                     default :
                         $ret = 'Links';

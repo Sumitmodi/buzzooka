@@ -483,7 +483,7 @@ class Projects extends MY_Controller
     {
 
         //check optional form fields & and set visibility of form field widget
-        $optional_fields = $this->projectsoptionalfields_model->optionalFields('enabled');
+        $optional_fields = $this->projectsoptionalfields_model->optionalFields('enabled',$this->project_id);
         $this->data['debug'][] = $this->projectsoptionalfields_model->debug_data;
         projects_optionalfield_visibility($optional_fields);
     }

@@ -40,11 +40,21 @@ class Model extends CI_Model
         return $this->db->where('quotationforms_id', $id)->update('quotationforms', array('logo_url' => $url));
     }
 
-    public function load_fields($id)
+    public function load_fields($id,$status = false)
     {
-        $res = $this->db->where('service_id', $id)->order_by('projects_optionalfield_name','asc')->get('projects_optionalfields');
+        $this->db->where('service_id', $id)->order_by('projects_optionalfield_name','asc');
+        if($status == true){
+            $this->db->where('projects_optionalfield_status','enabled');
+            $this->db->where('projects_optionalfield_title <>','');
+        }
+        $res = $this->db->get('projects_optionalfields');
         if ($res->num_rows() == 0) {
-            $res = $this->db->where('service_id is null')->order_by('projects_optionalfield_name','asc')->get('projects_optionalfields');
+            $this->db->where('service_id is null')->order_by('projects_optionalfield_name','asc');
+            if($status == true){
+                $this->db->where('projects_optionalfield_status','enabled');
+                $this->db->where('projects_optionalfield_title <>','');
+            }
+            $res = $this->db->get('projects_optionalfields');
         }
         return $res->num_rows() == 0 ? false : $res->result_array();
     }

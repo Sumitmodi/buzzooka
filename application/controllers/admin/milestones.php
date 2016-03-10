@@ -1,6 +1,6 @@
 <?php
 
-if (! defined('BASEPATH')) {
+if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
 
@@ -41,7 +41,7 @@ class Milestones extends MY_Controller
     /**
      * This is our re-routing function and is the inital function called
      *
-     * 
+     *
      */
     function index()
     {
@@ -69,7 +69,7 @@ class Milestones extends MY_Controller
         //PERMISSIONS CHECK - ACCESS
         //do this check before __commonAll_ProjectBasics()
         if ($this->data['vars']['my_group'] != 1) {
-            if (! in_array($this->project_id, $this->data['my_projects_array'])) {
+            if (!in_array($this->project_id, $this->data['my_projects_array'])) {
                 redirect('/admin/error/permission-denied');
             }
         }
@@ -195,7 +195,7 @@ class Milestones extends MY_Controller
             //http://mydomain.com/admin/project/2/milestones/view/all/sortby_pending/asc
             //pagination
             $config = pagination_default_config(); //load all other settings from helper
-            $config['base_url'] = site_url("admin/project/" . $this->project_id . "/milestones/view/" . $this->uri->segment(6) . "/$sort_by/$sort_by_column");
+            $config['base_url'] = site_url("admin/milestones/" . $this->project_id . "/view/$sort_by/$sort_by_column");
             $config['total_rows'] = $rows_count;
             $config['per_page'] = $this->data['settings_general']['results_limit'];
             $config['uri_segment'] = 9; //the offset var
@@ -214,7 +214,7 @@ class Milestones extends MY_Controller
                 'sortby_end_date');
 
             foreach ($link_sort_by_column as $column) {
-                $this->data['vars'][$column] = site_url("admin/project/" . $this->project_id . "/milestones/view/" . $this->uri->segment(6) . "/$link_sort_by/$column/$offset");
+                $this->data['vars'][$column] = site_url("admin/milestones/" . $this->project_id . "/view/$link_sort_by/$column/$offset");
             }
 
             //visibility - show table or show nothing found
@@ -247,7 +247,7 @@ class Milestones extends MY_Controller
         $this->data['controller_profiling'][] = __function__;
 
         //check if data is not empty
-        if (count($thedata) == 0 || ! is_array($thedata)) {
+        if (count($thedata) == 0 || !is_array($thedata)) {
             return $thedata;
         }
 
@@ -281,6 +281,7 @@ class Milestones extends MY_Controller
 
             //add control visibility into $thedata array
             $thedata[$i]['wi_milestones_control_buttons'] = $visibility_control;
+            $thedata[$i]['milestones_index'] = $i+1;
 
         }
 
@@ -309,12 +310,12 @@ class Milestones extends MY_Controller
         $next = true;
 
         //check if any post data (avoid direct url access)
-        if (! isset($_POST['submit'])) {
+        if (!isset($_POST['submit'])) {
             redirect('/admin/milestones/' . $this->project_id . '/view');
         }
 
         //validate form & display any errors
-        if (! $this->__flmFormValidation('add_milestone')) {
+        if (!$this->__flmFormValidation('add_milestone')) {
 
             //show error
             $this->notices('error', $this->form_processor->error_message);
@@ -324,7 +325,7 @@ class Milestones extends MY_Controller
 
         //validate hidden fields
         if ($next) {
-            if (! is_numeric($_POST['milestones_project_id']) || ! is_numeric($_POST['milestones_client_id']) || ! is_numeric($_POST['milestones_created_by']) || $_POST['milestones_events_id'] == '') {
+            if (!is_numeric($_POST['milestones_project_id']) || !is_numeric($_POST['milestones_client_id']) || !is_numeric($_POST['milestones_created_by']) || $_POST['milestones_events_id'] == '') {
 
                 //log this error
                 $this->__errorLogging(__line__, __function__, __file__, 'Adding new milestone failed: [Some or All] Required hidden form fileds missing or invalid');
@@ -396,12 +397,12 @@ class Milestones extends MY_Controller
         $next = true;
 
         //check if any post data (avoid direct url access)
-        if (! isset($_POST['submit'])) {
+        if (!isset($_POST['submit'])) {
             redirect('/admin/project/' . $this->project_id . '/view');
         }
 
         //validate form & display any errors
-        if (! $this->__flmFormValidation('edit_milestone')) {
+        if (!$this->__flmFormValidation('edit_milestone')) {
 
             //show error
             $this->notices('error', $this->form_processor->error_message);
@@ -411,7 +412,7 @@ class Milestones extends MY_Controller
 
         //validate hidden fields
         if ($next) {
-            if ($_POST['milestones_events_id'] == '' || ! is_numeric($_POST['milestones_id'])) {
+            if ($_POST['milestones_events_id'] == '' || !is_numeric($_POST['milestones_id'])) {
 
                 //log this error
                 $this->__errorLogging(__line__, __function__, __file__, 'Editing milestone failed: Required hidden form fileds missing or invalid'); //show error
@@ -443,8 +444,8 @@ class Milestones extends MY_Controller
     /**
      * records new project events (timeline)
      *
-     * @param	string   $type identify the loop to run in this function
-     * @param   array    $vents_data an optional array that can be used to directly pass data]      
+     * @param    string $type identify the loop to run in this function
+     * @param   array $vents_data an optional array that can be used to directly pass data]
      */
     function __eventsTracker($type = '', $events_data = array())
     {
@@ -477,7 +478,7 @@ class Milestones extends MY_Controller
 
     /**
      * validates forms for various methods in this class
-     * @param	string $form identify the form to validate
+     * @param    string $form identify the form to validate
      */
     function __flmFormValidation($form = '')
     {
@@ -493,7 +494,7 @@ class Milestones extends MY_Controller
                 'milestones_title' => $this->data['lang']['lang_title'],
                 'milestones_start_date' => $this->data['lang']['lang_start_date'],
                 'milestones_end_date' => $this->data['lang']['lang_end_date']);
-            if (! $this->form_processor->validateFields($fields, 'required')) {
+            if (!$this->form_processor->validateFields($fields, 'required')) {
                 return false;
             }
 
