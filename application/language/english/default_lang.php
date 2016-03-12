@@ -850,7 +850,7 @@ $lang['services_name'] = 'Service Name';
 $lang['data_expected'] = 'Data Expected With This Request.';
 $lang['update_failed'] = 'Operation Failed.';
 $lang['update_success'] = 'Operation Completed.';
-$lang['lang_email_quote'] = 'Email Questionnare';
+$lang['lang_email_quote'] = 'Email Questionnaire';
 $lang['lang_send'] = 'Send';
 $lang['message_email_separate'] = 'Separate multiple emails by a comma (,)';
 $lang['lang_email_subject'] = 'Email Subject';
@@ -870,6 +870,7 @@ $lang['lang_project_details'] = 'Project Details';
 $lang['chooose_service'] = 'Choose a Service';
 $lang['lang_hash'] = '#';
 $lang['lang_cloud'] = 'Cloud';
+$lang['questionnare_email'] = 'Questionnaire Email';
 //$lang['lang_milestones'] = 'Reports';
 /* End of file default_lang.php */
 /* Location: ./application/language/english/default_lang.php */

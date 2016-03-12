@@ -50,7 +50,7 @@ class Formbuilder
     * This setting determines if we should use ckeditor for the textarea fields
     * Set to 'false' to disable
     *----------------------------------------------------------------------------*/
-    var $ckeditor = true;
+    var $ckeditor = false;
     var $ckeditor_config_name = 'Plain';
     var $ckeditor_height = '200px';
     var $ckeditor_color = '#ffffff';
@@ -470,6 +470,10 @@ class Formbuilder
                                   <textarea class="form-control" name="' . $field_name . '" id="' . $field_name . '" rows="5"' . $jqueryvalidationjs_tag . '>
                                   [onshow;post.' . $field_name . ';htmlconv=no]
                                   </textarea>
+                                </div>
+                           </div>' . $element_hidden_field . $element_hidden_question; //return element
+        /*
+         *
                                    <script>
                                        CKEDITOR.replace( \'' . $field_name . '\', {
                                                 toolbar: \'Plain\',
@@ -477,9 +481,7 @@ class Formbuilder
 	                                            height: \'120px\'
                                                });
                                    </script>
-                                </div>
-                           </div>' . $element_hidden_field . $element_hidden_question; //retun element
-
+         */
         //return the finished form html form field
         return $element;
     }

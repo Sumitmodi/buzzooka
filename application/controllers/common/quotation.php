@@ -43,7 +43,7 @@ class Quotation extends MY_Controller
     /**
      * This is our re-routing function and is the inital function called
      *
-     * 
+     *
      */
     function index()
     {
@@ -75,6 +75,10 @@ class Quotation extends MY_Controller
                 $this->__viewQuotation();
                 break;
 
+            case 'save-color':
+                $this->saveColor();
+                break;
+
             default:
                 $this->__selectQuotation();
         }
@@ -82,6 +86,23 @@ class Quotation extends MY_Controller
         //load view
         $this->__flmView('common/main');
 
+    }
+
+    protected function saveColor()
+    {
+        if ($this->session->userdata('team_profile_full_name') == 'admin') {
+            $id = $this->input->post('id');
+            $bkg = $this->input->post('bkg_color');
+            $txt = $this->input->post('txt_color');
+            if (!$this->quotationforms_model->saveColor($id, $bkg, $txt)) {
+                echo $this->data['lang']['update_failed'];
+            } else {
+                echo $this->data['lang']['update_success'];
+            }
+        } else {
+            echo 'Action not allowed.';
+        }
+        exit;
     }
 
     /**
@@ -126,12 +147,16 @@ class Quotation extends MY_Controller
      */
     function __loadQuotation()
     {
-
         //profiling
         $this->data['controller_profiling'][] = __function__;
 
         //flow control
         $next = true;
+
+        $this->data['vars']['logged_in'] = 0;
+        if ($this->session->userdata('team_profile_full_name') == 'admin') {
+            $this->data['vars']['logged_in'] = 1;
+        }
 
         //get form id
         $form_id = $this->uri->segment(4);
@@ -140,6 +165,15 @@ class Quotation extends MY_Controller
         //load 'enabled' [formbuilder.js] form data from database
         if ($next) {
             $formdata = $this->quotationforms_model->getQuotationForm($form_id, 'enabled');
+
+            if (!empty($formdata['bkg_color'])) {
+                $this->data['vars']['theme_color'] = $formdata['bkg_color'];
+                $this->data['vars']['bkg_color'] = sprintf('background-color:%s', $formdata['bkg_color']);
+            }
+            if (!empty($formdata['txt_color'])) {
+                $this->data['vars']['txt_color'] = sprintf('color:%s', $formdata['txt_color']);
+            }
+
             $this->data['vars']['logo_url'] = $formdata['logo_url'];
             $this->data['debug'][] = $this->quotationforms_model->debug_data;
             if (!$formdata) {
@@ -250,7 +284,7 @@ class Quotation extends MY_Controller
                 $_POST['quotations_form_data'] = $quotations_form_data;
             }
         }
-      
+
         //save in database
         if ($next) {
             $result = $this->quotations_model->saveQuotation();
@@ -290,7 +324,7 @@ class Quotation extends MY_Controller
 
     /**
      * validates forms for various methods in this class
-     * @param	string $form identify the form to validate
+     * @param    string $form identify the form to validate
      */
     function __flmFormValidation($form = '')
     {

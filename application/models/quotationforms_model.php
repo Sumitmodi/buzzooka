@@ -1,6 +1,6 @@
 <?php
 
-if (! defined('BASEPATH')) {
+if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
 
@@ -36,8 +36,8 @@ class Quotationforms_model extends Super_Model
     /**
      * add a new quotation form
      *
-     * @param	void
-     * @return	mixed (id/bool)
+     * @param    void
+     * @return    mixed (id/bool)
      */
 
     function addQuotationForm()
@@ -95,8 +95,8 @@ class Quotationforms_model extends Super_Model
     /**
      * search/list quotation form
      *
-     * @param numeric $offset: page 'number' 
-     * @param string $type search/count 
+     * @param numeric $offset : page 'number'
+     * @param string $type search/count
      * @return array
      */
 
@@ -139,7 +139,7 @@ class Quotationforms_model extends Super_Model
             'sortby_title' => 'quotationforms.quotationforms_title',
             'sortby_status' => 'quotationforms.quotationforms_status',
             'sortby_date' => 'quotationforms.quotationforms_date_created');
-        $sort_by = (array_key_exists(''.$this->uri->segment(6), $sort_columns)) ? $sort_columns[$this->uri->segment(6)] : 'quotationforms.quotationforms_id';
+        $sort_by = (array_key_exists('' . $this->uri->segment(6), $sort_columns)) ? $sort_columns[$this->uri->segment(6)] : 'quotationforms.quotationforms_id';
         $sorting_sql = "ORDER BY $sort_by $sort_order";
 
         //are we searching records or just counting rows
@@ -185,9 +185,9 @@ class Quotationforms_model extends Super_Model
     /**
      * retrieve a quotation form from the database
      *
-     * @param numeric $id: item for id 
-     * @param string $status enabled/disabled 
-     * @return	array
+     * @param numeric $id : item for id
+     * @param string $status enabled/disabled
+     * @return    array
      */
 
     function getQuotationForm($id = '', $status = 'enabled')
@@ -200,7 +200,7 @@ class Quotationforms_model extends Super_Model
         $conditional_sql = '';
 
         //validate id
-        if (! is_numeric($id)) {
+        if (!is_numeric($id)) {
             $this->__debugging(__line__, __function__, 0, "Invalid Data [id=$id]", '');
             return false;
         }
@@ -237,7 +237,7 @@ class Quotationforms_model extends Super_Model
     /**
      * edit quotation
      *
-     * @return	bool
+     * @return    bool
      */
 
     function editQuotationForm()
@@ -287,7 +287,7 @@ class Quotationforms_model extends Super_Model
     /**
      * count quotation forms
      *
-     * 
+     *
      * @param status $status
      * @return numeric
      */
@@ -335,7 +335,7 @@ class Quotationforms_model extends Super_Model
     /**
      * load all quotation forms
      *
-     * @param string $status enabled/disabled 
+     * @param string $status enabled/disabled
      * @return array
      */
 
@@ -372,6 +372,11 @@ class Quotationforms_model extends Super_Model
         //---return
         return $results;
 
+    }
+
+    public function saveColor($id, $bkg, $txt)
+    {
+        return $this->db->where('quotationforms_id', intval($id))->update('quotationforms', array('txt_color' => $txt, 'bkg_color' => $bkg));
     }
 }
 
