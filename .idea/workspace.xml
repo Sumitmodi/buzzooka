@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3957fda6-7fa6-4c6b-83e8-c54d9197b69c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/themes/default/common/quotation.html" afterPath="$PROJECT_DIR$/application/themes/default/common/quotation.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/language/english/default_lang.php" afterPath="$PROJECT_DIR$/application/language/english/default_lang.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/themes/default/admin/common.menu.html" afterPath="$PROJECT_DIR$/application/themes/default/admin/common.menu.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/themes/default/admin/common.project.navigation.html" afterPath="$PROJECT_DIR$/application/themes/default/admin/common.project.navigation.html" />
     </list>
     <ignored path="buzzooka.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -24,15 +27,60 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="quotation.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/application/themes/default/common/quotation.html">
+      <file leaf-file-name="myquotation_model.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/models/myquotation_model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.36329114">
-              <caret line="187" column="23" selection-start-line="187" selection-start-column="21" selection-end-line="187" selection-end-column="23" />
+            <state vertical-scroll-proportion="-7.935484">
+              <caret line="110" column="5" selection-start-line="110" selection-start-column="5" selection-end-line="110" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="common.project.navigation.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/themes/default/admin/common.project.navigation.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-20.903225">
+              <caret line="138" column="56" selection-start-line="138" selection-start-column="56" selection-end-line="138" selection-end-column="56" />
               <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#div#2;n#div#0;n#!!top" expanded="false" />
+                <element signature="n#div#3;n#div#0;n#!!top" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="common.menu.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/themes/default/admin/common.menu.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-12.774194">
+              <caret line="139" column="57" selection-start-line="139" selection-start-column="47" selection-end-line="139" selection-end-column="57" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="default_lang.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application/language/english/default_lang.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.75970876">
+              <caret line="871" column="30" selection-start-line="871" selection-start-column="30" selection-end-line="871" selection-end-column="30" />
+              <folding>
+                <marker date="1457723845092" expanded="true" signature="24639:24667" placeholder="Select an it... the" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="project.details.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/themes/default/admin/project.details.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-3.483871">
+              <caret line="256" column="26" selection-start-line="256" selection-start-column="26" selection-end-line="256" selection-end-column="26" />
+              <folding>
+                <element signature="n#style#0;n#h4#0;n#a#0;n#div#6;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -53,7 +101,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/application/themes/default/admin/project.quotation.html" />
         <option value="$PROJECT_DIR$/application/config/constants.php" />
         <option value="$PROJECT_DIR$/application/themes/default/admin/services.php" />
         <option value="$PROJECT_DIR$/application/models/projects_model.php" />
@@ -83,17 +130,14 @@
         <option value="$PROJECT_DIR$/application/controllers/common/quotation.php" />
         <option value="$PROJECT_DIR$/application/config/autoload.php" />
         <option value="$PROJECT_DIR$/application/controllers/admin/project.php" />
-        <option value="$PROJECT_DIR$/application/themes/default/admin/common.menu.html" />
         <option value="$PROJECT_DIR$/application/themes/default/admin/details.html" />
         <option value="$PROJECT_DIR$/application/controllers/admin/files.php" />
-        <option value="$PROJECT_DIR$/application/language/english/default_lang.php" />
         <option value="$PROJECT_DIR$/application/themes/default/admin/project.milestones.html" />
         <option value="$PROJECT_DIR$/application/controllers/admin/milestones.php" />
         <option value="$PROJECT_DIR$/application/themes/default/admin/project.files.html" />
         <option value="$PROJECT_DIR$/application/themes/default/admin/project.file.html" />
         <option value="$PROJECT_DIR$/application/controllers/admin/reports.php" />
         <option value="$PROJECT_DIR$/application/controllers/admin/messages.php" />
-        <option value="$PROJECT_DIR$/application/themes/default/admin/common.project.navigation.html" />
         <option value="$PROJECT_DIR$/application/controllers/admin/teammessages.php" />
         <option value="$PROJECT_DIR$/application/themes/default/admin/common.project.footer.html" />
         <option value="$PROJECT_DIR$/assets/style/style.css" />
@@ -104,6 +148,10 @@
         <option value="$PROJECT_DIR$/application/themes/default/admin/projects.html" />
         <option value="$PROJECT_DIR$/application/models/model.php" />
         <option value="$PROJECT_DIR$/application/themes/default/common/quotation.html" />
+        <option value="$PROJECT_DIR$/application/models/myquotation_model.php" />
+        <option value="$PROJECT_DIR$/application/themes/default/admin/common.project.navigation.html" />
+        <option value="$PROJECT_DIR$/application/themes/default/admin/common.menu.html" />
+        <option value="$PROJECT_DIR$/application/language/english/default_lang.php" />
       </list>
     </option>
   </component>
@@ -147,8 +195,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -177,105 +223,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="buzzooka" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="buzzooka" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="style" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="buzzooka" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="buzzooka" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="buzzooka" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="buzzooka" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="buzzooka" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="buzzooka" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="buzzooka" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="buzzooka" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="services" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -341,25 +289,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="buzzooka" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="buzzooka" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="models" />
+              <option name="myItemId" value="admin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -385,52 +315,14 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="buzzooka" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="buzzooka" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="buzzooka" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="buzzooka" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../wdysrv" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
@@ -485,9 +377,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26956055" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27706325" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32896176" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -525,20 +417,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application/controllers/admin/tasks.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.451612">
-          <caret line="38" column="47" selection-start-line="38" selection-start-column="47" selection-end-line="38" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/themes/default/admin/common.project.header.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.8387096">
-          <caret line="4" column="20" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/models/reports_model.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.35072815">
@@ -592,7 +470,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-6.7961164">
           <caret line="522" column="89" selection-start-line="522" selection-start-column="77" selection-end-line="522" selection-end-column="89" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -628,7 +505,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.06553398">
           <caret line="89" column="5" selection-start-line="89" selection-start-column="5" selection-end-line="89" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -636,9 +512,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-22.32258">
           <caret line="355" column="116" selection-start-line="355" selection-start-column="106" selection-end-line="355" selection-end-column="116" />
-          <folding>
-            <element signature="n#style#0;n#label#0;n#div#0;n#div#1;n#form#0;n#div#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -665,7 +538,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-11.67742">
           <caret line="142" column="68" selection-start-line="142" selection-start-column="68" selection-end-line="142" selection-end-column="68" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -673,24 +545,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-15.935484">
           <caret line="869" column="31" selection-start-line="869" selection-start-column="20" selection-end-line="869" selection-end-column="31" />
-          <folding>
-            <marker date="1457201564053" expanded="true" signature="2960:3354" placeholder="SELECT *,ser... projects" />
-            <marker date="1457201564053" expanded="true" signature="9550:11349" placeholder="SELECT proje... projects" />
-            <marker date="1457201564053" expanded="true" signature="9821:10105" placeholder="SELECT SUM(i... invoices" />
-            <marker date="1457201564053" expanded="true" signature="10214:10410" placeholder="SELECT SUM(i... invoices" />
-            <marker date="1457201564053" expanded="true" signature="10516:10698" placeholder="SELECT SUM(t... timer" />
-            <marker date="1457201564053" expanded="true" signature="13435:15029" placeholder="SELECT proje... projects" />
-            <marker date="1457201564053" expanded="true" signature="13535:13716" placeholder="SELECT COUNT... tasks" />
-            <marker date="1457201564053" expanded="true" signature="13831:14027" placeholder="SELECT COUNT... milestones" />
-            <marker date="1457201564053" expanded="true" signature="14146:14336" placeholder="SELECT COUNT... invoices" />
-            <marker date="1457201564053" expanded="true" signature="18345:18566" placeholder="SELECT * FRO... projects" />
-            <marker date="1457201564053" expanded="true" signature="20428:22058" placeholder="SELECT (SELE... projects" />
-            <marker date="1457201564053" expanded="true" signature="23441:23524" placeholder="DELETE FROM " />
-            <marker date="1457201564053" expanded="true" signature="25427:25526" placeholder="DELETE FROM " />
-            <marker date="1457201564053" expanded="true" signature="28958:29833" placeholder="UPDATE proje... " />
-            <marker date="1457201564053" expanded="true" signature="31226:31449" placeholder="UPDATE proje... " />
-            <marker date="1457201564053" expanded="true" signature="32901:33109" placeholder="UPDATE proje... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -698,7 +552,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-10.645162">
           <caret line="15" column="29" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -706,7 +559,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -721,10 +573,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="17.0">
           <caret line="142" column="52" selection-start-line="142" selection-start-column="52" selection-end-line="142" selection-end-column="52" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -739,7 +587,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="125" column="0" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -747,7 +594,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="4.6189322">
           <caret line="173" column="64" selection-start-line="173" selection-start-column="51" selection-end-line="173" selection-end-column="64" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -755,10 +601,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="49.80645">
           <caret line="175" column="40" selection-start-line="175" selection-start-column="40" selection-end-line="175" selection-end-column="40" />
-          <folding>
-            <marker date="1457638879967" expanded="false" signature="27525:27564" placeholder="..." />
-            <marker date="1457638879967" expanded="true" signature="27565:28068" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -766,17 +608,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-8.129032">
           <caret line="400" column="0" selection-start-line="400" selection-start-column="0" selection-end-line="402" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/language/english/default_lang.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-20.193548">
-          <caret line="870" column="25" selection-start-line="870" selection-start-column="25" selection-end-line="870" selection-end-column="25" />
-          <folding>
-            <marker date="1457639206586" expanded="true" signature="24639:24667" placeholder="Select an it... the" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -784,7 +615,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5485437">
           <caret line="2963" column="59" selection-start-line="2963" selection-start-column="59" selection-end-line="2963" selection-end-column="59" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -792,7 +622,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-12.064516">
           <caret line="104" column="110" selection-start-line="104" selection-start-column="110" selection-end-line="104" selection-end-column="110" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -800,20 +629,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.290323">
           <caret line="283" column="51" selection-start-line="283" selection-start-column="51" selection-end-line="283" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/themes/default/admin/common.menu.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.064516">
-          <caret line="137" column="0" selection-start-line="137" selection-start-column="0" selection-end-line="137" selection-end-column="0" />
-          <folding>
-            <element signature="n#style#0;n#i#0;n#span#0;n#a#0;n#li#3;n#ul#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#i#0;n#span#0;n#a#0;n#li#6;n#ul#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#i#0;n#span#0;n#a#0;n#li#9;n#ul#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#i#0;n#span#0;n#a#0;n#li#10;n#ul#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -821,7 +636,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="3.548387">
           <caret line="55" column="20" selection-start-line="55" selection-start-column="20" selection-end-line="55" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -829,10 +643,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-8.451612">
           <caret line="144" column="88" selection-start-line="144" selection-start-column="88" selection-end-line="144" selection-end-column="88" />
-          <folding>
-            <marker date="1457641148275" expanded="false" signature="23507:23546" placeholder="..." />
-            <marker date="1457641148275" expanded="true" signature="23547:24054" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -840,18 +650,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-10.32258">
           <caret line="33" column="64" selection-start-line="33" selection-start-column="64" selection-end-line="33" selection-end-column="64" />
-          <folding>
-            <marker date="1457641260837" expanded="true" signature="37634:37673" placeholder="..." />
-            <marker date="1457641260837" expanded="true" signature="37674:38167" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/themes/default/admin/common.project.navigation.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.096774">
-          <caret line="83" column="72" selection-start-line="83" selection-start-column="49" selection-end-line="83" selection-end-column="72" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -859,10 +657,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3616505">
           <caret line="33" column="10" selection-start-line="33" selection-start-column="10" selection-end-line="33" selection-end-column="10" />
-          <folding>
-            <marker date="1457641318347" expanded="true" signature="30687:30726" placeholder="..." />
-            <marker date="1457641318347" expanded="true" signature="30727:31224" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -870,7 +664,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.83980584">
           <caret line="50" column="21" selection-start-line="50" selection-start-column="21" selection-end-line="50" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -878,7 +671,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.58495146">
           <caret line="3478" column="20" selection-start-line="3478" selection-start-column="20" selection-end-line="3478" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -886,7 +678,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4393204">
           <caret line="485" column="78" selection-start-line="485" selection-start-column="64" selection-end-line="485" selection-end-column="78" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -894,9 +685,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.5983009">
           <caret line="115" column="14" selection-start-line="115" selection-start-column="14" selection-end-line="115" selection-end-column="14" />
-          <folding>
-            <element signature="n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -904,10 +692,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-18.129032">
           <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
-          <folding>
-            <marker date="1457641987694" expanded="true" signature="1892:2057" placeholder="SELECT * FRO... projects_optionalfields" />
-            <marker date="1457641987694" expanded="true" signature="4558:5048" placeholder="UPDATE proje... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -915,16 +699,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-9.225806">
           <caret line="52" column="177" selection-start-line="52" selection-start-column="177" selection-end-line="52" selection-end-column="177" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#form#0;n#!!top" expanded="true" />
-            <marker date="1457642161998" expanded="true" signature="2885:3403" placeholder="..." />
-            <marker date="1457642161998" expanded="true" signature="2970:3403" placeholder="..." />
-            <marker date="1457642161998" expanded="true" signature="3075:3403" placeholder="..." />
-            <marker date="1457642161998" expanded="true" signature="3211:3403" placeholder="..." />
-            <marker date="1457642161998" expanded="true" signature="3485:3679" placeholder="..." />
-            <marker date="1457642161998" expanded="true" signature="3937:4126" placeholder="..." />
-            <marker date="1457642161998" expanded="true" signature="3970:4096" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -932,12 +706,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="4.444175">
           <caret line="759" column="74" selection-start-line="759" selection-start-column="74" selection-end-line="759" selection-end-column="74" />
-          <folding>
-            <marker date="1457640721083" expanded="true" signature="35508:35536" placeholder="..." />
-            <marker date="1457640721083" expanded="true" signature="35699:35727" placeholder="..." />
-            <marker date="1457640721083" expanded="true" signature="35890:35918" placeholder="..." />
-            <marker date="1457640721083" expanded="true" signature="36114:36131" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -945,7 +713,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6626214">
           <caret line="114" column="45" selection-start-line="114" selection-start-column="45" selection-end-line="114" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -953,11 +720,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-2.8387096">
           <caret line="535" column="98" selection-start-line="535" selection-start-column="98" selection-end-line="535" selection-end-column="98" />
-          <folding>
-            <marker date="1457644119552" expanded="true" signature="31304:31538" placeholder="..." />
-            <marker date="1457644119552" expanded="true" signature="31365:31538" placeholder="..." />
-            <marker date="1457644119552" expanded="true" signature="31413:31538" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -965,18 +727,61 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.14563107">
           <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/themes/default/common/quotation.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36329114">
-          <caret line="187" column="23" selection-start-line="187" selection-start-column="21" selection-end-line="187" selection-end-column="23" />
+        <state vertical-scroll-proportion="0.6696203">
+          <caret line="198" column="21" selection-start-line="198" selection-start-column="21" selection-end-line="198" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/myquotation_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.935484">
+          <caret line="110" column="5" selection-start-line="110" selection-start-column="5" selection-end-line="110" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/themes/default/admin/project.details.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.483871">
+          <caret line="256" column="26" selection-start-line="256" selection-start-column="26" selection-end-line="256" selection-end-column="26" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h4#0;n#a#0;n#div#6;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/themes/default/admin/common.project.navigation.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-20.903225">
+          <caret line="138" column="56" selection-start-line="138" selection-start-column="56" selection-end-line="138" selection-end-column="56" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#div#2;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#div#3;n#div#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/themes/default/admin/common.menu.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.774194">
+          <caret line="139" column="57" selection-start-line="139" selection-start-column="47" selection-end-line="139" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/language/english/default_lang.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.75970876">
+          <caret line="871" column="30" selection-start-line="871" selection-start-column="30" selection-end-line="871" selection-end-column="30" />
+          <folding>
+            <marker date="1457723845092" expanded="true" signature="24639:24667" placeholder="Select an it... the" />
           </folding>
         </state>
       </provider>

@@ -66,6 +66,16 @@
         </a></li>
     <!--ALL CLIENTS END-->
 
+
+    <li>
+        <!--[onshow;block=li;when [vars.my_group] == 1;comm]--><!--permissions-->
+        <a href="[conf.site_url]/admin/services/list" class="[vars.css_menu_services;noerr]">
+            <i class="icon-folder-open"></i> [lang.lang_services]
+            <label class="label label-success  pull-right">
+                [vars.count_services;onformat=runtime_number] </label>
+        </a>
+    </li>
+
     <li>
         <a href="[conf.site_url]/admin/milestone/list-milestone-groups" class="[vars.css_menu_milestone;noerr]">
             <i class="icon-list-alt"></i> [lang.lang_milestones]
@@ -127,7 +137,7 @@
 
     <li class="has_sub">
         <a href="javascript:void(0)">
-            <i class="icon-list-alt"></i> Cloud Storage <span class="pull-right">
+            <i class="icon-list-alt"></i>[lang.lang_cloud] <span class="pull-right">
     	<i class="icon-chevron-right" style="font-size:12px"></i></span>
         </a>
         <ul>
@@ -174,31 +184,19 @@
     </li>
     <!--TICKETS END-->
 
-
-
-    <li>
-        <!--[onshow;block=li;when [vars.my_group] == 1;comm]--><!--permissions-->
-        <a href="[conf.site_url]/admin/services/list" class="[vars.css_menu_services;noerr]">
-            <i class="icon-folder-open"></i> [lang.lang_services]
-            <label class="label label-success  pull-right">
-                [vars.count_services;onformat=runtime_number] </label>
-        </a>
-    </li>
-
-
         <!--BUGS-->
-    <li>
+    <!--<li>-->
         <!--[onshow;block=li;when [permission.view_item_bugs] == 1;comm]--><!--permissions-->
-        <a href="[conf.site_url]/admin/bugs/list" class="[vars.css_menu_bugs;noerr]"> <i class="icon-bug"></i>
+        <!--<a href="[conf.site_url]/admin/bugs/list" class="[vars.css_menu_bugs;noerr]"> <i class="icon-bug"></i>
             [lang.lang_bug_tracker]
             <label class="label label-warning  pull-right"> [bugs_count.all_open;onformat=runtime_number] </label>
-        </a></li>
+        </a></li>-->
     <!--BUGS-->
     <!--TEAM-->
-    <!--<li>-->
+    <li>
         <!--[onshow;block=li;when [permission.view_item_team] == 1;comm]--><!--permissions-->
-        <!--<a href="[conf.site_url]/admin/team" class="[vars.css_menu_team;noerr]"> <i class="icon-group"></i>
-            [lang.lang_team_members]</a></li>-->
+        <a href="[conf.site_url]/admin/team" class="[vars.css_menu_team;noerr]"> <i class="icon-group"></i>
+            [lang.lang_team_members]</a></li>
     <!--TEAM-->
 
     <!--<li>

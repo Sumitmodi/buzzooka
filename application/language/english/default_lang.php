@@ -537,7 +537,7 @@ $lang['lang_tasks'] = "Tasks";
 $lang['lang_tax'] = "Tax";
 $lang['lang_team'] = "Team";
 $lang['lang_team_member'] = "Team Member";
-$lang['lang_team_members'] = "Team Members";
+$lang['lang_team_members'] = "Team";
 $lang['lang_team_messages'] = "Team Messages";
 $lang['lang_telephone'] = "Telephone";
 $lang['lang_template'] = "Template";
@@ -558,7 +558,7 @@ $lang['lang_ticket_details'] = "Ticket Details";
 $lang['lang_ticket_id'] = "Ticket id";
 $lang['lang_ticket_settings'] = "Ticket settings";
 $lang['lang_ticket_status'] = "Ticket Status";
-$lang['lang_tickets'] = "Support Tickets";
+$lang['lang_tickets'] = "Support";// Tickets
 $lang['lang_time'] = "Time";
 $lang['lang_time_spent'] = "Time Spent";
 $lang['lang_timeline_display_limits'] = "Timeline Display Limits";
@@ -869,6 +869,7 @@ $lang['lang_backlinks'] = 'Backlinks';
 $lang['lang_project_details'] = 'Project Details';
 $lang['chooose_service'] = 'Choose a Service';
 $lang['lang_hash'] = '#';
+$lang['lang_cloud'] = 'Cloud';
 //$lang['lang_milestones'] = 'Reports';
 /* End of file default_lang.php */
 /* Location: ./application/language/english/default_lang.php */
