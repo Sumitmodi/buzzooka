@@ -871,6 +871,7 @@ $lang['chooose_service'] = 'Choose a Service';
 $lang['lang_hash'] = '#';
 $lang['lang_cloud'] = 'Cloud';
 $lang['questionnare_email'] = 'Questionnaire Email';
+$lang['lang_timeline'] = 'Project Timeline';
 //$lang['lang_milestones'] = 'Reports';
 /* End of file default_lang.php */
 /* Location: ./application/language/english/default_lang.php */

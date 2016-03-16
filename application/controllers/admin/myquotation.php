@@ -77,6 +77,13 @@ class Myquotation extends MY_Controller
         //check if project exists & set some basic data
         $this->__commonAll_ProjectBasics($this->project_id);
 
+        //get project events (timeline)
+        $this->data['reg_blocks'][] = 'timeline';
+        $this->data['blocks']['timeline'] = $this->project_events_model->getEvents($this->project_id);
+        $this->data['debug'][] = $this->project_events_model->debug_data;
+        //further process events data
+        $this->data['blocks']['timeline'] = prepare_events($this->data['blocks']['timeline']);
+
         //get the action from url
         $action = $this->uri->segment(4);
 
@@ -157,56 +164,6 @@ class Myquotation extends MY_Controller
             $this->notifications('wi_notification', $this->data['lang']['lang_requested_item_not_loaded']);
             $this->data['visible']['wi_project_quotations'] = 0;
         } else {
-            //categories
-            $cats = array_unique(array_map(function (&$quo) {
-                $ext = pathinfo($quo['quotations_file_url'], PATHINFO_EXTENSION);
-                if (empty($ext)) {
-                    return 'Links';
-                }
-                if (in_array($ext, array('jpg', 'rpg', 'png', 'tiff', 'jpeg', 'gif'))) {
-                    return 'Images';
-                }
-                if ($ext == 'pdf') {
-                    return 'PDF';
-                }
-                if ($ext == 'swf') {
-                    return 'Videos';
-                }
-                if (in_array($ext, array('doc', 'docx', 'ppt', 'pptx', 'xls', 'xlsx'))) {
-                    return 'Docs';
-                }
-                return 'Videos';
-            }, $quotations));
-            sort($cats);
-            $cats = array_map(function ($row) {
-                switch (strtolower($row)) {
-                    case 'videos':
-                        $icon = 'file-video-o';
-                        break;
-                    case 'docs':
-                        $icon = 'file-word-o';
-                        break;
-                    case 'pdf':
-                        $icon = 'file-pdf-o';
-                        break;
-                    case 'images':
-                        $icon = 'file-image-o';
-                        break;
-                    case 'link':
-                        $icon = 'external-link';
-                        break;
-                    case 'youtube':
-                        $icon = 'youtube';
-                        break;
-                    case 'vimeo':
-                        $icon = 'vimeo-square';
-                        break;
-                    default:
-                        $icon = 'film';
-
-                }
-                return array('name' => str_replace(' ', '-', strtolower($row)), 'value' => $row, 'icon' => $icon);
-            }, $cats);
 
             foreach ($quotations as $key => $quo) {
                 if (!empty($quo['quotations_file_type'])) {
@@ -239,6 +196,7 @@ class Myquotation extends MY_Controller
                             default:
                                 $quotations[$key]['file_type_id'] = 'docs';
                         }
+                        $quotations[$key]['open_url'] = site_url(sprintf('admin/myquotation/%d/view/%d', $this->project_id, $quo['quotations_id']));
                     } else {
                         $uri = parse_url($quo['quotations_file_url']);
                         $quotations[$key]['download_url'] = $quo['quotations_file_url'];
@@ -249,6 +207,12 @@ class Myquotation extends MY_Controller
                             case 'www.docs.google.com':
                             case 'www.drive.google.com':
                                 $quotations[$key]['icon'] = site_url(sprintf('/files/filetype_icons/%s.png', 'drive'));
+                                if ($this->uri->segment(5) == null) {
+                                    $this->data['reg_blocks'][] = 'quotation';
+                                    $this->data['blocks']['quotation'] = array($quo);
+                                    $this->data['vars']['quote_url'] = $this->getQuoteLink($quo);
+                                    $this->data['visible']['is_visible_quotationform'] = 2;
+                                }
                                 break;
                             case 'youtube.com':
                             case 'www.youtube.com':
@@ -257,19 +221,16 @@ class Myquotation extends MY_Controller
                             default:
                                 $quotations[$key]['icon'] = site_url(sprintf('/files/filetype_icons/%s.png', 'link'));
                         }
+                        $quotations[$key]['open_url'] = site_url(sprintf('admin/myquotation/%d/view/%d', $this->project_id, $quo['quotations_id']));
                     }
-                    $quotations[$key]['open_url'] = $quotations[$key]['download_url'];
                 } else {
                     $quotations[$key]['icon'] = site_url(sprintf('/files/filetype_icons/%s.png', 'file'));
                     $quotations[$key]['download_url'] = site_url(sprintf('admin/quotation/download/%d', $quo['quotations_id']));
-                    $quotations[$key]['open_url'] = site_url(sprintf('admin/myquotation/%d/view/%d', $quo['project_id'], $quo['quotations_id']));
+                    $quotations[$key]['open_url'] = site_url(sprintf('admin/myquotation/%d/view/%d', $this->project_id, $quo['quotations_id']));
                     $quotations[$key]['file_type_id'] = 'links';
                 }
                 $quotations[$key]['project_id'] = $this->project_id;
             }
-
-            $this->data['reg_blocks'][] = 'quote_cats';
-            $this->data['blocks']['quote_cats'] = $cats;
 
             $this->data['reg_blocks'][] = 'quotations';
             $this->data['blocks']['quotations'] = $quotations;
@@ -290,15 +251,50 @@ class Myquotation extends MY_Controller
 
                 $theform = $quotation['quotations_form_data'];
                 $postdata = $quotation['quotations_post_data'];
-
-                $this->data['reg_blocks'][] = 'quotationform';
-                $this->data['blocks']['quotationform'] = $this->formbuilder->reBuildForm($theform, $postdata);
-
-                $this->data['visible']['is_visible_quotationform'] = 1;
+                if (!is_null($quotation['quotations_file_type'])) {
+                    $this->data['reg_blocks'][] = 'quotationform';
+                    $this->data['vars']['quote_url'] = $this->getQuoteLink($quotation);
+                    $this->data['visible']['is_visible_quotationform'] = 2;
+                } else {
+                    $this->data['reg_blocks'][] = 'quotationform';
+                    $this->data['blocks']['quotationform'] = $this->formbuilder->reBuildForm($theform, $postdata);
+                    $this->data['visible']['is_visible_quotationform'] = 1;
+                }
             }
         } else {
             $this->data['visible']['is_visible_quotationform'] = 0;
         }
+    }
+
+    protected function getQuoteLink($quote)
+    {
+        $ext = pathinfo($quote['quotations_file_url'], PATHINFO_EXTENSION);
+        switch (strtolower($ext)) {
+            case 'jpg':
+            case 'png':
+            case 'jpeg':
+                $return = sprintf('<img src="%s" style="width:100%%;"/>', site_url($quote['quotations_file_url']));
+                break;
+            case 'mp4':
+            case 'swf':
+                $return = sprintf('<video width="400" controls><source src="%s" type="video/mp4">Your browser does not support HTML5 video.</video>', site_url($quote['quotations_file_url']));
+                break;
+            case 'doc':
+            case 'docx':
+            case 'ppt':
+            case 'pptx':
+            case 'xls':
+            case 'xlsx':
+                $return = sprintf('<iframe src="https://view.officeapps.live.com/op/view.aspx?src=%s" style="width:100%;min-height:640px; frameborder="0"></iframe>', urlencode(site_url($quote['quotations_file_url'])));
+                break;
+            case 'pdf':
+                $return = sprintf('<iframe src="%s" style="width:100%%;min-height:640px;" frameborder="0"></iframe>', site_url($quote['quotations_file_url']));
+                break;
+        }
+        if ($quote['quotations_file_type'] == 'link') {
+            $return = sprintf('<iframe src="%s" style="width:100%%;min-height:640px;" frameborder="0"></iframe>', $quote['quotations_file_url']);
+        }
+        return $return;
     }
 
     /**

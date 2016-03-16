@@ -9,7 +9,9 @@
                 </div>
                 <div class="client-info">
                     <p class="client-name">[rows4.clients_company_name]</p>
-                    <p class="service-name"><small>[rows4.services_name;noerr]</small></p>
+                    <p class="service-name">
+                        <small>[rows4.services_name;noerr]</small>
+                    </p>
                 </div>
             </div>
             <div class="box-content">
@@ -105,7 +107,7 @@
                     <li>
                         <a class="[vars.css_active_tab_members;noerr]"
                            href="[conf.site_url]/admin/members/[vars.project_id;noerr]/view">
-                        [lang.lang_project_members]</a>
+                            [lang.lang_project_members]</a>
                     </li>
 
                     <li>
@@ -136,7 +138,52 @@
     </div>
     <!--WI_PROJECT_MENU-->
 
+
     <div class="col-lg-12" style="margin-bottom: 15px;">
+        <div class="split-info-panel project">
+            <div class="split-info-panel-header bg-crm">
+                <span class="split-panel-heading">[lang.lang_timeline]</span>
+            </div>
+            <div class="widget no-margin">
+                <div class="widget-content widget-content-project slimScrollProjectTimeline">
+                    <!--WI_PROJECT_EVENTS-->
+                    <div class="project-info-tabs project-details">
+                        <ul class="timeline">
+                            <!--left event-->
+                            <li>
+                                <div class="tl-circ [timeline.project_events_type;block=li;onformat=runtime_timeline_colors]">
+                                    <i class="[timeline.project_events_type;block=li;onformat=runtime_timeline_icons]"></i>
+                                </div>
+                                <div class="timeline-panel">
+                                    <div class="tl-heading">
+                                        <div>
+                                            <strong>
+                                                <!--[timeline.user_name;block=li;onformat=runtime_check_blank_ucwords;comm;ope=max:20]-->
+                                            </strong>
+                                        </div>
+                                        <div>
+                                            <!--[timeline.project_events_action_lang;block=li;onformat=runtime_check_blank;comm]-->
+                                        </div>
+                                        <div>
+                                            <small class="text-muted"><i class="icon-time"></i>
+                                                <!--[timeline.project_events_date;block=li;onformat=runtime_time_ago;comm]-->
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class="tl-body">
+                                        <div>
+                                            <!--[timeline.project_events_item;htmlconv=no;block=li;onformat=runtime_check_blank;comm;ope=max:60]-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <!--left event end-->
+                        </ul>
+                    </div>
+                    <!--WI_PROJECT_EVENTS-->
+                </div>
+            </div>
+        </div>
     </div>
 
     <!--WI_MY_TASKS-->

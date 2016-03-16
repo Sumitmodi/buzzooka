@@ -85,6 +85,13 @@ class Teammessages extends MY_Controller
             redirect('/admin/error/permission-denied');
         }
 
+        //get project events (timeline)
+        $this->data['reg_blocks'][] = 'timeline';
+        $this->data['blocks']['timeline'] = $this->project_events_model->getEvents($this->project_id);
+        $this->data['debug'][] = $this->project_events_model->debug_data;
+        //further process events data
+        $this->data['blocks']['timeline'] = prepare_events($this->data['blocks']['timeline']);
+
         //get the action from url
         $action = $this->uri->segment(4);
 

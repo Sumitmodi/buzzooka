@@ -91,11 +91,13 @@
     .card-footer ul li {
         padding: 0 5px;
     }
-    .modal-full-screen{
-        min-height:768px;
+
+    .modal-full-screen {
+        min-height: 768px;
         padding-top: 0;
     }
-    .card-img{
+
+    .card-img {
         bottom: 0;
         left: 0;
         margin: auto;
@@ -108,6 +110,7 @@
         width: auto;
         height: 48px;
     }
+
     a[data-type=jpg] img,
     a[data-type=png] img,
     a[data-type=gif] img,
@@ -115,12 +118,13 @@
     a[data-type=JPG] img,
     a[data-type=PNG] img,
     a[data-type=GIF] img,
-    a[data-type=TIFF] img{
+    a[data-type=TIFF] img {
         width: 100%;
         max-height: 145px;
         height: auto;
     }
-    .dropdown-caret{
+
+    .dropdown-caret {
         background-color: #eee;
         border-radius: 50%;
         height: 22px;
@@ -168,25 +172,23 @@
                             <div class="widget-content widget-content-project">
                                 <!-----------------------------------------------TABS-FILES------------------------------------------------------------------>
                                 <div class="project-info-tabs">
-                                    <!--[onshow;block=div;when [visible.wi_project_quotations]==1;comm] -->
                                     <div class="box">
                                         <div class="box-head-dark">
                                             <i class="icon-list"></i> [lang.lang_my_project_quotation]
                                             <button data-toggle="modal" class="btn btn-mid btn-success pull-right"
                                                     href="#addNewFileModal" style="margin-left: 10px;">
                                                 <!--[onshow;block=button;when [project_permissions.add_item_my_project_files] == 1;comm]-->
-                                                <!--permissions-->
                                                 <i class="icon-plus"></i> [lang.lang_upload_new_file]
                                             </button>
                                             &nbsp;
                                             <button data-toggle="modal" class="btn btn-mid btn-success pull-right"
                                                     href="#add-link">
                                                 <!--[onshow;block=button;when [project_permissions.add_item_my_project_files] == 1;comm]-->
-                                                <!--permissions-->
                                                 <i class="icon-plus"></i> [lang.lang_new_url]
                                             </button>
                                         </div>
                                         <div class="box-content">
+                                            <!--[onshow;block=div;when [visible.wi_project_quotations]==1;comm] -->
                                             <div class="row">
                                                 <div class="col-lg-12 col-sm-12 col-xs-12  col-md-12">
                                                     <div class="col-md-4 col-sm-12 col-xs-12 col-lg-4 file-card card-[quotations.file_type_id]">
@@ -194,7 +196,8 @@
                                                         <div class="col-md-12">
                                                             <div class="card-header">
                                                                 <a href="#" class="file-preview" data-toggle="modal"
-                                                                   data-target="#previewFileModal" data-url="[quotations.download_url;]">
+                                                                   data-target="#previewFileModal"
+                                                                   data-url="[quotations.download_url;]">
                                                                     <span>[quotations.quotations_form_title;ope=max:20]</span>
                                                                 </a>
                                                                 <ul class="pull-right nav navbar-nav">
@@ -204,8 +207,10 @@
                                                                         </a>
                                                                         <ul class="dropdown-menu" role="menu">
                                                                             <li>
-                                                                                <a href="#" class="file-preview" data-toggle="modal"
-                                                                                   data-target="#previewFileModal" data-url="[quotations.download_url;]">
+                                                                                <a href="#" class="file-preview"
+                                                                                   data-toggle="modal"
+                                                                                   data-target="#previewFileModal"
+                                                                                   data-url="[quotations.download_url;]">
                                                                                     <i class="fa fa-eye"></i>
                                                                                     [lang.lang_preview]
                                                                                 </a>
@@ -240,7 +245,8 @@
                                                             </div>
                                                             <div class="card-body text-center">
                                                                 <a href="#" class="file-preview" data-toggle="modal"
-                                                                   data-target="#previewFileModal" data-url="[quotations.download_url;]">
+                                                                   data-target="#previewFileModal"
+                                                                   data-url="[quotations.download_url;]">
                                                                     <img class="file-icon-mid card-img"
                                                                          src="[quotations.icon]"/>
                                                                 </a>
@@ -260,6 +266,13 @@
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="box side-menu-main">
+                                        <!--[onshow;block=div;when [visible.is_visible_quotationform]==2;comm] -->
+                                        <div class="box-head-dark"><i class="icon-list"></i>
+                                            [quotation.quotations_form_title]
+                                        </div>
+                                        <div class="box-content" id="quote_url"><!--[vars.quote_url;htmlconv=no;]--></div>
                                     </div>
                                     <div class="box side-menu-main">
                                         <!--[onshow;block=div;when [visible.is_visible_quotationform]==1;comm] -->
@@ -371,7 +384,8 @@
     <div id="addNewFileModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
          aria-hidden="true">
         <div class="modal-dialog">
-            <form class="form-horizontal" action="[conf.site_url]/admin/myquotation/[vars.project_id;noerr]/add" method="post"
+            <form class="form-horizontal" action="[conf.site_url]/admin/myquotation/[vars.project_id;noerr]/add"
+                  method="post"
                   id="addNewFile">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -479,7 +493,6 @@
                     <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">
                         [lang.lang_close]
                     </button>
-                    </button>
                 </div>
             </div>
         </div>
@@ -546,10 +559,7 @@
 </script>
 
 <!--JS_SIMPLE_AJAX_UPLOADER -->
-<script type="text/javascript"
-        src="[conf.site_url_themes_common;noerr]/js/simpleajaxuploader/SimpleAjaxUploader.js">
-
-</script>
+<script type="text/javascript" src="[conf.site_url_themes_common;noerr]/js/simpleajaxuploader/SimpleAjaxUploader.js"></script>
 <!--JS_SIMPLE_AJAX_UPLOADER -->
 <!--JS_LANG_AJAX_FILE_UPLOAD-->
 <script>
@@ -558,7 +568,7 @@
     //-------------------------------------------------------------------------------
     //variabled
     var upload_url = '[conf.site_url;noerr]/common/ajax/upload-quotation-file/[vars.project_id;noerr]/team';
-    var js_files_project_allowed_types = [vars.js_allowed_types;protect = no;noerr];
+    var js_files_project_allowed_types = [vars.js_allowed_types;protect=no;noerr];
     var js_file_size_limit = [vars.js_file_size_limit;noerr];
     //language
     var lang_file_too_big = "[lang.lang_upload_invalid_filesize;noerr]";
@@ -579,16 +589,20 @@
         $("#addNewFile").validate({
             rules: {
                 files_description: "required",
-                files_name: "required",
+                files_name: "required"
             },
             messages: {
                 files_description: "[lang.lang_field_is_required]",
-                files_name: "[lang.lang_field_is_required]",
+                files_name: "[lang.lang_field_is_required]"
             },
             submitHandler: function (form) {
                 form.submit();
             }
         });
+        var quote_url = '[vars.quote_url;htmlconv=no;]';
+        if (quote_url != '') {
+            $('#quote_url').html(quote_url);
+        }
     });
 </script>
 </body>

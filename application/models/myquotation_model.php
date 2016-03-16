@@ -59,6 +59,8 @@ class Myquotation_model extends Super_Model
 
         if ($results != false && isset($result)) {
             $results = array_merge($results, $result);
+        } elseif (isset($result) && false == $results) {
+            $results = $result;
         }
 
         //----------benchmarking end------------------

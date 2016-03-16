@@ -74,6 +74,13 @@ class Project extends MY_Controller
         //default page title
         $this->data['vars']['main_title'] = $this->data['lang']['lang_project'];
 
+        //get project events (timeline)
+        $this->data['reg_blocks'][] = 'timeline';
+        $this->data['blocks']['timeline'] = $this->project_events_model->getEvents($this->project_id);
+        $this->data['debug'][] = $this->project_events_model->debug_data;
+        //further process events data
+        $this->data['blocks']['timeline'] = $this->__prepEvents($this->data['blocks']['timeline']);
+
         //route the rrequest
         switch ($action) {
 
@@ -139,14 +146,6 @@ class Project extends MY_Controller
 
         //show wi_project_details widget
         $this->data['visible']['wi_project_details'] = 1;
-
-        //get project events (timeline)
-        $this->data['reg_blocks'][] = 'timeline';
-        $this->data['blocks']['timeline'] = $this->project_events_model->getEvents($this->project_id);
-        $this->data['debug'][] = $this->project_events_model->debug_data;
-
-        //further process events data
-        $this->data['blocks']['timeline'] = $this->__prepEvents($this->data['blocks']['timeline']);
 
     }
 

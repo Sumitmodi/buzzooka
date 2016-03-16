@@ -66,6 +66,13 @@ class Files extends MY_Controller
         //set project_id for global use in template
         $this->data['vars']['project_id'] = $this->project_id;
 
+        //get project events (timeline)
+        $this->data['reg_blocks'][] = 'timeline';
+        $this->data['blocks']['timeline'] = $this->project_events_model->getEvents($this->project_id);
+        $this->data['debug'][] = $this->project_events_model->debug_data;
+        //further process events data
+        $this->data['blocks']['timeline'] = prepare_events($this->data['blocks']['timeline']);
+
         //PERMISSIONS CHECK - ACCESS
         //do this check before __commonAll_ProjectBasics()
         if ($this->data['vars']['my_group'] != 1) {

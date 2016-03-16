@@ -33,5 +33,52 @@ if (! function_exists('help_template_verify')) {
     }
 }
 
+
+function prepare_events($thedata)
+{
+    $ci = get_instance();
+    //check if data is not empty
+    if (count($thedata) == 0 || !is_array($thedata)) {
+        return $thedata;
+    }
+
+    /* -----------------------PREPARE FILES DATA ----------------------------------------/
+    *  Loop through all the files in this array and for each file:
+    *  -----------------------------------------------------------
+    *  (1) process user names ('event by' data)
+    *  (2) add back the language for the action carried out
+    *
+    *
+    *------------------------------------------------------------------------------------*/
+    for ($i = 0; $i < count($thedata); $i++)
+    {
+
+        //--team member---------------------
+        if ($thedata[$i]['project_events_user_type'] == 'team') {
+            $thedata[$i]['user_name'] = $thedata[$i]['team_profile_full_name'];
+        }
+
+        //--client user---------------------
+        if ($thedata[$i]['project_events_user_type'] == 'client') {
+            $thedata[$i]['user_name'] = $thedata[$i]['client_users_full_name'];
+        }
+
+        //add back langauge
+        $word = $thedata[$i]['project_events_action'];
+        $thedata[$i]['project_events_action_lang'] = $ci->data['lang'][$word];
+
+        //add #hash to numbers (e.g invoice number) and create a new key called 'project_events_item'
+        if (is_numeric($thedata[$i]['project_events_details'])) {
+            $thedata[$i]['project_events_item'] = '#' . $thedata[$i]['project_events_details'];
+        } else {
+            $thedata[$i]['project_events_item'] = $thedata[$i]['project_events_details'];
+        }
+
+    }
+
+    //retun the processed data
+    return $thedata;
+}
+
 /* End of file view_helper.php */
 /* Location: ./application/helpers/view_helper.php */
