@@ -682,7 +682,7 @@ class Projects_model extends Super_Model
 
         //declare
         $conditional_sql = '';
-        $fields = array('projects_clients_id', 'projects_service', 'projects_start', 'projects_end', 'projects_description', 'projects_optionalfield1', 'projects_optionalfield2', 'projects_optionalfield3', 'projects_optionalfield4', 'projects_optionalfield5');
+        $fields = array('projects_clients_id', 'projects_service', 'projects_start', 'projects_end', 'projects_description', 'projects_optionalfield1', 'projects_optionalfield2', 'projects_optionalfield3', 'projects_optionalfield4', 'projects_optionalfield6', 'projects_optionalfield7', 'projects_optionalfield8', 'projects_optionalfield9', 'projects_optionalfield10', 'projects_optionalfield5');
         $insert = array();
         foreach ($fields as $field) {
             if ($this->input->post($field, true) == false) {

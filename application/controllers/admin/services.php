@@ -100,7 +100,7 @@ class Services extends MY_Controller
         } else {
             $this->session->set_flashdata('message', $this->data['lang']['update_success']);
         }
-        redirect('/admin/services/list');
+        redirect('/admin/projects/optional-fields');
     }
 
     protected function load_fields()

@@ -39,9 +39,9 @@
                       class="formbuilder">
                     <div class="box quotation-form">
                         <div class="box-head-light box-head-bordered main-container"
-                             style="text-align: center; min-height: 90px; padding-bottom: 12px;[vars.bkg_color]">
+                             style="text-align: center; max-height: 90px; padding: 0px;[vars.bkg_color]">
                             <img src="[conf.site_url][vars.logo_url]" alt="" class="img img-responsive"
-                                 style="padding-top: 0px; max-height: 100px; margin: 0px; float: left; position: absolute; left: 10px; top: 20px;">
+                                 style="display: table-cell; float: left; vertical-align: middle; max-width: 150px; max-height: 68px; padding: 15px;">
                             <span class="center"
                                   style="font-size: 26px; display: table-cell; vertical-align: middle; height: 68px; text-align: center; width: 46%;[vars.txt_color]">[vars.quotationforms_title;noerr]</span>
                             <input type='text' id="custom" style="position: absolute; right: 15px; top: 20px;"/>
@@ -274,7 +274,9 @@
         allowClear: true
     });
     $(function () {
-        $('textarea').val($('textarea').val().replace(' ', ''));
+        if ($('textarea').length) {
+            $('textarea').val($('textarea').val().replace(' ', ''));
+        }
     });
 </script>
 <script type="text/javascript">

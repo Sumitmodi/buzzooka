@@ -40,19 +40,19 @@ class Model extends CI_Model
         return $this->db->where('quotationforms_id', $id)->update('quotationforms', array('logo_url' => $url));
     }
 
-    public function load_fields($id,$status = false)
+    public function load_fields($id, $status = false)
     {
-        $this->db->where('service_id', $id)->order_by('projects_optionalfield_name','asc');
-        if($status == true){
-            $this->db->where('projects_optionalfield_status','enabled');
-            $this->db->where('projects_optionalfield_title <>','');
+        $this->db->where('service_id', $id)->order_by('projects_optionalfield_name', 'asc');
+        if ($status == true) {
+            $this->db->where('projects_optionalfield_status', 'enabled');
+            $this->db->where('projects_optionalfield_title <>', '');
         }
         $res = $this->db->get('projects_optionalfields');
         if ($res->num_rows() == 0) {
-            $this->db->where('service_id is null')->order_by('projects_optionalfield_name','asc');
-            if($status == true){
-                $this->db->where('projects_optionalfield_status','enabled');
-                $this->db->where('projects_optionalfield_title <>','');
+            $this->db->where('service_id is null')->order_by('projects_optionalfield_name', 'asc');
+            if ($status == true) {
+                $this->db->where('projects_optionalfield_status', 'enabled');
+                $this->db->where('projects_optionalfield_title <>', '');
             }
             $res = $this->db->get('projects_optionalfields');
         }
@@ -69,6 +69,9 @@ class Model extends CI_Model
     {
         $data = array();
         foreach ($_POST['projects_optionalfield_title'] as $k => $field) {
+            if (isset($_POST['delete']) && in_array($k, $_POST['delete'])) {
+                continue;
+            }
             $data[] = array(
                 'projects_optionalfield_name' => 'projects_optionalfield' . ($k + 1),
                 'projects_optionalfield_title' => $field,

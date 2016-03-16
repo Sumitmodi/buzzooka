@@ -872,6 +872,13 @@ $lang['lang_hash'] = '#';
 $lang['lang_cloud'] = 'Cloud';
 $lang['questionnare_email'] = 'Questionnaire Email';
 $lang['lang_timeline'] = 'Project Timeline';
+$lang['lang_confirm_delete_milestone'] = 'Are you sure you want to delete this milestone?';
+$lang['lang_days'] = 'Days';
+$lang['lang_active'] = 'Active';
+$lang['lang_inactive'] = 'Inactive';
+$lang['lang_deadline'] = 'Deadline';
+$lang['lang_add_milestone'] = 'Add from Milestones';
+$lang['lang_field'] = 'Add a field';
 //$lang['lang_milestones'] = 'Reports';
 /* End of file default_lang.php */
 /* Location: ./application/language/english/default_lang.php */

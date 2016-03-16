@@ -81,6 +81,14 @@ class Ajax extends MY_Controller
                 $this->__deleteMilestone();
                 break;
 
+            case 'delete-milestone-group':
+                $this->__deleteMilestoneGroup();
+                break;
+
+            case 'delete-milestone-single':
+                $this->__deleteMilestoneSingle();
+                break;
+
             case 'delete-task':
                 $this->__deleteTask();
                 break;
@@ -189,6 +197,14 @@ class Ajax extends MY_Controller
                 $this->__deleteTeamMember();
                 break;
 
+            case 'save-milestone-group':
+                $this->__saveMilestoneGroup();
+                break;
+
+            case 'save-milestone-single':
+                $this->__saveMilestoneSingle();
+                break;
+
             case 'delete-invoice-payment':
                 $this->__deletePayment();
                 break;
@@ -201,6 +217,48 @@ class Ajax extends MY_Controller
         //log debug data
         $this->__ajaxdebugging();
 
+    }
+
+    protected function __saveMilestoneGroup()
+    {
+        $data = array(
+            'title' => $this->input->post('title', true),
+            'status' => $this->input->post('status', true)
+        );
+        if ($this->db->where('id', $this->input->post('id', true))->update('milestone_groups', $data)) {
+            $this->jsondata = array(
+                'result' => 'success',
+                'message' => $this->data['lang']['lang_request_has_been_completed']
+            );
+        } else {
+            $this->jsondata = array(
+                'result' => 'error',
+                'message' => $this->data['lang']['lang_an_error_has_occurred']
+            );
+        }
+
+        $this->__flmView('common/json');
+    }
+
+    protected function __saveMilestoneSingle()
+    {
+        $data = array(
+            'title' => $this->input->post('title', true),
+            'days' => $this->input->post('days', true)
+        );
+        if ($this->db->where('id', $this->input->post('id', true))->update('milestone_lists', $data)) {
+            $this->jsondata = array(
+                'result' => 'success',
+                'message' => $this->data['lang']['lang_request_has_been_completed']
+            );
+        } else {
+            $this->jsondata = array(
+                'result' => 'error',
+                'message' => $this->data['lang']['lang_an_error_has_occurred']
+            );
+        }
+
+        $this->__flmView('common/json');
     }
 
     // -- __flmUserLoggedInCheck- -------------------------------------------------------------------------------------------------------
@@ -639,6 +697,45 @@ class Ajax extends MY_Controller
      *                      (1) Related Tasks
      */
 
+    function __deleteMilestoneGroup()
+    {
+        //create json response
+        $this->jsondata = array(
+            'result' => 'error',
+            'message' => $this->data['lang']['lang_an_error_has_occurred']
+        );
+        $id = intval($this->input->post('data_mysql_record_id', true));
+        if ($this->db->where('group_id', $id)->delete('milestone_lists')) {
+            if ($this->db->where('id', $id)->delete('milestone_groups')) {
+                $this->jsondata = array(
+                    'result' => 'error',
+                    'message' => $this->data['lang']['lang_request_has_been_completed']
+                );
+            }
+        }
+        $this->__flmView('common/json');
+    }
+
+    function __deleteMilestoneSingle()
+    {
+        $id = intval($this->input->post('data_mysql_record_id', true));
+        if ($this->db->where('id', $id)->delete('milestone_lists')) {
+            //create json response
+            $this->jsondata = array(
+                'result' => 'error',
+                'message' => $this->data['lang']['lang_request_has_been_completed']
+            );
+        } else {
+            //create json response
+            $this->jsondata = array(
+                'result' => 'error',
+                'message' => $this->data['lang']['lang_an_error_has_occurred']
+            );
+        }
+        $this->__flmView('common/json');
+    }
+
+
     function __deleteMilestone()
     {
 
@@ -713,7 +810,7 @@ class Ajax extends MY_Controller
 
     // -- __deleteQuotation- -------------------------------------------------------------------------------------------------------
     /**
-     * deleting a quotation 
+     * deleting a quotation
      */
 
     function __deleteQuotation()
@@ -766,7 +863,7 @@ class Ajax extends MY_Controller
 
     // -- __deleteTask- -------------------------------------------------------------------------------------------------------
     /**
-     * deleting a task 
+     * deleting a task
      */
 
     function __deleteTask()
@@ -828,7 +925,7 @@ class Ajax extends MY_Controller
 
     // -- __toggleTimer- -------------------------------------------------------------------------------------------------------
     /**
-     * start and stop or reset the timer for a task 
+     * start and stop or reset the timer for a task
      */
 
     function __toggleTimer()
@@ -1402,7 +1499,7 @@ class Ajax extends MY_Controller
 
     // -- __deleteProjectMessage- -------------------------------------------------------------------------------------------------------
     /**
-     * deleting a project message 
+     * deleting a project message
      */
 
     function __deleteProjectMessage()
@@ -2487,7 +2584,7 @@ class Ajax extends MY_Controller
 
     // -- __deleteBackupFile- -------------------------------------------------------------------------------------------------------
     /**
-     * deleting a database backup file 
+     * deleting a database backup file
      */
     function __deleteBackupFile()
     {
@@ -2669,8 +2766,8 @@ class Ajax extends MY_Controller
         if ($next) {
 
             /**first delete the project directory's contents
-            * IMPORTANT: make sure we have a valid project_id
-            */
+             * IMPORTANT: make sure we have a valid project_id
+             */
             if (is_numeric($project_id)) {
                 delete_files(FILES_PROJECT_FOLDER . $project_id . '/', true);
             }
@@ -3032,10 +3129,10 @@ class Ajax extends MY_Controller
      * [EXAMPLE USAGE]
      * $next = validateTeamPermissions($project_id, 'delete_item_my_project_files');
      *
-     * @access	private
-     * @param	mixed $project_id numeric project id | 'general' for none project items 
-     * @param	string $action example: delete_item_my_project_files 
-     * @return	bool
+     * @access    private
+     * @param    mixed $project_id numeric project id | 'general' for none project items
+     * @param    string $action example: delete_item_my_project_files
+     * @return    bool
      */
     function __validateTeamPermissions($project_id = 0, $action = 'none_specified')
     {
@@ -3221,7 +3318,7 @@ class Ajax extends MY_Controller
     // -- DEBUGGING --------------------------------------------------------------------------------------------------------------
     /**
      * - ajax runs in the background, so we want to do as much logging as possibe for debugging
-     * 
+     *
      */
     function __ajaxdebugging()
     {
@@ -3246,9 +3343,9 @@ class Ajax extends MY_Controller
     /**
      * records new project events (timeline)
      *
-     * @access	private
-     * @param	string $type identify the loop to run in this function 
-     * @param   array $events_data an optional array that can be used to directly pass data       
+     * @access    private
+     * @param    string $type identify the loop to run in this function
+     * @param   array $events_data an optional array that can be used to directly pass data
      * @return void
      */
 

@@ -55,9 +55,14 @@
                                     <!--WI_MILESTONES_NAVIGATION-->
                                     <div class="row">
                                         <div class="col-lg-12">
-                                            <div class="tabs-sub-nav"> <span class="pull-left">
-                        <h3>[lang.lang_project_milestones]</h3>
-                        </span>
+                                            <div class="tabs-sub-nav">
+                                                <h3 class="pull-left">[lang.lang_project_milestones]</h3>
+                                                <button data-toggle="modal" class="btn btn-mid btn-success pull-right"
+                                                        href="#addMilestone">
+                                                    <!--[onshow;block=button;when [project_permissions.add_item_my_project_milestones] == 1;comm]-->
+                                                    <!--permissions-->
+                                                    <i class="icon-plus"></i> [lang.lang_add_milestone]
+                                                </button>
                                                 <button data-toggle="modal" class="btn btn-mid btn-success pull-right"
                                                         href="#addNewMilestomeModal">
                                                     <!--[onshow;block=button;when [project_permissions.add_item_my_project_milestones] == 1;comm]-->
