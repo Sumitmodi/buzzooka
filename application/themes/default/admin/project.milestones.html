@@ -59,7 +59,7 @@
                                                 <h3 class="pull-left">[lang.lang_project_milestones]</h3>
                                                 <button data-toggle="modal" class="btn btn-mid btn-success pull-right"
                                                         href="#addMilestone">
-                                                    <!--[onshow;block=button;when [project_permissions.add_item_my_project_milestones] == 1;comm]-->
+                                                    <!--[onshow;block=button;when [visible.import_templates] == 1;comm]-->
                                                     <!--permissions-->
                                                     <i class="icon-plus"></i> [lang.lang_add_milestone]
                                                 </button>
@@ -251,26 +251,30 @@
                         <h4 class="modal-title"> [lang.lang_add_new_milestone]</h4>
                     </div>
                     <div class="modal-body">
-                        <div class="form-group" style="margin-bottom:10px;">
-                            <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_title]</label>
-                            <div class="col-lg-12">
-                                <input type="text" class="form-control" id="milestones_title" name="milestones_title"
-                                       autocomplete="off">
-                            </div>
+                        <div class="form-group">
+                            <label class="label label-info">Milestone title</label>
+                            <input type="text" name="milestones_title" class="form-control"
+                                   placeholder="Enter milestone title"
+                                   required="required"/>
                         </div>
-                        <div class="form-group" style="margin-bottom:10px;">
-                            <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_start_date]</label>
-                            <div class="col-lg-12">
-                                <input type="text" class="form-control pickadate" name="milestones_start_date"
-                                       id="milestones_start_date">
-                            </div>
+                        <div class="form-group">
+                            <label class="label label-info"> [lang.lang_start_date]</label>
+                            <input type="text" class="form-control pickadate" name="milestones_start_date"
+                                   id="milestones_start_date"/>
                         </div>
-                        <div class="form-group" style="margin-bottom:10px;">
-                            <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_deadline]</label>
-                            <div class="col-lg-12">
-                                <input type="text" class="form-control pickadate" name="milestones_end_date"
-                                       id="milestones_end_date">
-                            </div>
+                        <div class="form-group">
+                            <label class="label label-info"> [lang.lang_end_date]</label>
+                            <input type="text" class="form-control pickadate" name="milestones_end_date"
+                                   id="milestones_end_date"/>
+                        </div>
+                        <div class="form-group">
+                            <label class="label label-info">[lang.lang_days]</label>
+                            <input type="text" name="days" class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <span class="label text-muted">
+                                Note: If start and end dates are provided, Milestone duration (days) will be ignored.
+                            </span>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -331,6 +335,17 @@
                                        id="milestones_end_date_edit" value="">
                             </div>
                         </div>
+                        <div class="form-group" style="margin-bottom:10px;">
+                            <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_days]</label>
+                            <div class="col-lg-12">
+                                <input type="text" name="days" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <span class="label text-muted">
+                                Note: If start and end dates are provided, Milestone duration (days) will be ignored.
+                            </span>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">
@@ -339,9 +354,7 @@
                         <input type="hidden" name="milestones_project_id" value="[vars.project_id;noerr]">
                         <input type="hidden" name="milestones_id" id="milestones_id_edit">
                         <input type="hidden" name="milestones_events_id" id="milestones_events_id_edit">
-                        <input class="btn btn-primary" type="submit" value="[lang.lang_edit_milestone]" id=""
-                               name="submit">
-                        </button>
+                        <input class="btn btn-primary" type="submit" value="[lang.lang_edit_milestone]" name="submit"/>
                     </div>
                 </div>
             </form>
@@ -378,6 +391,49 @@
     </div>
 </div>
 <!--WI_IFRAME_MODAL-->
+
+<div class="row">
+    <div id="addMilestone" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="" id="template-import">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                        <!--full screen icon - custom.js-->
+                        <button type="button" class="full-screen-modal close" aria-hidden="true"><i
+                                class="icon-fullscreen"></i></button>
+                        <!--full screen icon - custom.js-->
+                        <h4 class="modal-title"> [lang.lang_add_milestone]</h4>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="label label-info">[lang.select_template]</label>
+                            <!--select2.js pulldown-->
+                            <select id="templates-list" name="template" data-placeholder="[lang.lang_add_to_project]"
+                                    class="form-control" autocomplete="off">
+                                <option selected=""></option>
+                                [vars.templates;htmlconv=no]
+                            </select>
+                            <input type="hidden" name="milestones_project_id" value="[vars.project_id;noerr]">
+                            <input type="hidden" name="milestones_client_id" value="[vars.client_id;noerr]">
+                            <input type="hidden" name="milestones_created_by" value="[vars.my_id;noerr]">
+                            <input type="hidden" name="milestones_events_id" value="[vars.new_events_id;noerr]">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-default" aria-hidden="true">
+                            [lang.lang_save]
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <!----------------------COMMON PROJECT FOOTER--------------------------------->
 <!--[onload;file=common.project.footer.html;getbody;comm]-->
 <!----------------------COMMON PROJECT FOOTER--------------------------------->
@@ -389,14 +445,10 @@
         //REQUIRES: jquery.validate.js
         $("#addNewMilestone").validate({
             rules: {
-                milestones_start_date: "required",
-                milestones_end_date: "required",
                 milestones_title: "required"
             },
             messages: {
-                milestones_title: "[lang.lang_field_is_required]",
-                milestones_start_date: "[lang.lang_field_is_required]",
-                milestones_end_date: "[lang.lang_field_is_required]"
+                milestones_title: "[lang.lang_field_is_required]"
             },
             submitHandler: function (form) {
                 //alert('form submitted');
@@ -443,14 +495,10 @@
         //REQUIRES: jquery.validate.js
         $("#editMilestone").validate({
             rules: {
-                milestones_start_date: "required",
-                milestones_end_date: "required",
                 milestones_title: "required"
             },
             messages: {
-                milestones_title: "[lang.lang_field_is_required]",
-                milestones_start_date: "[lang.lang_field_is_required]",
-                milestones_end_date: "[lang.lang_field_is_required]"
+                milestones_title: "[lang.lang_field_is_required]"
             },
             submitHandler: function (form) {
                 //alert('form submitted');
@@ -463,5 +511,32 @@
 <!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
 <!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
 <!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<script type="text/javascript">
+    $(function () {
+        $('#template-import').submit(function (e) {
+            e.preventDefault();
+            $.ajax({
+                url: '[conf.site_url]/admin/ajax/project-import-milestone-templates',
+                type: 'post',
+                data: $(this).serialize(),
+                dataType: 'json',
+                success: function (res) {
+                    $('#addMilestone').modal('toggle');
+                    noty({
+                        text: res.message,
+                        layout: 'bottomRight',
+                        type: 'information',
+                        timeout: 1500
+                    });
+                    if (res.result == 'success') {
+                        setTimeout(function () {
+                            location.reload();
+                        }, 500);
+                    }
+                }
+            });
+        })
+    });
+</script>
 </body>
 </html>

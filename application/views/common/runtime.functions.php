@@ -809,7 +809,7 @@ function runtime_country_code($FieldName, &$CurrVal, &$CurrPrm)
     /*-------------------------------------------------------------------------*/
     $country_list = array(
         'AFG' => 'Afghanistan',
-        'ALA' => 'Åland Islands',
+        'ALA' => 'ï¿½land Islands',
         'ALB' => 'Albania',
         'DZA' => 'Algeria',
         'ASM' => 'American Samoa',
@@ -862,10 +862,10 @@ function runtime_country_code($FieldName, &$CurrVal, &$CurrPrm)
         'COD' => 'Congo, the Democratic Republic of the',
         'COK' => 'Cook Islands',
         'CRI' => 'Costa Rica',
-        'CIV' => 'Côte dIvoire',
+        'CIV' => 'Cï¿½te dIvoire',
         'HRV' => 'Croatia',
         'CUB' => 'Cuba',
-        'CUW' => 'Curaçao',
+        'CUW' => 'Curaï¿½ao',
         'CYP' => 'Cyprus',
         'CZE' => 'Czech Republic',
         'DNK' => 'Denmark',
@@ -988,11 +988,11 @@ function runtime_country_code($FieldName, &$CurrVal, &$CurrPrm)
         'PRT' => 'Portugal',
         'PRI' => 'Puerto Rico',
         'QAT' => 'Qatar',
-        'REU' => 'Réunion',
+        'REU' => 'Rï¿½union',
         'ROU' => 'Romania',
         'RUS' => 'Russian Federation',
         'RWA' => 'Rwanda',
-        'BLM' => 'Saint Barthélemy',
+        'BLM' => 'Saint Barthï¿½lemy',
         'SHN' => 'Saint Helena',
         'KNA' => 'Saint Kitts and Nevis',
         'LCA' => 'Saint Lucia',
@@ -1368,7 +1368,7 @@ function tbs_runtime_daysleft($FieldName, &$CurrVal, &$CurrPrm)
     return $CurrVal;
 }
 
-//________________________________________________________________FORMT SECONDS INTO HOURS______________________________________________________
+//________________________________________________________________FORMAT SECONDS INTO HOURS______________________________________________________
 /**
  * Takes a mysql datetime input and returns it as  1hr 30min ago (how long ago)
  * if date is more than 24hrs in the past, it will just return the date/time...

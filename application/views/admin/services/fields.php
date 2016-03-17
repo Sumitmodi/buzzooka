@@ -60,7 +60,7 @@ if (false == $fields) {
                                     </div>
                                 </td>
                                 <td>
-                                    <input type="checkbox" name="delete[]" value="<?php echo $k; ?>">
+                                    <input type="checkbox" name="delete[]" value="<?php echo $k; ?>"> <?php echo $this->lang->line('lang_delete'); ?>
                                 </td>
                             </tr>
                         <?php } ?>

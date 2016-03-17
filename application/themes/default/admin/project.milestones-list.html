@@ -72,6 +72,8 @@
                                                data-target="#modify-milestone"
                                                title="Edit"
                                                data-title="[milestones.title]"
+                                               data-start="[milestones.start_date]"
+                                               data-end="[milestones.end_date]"
                                                data-days="[milestones.days]"
                                                id="edit-milestone"
                                             >
@@ -146,8 +148,23 @@
                                    required="required"/>
                         </div>
                         <div class="form-group">
+                            <label class="label label-info"> [lang.lang_start_date]</label>
+                            <input type="text" class="form-control pickadate" name="milestones_start_date"
+                                   id="milestones_start_date"/>
+                        </div>
+                        <div class="form-group">
+                            <label class="label label-info"> [lang.lang_end_date]</label>
+                            <input type="text" class="form-control pickadate" name="milestones_end_date"
+                                   id="milestones_end_date"/>
+                        </div>
+                        <div class="form-group">
                             <label class="label label-info">[lang.lang_days]</label>
-                            <input type="text" name="days" class="form-control" required="required"/>
+                            <input type="text" name="days" class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <span class="label text-muted">
+                                Note: If start and end dates are provided, Milestone duration (days) will be ignored.
+                            </span>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -185,8 +202,23 @@
                                    required="required"/>
                         </div>
                         <div class="form-group">
+                            <label class="label label-info"> [lang.lang_start_date]</label>
+                            <input type="text" class="form-control pickadate" name="milestones_start_date"
+                                   id="edit-start"/>
+                        </div>
+                        <div class="form-group">
+                            <label class="label label-info"> [lang.lang_end_date]</label>
+                            <input type="text" class="form-control pickadate" name="milestones_end_date"
+                                   id="edit-end"/>
+                        </div>
+                        <div class="form-group">
                             <label class="label label-info">[lang.lang_days]</label>
-                            <input type="text" name="days" id="edit-days" class="form-control" required="required"/>
+                            <input type="text" name="days" id="edit-days" class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <span class="label text-muted">
+                                Note: If start and end dates are provided, Milestone duration (days) will be ignored.
+                            </span>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -223,7 +255,6 @@
                     <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">
                         [lang.lang_close]
                     </button>
-                    </button>
                 </div>
             </div>
         </div>
@@ -241,11 +272,15 @@
         var id = $('#edit-id');
         var title = $('#edit-title');
         var days = $('#edit-days');
+        var start = $('#edit-start');
+        var end = $('#edit-end');
         $('a#edit-milestone').click(function () {
             var data = $(this).data();
             id.val(data.id);
             title.val(data.title);
             days.val(data.days);
+            start.val(data.start);
+            end.val(data.end);
         });
         $('.modify-milestone').submit(function (e) {
             e.preventDefault();
@@ -266,6 +301,8 @@
                     modal_button.data('id', id.val());
                     modal_button.data('title', title.val());
                     modal_button.data('days', days.val());
+                    modal_button.data('start', start.val());
+                    modal_button.data('end', end.val());
 
                     $('#modify-milestone').modal('toggle');
                     setTimeout(function () {

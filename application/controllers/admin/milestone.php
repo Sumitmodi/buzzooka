@@ -161,13 +161,24 @@ class Milestone extends MY_Controller
         $this->data['vars']['main_title'] .= ' : ' . $group['title'];
 
         if ($this->input->post()) {
-            $insert = array(
-                'title' => $this->input->post('title', true),
-                'days' => $this->input->post('days', true),
-                'group_id' => $group_id,
-                'user_id' => $this->session->userdata('team_profile_id')
-            );
 
+            if (false != $this->input->post('milestones_start_date') && false != $this->input->post('milestones_end_date')) {
+                $start = new DateTime($this->input->post('milestones_start_date'));
+                $end = new DateTime($this->input->post('milestones_end_date'));
+                $days = $end->diff($start)->format('%a');
+                $insert = array(
+                    'start_date' => $this->input->post('milestones_start_date'),
+                    'end_date' => $this->input->post('milestones_end_date'),
+                    'days' => $days
+                );
+            } else {
+                $insert = array(
+                    'days' => $this->input->post('days', true)
+                );
+            }
+            $insert['title'] = $this->input->post('title', true);
+            $insert['user_id'] = $this->session->userdata('team_profile_id');
+            $insert['group_id'] = $this->uri->segment(4);
 
             if ($this->db->insert('milestone_lists', $insert)) {
                 $this->notices('success', 'New milestone added.');
@@ -214,52 +225,64 @@ class Milestone extends MY_Controller
 
     function __addMilestoneGroupToProject()
     {
-        $project = $this->input->post('projects_title', true);
-        $group = $this->input->post('groud_id', true);//typo in here
+        $this->__listMilestoneGroups();
+        $project_id = $this->input->post('projects_title', true);
+        $group = $this->input->post('group_id', true);//typo in here
 
-        $res = $this->db->where('projects_id', $project)->get('projects');
+        $project = $this->db->where('projects_id', $project_id)->get('projects')->row();
 
-        if ($res->num_rows() == 0) {
+        if (false == $project) {
             $this->notices('error', 'Selected project does not exist.');
 
         } else {
-            $client = $res->row()->projects_clients_id;
+            $client = $project->projects_clients_id;
 
-            $query = "SELECT title,start_date,end_date,id from milestone_lists where group_id = '{$group}'";
+            $query = "SELECT title,start_date,end_date,id,days from milestone_lists where group_id = '{$group}'";
             $res = $this->db->query($query);
 
             if ($res->num_rows() == 0) {
                 $this->notices('error', 'Milestones have not been added to this group of milestones.');
 
             } else {
-                $milestones = $res->result_object();
-                $insert = array();
-
-                foreach ($milestones as $m) {
-                    $temp = array(
-                        'milestones_project_id' => $project,
-                        'milestones_title' => $m->title,
-                        'milestones_start_date' => $m->start_date,
-                        'milestones_end_date' => $m->end_date,
+                $r = $this->db->where('milestones_project_id', $project_id)->get('milestones');
+                $milestones = array();
+                if ($r->num_rows() > 0) {
+                    foreach ($r->result_object() as $mi) {
+                        if (empty($mi->milestones_list_id)) {
+                            continue;
+                        }
+                        $milestones[] = $mi->milestones_list_id;
+                    }
+                }
+                foreach ($res->result_object() as $row) {
+                    $data = array(
+                        'milestones_project_id' => $project_id,
+                        'milestones_title' => $row->title,
                         'milestones_created_by' => $this->session->userdata('team_profile_id'),
                         'milestones_events_id' => $this->data['vars']['new_events_id'],
-                        'milestones_client_id' => $client
+                        'milestones_client_id' => $client,
                     );
-
-                    array_push($insert, $temp);
+                    if (empty($row->start_date) || empty($row->end_date)) {
+                        $data['milestones_start_date'] = $project->projects_start;
+                        if (!empty($row->days)) {
+                            $data['milestones_end_date'] = $project->projects_end;
+                        } else {
+                            $data['milestones_end_date'] = date('Y-m-d', strtotime($project->projects_start . "+{$row->days} days"));
+                        }
+                    } else {
+                        $data['milestones_start_date'] = $row->start_date;
+                        $data['milestones_end_date'] = $row->end_date;
+                    }
+                    if (!empty($milestones) && in_array($row->id, $milestones)) {
+                        $this->db->where('milestones_project_id', $this->input->post('milestones_project_id', true))->where('milestones_list_id', $row->id)->update('milestones', $data);
+                    } else {
+                        $data['milestones_list_id'] = $row->id;
+                        $this->db->insert('milestones', $data);
+                    }
                 }
-
-                if ($this->db->insert_batch('milestones', $insert)) {
-                    $this->notices('success', 'Milestones added to selected project successfully.');
-
-                } else {
-                    $this->notices('error', 'Milestones could not be added to selected project.');
-
-                }
+                $this->notices('success', 'Milestones added to selected project successfully.');
             }
         }
-
-        $this->__listMilestoneGroups();
     }
 
     /**

@@ -876,9 +876,13 @@ $lang['lang_confirm_delete_milestone'] = 'Are you sure you want to delete this m
 $lang['lang_days'] = 'Days';
 $lang['lang_active'] = 'Active';
 $lang['lang_inactive'] = 'Inactive';
-$lang['lang_deadline'] = 'Deadline';
-$lang['lang_add_milestone'] = 'Add from Milestones';
+$lang['lang_deadline'] = 'Deadline (Days)';
+$lang['lang_add_milestone'] = 'Add from Templates';
 $lang['lang_field'] = 'Add a field';
+$lang['add_new_template'] = 'Add New Template';
+$lang['select_template'] = 'Select a template';
+$lang['lang_citations'] = 'Citations';
+
 //$lang['lang_milestones'] = 'Reports';
 /* End of file default_lang.php */
 /* Location: ./application/language/english/default_lang.php */

@@ -85,4 +85,10 @@ class Model extends CI_Model
         }
         return $this->db->insert_batch('projects_optionalfields', $data);
     }
+
+    public function allMilestoneTemplates()
+    {
+        $res = $this->db->get('milestone_groups');
+        return $res->num_rows() == 0 ? false : $res->result_array();
+    }
 }

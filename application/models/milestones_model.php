@@ -1,6 +1,6 @@
 <?php
 
-if (! defined('BASEPATH')) {
+if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
 
@@ -36,11 +36,11 @@ class Milestones_model extends Super_Model
     /**
      * retrieve all mile stone for a given project
      *
-     * 
-     * @param	string $orderby: table sorting] (optional)
-     * @param   string $sort: asc/desc] (optional)
-     * @param   numeric $project_id] (optional)
-     * @return	array
+     *
+     * @param    string $orderby : table sorting] (optional)
+     * @param   string $sort : asc/desc] (optional)
+     * @param   numeric $project_id ] (optional)
+     * @return    array
      */
 
     function allMilestones($orderby = 'milestones_title', $sort = 'ASC', $project_id = '')
@@ -53,7 +53,7 @@ class Milestones_model extends Super_Model
         $conditional_sql = '';
 
         //check if any specifi ordering was passed
-        if (! $this->db->field_exists($orderby, 'milestones')) {
+        if (!$this->db->field_exists($orderby, 'milestones')) {
             $orderby = 'milestones_title';
         }
 
@@ -107,7 +107,7 @@ class Milestones_model extends Super_Model
     // -- listMilestones ----------------------------------------------------------------------------------------------
     /**
      * search/list milestone, paginated
-     * @return	array
+     * @return    array
      */
 
     function listMilestones($offset = 0, $type = 'search', $project_id = '')
@@ -121,7 +121,7 @@ class Milestones_model extends Super_Model
         $limiting = '';
 
         //if no valie client id, return false
-        if (! is_numeric($project_id)) {
+        if (!is_numeric($project_id)) {
             $this->__debugging(__line__, __function__, 0, "Invalid Data [project id=$project_id]", '');
             return false;
         }
@@ -161,7 +161,7 @@ class Milestones_model extends Super_Model
             'sortby_title' => 'milestones.milestones_title',
             'sortby_start_date' => 'milestones.milestones_start_date',
             'sortby_end_date' => 'milestones.milestones_end_date');
-        $sort_by = (array_key_exists(''.$this->uri->segment(7), $sort_columns)) ? $sort_columns[$this->uri->segment(7)] : 'milestones.milestones_id';
+        $sort_by = (array_key_exists('' . $this->uri->segment(7), $sort_columns)) ? $sort_columns[$this->uri->segment(7)] : 'milestones.milestones_id';
         $sorting_sql = "ORDER BY $sort_by $sort_order";
 
         //are we searching records or just counting rows
@@ -232,9 +232,9 @@ class Milestones_model extends Super_Model
     /**
      * add new milstone to database
      *
-     * 
-     * @param	void
-     * @return	mixed [record insert id / bool(false)]
+     *
+     * @param    void
+     * @return    mixed [record insert id / bool(false)]
      */
 
     function addMilestone()
@@ -246,10 +246,32 @@ class Milestones_model extends Super_Model
         //declare
         $conditional_sql = '';
 
+        if (empty($_POST['milestones_start_date']) && empty($_POST['milestones_end_date']) && empty($_POST['days'])) {
+            return false;
+        }
+
+        $project = $this->db->where('projects_id', $_POST['milestones_project_id'])->get('projects')->row();
+
+        if (empty($_POST['milestones_start_date'])) {
+            $_POST['milestones_start_date'] = $project->projects_start;
+            if (empty($_POST['days'])) {
+                $_POST['milestones_end_date'] = $project->projects_end;
+            } else {
+                $_POST['milestones_end_date'] = date('Y-m-d', strtotime($project->projects_start . "+{$_POST['days']} days"));
+            }
+        }
+
+        /*$ms = new DateTime($_POST['milestones_start_date']);
+        $me = new DateTime($_POST['milestones_end_date']);
+        $ps = new DateTime($project->projects_start);
+        $pe = new DateTime($project->projects_end);*/
+
+
         //escape all post item
         foreach ($_POST as $key => $value) {
             $$key = $this->db->escape($this->input->post($key));
         }
+
 
         //----------sql & benchmarking start----------
         $this->benchmark->mark('code_start');
@@ -310,9 +332,9 @@ class Milestones_model extends Super_Model
     /**
      * counts milestones "for given project" (of various statu e.g in_progress, completed, behind_schedule
      *
-     * 
-     * @param	string [count_type: the type of milestone ststus], [project_id]
-     * @return	array
+     *
+     * @param    string [count_type: the type of milestone ststus], [project_id]
+     * @return    array
      */
 
     function countMilestones($project_id = '', $count_type = '')
@@ -325,7 +347,7 @@ class Milestones_model extends Super_Model
         $conditional_sql = '';
 
         //if no valie client id, return false
-        if (! is_numeric($project_id)) {
+        if (!is_numeric($project_id)) {
             $this->__debugging(__line__, __function__, 0, "Invalid Data [project id=$project_id]", '');
             return false;
         }
@@ -339,7 +361,7 @@ class Milestones_model extends Super_Model
             'all');
 
         //checkf if type is valid
-        if (! in_array($count_type, $count_types)) {
+        if (!in_array($count_type, $count_types)) {
             $this->__debugging(__line__, __function__, 0, "Invalid Data [count_type =$count_type]", '');
             return false;
         }
@@ -413,9 +435,9 @@ class Milestones_model extends Super_Model
     /**
      * edit a milestones details
      *
-     * 
-     * @param	void
-     * @return	numeric [affected rows]
+     *
+     * @param    void
+     * @return    numeric [affected rows]
      */
 
     function editMilestone()
@@ -428,9 +450,24 @@ class Milestones_model extends Super_Model
         $conditional_sql = '';
 
         //if milestone id value exists in the post data
-        if (! is_numeric($this->input->post('milestones_id'))) {
+        if (!is_numeric($this->input->post('milestones_id'))) {
             $this->__debugging(__line__, __function__, 0, "Invalid Data [milestone id: is not numeric/is unavailable]", '');
             return false;
+        }
+
+        if (empty($_POST['milestones_start_date']) && empty($_POST['milestones_end_date']) && empty($_POST['days'])) {
+            return false;
+        }
+
+        $project = $this->db->where('projects_id', $_POST['milestones_project_id'])->get('projects')->row();
+
+        if (empty($_POST['milestones_start_date'])) {
+            $_POST['milestones_start_date'] = $project->projects_start;
+            if (empty($_POST['days'])) {
+                $_POST['milestones_end_date'] = $project->projects_end;
+            } else {
+                $_POST['milestones_end_date'] = date('Y-m-d', strtotime($project->projects_start . "+{$_POST['days']} days"));
+            }
         }
 
         //escape all post item
@@ -486,10 +523,10 @@ class Milestones_model extends Super_Model
     /**
      * delete a single milestone based on its ID
      *
-     * 
-     * @param numeric $id]
-     * @param   string $delete_by: milestone-id, project-id, client-id]
-     * @return	bool
+     *
+     * @param numeric $id ]
+     * @param   string $delete_by : milestone-id, project-id, client-id]
+     * @return    bool
      */
 
     function deleteMilestone($id = '', $delete_by = '')
@@ -502,7 +539,7 @@ class Milestones_model extends Super_Model
         $conditional_sql = '';
 
         //if no valie client id, return false
-        if (! is_numeric($id)) {
+        if (!is_numeric($id)) {
             $this->__debugging(__line__, __function__, 0, "Invalid Data [milestones_id=$id]", '');
             //ajax-log error to file
             log_message('error', '[FILE: ' . __file__ . ']  [FUNCTION: ' . __function__ . ']  [LINE: ' . __line__ . "]  [MESSAGE: deleting milestone failed (milestones_id: $id is invalid)]");
@@ -515,7 +552,7 @@ class Milestones_model extends Super_Model
             'project-id',
             'client-id');
 
-        if (! in_array($delete_by, $valid_delete_by)) {
+        if (!in_array($delete_by, $valid_delete_by)) {
             $this->__debugging(__line__, __function__, 0, "Invalid Data [delete_by=$delete_by]", '');
             //ajax-log error to file
             log_message('error', '[FILE: ' . __file__ . ']  [FUNCTION: ' . __function__ . ']  [LINE: ' . __line__ . "]  [MESSAGE: deleting milestones failed (delete_by: $delete_by is invalid)]");
@@ -591,9 +628,9 @@ class Milestones_model extends Super_Model
     /**
      * full details of a single milestone
      *
-     * 
+     *
      * @param numeric
-     * @return	array
+     * @return    array
      */
 
     function milestoneDetails($id = '')
@@ -606,7 +643,7 @@ class Milestones_model extends Super_Model
         $conditional_sql = '';
 
         //if no valie client id, return false
-        if (! is_numeric($id)) {
+        if (!is_numeric($id)) {
             $this->__debugging(__line__, __function__, 0, "Invalid Data [milestone id=$group_id]", '');
             return false;
         }
@@ -653,11 +690,11 @@ class Milestones_model extends Super_Model
     // -- bulkDelete ----------------------------------------------------------------------------------------------
     /**
      * bulk delete based on list of project ID's
-     * typically used when deleting project/s 
+     * typically used when deleting project/s
      *
-     * 
-     * @param	string [projects_list: a mysql array/list formatted projects list] [e.g. 1,2,3,4]
-     * @return	bool
+     *
+     * @param    string [projects_list: a mysql array/list formatted projects list] [e.g. 1,2,3,4]
+     * @return    bool
      */
 
     function bulkDelete($projects_list = '')
@@ -675,7 +712,7 @@ class Milestones_model extends Super_Model
         //sanity check - ensure we have a valid projects_list, with only numeric id's
         $lists = explode(',', $projects_list);
         for ($i = 0; $i < count($lists); $i++) {
-            if (! is_numeric(trim($lists[$i]))) {
+            if (!is_numeric(trim($lists[$i]))) {
                 //log error
                 log_message('error', '[FILE: ' . __file__ . ']  [FUNCTION: ' . __function__ . ']  [LINE: ' . __line__ . "]  [MESSAGE: Bulk Deleting milestones, for projects($clients_projects) failed. Invalid projects list]");
                 //exit

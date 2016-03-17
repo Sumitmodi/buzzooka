@@ -116,6 +116,14 @@ class Milestones extends MY_Controller
                 break;
         }
 
+        $templates = $this->crm->allMilestoneTemplates();
+        if (false != $templates) {
+            $this->data['vars']['templates'] = create_pulldown_list($templates,'milestone-group','id');
+            $this->data['visible']['import_templates'] = 1;
+        } else {
+            $this->data['visible']['import_templates'] = 0;
+        }
+
         //css - active tab
         $this->data['vars']['css_active_tab_milestones'] = 'side-menu-main-active';
 
@@ -288,7 +296,7 @@ class Milestones extends MY_Controller
 
             //add control visibility into $thedata array
             $thedata[$i]['wi_milestones_control_buttons'] = $visibility_control;
-            $thedata[$i]['milestones_index'] = $i+1;
+            $thedata[$i]['milestones_index'] = $i + 1;
 
         }
 
@@ -492,15 +500,13 @@ class Milestones extends MY_Controller
 
         //profiling
         $this->data['controller_profiling'][] = __function__;
-
         //form validation
         if ($form == 'add_milestone' || $form == 'edit_milestone') {
 
             //check required fields
             $fields = array(
-                'milestones_title' => $this->data['lang']['lang_title'],
-                'milestones_start_date' => $this->data['lang']['lang_start_date'],
-                'milestones_end_date' => $this->data['lang']['lang_end_date']);
+                'milestones_title' => $this->data['lang']['lang_title']
+            );
             if (!$this->form_processor->validateFields($fields, 'required')) {
                 return false;
             }

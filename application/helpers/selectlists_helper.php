@@ -28,6 +28,11 @@ function create_pulldown_list($data, $type = 'users', $key = 'name')
     //determine date to place in the value="" attribute of the list
     switch ($type) {
 
+        case 'milestone-group':
+            $name_key = 'title';
+            $id_key = 'id';
+            break;
+
         case 'clients':
             $name_key = 'clients_company_name';
             $id_key = 'clients_id';

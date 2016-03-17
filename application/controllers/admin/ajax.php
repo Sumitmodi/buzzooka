@@ -209,6 +209,10 @@ class Ajax extends MY_Controller
                 $this->__deletePayment();
                 break;
 
+            case 'project-import-milestone-templates':
+                $this->__bulkImportTemplates();
+                break;
+
             default:
                 $this->__default($action);
                 break;
@@ -217,6 +221,60 @@ class Ajax extends MY_Controller
         //log debug data
         $this->__ajaxdebugging();
 
+    }
+
+    protected function __bulkImportTemplates()
+    {
+        $res = $this->db->where('group_id', intval($this->input->post('template', true)))->get('milestone_lists');
+        if ($res->num_rows() == 0) {
+            $this->jsondata = array(
+                'result' => 'error',
+                'message' => $this->data['lang']['lang_request_could_not_be_completed']
+            );
+        } else {
+            $project = $this->db->where('projects_id', $this->input->post('milestones_project_id', true))->get('projects')->row();
+            $r = $this->db->where('milestones_project_id', $this->input->post('milestones_project_id', true))->get('milestones');
+            $milestones = array();
+            if ($r->num_rows() > 0) {
+                foreach ($r->result_object() as $mi) {
+                    if (empty($mi->milestones_list_id)) {
+                        continue;
+                    }
+                    $milestones[] = $mi->milestones_list_id;
+                }
+            }
+            foreach ($res->result_object() as $row) {
+                $data = array(
+                    'milestones_project_id' => $this->input->post('milestones_project_id', true),
+                    'milestones_title' => $row->title,
+                    'milestones_created_by' => $this->input->post('milestones_created_by', true),
+                    'milestones_events_id' => $this->input->post('milestones_events_id', true),
+                    'milestones_client_id' => $this->input->post('milestones_client_id', true),
+                );
+                if (empty($row->start_date) || empty($row->end_date)) {
+                    $data['milestones_start_date'] = $project->projects_start;
+                    if (!empty($row->days)) {
+                        $data['milestones_end_date'] = $project->projects_end;
+                    } else {
+                        $data['milestones_end_date'] = date('Y-m-d', strtotime($project->projects_start . "+{$row->days} days"));
+                    }
+                } else {
+                    $data['milestones_start_date'] = $row->start_date;
+                    $data['milestones_end_date'] = $row->end_date;
+                }
+                if (!empty($milestones) && in_array($row->id, $milestones)) {
+                    $this->db->where('milestones_project_id', $this->input->post('milestones_project_id', true))->where('milestones_list_id', $row->id)->update('milestones', $data);
+                } else {
+                    $data['milestones_list_id'] = $row->id;
+                    $this->db->insert('milestones', $data);
+                }
+            }
+            $this->jsondata = array(
+                'result' => 'success',
+                'message' => $this->data['lang']['lang_request_has_been_completed']
+            );
+        }
+        $this->__flmView('common/json');
     }
 
     protected function __saveMilestoneGroup()
@@ -242,10 +300,22 @@ class Ajax extends MY_Controller
 
     protected function __saveMilestoneSingle()
     {
-        $data = array(
-            'title' => $this->input->post('title', true),
-            'days' => $this->input->post('days', true)
-        );
+        if (false != $this->input->post('milestones_start_date') && false != $this->input->post('milestones_end_date')) {
+            $start = new DateTime($this->input->post('milestones_start_date'));
+            $end = new DateTime($this->input->post('milestones_end_date'));
+            $days = $end->diff($start)->format('%a');
+            $data = array(
+                'start_date' => $this->input->post('milestones_start_date'),
+                'end_date' => $this->input->post('milestones_end_date'),
+                'days' => $days
+            );
+        } else {
+            $data = array(
+                'days' => $this->input->post('days', true)
+            );
+        }
+        $data['title'] = $this->input->post('title', true);
+
         if ($this->db->where('id', $this->input->post('id', true))->update('milestone_lists', $data)) {
             $this->jsondata = array(
                 'result' => 'success',
