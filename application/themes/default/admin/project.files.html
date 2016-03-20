@@ -97,11 +97,13 @@
     .card-footer ul li {
         padding: 0 5px;
     }
-    .modal-full-screen{
-        min-height:768px;
+
+    .modal-full-screen {
+        min-height: 768px;
         padding-top: 0;
     }
-    .card-img{
+
+    .card-img {
         bottom: 0;
         left: 0;
         margin: auto;
@@ -114,6 +116,7 @@
         width: auto;
         height: 48px;
     }
+
     a[data-type=jpg] img,
     a[data-type=png] img,
     a[data-type=gif] img,
@@ -121,12 +124,13 @@
     a[data-type=JPG] img,
     a[data-type=PNG] img,
     a[data-type=GIF] img,
-    a[data-type=TIFF] img{
+    a[data-type=TIFF] img {
         width: 100%;
         max-height: 145px;
         height: auto;
     }
-    .dropdown-caret{
+
+    .dropdown-caret {
         background-color: #eee;
         border-radius: 50%;
         height: 22px;
@@ -603,7 +607,15 @@
 <!----------------------COMMON PROJECT FOOTER--------------------------------->
 <!--JS_ADD_NEW_FILE_MODAL-->
 <style type="text/css">
-    object { margin: 0px; padding: 0px; position: absolute; height: 100%; width: 100%; overflow: hidden; background-color: #000; }
+    object {
+        margin: 0px;
+        padding: 0px;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+        background-color: #000;
+    }
 </style>
 <script type="text/javascript">
     $(function () {
@@ -664,7 +676,8 @@
 </script>
 <!--JS_ADD_NEW_FILE_MODAL-->
 <!--JS_SIMPLE_AJAX_UPLOADER -->
-<script type="text/javascript" src="[conf.site_url_themes_common;noerr]/js/simpleajaxuploader/SimpleAjaxUploader.js"></script>
+<script type="text/javascript"
+        src="[conf.site_url_themes_common;noerr]/js/simpleajaxuploader/SimpleAjaxUploader.js"></script>
 <!--JS_SIMPLE_AJAX_UPLOADER -->
 <!--JS_LANG_AJAX_FILE_UPLOAD-->
 <script>
@@ -673,8 +686,15 @@
     //-------------------------------------------------------------------------------
     //variabled
     var upload_url = "[conf.site_url;noerr]/common/ajax/upload-project-file/[vars.project_id;noerr]/team";
-    var js_files_project_allowed_types =[vars.js_allowed_types;protect = no;noerr];
-    var js_file_size_limit = [vars.js_file_size_limit;noerr];
+    var js_files_project_allowed_types = [vars.js_allowed_types;
+    protect = no;
+    noerr
+    ]
+    ;
+    var js_file_size_limit = [vars.js_file_size_limit;
+    noerr
+    ]
+    ;
     //language
     var lang_file_too_big = "[lang.lang_upload_invalid_filesize;noerr]";
     var lang_your_file_has_been_uploaded = "[lang.lang_file_has_been_attached;noerr]";

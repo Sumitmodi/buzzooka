@@ -90,7 +90,8 @@ class Quotation extends MY_Controller
 
     protected function saveColor()
     {
-        if ($this->session->userdata('team_profile_full_name') == 'admin') {
+
+        if (strtolower($this->session->userdata('groups_name')) == 'administrator') {
             $id = $this->input->post('id');
             $bkg = $this->input->post('bkg_color');
             $txt = $this->input->post('txt_color');
@@ -154,7 +155,7 @@ class Quotation extends MY_Controller
         $next = true;
 
         $this->data['vars']['logged_in'] = 0;
-        if ($this->session->userdata('team_profile_full_name') == 'admin') {
+        if (strtolower($this->session->userdata('groups_name')) == 'administrator') {
             $this->data['vars']['logged_in'] = 1;
         }
 

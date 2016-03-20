@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+    <link href="../common/style/bootstrap.css" rel="stylesheet">
+    <link href="../common/style/style.css" rel="stylesheet">
+    <!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+    <!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<body>
+<style type="text/css">
+    /*.citations-table{
+        font-weight:bold;
+    }
+    .citations-table tbody tr td,
+    .citations-table thead tr th{
+        font-size:15px;
+        padding: 15px 6px;
+    }
+    .citations-table tbody tr.unknown:nth-child(2n) td{
+        background-color: rgba(139, 0, 0, 0.02);
+    }
+
+    .citations-table tbody tr.live:nth-child(2n) td{
+        background-color: rgba(142, 193, 101, 0.1);
+    }
+
+    .citations-table tbody tr.pending:nth-child(2n) td{
+        background-color: rgba(255, 165, 0, 0.05)
+    }
+
+    .btn-view,.btn-view:hover,.btn-view:link,.btn-view:focus,.btn-view:visited,.btn-view:active{
+        text-decoration: none;
+        cursor: pointer;
+        background-color: rgba(142, 193, 101, 1);
+        -webkit-border-radius:3px;
+        -moz-border-radius:3px;
+        border-radius:3px;
+        padding: 7px 20px;
+        color: rgba(255, 255, 255, 1);
+    }
+    td.pending{
+        color : orange !important;
+    }
+    a.pending{
+        background-color: orange !important;
+    }
+    td.live{
+        color : rgba(142, 193, 101, 1) !important;
+    }
+    a.live{
+        background-color: rgba(142, 193, 101, 1) !important;
+    }*/
+    a.disabled,.disabled {
+        background-color: #ccc;
+    }
+</style>
+<!--JS SECTION - ONLOAD-->
+<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+<!--JS SECTION - ONLOAD-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--[onload;file=../common/include.debug.html;getbody;comm]-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--HEADER SECTION - ONLOAD-->
+<!--[onload;file=common.header.html;getbody;comm]-->
+<!--HEADER SECTION - ONLOAD-->
+<!-- Main content starts -->
+<div class="content">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!--SIDE MENU - ONLOAD -->
+        <!--[onload;file=common.menu.html;getbody;comm]-->
+        <!--SIDE MENU - ONLOAD -->
+    </div>
+    <!-- Sidebar ends -->
+    <div class="mainbar">
+        <!----------------------COMMON PAGE HEADING--------------------------------->
+        <!--[onload;file=common.heading.html;getbody;comm]-->
+        <!----------------------COMMON PAGE HEADING--------------------------------->
+        <div class="matter">
+            <!----------------------COMMON PROJECT HEAD--------------------------------->
+            <!--[onload;file=common.project.header.html;getbody;comm]-->
+            <!----------------------COMMON PROJECT HEAD--------------------------------->
+            <div class="container">
+                <div class="row">
+                    <!--WI_PROJECT_NAV_CONTENT-->
+                    <div class="col-md-3">
+                        <!----------------------COMMON PROJECT MENU--------------------------------->
+                        <!--[onload;file=common.project.navigation.html;getbody;comm]-->
+                        <!----------------------COMMON PROJECT MENU--------------------------------->
+                    </div>
+                    <!--WI_PROJECT_NAV_CONTENT-->
+                    <!------------------------------------CITATION-DETAILS--------------------------------------------------->
+                    <div class="col-md-9">
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <!--my projects-->
+                                <div class="col-lg-4 col-sm-4 col-xs-12 no-padding"
+                                     data-link="[conf.site_url]/admin/myprojects">
+                                    <div class="box-content dashboard-top-stats display-table no-border">
+                                        <div class="col-xs-5 display-cell no-padding"><i
+                                                class="icon-folder-open dashboard-top-stats-icon bg-success"></i>
+                                        </div>
+                                        <div class="col-xs-7 display-cell no-padding">
+                                            <div class="dashboard-top-stats-heading">[lang.lang_live]
+                                            </div>
+                                            <div class="dashboard-top-stats-value">
+                                                [vars.live;onformat=runtime_number]
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--my projects-->
+                                <!--my tasks-->
+                                <div class="col-lg-4 col-sm-4 col-xs-12"
+                                     data-link="[conf.site_url]/admin/mytasks">
+                                    <div class="box-content dashboard-top-stats display-table no-border">
+                                        <div class="col-xs-5 display-cell no-padding"><i
+                                                class="icon-list-ul dashboard-top-stats-icon bg-info"></i>
+                                        </div>
+                                        <div class="col-xs-7 display-cell no-padding">
+                                            <div class="dashboard-top-stats-heading">[lang.lang_submitted]
+                                            </div>
+                                            <div class="dashboard-top-stats-value">
+                                                [vars.submitted;onformat=runtime_number]
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--my tasks end-->
+                                <!--tickets-->
+                                <div class="col-lg-4 col-sm-4 col-xs-12 no-padding-right"
+                                     data-link="[conf.site_url]/admin/tickets/list/open">
+                                    <div class="box-content dashboard-top-stats display-table no-border">
+                                        <div class="col-xs-5 display-cell no-padding"><i
+                                                class="icon-file-text dashboard-top-stats-icon bg-warning"></i>
+                                        </div>
+                                        <div class="col-xs-7 display-cell no-padding">
+                                            <div class="dashboard-top-stats-heading">[lang.lang_pending]</div>
+                                            <div class="dashboard-top-stats-value">
+                                                [vars.pending;onformat=runtime_number]
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="widget">
+                            <div class="widget-content widget-content-project">
+                                <div class="project-info-tabs">
+                                    <div class="col-lg-12">
+                                        <div class="tabs-sub-nav">
+                                            <h3 class="pull-left">[lang.lang_citations]</h3>
+                                            <button data-toggle="modal" class="btn btn-mid btn-success pull-right"
+                                                    href="#upload-csv">
+                                                <i class="icon-plus"></i> [lang.upload_file]
+                                            </button>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <!--[onshow;block=div;when [visible.citations] == 1;comm]-->
+                                        <table class="table citations-table table-striped table-responsive">
+                                            <thead>
+                                            <tr>
+                                                <th>
+                                                    [lang.lang_hash]
+                                                </th>
+                                                <th>
+                                                    [lang.lang_site]
+                                                </th>
+                                                <th>
+                                                    [lang.lang_status]
+                                                </th>
+                                                <th>
+                                                    [lang.lang_action]
+                                                </th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr class="[citations.status;onformat=tolowercase]">
+                                                <td><!--[citations.index;block=tr]-->[citations.index]</td>
+                                                <td>[citations.site]</td>
+                                                <td class="[citations.status;onformat=tolowercase]">[citations.status]
+                                                </td>
+                                                <td>
+                                                    <a href="[citations.link]" target="_blank"
+                                                       class="btn btn-mid btn-success btn-view [citations.status;onformat=tolowercase]">
+                                                        [lang.lang_view]&nbsp;&nbsp;&nbsp;<i class="fa fa-share"></i>
+
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <!--[onshow;block=div;when[visible.wi_notifications]==1;comm]-->
+                                        <div class="widget">
+                                            <div class="widget-content widget-big-box">[vars.notification;noerr]</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--WI_NOTIFICATION-->
+                <div class="row">
+                    <!--[onshow;block=div;when [visible.wi_notification] == 1;comm]-->
+                    <div class="col-md-12">
+                        <div class="widget">
+                            <div class="widget-content widget-big-box">[vars.notification;noerr]</div>
+                        </div>
+                    </div>
+                </div>
+                <!--WI_NOTIFICATION-->
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+
+
+<!-- Upload a video from youtube or vimeo -->
+<div class="row">
+    <!--[onshow;block=div;when [project_permissions.add_item_my_project_files] == 1;comm]--><!--permissions-->
+    <div id="upload-csv" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <form class="form-horizontal" action="[conf.site_url]/admin/citations/[vars.project_id;noerr]/upload"
+                  method="post" enctype="multipart/form-data">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                        <!--full screen icon - custom.js-->
+                        <button type="button" class="full-screen-modal close" aria-hidden="true"><i
+                                class="icon-fullscreen"></i></button>
+                        <!--full screen icon - custom.js-->
+                        <h4 class="modal-title"> [lang.upload_file]</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group" style="margin-bottom:10px;">
+                            <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_select_csv]</label>
+                            <div class="col-lg-12">
+                                <input type="file" class="form-control" name="file" autocomplete="off">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-default">
+                            [lang.lang_upload]
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--WI_ADD_NEW_FILE_MODAL-->
+
+
+<!----------------------COMMON FOOTER--------------------------------->
+<!--[onload;file=../common/common.footer.html;getbody;comm]-->
+<!----------------------COMMON FOOTER--------------------------------->
+<!-- Scroll to top -->
+<span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>
+<!----------------------COMMON PROJECT FOOTER--------------------------------->
+<!--[onload;file=common.project.footer.html;getbody;comm]-->
+<!----------------------COMMON PROJECT FOOTER--------------------------------->
+<!--JS_EDIT_PROJECT_VALIDATION-->
+<!--JS_EDIT_PROJECT_VALIDATION-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<script type="text/javascript">
+    $(function () {
+        $('a.pending').each(function () {
+            $(this).removeClass('btn-success').addClass('disabled').html('[lang.lang_pending]');
+        });
+        $('a.submitted').each(function () {
+            $(this).removeClass('btn-success').addClass('disabled').html('[lang.lang_submitted]');
+        });
+    })
+</script>
+</body>
+</html>

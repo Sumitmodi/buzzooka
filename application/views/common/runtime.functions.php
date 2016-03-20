@@ -7,9 +7,9 @@
  * [EXAMPLE]
  * 120MB
  *
- * 
- * @param	data array
- * @return	[Currval: return data to TBS] 
+ *
+ * @param    data array
+ * @return    [Currval: return data to TBS]
  */
 function runtime_readable_filesize($FieldName, &$CurrVal, &$CurrPrm)
 {
@@ -32,7 +32,7 @@ function runtime_readable_filesize($FieldName, &$CurrVal, &$CurrPrm)
             2 => array("UNIT" => "MB", "VALUE" => pow(1024, 2)),
             3 => array("UNIT" => "KB", "VALUE" => 1024),
             4 => array("UNIT" => "B", "VALUE" => 1),
-            );
+        );
 
         foreach ($arBytes as $arItem) {
             if ($bytes >= $arItem["VALUE"]) {
@@ -56,9 +56,9 @@ function runtime_readable_filesize($FieldName, &$CurrVal, &$CurrPrm)
  * [EXAMPLE]
  * 12-30-2014 [12:35:59]
  *
- * 
- * @param	data array
- * @return	[Currval: return data to TBS] 
+ *
+ * @param    data array
+ * @return    [Currval: return data to TBS]
  */
 function runtime_timestamp_to_datetime($FieldName, &$CurrVal, &$CurrPrm)
 {
@@ -90,9 +90,9 @@ function runtime_timestamp_to_datetime($FieldName, &$CurrVal, &$CurrPrm)
 /**
  * checks if users avatar exists. If not returns the default avatar [/file/avatar/default]
  *
- * 
- * @param	data array
- * @return	[Currval: return data to TBS] 
+ *
+ * @param    data array
+ * @return    [Currval: return data to TBS]
  */
 function runtime_check_avatar($FieldName, &$CurrVal, &$CurrPrm)
 {
@@ -121,9 +121,9 @@ function runtime_check_avatar($FieldName, &$CurrVal, &$CurrPrm)
  * for selected categories, the permssion level may only start at [1[ and not [0[. This is to allow atleast a minimum
  * permission levelf or that category. An example is [view_item_project_details] we cant have a setting of [0]
  *
- * 
- * @param	data array
- * @return	echos output to screen
+ *
+ * @param    data array
+ * @return    echos output to screen
  */
 function runtime_permission_levels_select($FieldName, &$CurrVal, &$CurrPrm)
 {
@@ -166,9 +166,9 @@ function runtime_permission_levels_select($FieldName, &$CurrVal, &$CurrPrm)
 /**
  * sets the icon image for a given filetype
  *
- * 
- * @param	data array
- * @return	echos output to screen
+ *
+ * @param    data array
+ * @return    echos output to screen
  */
 function runtime_filetype_icon($FieldName, &$CurrVal, &$CurrPrm)
 {
@@ -224,15 +224,12 @@ function runtime_date($FieldName, &$CurrVal, &$CurrPrm)
 {
     /**
      * Formats a date during TBS rendering
-
-     * Usage: 
+     * Usage:
      * -------------------------------------------------------------
      * [var.this_date;onformat=runtime_functions_date]
-
      * Example output:
      * -------------------------------------------------------------
      * 12-30-2014
-
      */
 
     /*--------------------GET CODEIGNITER INSTANCE -----------------------------*/
@@ -266,7 +263,7 @@ function runtime_project_deadline($FieldName, &$CurrVal, &$CurrPrm)
 {
     /**
      * Formats the project dealine date during TBS rendering and formats it with green or red label
-     * Usage: 
+     * Usage:
      * -------------------------------------------------------------
      * [var.this_date;onformat=runtime_project_deadline]
      * Example output:
@@ -318,15 +315,12 @@ function runtime_months($FieldName, &$CurrVal, &$CurrPrm)
 {
     /**
      * Formats a numeric month to lang month
-
-     * Usage: 
+     * Usage:
      * -------------------------------------------------------------
      * [var.this_date;onformat=runtime_functions_formatnumber]
-
      * Example output:
      * -------------------------------------------------------------
      * Jan
-
      */
 
     /*--------------------GET CODEIGNITER INSTANCE -----------------------------*/
@@ -367,15 +361,12 @@ function runtime_number($FieldName, &$CurrVal, &$CurrPrm)
 {
     /**
      * Formats a number during TBS rendering without decimals
-
-     * Usage: 
+     * Usage:
      * -------------------------------------------------------------
      * [var.this_date;onformat=runtime_functions_formatnumber]
-
      * Example output:
      * -------------------------------------------------------------
      * 23
-
      */
     /*--------------------GET CODEIGNITER INSTANCE -----------------------------*/
 
@@ -400,11 +391,9 @@ function runtime_project_percentage_complete($FieldName, &$CurrVal, &$CurrPrm)
 {
     /**
      * returns the numeric value of a given projects completeness.
-
-     * Usage: 
+     * Usage:
      * -------------------------------------------------------------
      * [var.this_date;onformat=runtime_functions_formatnumber_decimal]
-
      * Example output:
      * -------------------------------------------------------------
      * 65
@@ -419,7 +408,7 @@ function runtime_project_percentage_complete($FieldName, &$CurrVal, &$CurrPrm)
     $CI->load->model('milestones_model');
 
     //check that the project id is valid
-    if (! is_numeric($CurrVal)) {
+    if (!is_numeric($CurrVal)) {
         $CurrVal = 0;
     }
 
@@ -455,15 +444,12 @@ function runtime_number_decimal($FieldName, &$CurrVal, &$CurrPrm)
 {
     /**
      * Formats a number during TBS rendering with decimals
-
-     * Usage: 
+     * Usage:
      * -------------------------------------------------------------
      * [var.this_date;onformat=runtime_functions_formatnumber_decimal]
-
      * Example output:
      * -------------------------------------------------------------
      * 1,000.00
-
      */
 
     /*--------------------GET CODEIGNITER INSTANCE -----------------------------*/
@@ -491,15 +477,12 @@ function runtime_number_decimal_simple($FieldName, &$CurrVal, &$CurrPrm)
 {
     /**
      * Formats a number during TBS rendering with decimals
-
-     * Usage: 
+     * Usage:
      * -------------------------------------------------------------
      * [var.this_date;onformat=runtime_functions_formatnumber_decimal]
-
      * Example output:
      * -------------------------------------------------------------
      * 1000.00
-
      */
 
     /*--------------------GET CODEIGNITER INSTANCE -----------------------------*/
@@ -528,17 +511,14 @@ function runtime_status_colors($FieldName, &$CurrVal, &$CurrPrm)
     global $lang, $conf;
     /**
      * styling for the account status in  search results
-
-     * Usage: 
+     * Usage:
      * -------------------------------------------------------------
      * <!--[blk1.profile_account_status;block=tr;onformat=runtime_functions_status_colors;htmlconv=no;comm]-->
-
      * Example output:
      * -------------------------------------------------------------
      * <span id="bns-status-badge" class="label label-warning bns-display-show">
      * Pending
      * </span>
-
      */
 
     /*--------------------GET CODEIGNITER INSTANCE -----------------------------*/
@@ -1075,7 +1055,7 @@ function runtime_lang($FieldName, &$CurrVal, &$CurrPrm)
 
     /**
      * takes a word/string and returns the corresponding $this->data['lang']['some_string']
-     * 
+     *
      */
 
     /*--------------------GET CODEIGNITER INSTANCE -----------------------------*/
@@ -1120,7 +1100,7 @@ function runtime_group_name($FieldName, &$CurrVal, &$CurrPrm)
 
     /**
      * formats a group name
-     * 
+     *
      */
 
     if ($CurrVal == '') {
@@ -1144,7 +1124,7 @@ function runtime_lang_ucwords($FieldName, &$CurrVal, &$CurrPrm)
 
     /**
      * formats language words using ucwords
-     * 
+     *
      */
 
     $CurrVal = ucwords(strtolower($CurrVal));
@@ -1160,7 +1140,7 @@ function runtime_check_blank_ucwords($FieldName, &$CurrVal, &$CurrPrm)
 
     /**
      * checks if string is null. also formats with ucwords()
-     * 
+     *
      */
 
     if ($CurrVal == '' || $CurrVal == '0000-00-00 00:00:00' || $CurrVal == 'NULL') {
@@ -1184,7 +1164,7 @@ function runtime_check_blank_ucfirst($FieldName, &$CurrVal, &$CurrPrm)
 
     /**
      * checks if string is null. also formats with ucfirst()
-     * 
+     *
      */
 
     if ($CurrVal == '' || $CurrVal == '0000-00-00 00:00:00' || $CurrVal == 'NULL') {
@@ -1209,7 +1189,7 @@ function runtime_check_blank($FieldName, &$CurrVal, &$CurrPrm)
     /**
      * checks if a merge data is [blank, NULL, 0000 datetime]
      * returns a --- to avoid table results with just gaps in them
-     * 
+     *
      */
 
     if ($CurrVal == '' || $CurrVal == '0000-00-00 00:00:00' || $CurrVal == 'NULL') {
@@ -1231,7 +1211,7 @@ function runtime_check_url($FieldName, &$CurrVal, &$CurrPrm)
      * checks if the href value is a valid url
      * return javascript.void if not
      * adds http:// if needed.
-     * 
+     *
      */
 
     if ($CurrVal == '') {
@@ -1242,7 +1222,7 @@ function runtime_check_url($FieldName, &$CurrVal, &$CurrPrm)
 
     } else {
 
-        if (! preg_match('%^http://%', $CurrVal)) {
+        if (!preg_match('%^http://%', $CurrVal)) {
             $CurrVal = 'http://' . $CurrVal;
         }
 
@@ -1368,13 +1348,19 @@ function tbs_runtime_daysleft($FieldName, &$CurrVal, &$CurrPrm)
     return $CurrVal;
 }
 
+function tolowercase($field, &$val, &$cur)
+{
+    $val = empty($val) ? 'unknown' : strtolower($val);
+    return $val;
+}
+
 //________________________________________________________________FORMAT SECONDS INTO HOURS______________________________________________________
 /**
  * Takes a mysql datetime input and returns it as  1hr 30min ago (how long ago)
  * if date is more than 24hrs in the past, it will just return the date/time...
  * formatted to the current system date-time setting
  * [Example] 1hr 30min
- * 
+ *
  */
 function runtime_time_ago($FieldName, &$CurrVal, &$CurrPrm)
 {
@@ -1399,7 +1385,7 @@ function runtime_time_ago($FieldName, &$CurrVal, &$CurrPrm)
     $supliedtime = strtotime($CurrVal);
 
     //validate supplied date
-    if (! is_numeric($supliedtime)) {
+    if (!is_numeric($supliedtime)) {
         $CurrVal = '---';
         return $CurrVal;
 
@@ -1424,7 +1410,7 @@ function runtime_time_ago($FieldName, &$CurrVal, &$CurrPrm)
     $minutes = '';
     $hours = '';
     $minute = '';
-    
+
 
     //get the hours
     $h = floor($time / 3600);
@@ -1465,7 +1451,7 @@ function runtime_time_ago($FieldName, &$CurrVal, &$CurrPrm)
     }
 
     //create final output [2hrs 10mins] or [0mins]
-    if (! $hour && ! $minute) {
+    if (!$hour && !$minute) {
         //show seconds only
         $CurrVal = $seconds . $ci->data['lang']['lang_time_ago']; //e.g. 30secs ago
     } else {
@@ -1597,7 +1583,7 @@ function runtime_permission_setting($FieldName, &$CurrVal, &$CurrPrm)
 /**
  * take input if seconds and returns it formatted in Hours: Minutes: Seconds
  * [Example] 2 Hrs: 4 Mins : 10Sec
- * 
+ *
  */
 function runtime_hours_spent($FieldName, &$CurrVal, &$CurrPrm)
 {
@@ -1613,7 +1599,7 @@ function runtime_hours_spent($FieldName, &$CurrVal, &$CurrPrm)
     /*-------------------------------------------------------------------------*/
 
     //set time to '0' if none is specified
-    if (! is_numeric($CurrVal)) {
+    if (!is_numeric($CurrVal)) {
         $CurrVal = 0;
     }
 
@@ -1651,15 +1637,15 @@ function runtime_hours_spent($FieldName, &$CurrVal, &$CurrPrm)
 
 //________________________________________________________________FORMT SECONDS INTO HOURS______________________________________________________
 /**
- * Takes seconds as input and formats to H:M:S 
+ * Takes seconds as input and formats to H:M:S
  * [Example] 02:12:05
- * 
+ *
  */
 function runtime_timer($FieldName, &$CurrVal, &$CurrPrm)
 {
 
     //set time to '0' if none is specified
-    if (! is_numeric($CurrVal)) {
+    if (!is_numeric($CurrVal)) {
         $CurrVal = 0;
     }
 

@@ -882,7 +882,16 @@ $lang['lang_field'] = 'Add a field';
 $lang['add_new_template'] = 'Add New Template';
 $lang['select_template'] = 'Select a template';
 $lang['lang_citations'] = 'Citations';
-
+$lang['citations_not_added'] = 'Citations have not been added for this project.';
+$lang['upload_file'] = 'Upload CSV';
+$lang['lang_project_citations'] = 'Project Citations';
+$lang['lang_select_csv'] = 'Select CSV File';
+$lang['lang_upload'] = 'Upload';
+$lang['lang_site'] = 'Site';
+$lang['lang_view'] = 'View';
+$lang['lang_live'] = 'Live';
+$lang['lang_submitted'] = 'Submitted';
+$lang['lang_pending'] = 'Pending';
 //$lang['lang_milestones'] = 'Reports';
 /* End of file default_lang.php */
 /* Location: ./application/language/english/default_lang.php */

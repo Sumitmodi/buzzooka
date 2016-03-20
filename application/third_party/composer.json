@@ -1,0 +1,5 @@
+{
+  "require": {
+    "kzykhys/php-csv-parser": ">1.4"
+  }
+}
