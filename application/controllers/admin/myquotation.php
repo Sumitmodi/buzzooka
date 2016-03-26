@@ -164,7 +164,6 @@ class Myquotation extends MY_Controller
             $this->notifications('wi_notification', $this->data['lang']['lang_requested_item_not_loaded']);
             $this->data['visible']['wi_project_quotations'] = 0;
         } else {
-
             foreach ($quotations as $key => $quo) {
                 if (!empty($quo['quotations_file_type'])) {
                     if ($quo['quotations_file_type'] == 'file') {
@@ -207,12 +206,12 @@ class Myquotation extends MY_Controller
                             case 'www.docs.google.com':
                             case 'www.drive.google.com':
                                 $quotations[$key]['icon'] = site_url(sprintf('/files/filetype_icons/%s.png', 'drive'));
-                                if ($this->uri->segment(5) == null) {
+                                /*if ($this->uri->segment(5) == null) {
                                     $this->data['reg_blocks'][] = 'quotation';
                                     $this->data['blocks']['quotation'] = array($quo);
                                     $this->data['vars']['quote_url'] = $this->getQuoteLink($quo);
                                     $this->data['visible']['is_visible_quotationform'] = 2;
-                                }
+                                }*/
                                 break;
                             case 'youtube.com':
                             case 'www.youtube.com':
@@ -263,6 +262,19 @@ class Myquotation extends MY_Controller
             }
         } else {
             $this->data['visible']['is_visible_quotationform'] = 0;
+            $quos = array_values(array_filter(array_map(function ($row) {
+                return is_null($row['quotations_file_type']) ? $row : null;
+            }, array_reverse($quotations))));
+            if (isset($quos[0])) {
+                $quotation = $this->model->getQuotationData($quos[0]['quotations_id']);
+                $this->data['reg_blocks'][] = 'quotation';
+                $this->data['blocks']['quotation'] = array($quotation);
+                $theform = $quotation['quotations_form_data'];
+                $postdata = $quotation['quotations_post_data'];
+                $this->data['reg_blocks'][] = 'quotationform';
+                $this->data['blocks']['quotationform'] = $this->formbuilder->reBuildForm($theform, $postdata);
+                $this->data['visible']['is_visible_quotationform'] = 1;
+            }
         }
     }
 

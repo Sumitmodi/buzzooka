@@ -172,6 +172,34 @@
                             <div class="widget-content widget-content-project">
                                 <!-----------------------------------------------TABS-FILES------------------------------------------------------------------>
                                 <div class="project-info-tabs">
+                                    <div class="box side-menu-main">
+                                        <!--[onshow;block=div;when [visible.is_visible_quotationform]==2;comm] -->
+                                        <div class="box-head-dark"><i class="icon-list"></i>
+                                            [quotation.quotations_form_title]
+                                        </div>
+                                        <div class="box-content" id="quote_url"><!--[vars.quote_url;htmlconv=no;]--></div>
+                                    </div>
+                                    <div class="box side-menu-main">
+                                        <!--[onshow;block=div;when [visible.is_visible_quotationform]==1;comm] -->
+                                        <div class="box-head-dark"><i class="icon-list"></i>
+                                            [quotation.quotations_form_title]
+                                        </div>
+                                        <div class="box-content">
+                                            <table class="table table-bordered quotation-extra-padd">
+                                                <tbody>
+                                                <tr>
+                                                    <td><label>
+                                                        <!--[quotationform.question;block=tr;onformat=runtime_check_blank;comm]-->
+                                                    </label>
+                                                        <div>
+                                                            <!--[quotationform.answer;block=tr;onformat=runtime_check_blank;comm;htmlconv=no]-->
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
                                     <div class="box">
                                         <div class="box-head-dark">
                                             <i class="icon-list"></i> [lang.lang_my_project_quotation]
@@ -265,34 +293,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="box side-menu-main">
-                                        <!--[onshow;block=div;when [visible.is_visible_quotationform]==2;comm] -->
-                                        <div class="box-head-dark"><i class="icon-list"></i>
-                                            [quotation.quotations_form_title]
-                                        </div>
-                                        <div class="box-content" id="quote_url"><!--[vars.quote_url;htmlconv=no;]--></div>
-                                    </div>
-                                    <div class="box side-menu-main">
-                                        <!--[onshow;block=div;when [visible.is_visible_quotationform]==1;comm] -->
-                                        <div class="box-head-dark"><i class="icon-list"></i>
-                                            [quotation.quotations_form_title]
-                                        </div>
-                                        <div class="box-content">
-                                            <table class="table table-bordered quotation-extra-padd">
-                                                <tbody>
-                                                <tr>
-                                                    <td><label>
-                                                        <!--[quotationform.question;block=tr;onformat=runtime_check_blank;comm]-->
-                                                    </label>
-                                                        <div>
-                                                            <!--[quotationform.answer;block=tr;onformat=runtime_check_blank;comm;htmlconv=no]-->
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
                                         </div>
                                     </div>
                                 </div>

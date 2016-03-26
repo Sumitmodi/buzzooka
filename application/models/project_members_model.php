@@ -428,7 +428,7 @@ class Project_members_model extends Super_Model
         $query = $this->db->query("INSERT INTO project_members (
                                           project_members_team_id,
                                           project_members_project_id
-                                          )VALUES(
+                                          ) VALUES(
                                           $members_id,
                                           $project_id)");
 

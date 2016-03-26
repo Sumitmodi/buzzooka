@@ -54,7 +54,7 @@
     a.live{
         background-color: rgba(142, 193, 101, 1) !important;
     }*/
-    a.disabled,.disabled {
+    a.disabled, .disabled {
         background-color: #ccc;
     }
 </style>
@@ -172,10 +172,16 @@
                                                     [lang.lang_hash]
                                                 </th>
                                                 <th>
-                                                    [lang.lang_site]
+                                                    <a href="[conf.site_url]/admin/citations/[vars.project_id]/view/site/[vars.sort]">
+                                                        [lang.lang_site]
+                                                        <i class="icon-sort bns-padded-left"></i>
+                                                    </a>
                                                 </th>
                                                 <th>
-                                                    [lang.lang_status]
+                                                    <a href="[conf.site_url]/admin/citations/[vars.project_id]/view/status/[vars.sort]">
+                                                        [lang.lang_status]
+                                                        <i class="icon-sort bns-padded-left"></i>
+                                                    </a>
                                                 </th>
                                                 <th>
                                                     [lang.lang_action]
@@ -192,6 +198,14 @@
                                                     <a href="[citations.link]" target="_blank"
                                                        class="btn btn-mid btn-success btn-view [citations.status;onformat=tolowercase]">
                                                         [lang.lang_view]&nbsp;&nbsp;&nbsp;<i class="fa fa-share"></i>
+                                                    </a>
+                                                    <a href="#" data-target="#edit-citation"
+                                                       data-toggle="modal" data-id="[citations.id]"
+                                                       data-site="[citations.site]" data-link="[citations.link]"
+                                                       data-status="[citations.status]"
+                                                       class="btn btn-mid btn-primary edit"
+                                                       data-type="[citations.status;onformat=tolowercase]">
+                                                        [lang.lang_edit]&nbsp;&nbsp;&nbsp;<i class="fa fa-edit"></i>
 
                                                     </a>
                                                 </td>
@@ -226,6 +240,60 @@
     <div class="clearfix"></div>
 </div>
 
+
+<!-- Upload a video from youtube or vimeo -->
+<div class="row">
+    <!--[onshow;block=div;when [project_permissions.add_item_my_project_files] == 1;comm]--><!--permissions-->
+    <div id="edit-citation" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <form class="form-horizontal" method="post" enctype="multipart/form-data">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                        <!--full screen icon - custom.js-->
+                        <button type="button" class="full-screen-modal close" aria-hidden="true"><i
+                                class="icon-fullscreen"></i></button>
+                        <!--full screen icon - custom.js-->
+                        <h4 class="modal-title"> [lang.land_edit]</h4>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" name="id" id="id"/>
+                        <div class="form-group">
+                            <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_site]</label>
+                            <div class="col-lg-12">
+                                <input type="text" class="form-control" name="site" autocomplete="off" id="site"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_link]</label>
+                            <div class="col-lg-12">
+                                <input type="text" class="form-control" name="link" autocomplete="off" id="link"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_status]</label>
+                            <div class="col-lg-12">
+                                <select name="status" id="status" class="form-control">
+                                    <option value=""></option>
+                                    <option value="live">[lang.lang_live]</option>
+                                    <option value="pending">[lang.lang_pending]</option>
+                                    <option value="submitted">[lang.lang_submitted]</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-default">
+                            [lang.lang_save]
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--WI_ADD_NEW_FILE_MODAL-->
 
 <!-- Upload a video from youtube or vimeo -->
 <div class="row">
@@ -280,13 +348,47 @@
 <!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
 <script type="text/javascript">
     $(function () {
+        $('[data-type=live]').each(function () {
+            $(this).remove();
+        });
         $('a.pending').each(function () {
             $(this).removeClass('btn-success').addClass('disabled').html('[lang.lang_pending]');
         });
         $('a.submitted').each(function () {
             $(this).removeClass('btn-success').addClass('disabled').html('[lang.lang_submitted]');
         });
-    })
+        $('.edit').click(function (e) {
+            var data = $(this).data();
+            $('#site').val(data.site);
+            $('#id').val(data.id);
+            $('#link').val(data.link);
+            $('#status').val(data.status.toLowerCase());
+        });
+        $('form').submit(function (e) {
+            e.preventDefault();
+            $.ajax({
+                url: '[conf.site_url]/admin/ajax/save-citation',
+                data: $(this).serialize(),
+                type: 'post',
+                dataType: 'json',
+                success: function (res) {
+                    var td = $('[data-id=' + $('#id').val() + ']').parent('td').parent('tr').children('td');
+                    $(td).eq(1).html($('#site').val());
+                    $(td).eq(2).html($('#status').val());
+                    $(td).eq(3).find('a:first').attr('href', $('#link').val());
+                    $('#edit-citation').modal('toggle');
+                    noty(
+                            {
+                                text: res.message,
+                                layout: 'bottomRight',
+                                type: 'information',
+                                timeout: 1500
+                            }
+                    );
+                }
+            })
+        })
+    });
 </script>
 </body>
 </html>

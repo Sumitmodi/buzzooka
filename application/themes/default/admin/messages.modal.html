@@ -23,19 +23,19 @@
     <!--[onshow;block=div;when [visible.wi_edit_message_table] == 1;comm]-->
     <div class="col-md-12">
     <form action="[conf.site_url]/admin/messages/[vars.project_id;noerr]/edit-message/[message.messages_id;noerr]/[vars.offset]" method="post" target="_parent">
-            <textarea name="messages_text" id="message_new" cols="20" rows="5">[message.messages_text;noerr;htmlconv=no]</textarea>
+            <textarea name="messages_text" id="message_new" cols="20" rows="20">[message.messages_text;noerr;htmlconv=no]</textarea>
             <script>
 			 document.addEventListener('DOMContentLoaded', function(){
              CKEDITOR.replace( 'message_new', {
                       toolbar: 'Plain',
                       uiColor: '#ffffff',
-	                  height: '120px'
+	                  height: '300px'
                       });
               });
 
            </script><div align="right" style="padding-top:15px;">
             <input type="hidden" name="messages_id" value="[message.messages_id;noerr]">
-            <input id="" class="btn btn-primary" type="submit" name="submit" value="[lang.lang_save_changes]">
+            <input class="btn btn-primary" type="submit" name="submit" value="[lang.lang_save_changes]">
             </div>
      </form>
     </div>
@@ -47,13 +47,13 @@
     <!--[onshow;block=div;when [visible.wi_edit_replies_table] == 1;comm]-->
     <div class="col-md-12">
     <form action="[conf.site_url]/admin/messages/[vars.project_id;noerr]/edit-reply/[replies.messages_replies_id;noerr]/[vars.offset]" method="post" target="_parent">
-            <textarea name="messages_replies_text" id="message_reply" cols="20" rows="5">[replies.messages_replies_text;noerr]</textarea>
+            <textarea name="messages_replies_text" id="message_reply" cols="20" rows="20">[replies.messages_replies_text;noerr]</textarea>
             <script>
             document.addEventListener('DOMContentLoaded', function(){
                     CKEDITOR.replace( 'message_reply', {
                              toolbar: 'Plain',
                              uiColor: '#ffffff',
-	                         height: '120px'
+	                         height: '300px'
                       });
               });
            </script><div align="right" style="padding-top:15px;">

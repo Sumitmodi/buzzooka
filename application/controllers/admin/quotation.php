@@ -43,7 +43,7 @@ class Quotation extends MY_Controller
     /**
      * This is our re-routing function and is the inital function called
      *
-     * 
+     *
      */
     function index()
     {
@@ -68,13 +68,13 @@ class Quotation extends MY_Controller
                 break;
             case 'download':
                 $this->__downloadQuotation();
-                break;    
+                break;
             case 'add-to-project':
                 $this->__addQuotationToProject();
-                break;    
+                break;
             case 'add-client':
                 $this->__addNewClient();
-                break;    
+                break;
             default:
                 $this->__viewQuotation();
         }
@@ -84,61 +84,62 @@ class Quotation extends MY_Controller
 
     }
 
-    public function __addNewClient(){
+    public function __addNewClient()
+    {
         $company = $this->quotations_model->getClientByCompanyName(strtolower($this->input->post('company')));
-        if(false != $company){        
-            $this->quotations_model->updateQuotationClient($this->uri->segment(4),array(
-                    'quotations_by_client'  => 'yes',
-                    'quotations_client_id'  => $company->clients_id
-                ));
-            echo json_encode(array('code'=>400,'response'=>'Error','message'=>'Client already added.'));
+        if (false != $company) {
+            $this->quotations_model->updateQuotationClient($this->uri->segment(4), array(
+                'quotations_by_client' => 'yes',
+                'quotations_client_id' => $company->clients_id
+            ));
+            echo json_encode(array('code' => 400, 'response' => 'Error', 'message' => 'Client already added.'));
             exit;
         }
 
         $insert = array(
-            'clients_date_created'  => date('Y-m-d'),
-            'clients_company_name'  => $this->input->post('company'),
-            'clients_address'  => $this->input->post('address'),
-            'clients_city'  => $this->input->post('city'),
-            'clients_state'  => $this->input->post('state'),
-            'clients_zipcode'  => $this->input->post('zip'),
-            'clients_country'  => $this->input->post('country'),
-            'clients_website'  => $this->input->post('website')
+            'clients_date_created' => date('Y-m-d'),
+            'clients_company_name' => $this->input->post('company'),
+            'clients_address' => $this->input->post('address'),
+            'clients_city' => $this->input->post('city'),
+            'clients_state' => $this->input->post('state'),
+            'clients_zipcode' => $this->input->post('zip'),
+            'clients_country' => $this->input->post('country'),
+            'clients_website' => $this->input->post('website')
         );
 
-        $id = $this->quotations_model->addNewClient($insert,1);
+        $id = $this->quotations_model->addNewClient($insert, 1);
 
-        if((bool)$id == 0){
-            echo json_encode(array('code'=>400,'response'=>'Error','message'=>'Client could not be added.'));
+        if ((bool)$id == 0) {
+            echo json_encode(array('code' => 400, 'response' => 'Error', 'message' => 'Client could not be added.'));
             exit;
         }
 
         $insert = array(
-            'client_users_clients_id'   => $id,
-            'client_users_full_name'    => $this->input->post('name',TRUE),
-            'client_users_email'        => $this->input->post('email',TRUE),
-            'client_users_telephone'    => $this->input->post('telephone',TRUE),
-            'client_users_password'     => substr(md5(time()),0,12)
+            'client_users_clients_id' => $id,
+            'client_users_full_name' => $this->input->post('name', TRUE),
+            'client_users_email' => $this->input->post('email', TRUE),
+            'client_users_telephone' => $this->input->post('telephone', TRUE),
+            'client_users_password' => substr(md5(time()), 0, 12)
         );
 
-        $user_id = $this->quotations_model->addNewClient($insert,2);
+        $user_id = $this->quotations_model->addNewClient($insert, 2);
 
-        if(!$user_id){
-            echo json_encode(array('code'=>400,'response'=>'Error','message'=>'Client could not be added.'));
+        if (!$user_id) {
+            echo json_encode(array('code' => 400, 'response' => 'Error', 'message' => 'Client could not be added.'));
             return;
         }
-        
+
         $this->users_model->updatePrimaryContact($id, $user_id);
-        
-        echo json_encode(array('code'=>200,'response'=>'Success','message'=>'Client has been saved.'));
 
-        $this->quotations_model->updateQuotationClient($this->uri->segment(4),array(
-                'quotations_by_client'  => 'yes',
-                'quotations_client_id'  => $id
-            ));
+        echo json_encode(array('code' => 200, 'response' => 'Success', 'message' => 'Client has been saved.'));
 
-        $this->__email_new_client('new_client_welcome_client',$insert);
-        $this->__email_new_client('new_client_admin',$insert);
+        $this->quotations_model->updateQuotationClient($this->uri->segment(4), array(
+            'quotations_by_client' => 'yes',
+            'quotations_client_id' => $id
+        ));
+
+        $this->__email_new_client('new_client_welcome_client', $insert);
+        $this->__email_new_client('new_client_admin', $insert);
 
         exit;
     }
@@ -215,16 +216,15 @@ class Quotation extends MY_Controller
         //quotation id
         $quotation_id = $this->uri->segment(4);
         $p = $this->quotations_model->getProjectById($_POST['project']);
-        if(false == $p){
-            echo json_encode(array('code'=>400,'response'=>'Project does not exist.'));
-            return;
+        if (false == $p) {
+            echo json_encode(array('code' => 400, 'response' => 'Project does not exist.'));
+            exit;
         }
-
-        if($response = $this->quotations_model->updateQuotationProject($quotation_id,$project) !== false){           
-            $url = '<a href="'.base_url('/admin/myquotation/'.$p['projects_id'].'/view').'">'.$p['projects_title'].'</a>';
-            echo json_encode(array('code'=>200,'response'=>'success','url'=>$url));
+        if ($response = $this->quotations_model->updateQuotationProject($quotation_id, $project) !== false) {
+            $url = '<a href="' . base_url('/admin/myquotation/' . $p['projects_id'] . '/view') . '">' . (isset($p['services_name']) ? $p['services_name'] . ' : ' : null) . $p['clients_company_name'] . '</a>';
+            echo json_encode(array('code' => 200, 'response' => 'success', 'url' => $url));
         } else {
-            echo json_encode(array('code'=>400,'response'=>'Error'));
+            echo json_encode(array('code' => 400, 'response' => 'Error'));
         }
         exit;
     }
@@ -235,7 +235,7 @@ class Quotation extends MY_Controller
      */
     public function __downloadQuotation()
     {
-     
+
         //profiling
         $this->data['controller_profiling'][] = __function__;
 
@@ -269,21 +269,21 @@ class Quotation extends MY_Controller
 
         //rebuild the form
         if ($next) {
-            
+
             $this->data['reg_blocks'][] = 'quotationform';
-            
+
             $this->data['blocks']['quotationform'] = $this->formbuilder->reBuildForm($theform, $postdata);
 
             $this->data['visible']['wi_quotation'] = 1;
-            
-            $xml = $this->load->view('admin/pdf',array('data'=>$this->data['blocks']['quotationform'],'quot'=>$this->data['fields']['quotation']),TRUE);
-            
-            require_once APPPATH.'third_party/MPDF57/mpdf.php';
-            
+
+            $xml = $this->load->view('admin/pdf', array('data' => $this->data['blocks']['quotationform'], 'quot' => $this->data['fields']['quotation']), TRUE);
+
+            require_once APPPATH . 'third_party/MPDF57/mpdf.php';
+
             $mpdf = new mPDF();
             $mpdf->WriteHTML($xml);
             $mpdf->Output();
-            exit;          
+            exit;
         }
 
     }
@@ -330,10 +330,11 @@ class Quotation extends MY_Controller
         $projects = $this->projects_model->allProjects();
         $this->data['debug'][] = $this->projects_model->debug_data;
         $list = array();
-        foreach($projects as $project){
-            $list[] = array('projects_id'=>$project['projects_id'],'projects_title'=>$project['projects_title']);
+        foreach ($projects as $project) {
+            $client = $this->db->where('clients_id', $project['projects_clients_id'])->get('clients')->row_array();
+            $list[] = array('projects_id' => $project['projects_id'], 'projects_title' => $project['services_name'] . ' : ' . $client['clients_company_name']);
         }
-        
+
         $this->data['reg_fields'][] = 'projects';
         $this->data['fields']['projects'] = $list;
 
@@ -345,7 +346,7 @@ class Quotation extends MY_Controller
         //projects added to quotation
         $added = $this->quotations_model->getProjects($quotation_id);
 
-        
+
         $this->data['reg_fields'][] = 'quotation_projects';
         $this->data['fields']['quotation_projects'] = $added;
 
@@ -461,7 +462,7 @@ class Quotation extends MY_Controller
 
     /**
      * validates forms for various methods in this class
-     * @param	string $form identify the form to validate
+     * @param    string $form identify the form to validate
      */
     function __flmFormValidation($form = '')
     {

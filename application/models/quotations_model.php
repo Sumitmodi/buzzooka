@@ -1,6 +1,6 @@
 <?php
 
-if (! defined('BASEPATH')) {
+if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
 
@@ -35,8 +35,8 @@ class Quotations_model extends Super_Model
     /**
      * count various quotations
      *
-     * @param numeric $client_id optional; if provided, count will be limited to that clients 
-     * @return	array
+     * @param numeric $client_id optional; if provided, count will be limited to that clients
+     * @return    array
      */
     function allQuotationsCounts($client_id = '')
     {
@@ -91,40 +91,50 @@ class Quotations_model extends Super_Model
 
     }
 
-    public function getProjectById($id){
-      $res  =  $this->db->where('projects_id',$id)->get('projects');
-      if($res->num_rows() == 0){
-        return false; 
-      }
-      return $res->row_array();
+    public function getProjectById($id)
+    {
+        $res = $this->db->where('projects_id', $id)->join('clients', 'projects.projects_clients_id = clients.clients_id')->get('projects');
+        if ($res->num_rows() == 0) {
+            return false;
+        }
+        $project = $res->row_array();
+        $res_service = $this->db->where('services_id', $project['projects_service'])->get('services');
+        if ($res_service->num_rows() > 0) {
+            $service = $res_service->row_array();
+            $project = array_merge($project, $service);
+        }
+        return $project;
     }
 
-    public function getClientByCompanyName($name){
-      $res  =  $this->db->where('LOWER(clients_company_name)',strtolower($name))->get('clients');
-      if($res->num_rows() == 0){
-        return false; 
-      }
-      return $res->row();
+    public function getClientByCompanyName($name)
+    {
+        $res = $this->db->where('LOWER(clients_company_name)', strtolower($name))->get('clients');
+        if ($res->num_rows() == 0) {
+            return false;
+        }
+        return $res->row();
     }
 
-    public function addNewClient($insert,$step = 1){
-      switch((int) $step){
-        case 1:
-            if($this->db->insert('clients',$insert)){
-              return $this->db->insert_id();
-            }
-            break;
-        case 2 : 
-            if($this->db->insert('client_users',$insert)){
-              return $this->db->insert_id();
-            }
-            break;
-      }
-      return false;
+    public function addNewClient($insert, $step = 1)
+    {
+        switch ((int)$step) {
+            case 1:
+                if ($this->db->insert('clients', $insert)) {
+                    return $this->db->insert_id();
+                }
+                break;
+            case 2 :
+                if ($this->db->insert('client_users', $insert)) {
+                    return $this->db->insert_id();
+                }
+                break;
+        }
+        return false;
     }
 
-    public function updateQuotationClient($quotation_id,$update){
-      return $this->db->where('quotations_id',$quotation_id)->update('quotations',$update);
+    public function updateQuotationClient($quotation_id, $update)
+    {
+        return $this->db->where('quotations_id', $quotation_id)->update('quotations', $update);
     }
 
     // -- searchQuotations ----------------------------------------------------------------------------------------------
@@ -132,7 +142,7 @@ class Quotations_model extends Super_Model
      * search quotations
      *
      * @param string $offset pagination
-     * @param string $type: search/count]
+     * @param string $type : search/count]
      * @return array
      */
 
@@ -179,7 +189,7 @@ class Quotations_model extends Super_Model
             'sortby_date' => 'quotations.quotations_date',
             'sortby_form_title' => 'quotations.quotations_form_title',
             'sortby_status' => 'quotations.quotations_status');
-        $sort_by = (array_key_exists(''.$this->uri->segment(5), $sort_columns)) ? $sort_columns[$this->uri->segment(5)] : 'quotations.quotations_id';
+        $sort_by = (array_key_exists('' . $this->uri->segment(5), $sort_columns)) ? $sort_columns[$this->uri->segment(5)] : 'quotations.quotations_id';
         $sorting_sql = "ORDER BY $sort_by $sort_order";
 
         //are we searching records or just counting rows
@@ -229,8 +239,8 @@ class Quotations_model extends Super_Model
     /**
      * retrieve a single quotation
      *
-     * @param numeric $id: quotation id]
-     * @return	array
+     * @param numeric $id : quotation id]
+     * @return    array
      */
 
     function getQuotation($id = '')
@@ -243,7 +253,7 @@ class Quotations_model extends Super_Model
         $conditional_sql = '';
 
         //validate id
-        if (! is_numeric($id)) {
+        if (!is_numeric($id)) {
             $this->__debugging(__line__, __function__, 0, "Invalid Data [id=$id]", '');
             return false;
         }
@@ -279,9 +289,9 @@ class Quotations_model extends Super_Model
     // -- deleteClientsQuotations ----------------------------------------------------------------------------------------------
     /**
      * delete all quotations for a client, based on client id
-     * 
-     * @param numeric $id: client id]
-     * @return	bool
+     *
+     * @param numeric $id : client id]
+     * @return    bool
      */
 
     function deleteClientsQuotations($id = '')
@@ -297,7 +307,7 @@ class Quotations_model extends Super_Model
         $next = true;
 
         //validate id
-        if (! is_numeric($id)) {
+        if (!is_numeric($id)) {
             $this->__debugging(__line__, __function__, 0, "Invalid Data [id=$id]", '');
             return false;
         }
@@ -309,10 +319,10 @@ class Quotations_model extends Super_Model
         if ($next) {
             //$query = $this->db->query("DELETE FROM quotations WHERE quotations_client_id = $id");
             $update = array(
-                'quotations_client_id'  => '',
-                'quotations_by_client'  => 'no'
-              );
-            $query = $this->db->where('quotations_client_id',$id)->update('quotations',$update);
+                'quotations_client_id' => '',
+                'quotations_by_client' => 'no'
+            );
+            $query = $this->db->where('quotations_client_id', $id)->update('quotations', $update);
         }
         $results = $this->db->affected_rows(); //affected rows
 
@@ -335,7 +345,7 @@ class Quotations_model extends Super_Model
     // -- deleteQuotation ----------------------------------------------------------------------------------------------
     /**
      * delete a single quotation, based on quotation id
-     * @param numeric $id: quotation id 
+     * @param numeric $id : quotation id
      * @return bool
      */
 
@@ -352,7 +362,7 @@ class Quotations_model extends Super_Model
         $next = true;
 
         //validate id
-        if (! is_numeric($id)) {
+        if (!is_numeric($id)) {
             $this->__debugging(__line__, __function__, 0, "Invalid Data [id=$id]", '');
             return false;
         }
@@ -383,40 +393,45 @@ class Quotations_model extends Super_Model
         }
     }
 
-    function updateQuotationProject($quotations_id,$project_id){
-      /*return $this->db->
-                    where('quotations_id',$quotations_id)->
-                    update('quotations',array('quotations_project_id'=>$project_id));*/
-      /*if($this->db->where('quotation_id',$quotations_id)->get('project_quotations')->num_rows() > 0){
-        return $this->db->where('quotation_id',$quotations_id)->update('project_quotations',array('project_id'=>$project_id));
-      }*/
+    function updateQuotationProject($quotations_id, $project_id)
+    {
+        /*return $this->db->
+                      where('quotations_id',$quotations_id)->
+                      update('quotations',array('quotations_project_id'=>$project_id));*/
+        /*if($this->db->where('quotation_id',$quotations_id)->get('project_quotations')->num_rows() > 0){
+          return $this->db->where('quotation_id',$quotations_id)->update('project_quotations',array('project_id'=>$project_id));
+        }*/
 
-      if($this->db->where('project_id',$project_id)->where('quotation_id',$quotations_id)->get('project_quotations')->num_rows()){
-        return false;
-      }
+        if ($this->db->where('project_id', $project_id)->where('quotation_id', $quotations_id)->get('project_quotations')->num_rows()) {
+            return false;
+        }
 
-      if(!$this->db->insert('project_quotations',array('project_id'=>$project_id,'quotation_id'=>$quotations_id))){
-        return false;
-      }
+        if (!$this->db->insert('project_quotations', array('project_id' => $project_id, 'quotation_id' => $quotations_id))) {
+            return false;
+        }
 
-      return $this->db->select('projects_id,projects_title')->where('projects_id',$project_id)->get('projects')->row_array();
+        return $this->db->select('projects_id,projects_title')->where('projects_id', $project_id)->get('projects')->row_array();
     }
 
-    function getProjects($quotation_id){
-      $result = $this->db->where('quotation_id',$quotation_id)->join('projects','project_quotations.project_id=projects.projects_id')->get('project_quotations');
-      if($result->num_rows() == 0){
-        return false;
-      }
-      return $result->result_array();
+    function getProjects($quotation_id)
+    {
+        $result = $this->db->where('quotation_id', $quotation_id)->join('projects', 'project_quotations.project_id=projects.projects_id')->join('services', 'projects.projects_service = services.services_id')->join('clients', 'projects.projects_clients_id = clients.clients_id')->get('project_quotations');
+        /*echo '<pre>';
+        print_r($result->result_array());
+        die;*/
+        if ($result->num_rows() == 0) {
+            return false;
+        }
+        return $result->result_array();
     }
 
 
     // -- updateQuotation ----------------------------------------------------------------------------------------------
     /**
      * updates a quotation with a price and admin notes. If price is greater then zero, status will become 'completed'
-     * 
+     *
      * @param numeric $quotation_id
-     * @return	bool
+     * @return    bool
      */
 
     function updateQuotation($quotation_id = '')
@@ -429,7 +444,7 @@ class Quotations_model extends Super_Model
         $conditional_sql = '';
 
         //validate id
-        if (! is_numeric($quotation_id)) {
+        if (!is_numeric($quotation_id)) {
             $this->__debugging(__line__, __function__, 0, "Invalid Data [quotation id=$quotation_id]", '');
             return false;
         }
@@ -481,7 +496,7 @@ class Quotations_model extends Super_Model
     // -- saveQuotation ----------------------------------------------------------------------------------------------
     /**
      * save a quotation form
-     * 
+     *
      * @param string $existing_client yes/no
      * @return array
      */
@@ -498,8 +513,8 @@ class Quotations_model extends Super_Model
         //escape all post item
         foreach ($_POST as $key => $value) {
             $$key = $this->db->escape($this->input->post($key));
-            if(empty($$key)){
-              $$key = '';
+            if (empty($$key)) {
+                $$key = '';
             }
         }
 
@@ -574,8 +589,8 @@ class Quotations_model extends Super_Model
     // -- validateClientOwner ----------------------------------------------------------------------------------------------
     /**
      * confirm if a given client owns this requested item
-     * 
-     * @param numeric $resource_id]
+     *
+     * @param numeric $resource_id ]
      * @param numeric $client_id
      * @return bool
      */
@@ -590,7 +605,7 @@ class Quotations_model extends Super_Model
         $conditional_sql = '';
 
         //validate id
-        if (! is_numeric($resource_id) || ! is_numeric($client_id)) {
+        if (!is_numeric($resource_id) || !is_numeric($client_id)) {
             $this->__debugging(__line__, __function__, 0, "Invalid Input Data", '');
             return false;
         }

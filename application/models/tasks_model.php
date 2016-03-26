@@ -1,6 +1,6 @@
 <?php
 
-if (! defined('BASEPATH')) {
+if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
 
@@ -29,12 +29,12 @@ class Tasks_model extends Super_Model
     /**
      * search/list tasks, paginated
      *
-     * 
-     * @param numeric $offset: pagination]
-     * @param   string $type: search / count]
-     * @param   string $status: all/pending/completed/behind-schedule/all-open]
-     * @param   numeric $project_id]
-     * @return	mixed      [array(rows) / false]
+     *
+     * @param numeric $offset : pagination]
+     * @param   string $type : search / count]
+     * @param   string $status : all/pending/completed/behind-schedule/all-open]
+     * @param   numeric $project_id ]
+     * @return    mixed      [array(rows) / false]
      */
 
     function listTasks($offset = 0, $type = 'search', $project_id = '', $status = 'pending')
@@ -48,7 +48,7 @@ class Tasks_model extends Super_Model
         $limiting = '';
 
         //if no valie client id, return false
-        if (! is_numeric($project_id)) {
+        if (!is_numeric($project_id)) {
             $this->__debugging(__line__, __function__, 0, "Invalid Data [project id=$project_id]", '');
             return false;
         }
@@ -90,7 +90,7 @@ class Tasks_model extends Super_Model
             'sortby_id' => 'tasks.tasks_id',
             'sortby_status' => 'tasks.tasks_status',
             'sortby_end_date' => 'tasks.tasks_end_date');
-        $sort_by = (array_key_exists(''.$this->uri->segment(7), $sort_columns)) ? $sort_columns[$this->uri->segment(7)] : 'tasks.tasks_start_date';
+        $sort_by = (array_key_exists('' . $this->uri->segment(7), $sort_columns)) ? $sort_columns[$this->uri->segment(7)] : 'tasks.tasks_start_date';
         $sorting_sql = "ORDER BY $sort_by $sort_order";
 
         //are we searching records or just counting rows
@@ -130,22 +130,22 @@ class Tasks_model extends Super_Model
 
         $tasks = array();
         if ($this->uri->segment(8) == 'my' && is_numeric($my_id)) {
-            $res = $this->db->where('user_id',$my_id)->get('task_users');
-            if($res->num_rows() > 0){
-              foreach($res->result_array() as $k=>$v){
-                $tasks[] = $v['task_id'];
-              }
+            $res = $this->db->where('user_id', $my_id)->get('task_users');
+            if ($res->num_rows() > 0) {
+                foreach ($res->result_array() as $k => $v) {
+                    $tasks[] = $v['task_id'];
+                }
             }
             if ($type == 'search' || $type == 'results') {
-              $temp = $results;
-              $results = array();
-              foreach ($temp as $key => $t) {
-                if(in_array($t['tasks_id'],$tasks)){
-                  $results[] = $t;
+                $temp = $results;
+                $results = array();
+                foreach ($temp as $key => $t) {
+                    if (in_array($t['tasks_id'], $tasks)) {
+                        $results[] = $t;
+                    }
                 }
-              }
             } else {
-              $results = count($tasks);
+                $results = count($tasks);
             }
         }
 
@@ -178,9 +178,9 @@ class Tasks_model extends Super_Model
     /**
      * add new task to database
      *
-     * 
-     * @param	void
-     * @return	mixed [record insert id / bool(false)]
+     *
+     * @param    void
+     * @return    mixed [record insert id / bool(false)]
      */
 
     function addTask()
@@ -195,6 +195,10 @@ class Tasks_model extends Super_Model
         //escape all post item
         foreach ($_POST as $key => $value) {
             $$key = $this->db->escape($this->input->post($key));
+        }
+
+        if (isset($tasks_text)) {
+            $tasks_text = html_entity_decode($tasks_text);
         }
 
         //----------sql & benchmarking start----------
@@ -244,20 +248,20 @@ class Tasks_model extends Super_Model
 
         $results = $this->db->insert_id(); //(last insert item)
 
-        if($results > 0){
-          //add the users
-          if(is_array($_POST['tasks_assigned_to_id'])){
-            $insert = array();
-            foreach ($_POST['tasks_assigned_to_id'] as $key => $value) {
-              $insert[] = array(
-                  'task_id' => $results,
-                  'user_id' => $value
-                );
+        if ($results > 0) {
+            //add the users
+            if (is_array($_POST['tasks_assigned_to_id'])) {
+                $insert = array();
+                foreach ($_POST['tasks_assigned_to_id'] as $key => $value) {
+                    $insert[] = array(
+                        'task_id' => $results,
+                        'user_id' => $value
+                    );
+                }
+                $this->db->insert_batch('task_users', $insert);
+            } else {
+                $this->db->where('tasks_id', $results)->update('tasks', array('tasks_assigned_to_id', $_POST['tasks_assigned_to_id']));
             }
-            $this->db->insert_batch('task_users',$insert);
-          } else {
-            $this->db->where('tasks_id',$results)->update('tasks',array('tasks_assigned_to_id',$_POST['tasks_assigned_to_id']));
-          }          
         }
 
         //benchmark/debug
@@ -278,10 +282,11 @@ class Tasks_model extends Super_Model
     }
 
     // --fetch task users
-    function fetchTaskUsers($tasks_id){
-        $results = $this->db->where('task_id',$tasks_id)->join('team_profile','task_users.user_id = team_profile.team_profile_id','left')->get('task_users');
-        if($results->num_rows() == 0){
-          return false;
+    function fetchTaskUsers($tasks_id)
+    {
+        $results = $this->db->where('task_id', $tasks_id)->join('team_profile', 'task_users.user_id = team_profile.team_profile_id', 'left')->get('task_users');
+        if ($results->num_rows() == 0) {
+            return false;
         }
 
         return $results->result_array();
@@ -291,10 +296,10 @@ class Tasks_model extends Super_Model
     /**
      * delete a task(s) based on a 'delete_by' id
      *
-     * 
-     * @param numeric   [id: reference id of item(s)]
-     * @param   string    [delete_by: tasks-id, milestone-id, project-id, client-id]
-     * @return	bool
+     *
+     * @param numeric [id: reference id of item(s)]
+     * @param   string [delete_by: tasks-id, milestone-id, project-id, client-id]
+     * @return    bool
      */
 
     function deleteTask($id = '', $delete_by = '')
@@ -307,7 +312,7 @@ class Tasks_model extends Super_Model
         $conditional_sql = '';
 
         //if no valie client id, return false
-        if (! is_numeric($id)) {
+        if (!is_numeric($id)) {
             $this->__debugging(__line__, __function__, 0, "Invalid Data [tasks_id=$id]", '');
             //ajax-log error to file
             log_message('error', '[FILE: ' . __file__ . ']  [FUNCTION: ' . __function__ . ']  [LINE: ' . __line__ . "]  [MESSAGE: deleting task(s) failed (tasks_id: $id is invalid)]");
@@ -321,7 +326,7 @@ class Tasks_model extends Super_Model
             'milestone-id',
             'client-id');
 
-        if (! in_array($delete_by, $valid_delete_by)) {
+        if (!in_array($delete_by, $valid_delete_by)) {
             $this->__debugging(__line__, __function__, 0, "Invalid Data [delete_by=$delete_by]", '');
             //ajax-log error to file
             log_message('error', '[FILE: ' . __file__ . ']  [FUNCTION: ' . __function__ . ']  [LINE: ' . __line__ . "]  [MESSAGE: deleting task(s) failed (delete_by: $delete_by is invalid)]");
@@ -402,8 +407,8 @@ class Tasks_model extends Super_Model
      * This function will do some clean up of the table:
      *        - delete tasks with mailestones that do not exist
      *
-     * 
-     * @param	void
+     *
+     * @param    void
      * @return void
      */
 
@@ -455,21 +460,21 @@ class Tasks_model extends Super_Model
     /**
      * counts tasks of various status and grouping
      *
-     * 
-     * @param numeric   [id] (optional)
-     * @param   string    [id_reference: reference for the provided ID, for conditional search] (optional)
+     *
+     * @param numeric [id] (optional)
+     * @param   string [id_reference: reference for the provided ID, for conditional search] (optional)
      *                               - project
      *                               - milestone
      *                               - assigned_to
      *                               - client
      *                               - created_by
-     * @param   string    [status: task status] (optional)
+     * @param   string [status: task status] (optional)
      *                               - all
      *                               - pending
      *                               - behind schedule
      *                               - completed
-     * 
-     * @return	numeric (rows count)
+     *
+     * @return    numeric (rows count)
      */
 
     function countTasks($id = '', $id_reference = 'project', $status = 'all', $show = 'all')
@@ -482,7 +487,7 @@ class Tasks_model extends Super_Model
         $conditional_sql = '';
 
         //if no valid id, return false
-        if (! is_numeric($id) && $id != '') {
+        if (!is_numeric($id) && $id != '') {
             $this->__debugging(__line__, __function__, 0, "Invalid Data [id=$id]", '');
             return false;
         }
@@ -579,9 +584,9 @@ class Tasks_model extends Super_Model
     /**
      * count a members various tasks based on status. If project ID is supplied, count will be limited to that project
      *
-     * 
+     *
      * @param numeric $$id
-     * @return	array
+     * @return    array
      */
 
     function allMyTasksCounts($id = 0, $project_id = '')
@@ -594,7 +599,7 @@ class Tasks_model extends Super_Model
         $conditional_sql = '';
 
         //validate id
-        if (! is_numeric($id)) {
+        if (!is_numeric($id)) {
             $id = 0;
         }
 
@@ -654,7 +659,7 @@ class Tasks_model extends Super_Model
     // -- searchTasks ----------------------------------------------------------------------------------------------
     /**
      * search tasks table and return results for all tasks (for all members or 'mytasks'...logged in member)
-     * @return	array
+     * @return    array
      */
 
     function searchTasks($offset = 0, $type = 'search', $members = 'all')
@@ -705,7 +710,7 @@ class Tasks_model extends Super_Model
             'sortby_taskstatus' => 'tasks.tasks_status',
             'sortby_taskduedate' => 'tasks.tasks_end_date',
             'sortby_projectid' => 'tasks.tasks_project_id');
-        $sort_by = (array_key_exists(''.$this->uri->segment(6), $sort_columns)) ? $sort_columns[$this->uri->segment(6)] : 'tasks.tasks_start_date';
+        $sort_by = (array_key_exists('' . $this->uri->segment(6), $sort_columns)) ? $sort_columns[$this->uri->segment(6)] : 'tasks.tasks_start_date';
         $sorting_sql = "ORDER BY $sort_by $sort_order";
 
         //are we searching records or just counting rows
@@ -756,22 +761,22 @@ class Tasks_model extends Super_Model
         $tasks = array();
         $my_id = $this->data['vars']['my_id'];
         if (is_numeric($my_id)) {
-            $res = $this->db->where('user_id',$my_id)->get('task_users');
-            if($res->num_rows() > 0){
-              foreach($res->result_array() as $k=>$v){
-                $tasks[] = $v['task_id'];
-              }
+            $res = $this->db->where('user_id', $my_id)->get('task_users');
+            if ($res->num_rows() > 0) {
+                foreach ($res->result_array() as $k => $v) {
+                    $tasks[] = $v['task_id'];
+                }
             }
             if ($type == 'search' || $type == 'results') {
-              $temp = $results;
-              $results = array();
-              foreach ($temp as $key => $t) {
-                if(in_array($t['tasks_id'],$tasks)){
-                  $results[] = $t;
+                $temp = $results;
+                $results = array();
+                foreach ($temp as $key => $t) {
+                    if (in_array($t['tasks_id'], $tasks)) {
+                        $results[] = $t;
+                    }
                 }
-              }
             } else {
-              $results = count($tasks);
+                $results = count($tasks);
             }
         }
         //echo $this->db->last_query();die;
@@ -806,8 +811,8 @@ class Tasks_model extends Super_Model
      * all of a members pending tasks (none paginated). Mainly for home page display
      *
      * @paramm  numeric [limit: number of results to show]
-     * 
-     * @return	array
+     *
+     * @return    array
      */
 
     function myPendingTasks($limit = 0)
@@ -859,9 +864,9 @@ class Tasks_model extends Super_Model
     /**
      * edit a tasks details
      *
-     * 
-     * @param	void
-     * @return	numeric [affected rows]
+     *
+     * @param    void
+     * @return    numeric [affected rows]
      */
 
     function editTask()
@@ -874,7 +879,7 @@ class Tasks_model extends Super_Model
         $conditional_sql = '';
 
         //if task id value exists in the post data
-        if (! is_numeric($this->input->post('tasks_id'))) {
+        if (!is_numeric($this->input->post('tasks_id'))) {
             $this->__debugging(__line__, __function__, 0, "Invalid Data [task id: is not numeric/is unavailable]", '');
             return false;
         }
@@ -882,6 +887,10 @@ class Tasks_model extends Super_Model
         //escape all post item
         foreach ($_POST as $key => $value) {
             $$key = $this->db->escape($this->input->post($key));
+        }
+
+        if (isset($tasks_text)) {
+            $tasks_text = html_entity_decode($tasks_text);
         }
 
         //----------sql & benchmarking start----------
@@ -901,19 +910,19 @@ class Tasks_model extends Super_Model
 
         $results = $this->db->affected_rows(); //affected rows
 
-        if(is_array($_POST['tasks_assigned_to_id'])){
-          $insert = array();
-          foreach ($_POST['tasks_assigned_to_id'] as $key => $value) {
-            $insert[] = array(
-                'task_id' => $results,
-                'user_id' => $value
-              );
-          }
-          $this->db->where('task_id',$tasks_id)->delete('task_users');
-          $this->db->insert_batch('task_users',$insert);
+        if (is_array($_POST['tasks_assigned_to_id'])) {
+            $insert = array();
+            foreach ($_POST['tasks_assigned_to_id'] as $key => $value) {
+                $insert[] = array(
+                    'task_id' => $results,
+                    'user_id' => $value
+                );
+            }
+            $this->db->where('task_id', $tasks_id)->delete('task_users');
+            $this->db->insert_batch('task_users', $insert);
         } else {
-          $this->db->where('tasks_id',$tasks_id)->update('tasks',array('tasks_assigned_to_id',$_POST['tasks_assigned_to_id']));
-        }  
+            $this->db->where('tasks_id', $tasks_id)->update('tasks', array('tasks_assigned_to_id', $_POST['tasks_assigned_to_id']));
+        }
 
         //benchmark/debug
         $this->benchmark->mark('code_end');
@@ -935,9 +944,9 @@ class Tasks_model extends Super_Model
     /**
      * return a single task based on its ID
      *
-     * 
+     *
      * @param numeric $item ID]
-     * @return	array
+     * @return    array
      */
 
     function getTask($task_id = '')
@@ -950,7 +959,7 @@ class Tasks_model extends Super_Model
         $conditional_sql = '';
 
         //if no valie client id, return false
-        if (! is_numeric($task_id)) {
+        if (!is_numeric($task_id)) {
             $this->__debugging(__line__, __function__, 0, "Invalid Data [task id=$task_id]", '');
             return false;
         }
@@ -999,9 +1008,9 @@ class Tasks_model extends Super_Model
     /**
      * return a array team members (ID's) who have edit/delete access for this task
      *
-     * 
+     *
      * @param numeric $item ID]
-     * @return	array
+     * @return    array
      */
 
     function superUsers($task_id = '')
@@ -1014,7 +1023,7 @@ class Tasks_model extends Super_Model
         $conditional_sql = '';
 
         //if no valie client id, return false
-        if (! is_numeric($task_id)) {
+        if (!is_numeric($task_id)) {
             $this->__debugging(__line__, __function__, 0, "Invalid Data [task id=$task_id]", '');
             return false;
         }
@@ -1068,11 +1077,11 @@ class Tasks_model extends Super_Model
     // -- bulkDelete ----------------------------------------------------------------------------------------------
     /**
      * bulk delete based on list of project ID's
-     * typically used when deleting project/s 
+     * typically used when deleting project/s
      *
-     * 
-     * @param	string [projects_list: a mysql array/list formatted projects list] [e.g. 1,2,3,4]
-     * @return	bool
+     *
+     * @param    string [projects_list: a mysql array/list formatted projects list] [e.g. 1,2,3,4]
+     * @return    bool
      */
 
     function bulkDelete($projects_list = '')
@@ -1090,7 +1099,7 @@ class Tasks_model extends Super_Model
         //sanity check - ensure we have a valid projects_list, with only numeric id's
         $lists = explode(',', $projects_list);
         for ($i = 0; $i < count($lists); $i++) {
-            if (! is_numeric(trim($lists[$i]))) {
+            if (!is_numeric(trim($lists[$i]))) {
                 //log error
                 log_message('error', '[FILE: ' . __file__ . ']  [FUNCTION: ' . __function__ . ']  [LINE: ' . __line__ . "]  [MESSAGE: Bulk Deleting tasks, for projects($clients_projects) failed. Invalid projects list]");
                 //exit

@@ -467,11 +467,7 @@ class Formbuilder
         $element = '<div class="form-group formbuilder-form-rendered">
                               <label class="control-label">' . $label . $element_asterix . '</label>
                                 <div>
-                                  <textarea class="form-control" name="' . $field_name . '" id="' . $field_name . '" rows="5"' . $jqueryvalidationjs_tag . '>
-                                  [onshow;post.' . $field_name . ';htmlconv=no]
-                                  </textarea>
-                                </div>
-                           </div>' . $element_hidden_field . $element_hidden_question; //return element
+                                  <textarea class="form-control" name="' . $field_name . '" id="' . $field_name . '" rows="5"' . $jqueryvalidationjs_tag . '>' . (empty($field_name) ? null : $field_name) . '</textarea></div></div>' . $element_hidden_field . $element_hidden_question; //return element
         /*
          *
                                    <script>

@@ -83,7 +83,19 @@ class Citations extends MY_Controller
 
     private function listCitations()
     {
-        $res = $this->db->where('project_id', $this->project_id)->get('citations');
+        $this->db->where('project_id', $this->project_id);
+        $sort_column = $this->uri->segment(5);
+        $sort = $this->uri->segment(6);
+        if (empty($sort)) {
+            $sort = 'asc';
+        }
+
+        if (!empty($sort_column)) {
+            $this->db->order_by($sort_column, $sort);
+        }
+        $res = $this->db->get('citations');
+        $this->data['vars']['sort'] = $sort == 'asc' ? 'desc' : 'asc';
+
         if ($res->num_rows() == 0) {
             $this->data['visible']['wi_notifications'] = 1;
             $this->data['visible']['citations'] = 0;

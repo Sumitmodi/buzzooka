@@ -24,7 +24,7 @@ function loadImages() {
         ?>
 
             <div class="fileDiv" onclick="showImage('<?php echo $image; ?>','<?php echo $image_height; ?>');">
-                <div class="imgDiv"><img class="fileImg lazy" data-original="<?php echo $image; ?>"></div>
+                <div class="imgDiv"><img class="fileImg lazy" data-original="<?php echo $image; ?>" src="<?php echo $image;?>"></div>
                 <p class="fileDescription"><?php echo $imgname; ?></p>
                 <p class="fileTime"><?php echo @date("F d Y H:i", filemtime($image)); ?></p>
                 <p class="fileTime"><?php echo $filesizetemp; ?> KB</p>

@@ -213,6 +213,10 @@ class Ajax extends MY_Controller
                 $this->__bulkImportTemplates();
                 break;
 
+            case 'save-citation':
+                $this->__saveCitation();
+                break;
+
             default:
                 $this->__default($action);
                 break;
@@ -221,6 +225,27 @@ class Ajax extends MY_Controller
         //log debug data
         $this->__ajaxdebugging();
 
+    }
+
+    protected function __saveCitation()
+    {
+        $update = array(
+            'site' => $this->input->post('site', true),
+            'link' => $this->input->post('link', true),
+            'status' => $this->input->post('status', true),
+        );
+        if ($this->db->where('id', $this->input->post('id', true))->update('citations', $update)) {
+            $this->jsondata = array(
+                'result' => 'success',
+                'message' => $this->data['lang']['lang_request_has_been_completed']
+            );
+        } else {
+            $this->jsondata = array(
+                'result' => 'error',
+                'message' => $this->data['lang']['lang_request_could_not_be_completed']
+            );
+        }
+        $this->__flmView('common/json');
     }
 
     protected function __bulkImportTemplates()
