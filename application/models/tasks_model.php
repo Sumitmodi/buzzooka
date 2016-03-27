@@ -250,7 +250,7 @@ class Tasks_model extends Super_Model
 
         if ($results > 0) {
             //add the users
-            if (is_array($_POST['tasks_assigned_to_id'])) {
+            if (isset($_POST['tasks_assigned_to_id']) && is_array($_POST['tasks_assigned_to_id'])) {
                 $insert = array();
                 foreach ($_POST['tasks_assigned_to_id'] as $key => $value) {
                     $insert[] = array(
@@ -260,7 +260,9 @@ class Tasks_model extends Super_Model
                 }
                 $this->db->insert_batch('task_users', $insert);
             } else {
-                $this->db->where('tasks_id', $results)->update('tasks', array('tasks_assigned_to_id', $_POST['tasks_assigned_to_id']));
+                $ci = get_instance();
+                $this->db->insert('task_users', array('task_id'=>$results,'user_id'=>$ci->data['vars']['my_id']));
+                //$this->db->where('tasks_id', $results)->update('tasks', array('tasks_assigned_to_id', $_POST['tasks_assigned_to_id']));
             }
         }
 

@@ -425,7 +425,7 @@ class Mytasks extends MY_Controller
         //[memebers projects]
         $data = $this->project_members_model->membersProjects(0, 'list', $this->data['vars']['my_id'], 'open');
         $this->data['debug'][] = $this->project_members_model->debug_data;
-        $this->data['lists']['all_projects'] = create_pulldown_list($data, 'projects', 'id');
+        $this->data['lists']['all_projects'] = create_pulldown_list($data, 'projects', 'id','clients_company_name');
 
     }
 

@@ -104,18 +104,7 @@
                                                             <tr>
                                                                 <td style="min-width:300px;">
                                     <span class="tasks_[tasks.tasks_status;block=tr;noerr]">
-                                      <a data-toggle="modal"
-                                         data-task-title="[tasks.tasks_title;block=tr;noerr]"
-                                         data-task-start-date="[tasks.tasks_start_date;block=tr;noerr]"
-                                         data-task-end-date="[tasks.tasks_end_date;block=tr;noerr]"
-                                         data-task-id="[tasks.tasks_id;block=tr;noerr]"
-                                         data-task-assigned-to-id="[tasks.users_ids;block=tr;noerr]"
-                                         data-task-milestone-id="[tasks.tasks_milestones_id;block=tr;noerr]"
-                                         data-task-events-id="[tasks.tasks_events_id;block=tr;noerr]"
-                                         data-task-status="[tasks.tasks_status;block=tr;noerr]"
-                                         data-target="#description-modal"
-                                         class="description-modal">
-                                          <div style="display: none;">[tasks.tasks_text;htmlconv=no;]</div>
+                                      <a href="[conf.site_url]/admin/tasks/[tasks.tasks_project_id]/details/[tasks.tasks_id]">
                                           <!--[tasks.tasks_title;block=tr;comm;ope=max:120;]-->
                                       </a>
                                     </span>
@@ -268,7 +257,7 @@
 <!-- Scroll to top -->
 <span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>
 <style type="text/css">
-    #description-modal img{
+    #description-modal img {
         max-width: 100%;
         overflow: hidden;
     }
@@ -737,12 +726,6 @@
 <!--JS_EDIT_TASK_MODAL-->
 <script type="text/javascript">
     $(document).ready(function () {
-        //USED BY: WI_EDIT_TASK_MODAL
-        //ACTIONS: dynamically add data into modal form
-        //REQUIRES: jquery.js
-        //ACTIONS-2: creates a pull down/select for each specified field (with preselected values)
-        //REQUIRES-2: select2.js
-
         //---edit item link clicked-------
         $(".edit-task-modal").click(function () {
 

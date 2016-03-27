@@ -1,6 +1,6 @@
 <?php
 
-if (! defined('BASEPATH')) {
+if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
 
@@ -28,8 +28,8 @@ class File_messages_model extends Super_Model
     // -- addMessage ----------------------------------------------------------------------------------------------
     /**
      * add new message to database
-     * @param	void
-     * @return	mixed [record insert id / bool(false)]
+     * @param    void
+     * @return    mixed [record insert id / bool(false)]
      */
 
     function addMessage()
@@ -45,7 +45,7 @@ class File_messages_model extends Super_Model
         foreach ($_POST as $key => $value) {
             $$key = $this->db->escape($this->input->post($key));
         }
-
+        $messages_text = html_entity_decode($messages_text);
         //----------sql & benchmarking start----------
         $this->benchmark->mark('code_start');
 
@@ -112,10 +112,10 @@ class File_messages_model extends Super_Model
     // -- listMessages ----------------------------------------------------------------------------------------------
     /**
      * list file messages, paginated
-     * @param numeric $offset: pagination]
-     * @param	string $type: search/count]
-     * @param numeric $file_id]
-     * @return	array
+     * @param numeric $offset : pagination]
+     * @param    string $type : search/count]
+     * @param numeric $file_id ]
+     * @return    array
      */
 
     function listMessages($offset = 0, $type = 'search', $file_id = '')
@@ -129,7 +129,7 @@ class File_messages_model extends Super_Model
         $limiting = '';
 
         //validaate file id
-        if (! is_numeric($file_id)) {
+        if (!is_numeric($file_id)) {
             $this->__debugging(__line__, __function__, 0, "Invalid Data [file id=$file_id]", '');
             return false;
         }
@@ -196,7 +196,7 @@ class File_messages_model extends Super_Model
     /**
      * return a single message record based on its ID
      * @param numeric $item ID]
-     * @return	array
+     * @return    array
      */
 
     function getMessage($id = '')
@@ -209,7 +209,7 @@ class File_messages_model extends Super_Model
         $conditional_sql = '';
 
         //if no valie client id, return false
-        if (! is_numeric($id)) {
+        if (!is_numeric($id)) {
             $this->__debugging(__line__, __function__, 0, "Invalid Data [file id=$id]", '');
             return false;
         }
@@ -257,8 +257,8 @@ class File_messages_model extends Super_Model
     // -- editMessage ----------------------------------------------------------------------------------------------
     /**
      * edit a project message
-     * @param	void
-     * @return	numeric [affected rows]
+     * @param    void
+     * @return    numeric [affected rows]
      */
 
     function editMessage()
@@ -271,7 +271,7 @@ class File_messages_model extends Super_Model
         $conditional_sql = '';
 
         //if task id value exists in the post data
-        if (! is_numeric($this->input->post('messages_id')) || $this->input->post('messages_text') == '') {
+        if (!is_numeric($this->input->post('messages_id')) || $this->input->post('messages_text') == '') {
             $this->__debugging(__line__, __function__, 0, "Editing Message Failed: Invalid Data messages_id or messages_text", '');
             return false;
         }
@@ -326,8 +326,8 @@ class File_messages_model extends Super_Model
     // -- editReply ----------------------------------------------------------------------------------------------
     /**
      * edit a team message reply
-     * @param	void
-     * @return	numeric [affected rows]
+     * @param    void
+     * @return    numeric [affected rows]
      */
 
     function editReply()
@@ -340,7 +340,7 @@ class File_messages_model extends Super_Model
         $conditional_sql = '';
 
         //if task id value exists in the post data
-        if (! is_numeric($this->input->post('messages_replies_id')) || $this->input->post('messages_replies_text') == '') {
+        if (!is_numeric($this->input->post('messages_replies_id')) || $this->input->post('messages_replies_text') == '') {
             $this->__debugging(__line__, __function__, 0, "Editing Message Failed: Invalid Data messages_replies_id or messages_replies_text", '');
             return false;
         }
@@ -395,9 +395,9 @@ class File_messages_model extends Super_Model
     // -- deleteMessage ----------------------------------------------------------------------------------------------
     /**
      * delete a message based on a 'delete_by' id
-     * @param numeric   [id: reference id of item(s)]
-     * @param   string    [delete_by: message-id, project-id]
-     * @return	bool
+     * @param numeric [id: reference id of item(s)]
+     * @param   string [delete_by: message-id, project-id]
+     * @return    bool
      */
 
     function deleteMessage($id = '', $delete_by = '')
@@ -410,7 +410,7 @@ class File_messages_model extends Super_Model
         $conditional_sql = '';
 
         //if no valie client id, return false
-        if (! is_numeric($id)) {
+        if (!is_numeric($id)) {
             $this->__debugging(__line__, __function__, 0, "Invalid Data [id=$id]", '');
             //ajax-log error to file
             log_message('error', '[FILE: ' . __file__ . ']  [FUNCTION: ' . __function__ . ']  [LINE: ' . __line__ . "]  [MESSAGE: deleting message(s) failed (id: $id is invalid)]");
@@ -420,7 +420,7 @@ class File_messages_model extends Super_Model
         //check if delete_by is valid
         $valid_delete_by = array('message-id', 'project-id');
 
-        if (! in_array($delete_by, $valid_delete_by)) {
+        if (!in_array($delete_by, $valid_delete_by)) {
             $this->__debugging(__line__, __function__, 0, "Invalid Data [delete_by=$delete_by]", '');
             //ajax-log error to file
             log_message('error', '[FILE: ' . __file__ . ']  [FUNCTION: ' . __function__ . ']  [LINE: ' . __line__ . "]  [MESSAGE: deleting message(s) failed (delete_by: $delete_by is invalid)]");
@@ -491,9 +491,9 @@ class File_messages_model extends Super_Model
     // -- bulkDelete ----------------------------------------------------------------------------------------------
     /**
      * bulk delete based on list of project ID's
-     * typically used when deleting project/s 
-     * @param	string [projects_list: a mysql array/list formatted projects list] [e.g. 1,2,3,4]
-     * @return	bool
+     * typically used when deleting project/s
+     * @param    string [projects_list: a mysql array/list formatted projects list] [e.g. 1,2,3,4]
+     * @return    bool
      */
 
     function bulkDelete($projects_list = '')
@@ -511,7 +511,7 @@ class File_messages_model extends Super_Model
         //sanity check - ensure we have a valid projects_list, with only numeric id's
         $lists = explode(',', $projects_list);
         for ($i = 0; $i < count($lists); $i++) {
-            if (! is_numeric(trim($lists[$i]))) {
+            if (!is_numeric(trim($lists[$i]))) {
                 //log error
                 log_message('error', '[FILE: ' . __file__ . ']  [FUNCTION: ' . __function__ . ']  [LINE: ' . __line__ . "]  [MESSAGE: Bulk Deleting file messages, for projects($clients_projects) failed. Invalid projects list]");
                 //exit

@@ -691,6 +691,8 @@ class Projects_model extends Super_Model
                 $insert[$field] = $this->input->post($field, true);
             }
         }
+        
+        $insert['projects_description'] = html_entity_decode($insert['projects_description']);
 
         //----------sql & benchmarking start----------
         $this->benchmark->mark('code_start');
@@ -737,6 +739,7 @@ class Projects_model extends Super_Model
             $$key = $this->db->escape($this->input->post($key));
         }
 
+        $projects_description = html_entity_decode($projects_description);
 
         //optional fields
         $projects_optionalfield1 = $this->db->escape($this->input->post('projects_optionalfield1'));

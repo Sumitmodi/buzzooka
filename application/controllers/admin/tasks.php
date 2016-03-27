@@ -1,6 +1,6 @@
 <?php
 
-if (! defined('BASEPATH')) {
+if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
 
@@ -43,7 +43,7 @@ class Tasks extends MY_Controller
     /**
      * This is our re-routing function and is the inital function called
      *
-     * 
+     *
      */
     function index()
     {
@@ -110,6 +110,10 @@ class Tasks extends MY_Controller
                 $this->__tasksEdit();
                 break;
 
+            case 'details':
+                $this->__taskDetails();
+                break;
+
             case 'edit-timer':
                 $this->__editTaskTimer();
                 break;
@@ -129,6 +133,59 @@ class Tasks extends MY_Controller
         //load view
         $this->__flmView('admin/main');
 
+    }
+
+    protected function __taskDetails()
+    {
+        $this->data['vars']['project'] = $this->project_details;
+        $task_id = $this->uri->segment(5);
+        $task_details = $this->db->where('tasks_id', $task_id)->get('tasks');
+        if (false == (bool)$task_details->num_rows()) {
+            $this->notices('error', $this->data['lang']['no_task']);
+        } else {
+            $this->data['vars']['task'] = $task_details->row_array();
+            $users = $this->tasks_model->fetchTaskUsers($task_id);
+            $visible_delete_button = 0;
+            $visible_edit_button = 0;
+            //i am project leader or admininstrator
+            if ($this->data['vars']['my_id'] == $this->data['vars']['project_leaders_id'] || $this->data['my_group'] == 1) {
+                $visible_delete_button = 1;
+                $visible_edit_button = 1;
+            }
+            $users_id = array();
+            if (false != $users) {
+                $temp = array();
+                foreach ($users as $m => $user) {
+                    if(!in_array($user['user_id'],$users_id)){
+                        $users_id[] = $user['user_id'];
+                    }
+                    if ($this->data['vars']['my_id'] == $user['user_id']) {
+                        $visible_delete_button = $this->data['project_permissions']['delete_item_my_project_my_tasks'];
+                        $visible_edit_button = $this->data['project_permissions']['edit_item_my_project_my_tasks'];
+                    }
+
+                    $temp[] = '<a class="links-blue iframeModal"
+                                                      data-height="250" 
+                                                      data-width="100%"
+                                                      data-toggle="modal"
+                                                      data-target="#modalIframe"
+                                                      data-modal-window-title="' . $this->data['lang']['lang_user_profile'] . '" 
+                                                      data-src="' . site_url("admin/people/team/{$user['user_id']}") . '"
+                                                      href="#">' . $user['team_profile_full_name'] . '</a>';
+
+                }
+                $users = implode(',&nbsp;', $temp);
+            } else {
+                $users = '<a class="tooltips" data-original-title="' . $this->data['lang']['lang_userd_details_unavailable'] . '">' . $this->data['lang']['lang_unavailable'] . '</a>';
+            }
+            $users_id = implode(',',$users_id);
+            $this->data['vars']['task_users'] = $users;
+            $this->data['vars']['task_user_ids'] = $users_id;
+            //inject control visibility into $thedata array
+            $this->data['vars']['visible_delete_button'] = $visible_delete_button;
+            $this->data['vars']['visible_edit_button'] = $visible_edit_button;
+        }
+        $this->data['template_file'] = PATHS_ADMIN_THEME . 'project.task.html';
     }
 
     /**
@@ -271,11 +328,11 @@ class Tasks extends MY_Controller
 
         /** SEND DATA FOR ADDITIONAL PREPARATION **/
 
-         $tasks = $this->data['blocks']['tasks'];//$this->__prepTasksView();
-         //$this->data['blocks']['tasks']
-         foreach ($tasks as $key => $task) {
+        $tasks = $this->data['blocks']['tasks'];//$this->__prepTasksView();
+        //$this->data['blocks']['tasks']
+        foreach ($tasks as $key => $task) {
             $users = $this->tasks_model->fetchTaskUsers($task['tasks_id']);
-            if(false != $users){
+            if (false != $users) {
                 $tasks[$key]['user_ids'] = array();
                 $temp = array();
                 foreach ($users as $m => $user) {
@@ -288,10 +345,10 @@ class Tasks extends MY_Controller
                                                       data-src="' . site_url("admin/people/team/{$user['user_id']}") . '"
                                                       href="#">' . $user['team_profile_full_name'] . '</a>';
 
-                    $tasks[$key]['user_ids'][] = $user['user_id'];                                  
+                    $tasks[$key]['user_ids'][] = $user['user_id'];
                 }
                 $tasks[$key]['users_ids'] = implode(',', $tasks[$key]['user_ids']);
-                $tasks[$key]['users'] = implode(',&nbsp;',$temp);
+                $tasks[$key]['users'] = implode(',&nbsp;', $temp);
             } else {
                 $tasks[$key]['users'] = '<a class="tooltips" 
                                                        data-original-title="' . $this->data['lang']['lang_userd_details_unavailable'] . '">
@@ -299,16 +356,16 @@ class Tasks extends MY_Controller
             }
 
             //files
-            $files = preg_grep('/^([^.])/', scandir('./files/tasks/'.$task['tasks_id']));
-            if(count($files) > 0){
+            $files = preg_grep('/^([^.])/', scandir('./files/tasks/' . $task['tasks_id']));
+            if (count($files) > 0) {
                 foreach ($files as $l => $f) {
-                    $files[$l] = site_url('files/tasks/'.$task['tasks_id'].'/'.$f);
+                    $files[$l] = site_url('files/tasks/' . $task['tasks_id'] . '/' . $f);
                 }
-                $tasks[$key]['files'] = implode(',',array_values($files));
+                $tasks[$key]['files'] = implode(',', array_values($files));
             } else {
                 $tasks[$key]['files'] = '';
-            }           
-         }
+            }
+        }
 
         $this->data['blocks']['tasks'] = $this->__prepTasksView($tasks);
 
@@ -327,7 +384,7 @@ class Tasks extends MY_Controller
         $this->data['controller_profiling'][] = __function__;
 
         //check if data is not empty
-        if (count($thedata) == 0 || ! is_array($thedata)) {
+        if (count($thedata) == 0 || !is_array($thedata)) {
             return $thedata;
         }
 
@@ -410,12 +467,12 @@ class Tasks extends MY_Controller
         $this->data['controller_profiling'][] = __function__;
         //PERMISSIONS CHECK //flow control
         $next = true; //check if any post data (avoid direct url access)
-        if (! isset($_POST['submit'])) {
+        if (!isset($_POST['submit'])) {
             redirect('/admin/tasks/' . $this->project_id . '/view');
         }
 
         //validate form & display any errors
-        if (! $this->__flmFormValidation('add_task')) {
+        if (!$this->__flmFormValidation('add_task')) {
 
             //show error
             $this->notices('error', $this->form_processor->error_message);
@@ -424,7 +481,7 @@ class Tasks extends MY_Controller
 
         //validate hidden fields
         if ($next) {
-            if (! is_numeric($_POST['tasks_client_id']) || ! is_numeric($_POST['tasks_project_id']) || ! is_numeric($_POST['tasks_created_by_id']) || $_POST['tasks_events_id'] == '') {
+            if (!is_numeric($_POST['tasks_client_id']) || !is_numeric($_POST['tasks_project_id']) || !is_numeric($_POST['tasks_created_by_id']) || $_POST['tasks_events_id'] == '') {
 
                 //log this error
                 $this->__errorLogging(__line__, __function__, __file__, 'Adding new task failed: [Some or All] Required hidden form fields missing or invalid'); //show error
@@ -442,13 +499,13 @@ class Tasks extends MY_Controller
                 $this->notices('error', $this->data['lang']['lang_the_end_date_before_start']);
                 $next = false;
             }
-        }        
+        }
 
         //add new task to database
         if ($next) {
             if (($task_id = $this->tasks_model->addTask()) != false) {
 
-                if(isset($_FILES['files'])){
+                if (isset($_FILES['files'])) {
                     $this->_uploadTaskFiles($task_id);
                 }
 
@@ -475,36 +532,35 @@ class Tasks extends MY_Controller
 
     private function _uploadTaskFiles($id)
     {
-            if(!isset($this->upload)){
-                $this->load->library('upload');
+        if (!isset($this->upload)) {
+            $this->load->library('upload');
+        }
+
+        $config = array();
+
+        if (!file_exists('./files/tasks/' . $id) || !is_dir('./files/tasks/' . $id)) {
+            mkdir('./files/tasks/' . $id);
+        }
+
+        $config['upload_path'] = './files/tasks/' . $id;
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size'] = '0';
+        $config['overwrite'] = FALSE;
+
+        $files = $_FILES;
+        $cpt = count($_FILES['files']['name']);
+        for ($i = 0; $i < $cpt; $i++) {
+            $_FILES['files']['name'] = $files['files']['name'][$i];
+            $_FILES['files']['type'] = $files['files']['type'][$i];
+            $_FILES['files']['tmp_name'] = $files['files']['tmp_name'][$i];
+            $_FILES['files']['error'] = $files['files']['error'][$i];
+            $_FILES['files']['size'] = $files['files']['size'][$i];
+
+            $this->upload->initialize($config);
+            if (!$this->upload->do_upload('files')) {
+                ;//debug message
             }
-
-            $config = array();
-            
-            if(!file_exists('./files/tasks/'.$id) || !is_dir('./files/tasks/'.$id)){
-                mkdir('./files/tasks/'.$id);
-            }
-
-            $config['upload_path'] = './files/tasks/'.$id;
-            $config['allowed_types'] = 'gif|jpg|png';
-            $config['max_size']      = '0';
-            $config['overwrite']     = FALSE;
-
-            $files = $_FILES;
-            $cpt = count($_FILES['files']['name']);
-            for($i=0; $i<$cpt; $i++)
-            {           
-                $_FILES['files']['name']= $files['files']['name'][$i];
-                $_FILES['files']['type']= $files['files']['type'][$i];
-                $_FILES['files']['tmp_name']= $files['files']['tmp_name'][$i];
-                $_FILES['files']['error']= $files['files']['error'][$i];
-                $_FILES['files']['size']= $files['files']['size'][$i];    
-
-                $this->upload->initialize($config);
-                if(!$this->upload->do_upload('files')){
-                    ;//debug message
-                }
-            }
+        }
     }
 
     /**
@@ -516,13 +572,13 @@ class Tasks extends MY_Controller
         //profiling
         $this->data['controller_profiling'][] = __function__; //flow control
         $next = true; //check if any post data (avoid direct url access)
-        if (! isset($_POST['submit'])) {
+        if (!isset($_POST['submit'])) {
             redirect('/admin/tasks/' . $this->project_id . '/view');
         }
 
         //validate hidden fields
         if ($next) {
-            if (! is_numeric($_POST['tasks_id']) || $_POST['tasks_events_id'] == '') {
+            if (!is_numeric($_POST['tasks_id']) || $_POST['tasks_events_id'] == '') {
                 //log this error
                 $this->__errorLogging(__line__, __function__, __file__, 'Editing task failed: [Some or All] Required hidden form fields missing or invalid'); //show error
                 $this->notices('error', $this->data['lang']['lang_request_could_not_be_completed']);
@@ -535,7 +591,7 @@ class Tasks extends MY_Controller
             //get task super users
             $task = $this->tasks_model->getTask($this->input->post('tasks_id'));
             $this->data['debug'][] = $this->tasks_model->debug_data; //if no task found
-            if (! $task) {
+            if (!$task) {
                 //show error
                 $this->notices('error', $this->data['lang']['lang_request_could_not_be_completed']); //halt
                 $next = false;
@@ -556,7 +612,7 @@ class Tasks extends MY_Controller
             }
 
             //its assigned to me & I have edit permissions set
-            if(is_array($task['tasks_assigned_to_id'])){
+            if (is_array($task['tasks_assigned_to_id'])) {
                 if (in_array($this->data['vars']['my_id'], $task['tasks_assigned_to_id'])) {
                     if ($this->data['project_permissions']['edit_item_my_project_my_tasks'] == 1) {
                         $next = true;
@@ -572,7 +628,7 @@ class Tasks extends MY_Controller
             }
 
             //permission denied
-            if (! $next) {
+            if (!$next) {
                 $this->notices('error', $this->data['lang']['lang_permission_denied']);
             }
 
@@ -580,7 +636,7 @@ class Tasks extends MY_Controller
 
         //validate form & display any errors
         if ($next) {
-            if (! $this->__flmFormValidation('edit_task')) {
+            if (!$this->__flmFormValidation('edit_task')) {
 
                 //show error
                 $this->notices('error', $this->form_processor->error_message);
@@ -603,7 +659,7 @@ class Tasks extends MY_Controller
         if ($next) {
             if ($this->tasks_model->editTask()) {
 
-                if(isset($_FILES['files'])){
+                if (isset($_FILES['files'])) {
                     $this->_uploadTaskFiles($this->input->post('tasks_id'));
                 }
 
@@ -639,7 +695,7 @@ class Tasks extends MY_Controller
 
     /**
      * validates forms for various methods in this class
-     * @param	string $form identify the form to validate
+     * @param    string $form identify the form to validate
      */
     function __flmFormValidation($form = '')
     {
@@ -655,7 +711,7 @@ class Tasks extends MY_Controller
                 'tasks_end_date' => $this->data['lang']['lang_end_date'],
                 'tasks_milestones_id' => $this->data['lang']['lang_milestone'],
                 'tasks_assigned_to_id' => $this->data['lang']['lang_assigned_to']);
-            if (! $this->form_processor->validateFields($fields, 'required')) {
+            if (!$this->form_processor->validateFields($fields, 'required')) {
                 return false;
             }
 
@@ -702,8 +758,8 @@ class Tasks extends MY_Controller
     /**
      * records new project events (timeline)
      *
-     * @param	string   $type identify the loop to run in this function
-     * @param   array    $vents_data an optional array that can be used to directly pass data]      
+     * @param    string $type identify the loop to run in this function
+     * @param   array $vents_data an optional array that can be used to directly pass data]
      */
     function __eventsTracker($type = '', $events_data = array())
     {

@@ -1,6 +1,6 @@
 <?php
 
-if (! defined('BASEPATH')) {
+if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
 
@@ -8,19 +8,19 @@ if (! defined('BASEPATH')) {
 /**
  * creates a pulldown list of all clients
  *
- * @param array $data: full table rows from sql query]
- * @param string $type: clients|users|users_email|team_members|team_members_email|groups|milestones|projects]
- * @param string $key: name / id] (specifies what will be put in the value="" part of the select field
+ * @param array $data : full table rows from sql query]
+ * @param string $type : clients|users|users_email|team_members|team_members_email|groups|milestones|projects]
+ * @param string $key : name / id] (specifies what will be put in the value="" part of the select field
  * @return array
  */
-function create_pulldown_list($data, $type = 'users', $key = 'name')
+function create_pulldown_list($data, $type = 'users', $key = 'name', $sub_type = null)
 {
 
     //get $CI instance
     $ci = &get_instance();
 
     //if data is invalid, return this option
-    if (! is_array($data)) {
+    if (!is_array($data)) {
         return '<option value="NULL">' . $ci->data['lang']['lang_no_data_available'] . '</option>';
     }
 
@@ -39,7 +39,7 @@ function create_pulldown_list($data, $type = 'users', $key = 'name')
             break;
 
         case 'projects':
-            $name_key = 'projects_title';
+            $name_key = 'services_name';//'projects_title';
             $id_key = 'projects_id';
             break;
 
@@ -95,7 +95,7 @@ function create_pulldown_list($data, $type = 'users', $key = 'name')
         case 'services':
             $name_key = 'services_name';
             $id_key = 'services_id';
-            break;    
+            break;
         default:
             return false;
     }
@@ -123,9 +123,9 @@ function create_pulldown_list($data, $type = 'users', $key = 'name')
 
         //create pull down
         if ($key == 'name') {
-            $pulldown_list .= '<option value="' . $data[$i][$name_key] . '">' . $var . '</option>';
+            $pulldown_list .= '<option value="' . $data[$i][$name_key] . '">' . $var. (!is_null($sub_type) && isset($data[$i][$sub_type]) ? ' : ' . $data[$i][$sub_type] : null)  . '</option>';
         } else {
-            $pulldown_list .= '<option value="' . $data[$i][$id_key] . '">' . $var . '</option>';
+            $pulldown_list .= '<option value="' . $data[$i][$id_key] . '">' . $var. (!is_null($sub_type) && isset($data[$i][$sub_type]) ? ' : ' . $data[$i][$sub_type] : null) . '</option>';
         }
     }
 

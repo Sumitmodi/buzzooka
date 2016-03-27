@@ -892,6 +892,8 @@ $lang['lang_view'] = 'View';
 $lang['lang_live'] = 'Live';
 $lang['lang_submitted'] = 'Submitted';
 $lang['lang_pending'] = 'Pending';
+$lang['no_task'] = 'Task not found.';
+$lang['lang_task_detail'] = 'Task Details';
 //$lang['lang_milestones'] = 'Reports';
 /* End of file default_lang.php */
 /* Location: ./application/language/english/default_lang.php */

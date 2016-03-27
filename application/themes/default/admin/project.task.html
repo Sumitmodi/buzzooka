@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+    <link href="../common/style/bootstrap.css" rel="stylesheet">
+    <link href="../common/style/style.css" rel="stylesheet">
+    <!--[onshow;block=head;when [visible.foo] == bar;comm]-->
+    <!--DEV-ONLY-NOT-LOADED-DURING-RUNTIME-->
+</head>
+<!--HEAD - ONLOAD-->
+<!--[onload;file=../common/common.head.html;getbody;comm]-->
+<!--HEAD - ONLOAD-->
+<body>
+<style type="text/css">
+    img {
+        max-width: 100%;
+    }
+</style>
+<!--JS SECTION - ONLOAD-->
+<!--[onload;file=../common/common.javascript.html;getbody;comm]-->
+<!--JS SECTION - ONLOAD-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--[onload;file=../common/include.debug.html;getbody;comm]-->
+<!--DEBUG SECTION - ONLOAD-->
+<!--HEADER SECTION - ONLOAD-->
+<!--[onload;file=common.header.html;getbody;comm]-->
+<!--HEADER SECTION - ONLOAD-->
+<!-- Main content starts -->
+<div class="content">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!--SIDE MENU - ONLOAD -->
+        <!--[onload;file=common.menu.html;getbody;comm]-->
+        <!--SIDE MENU - ONLOAD -->
+    </div>
+    <!-- Sidebar ends -->
+    <div class="mainbar">
+        <!----------------------COMMON PAGE HEADING--------------------------------->
+        <!--[onload;file=common.heading.html;getbody;comm]-->
+        <!----------------------COMMON PAGE HEADING--------------------------------->
+        <div class="matter">
+            <!----------------------COMMON PROJECT HEAD--------------------------------->
+            <!--[onload;file=common.project.header.html;getbody;comm]-->
+            <!----------------------COMMON PROJECT HEAD--------------------------------->
+            <div class="container">
+                <div class="row">
+                    <!--WI_PROJECT_NAV_CONTENT-->
+                    <div class="col-lg-3">
+                        <!----------------------COMMON PROJECT MENU--------------------------------->
+                        <!--[onload;file=common.project.navigation.html;getbody;comm]-->
+                        <!----------------------COMMON PROJECT MENU--------------------------------->
+                    </div>
+                    <!--WI_PROJECT_NAV_CONTENT-->
+                    <div class="col-lg-9">
+                        <div class="widget">
+                            <div class="widget-content-project">
+                                <div class="project-info-tabs">
+                                    <!--top actions menu-->
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <h3 class="pull-left">[vars.task.tasks_title]</h3>
+                                            <span class="pull-right">
+                                                <!--[onshow;block=span;when [vars.visible_delete_button;] == 1;]-->
+                                                <a class="btn btn-danger delete-task"
+                                                   data-popconfirm-yes="[lang.lang_yes;noerr]"
+                                                   data-popconfirm-no="[lang.lang_no;noerr]"
+                                                   data-popconfirm-title="[lang.lang_are_you_sure;noerr]"
+                                                   data-popconfirm-placement="left"
+                                                   data-mysql-record-id="[vars.task.tasks_id]"
+                                                   data-mysql-record-id4="[vars.task.tasks_project_id]"
+                                                   data-mysql-table-name="tasks"
+                                                   data-ajax-url="[conf.site_url]/admin/ajax/delete-task">
+                                                    <i class="icon-trash"></i> [lang.lang_delete]
+                                                </a>
+                                            </span>
+                                            <span class="pull-right">
+                                                <!--[onshow;block=span;when [vars.visible_edit_button;] == 1;]-->
+                                                <a data-toggle="modal"
+                                                   data-modal-window-title="[lang.lang_edit_task]"
+                                                   data-height="450"
+                                                   data-width="100%"
+                                                   data-task-title="[vars.task.tasks_title;]"
+                                                   data-task-start-date="[vars.task.tasks_start_date]"
+                                                   data-task-end-date="[vars.task.tasks_end_date]"
+                                                   data-task-id="[vars.task.tasks_id]"
+                                                   data-task-assigned-to-id="[vars.task_user_ids]"
+                                                   data-task-milestone-id="[vars.task.tasks_milestones_id]"
+                                                   data-task-events-id="[vars.task.tasks_events_id]"
+                                                   data-task-status="[vars.task.tasks_status]"
+                                                   data-target="#editTaskModal"
+                                                   class="btn btn-success edit-task-modal">
+                                                    <i class="icon-pencil"></i> [lang.lang_edit]
+                                                </a>
+                                                &nbsp;
+                                            </span>
+                                            <div class="clearfix"></div>
+                                            <hr/>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <span class="pull-left">
+                                                [lang.lang_assigned_to] : [vars.task_users;htmlconv=no]
+                                            </span>
+                                            <span class="pull-right">
+                                                [lang.lang_end_date] : [vars.task.tasks_end_date]
+                                                |
+                                                [lang.lang_status] : [vars.task.tasks_status;onformat=runtime_status_colors;htmlconv=no]
+                                            </span>
+                                            <div class="clearfix"></div>
+                                            <hr/>
+                                            <div id="task_details">
+                                                [vars.task.tasks_text;htmlconv=no]
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--WI_NOTIFICATION-->
+                <div class="row">
+                    <!--[onshow;block=div;when [visible.wi_notification] == 1;comm]-->
+                    <div class="col-md-12">
+                        <div class="widget">
+                            <div class="widget-content widget-big-box">[vars.notification;noerr]</div>
+                        </div>
+                    </div>
+                </div>
+                <!--WI_NOTIFICATION-->
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<!----------------------COMMON FOOTER--------------------------------->
+<!--[onload;file=../common/common.footer.html;getbody;comm]-->
+<!----------------------COMMON FOOTER--------------------------------->
+<!-- Scroll to top -->
+<span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>
+
+<div class="row">
+    <div id="editTaskModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <form class="form-horizontal" action="[conf.site_url]/admin/tasks/[vars.project_id;noerr]/edit"
+                  method="post" id="editTask" enctype="multipart/form-data">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                        <!--full screen icon - custom.js-->
+                        <button type="button" class="full-screen-modal close" aria-hidden="true"><i
+                                class="icon-fullscreen"></i></button>
+                        <!--full screen icon - custom.js-->
+                        <h4 class="modal-title"> [lang.lang_edit] Task</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group" style="margin-bottom:10px;">
+                            <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_title]</label>
+                            <div class="col-lg-12">
+                                <input type="text" name="tasks_title" id="tasks_title" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-bottom:10px;">
+                            <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_description]</label>
+                            <div class="col-lg-12">
+                                <textarea class="form-control" id="task_text_edit" name="tasks_text"></textarea>
+                            </div>
+                        </div>
+                        <script type="text/javascript">
+                            $(function () {
+                                $('.edit-task-modal').click(function () {
+                                    if (CKEDITOR.instances['task_text_edit'] == undefined)
+                                        CKEDITOR.replace('task_text_edit', {
+                                            toolbar: 'Standard',
+                                            uiColor: '#ffffff',
+                                            height: '300px'
+                                        });
+                                });
+                            });
+                        </script>
+                        <div class="form-group" style="margin-bottom:10px;">
+                            <label class="control-label col-lg-12" style="width:150px;"> [lang.files]</label>
+                            <div class="col-lg-12">
+                                <input type="file" name="files[]" multiple="multiple" id="files"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="margin-bottom:10px;">
+                            <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_milestone]</label>
+                            <div class="col-lg-12">
+                                <select id="tasks-milestones-list-edit" name="tasks_milestones_id" style="width:100%">
+                                    <!--[lists.all_milestones;noerr;htmlconv=no;protect=no;comm]-->
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-bottom:10px;">
+                            <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_start_date]</label>
+                            <div class="col-lg-12">
+                                <input type="text" class="form-control pickadate" name="tasks_start_date"
+                                       id="task_start_date_edit">
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-bottom:10px;">
+                            <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_end_date]</label>
+                            <div class="col-lg-12">
+                                <input type="text" class="form-control pickadate" name="tasks_end_date"
+                                       id="task_end_date_edit">
+                            </div>
+                        </div>
+                        <!--admin & project leader only-->
+                        <div class="form-group" style="margin-bottom:10px;">
+                            <!--[onshow;block=div;when [project_permissions.super_user] == 1;comm]--><!--permissions-->
+                            <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_assigned_to]</label>
+                            <div class="col-lg-12">
+                                <select id="tasks-assigned-to-list-edit" name="tasks_assigned_to_id[]"
+                                        style="width:100%" multiple="multiple">
+                                    <!--[lists.all_team_members;noerr;htmlconv=no;protect=no;comm]-->
+                                </select>
+                            </div>
+                        </div>
+                        <!--admin & project leader only-->
+                        <!--regular team member only-->
+
+                        <div>
+                            <!--[onshow;block=div;when [project_permissions.regular_user] == 1;comm]-->
+                            <!--permissions-->
+                            <input type="hidden" name="tasks_assigned_to_id" value="[vars.my_id;noerr]">
+                        </div>
+                        <!--regular team member only-->
+                        <div class="form-group" style="margin-bottom:10px;">
+                            <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_status]</label>
+                            <div class="col-lg-12">
+                                <select id="tasks-status-list-edit" name="tasks_status" style="width:100%">
+                                    <!--NB: do not change lang on value=""-->
+                                    <option value="pending"> [lang.lang_pending]</option>
+                                    <option value="completed"> [lang.lang_completed]</option>
+                                    <option value="behind schedule"> [lang.lang_behind_schedule]</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">
+                            [lang.lang_close]
+                        </button>
+                        <input type="hidden" id="task_id_edit" name="tasks_id" value="[vars.task_id_edit;noerr]">
+                        <input type="hidden" id="task_events_id_edit" name="tasks_events_id"
+                               value="[vars.task_events_id_edit;noerr]">
+                        <input class="btn btn-primary" type="submit" value="[lang.lang_save_changes]" id=""
+                               name="submit">
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--WI_IFRAME_MODAL-->
+<div class="row">
+    <div id="modalIframe" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                    <!--full screen icon - custom.js-->
+                    <button type="button" class="full-screen-modal close" aria-hidden="true"><i
+                            class="icon-fullscreen"></i></button>
+                    <!--full screen icon - custom.js-->
+                    <h4 class="modal-title" id="modal-iframe-title">
+                        [lang.lang_edit]</h4>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="modal-body">
+                    <iframe frameborder="0" class="slimScrollBarModal----"></iframe>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">
+                        [lang.lang_close]
+                    </button>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--WI_IFRAME_MODAL-->
+<!----------------------COMMON PROJECT FOOTER--------------------------------->
+<!--[onload;file=common.project.footer.html;getbody;comm]-->
+<!----------------------COMMON PROJECT FOOTER--------------------------------->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<!--[onload;file=../common/common.footer.javascript.html;getbody;comm]-->
+<!--------------------COMMON FOOTER JAVASCRIPT---------------------------->
+<script type="text/javascript">
+    $(document).ready(function () {
+        //---edit item link clicked-------
+        $(".edit-task-modal").click(function () {
+
+            //get variables from "edit link" data attributes
+            var task_text_edit = $("#task_details").html();
+            var task_start_date_edit = $(this).attr("data-task-start-date");
+            var task_end_date_edit = $(this).attr("data-task-end-date");
+            var task_id_edit = $(this).attr("data-task-id");
+            var task_events_id_edit = $(this).attr("data-task-events-id");
+            var task_assigned_to_preselected = $(this).attr("data-task-assigned-to-id");
+            var task_milestone_preselected = $(this).attr("data-task-milestone-id");
+            var task_status_preselected = $(this).attr("data-task-status");
+
+            //set modal input values dynamically
+            $('input#tasks_title').val($(this).attr('data-task-title'));
+            $('#task_text_edit').val(task_text_edit);
+            $('#task_start_date_edit').val(task_start_date_edit);
+            $('#task_end_date_edit').val(task_end_date_edit);
+            $('#task_id_edit').val(task_id_edit);
+            $('#task_events_id_edit').val(task_events_id_edit);
+
+            //pre-select data in pull down lists
+            $("#tasks-assigned-to-list-edit").select2().select2('val', task_assigned_to_preselected.split(','));
+            $("#tasks-milestones-list-edit").select2().select2('val', task_milestone_preselected);
+            $("#tasks-status-list-edit").select2().select2('val', task_status_preselected);
+        });
+
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".delete-task").click(function () {
+            var data_mysql_record_id = $(this).attr("data-mysql-record-id");
+            var data_mysql_record_id4 = $(this).attr("data-mysql-record-id4");
+            var data_dialogue_message = $(this).attr("data-dialogue-message");
+            var data_ajax_url = $(this).attr("data-ajax-url");
+            var data_mysql_table_name = $(this).attr("data-mysql-table-name");
+            //popup_message = data_dialogue_message || 'please confirm';
+            $.ajax({
+                type: 'post',
+                url: data_ajax_url,
+                dataType: 'json',
+                data: 'data_mysql_record_id=' + data_mysql_record_id + '&data_mysql_table_name=' + data_mysql_table_name + '&data_mysql_record_id4=' + data_mysql_record_id4,
+                success: function (data) {
+                    $ajax_response = data.message;
+                    if ($ajax_response == '' || typeof $ajax_response === 'undefined') {
+                        $ajax_response = 'Request has been completed';
+                    }
+                    setTimeout(function () {
+                        noty({
+                            text: $ajax_response,
+                            layout: 'bottomRight',
+                            type: 'information',
+                            timeout: 1500
+                        });
+                    }, 300);
+                    setTimeout(function () {
+                        location.href = '[conf.site_url]/admin/tasks/[vars.task.tasks_project_id]/view';
+                    }, 1000);
+                },
+                error: function (data) {
+                    var data = data.responseJSON;
+                    $ajax_response = data.message;
+                    if ($ajax_response == '' || typeof $ajax_response === 'undefined') {
+                        $ajax_response = 'Error!- This request could not be completed';
+                    }
+                    noty({
+                        text: '' + $ajax_response,
+                        layout: 'bottomRight',
+                        type: 'warning',
+                        timeout: 1500
+                    });
+                }
+            });
+        });
+        $(".delete-task").popConfirm();
+    });
+</script>
+</body>
+</html>

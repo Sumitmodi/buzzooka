@@ -52,11 +52,11 @@
                 <!--select2.js pulldown-->
                 <select id="projects-list" data-placeholder="[lang.lang_project_name]" name="tasks_project_id">
                   <option></option>
-                  
-                    
-                     <!--[lists.all_projects;noerr;htmlconv=no;protect=no;comm]-->            
-                  
-                  
+
+
+                     <!--[lists.all_projects;noerr;htmlconv=no;protect=no;comm]-->
+
+
                 </select>
               </div>
               <div class="form-group">
@@ -109,18 +109,23 @@
                       <td><a href="[conf.site_url]/admin/project/[tasks.projects_id;block=tr;noerr]/view" class="links-blue">
                         <!--[tasks.projects_id;block=tr;comm;onformat=runtime_check_blank]-->
                         </a> </td>
-                      <td style="min-width:300px;"><span class="tasks_[tasks.tasks_status;block=tr;noerr]">
-                        <!--[tasks.tasks_text;block=tr;comm]-->
-                        </span></td>
+                      <td style="min-width:300px;">
+                          <a href="[conf.site_url]/admin/tasks/[tasks.tasks_project_id]/details/[tasks.tasks_id]">
+                              <span class="tasks_[tasks.tasks_status;block=tr;noerr]">
+                                <!--[tasks.tasks_title;block=tr;comm]-->
+                              </span>
+                          </a>
+                      </td>
                       <td><!--[tasks.tasks_start_date;block=tr;comm;onformat=runtime_date]--></td>
                       <td><!--[tasks.tasks_end_date;block=tr;comm;onformat=runtime_date]--></td>
                       <td><!--[tasks.tasks_status;block=tr;comm;onformat=runtime_status_colors;htmlconv=no]--></td>
                       <td><!--control buttons edit-->
-                        <a class="btn btn-xs btn-info edit-task-modal" 
+                        <a class="btn btn-xs btn-info edit-task-modal"
                                 data-toggle="modal"
                                 data-modal-window-title="[lang.lang_edit_task]"
-                                data-height="350" 
+                                data-height="350"
                                 data-width="100%"
+                                data-task-title="[tasks.tasks_title;block=tr;noerr]"
                                 data-task-text="[tasks.tasks_text;block=tr;noerr]"
                                 data-task-start-date="[tasks.tasks_start_date;block=tr;noerr]"
                                 data-task-end-date="[tasks.tasks_end_date;block=tr;noerr]"
@@ -142,7 +147,7 @@
                                 data-mysql-record-id4="[tasks.tasks_project_id;block=tr;noerr]"
                                 data-mysql-table-name="tasks"
                                 data-ajax-url="[conf.site_url]/admin/ajax/delete-task"> <i class="icon-trash"></i>
-                        
+
                         </button>
                         <!--control buttons delete - end -->
                       </td>
@@ -200,6 +205,12 @@
           </div>
           <div class="modal-body">
             <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_task_title]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control" name="tasks_title"  id="tasks_title">
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
               <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_description]</label>
               <div class="col-lg-12">
                 <!--<input type="text" class="form-control" id="tasks_text" name="tasks_text" autocomplete="off">-->
@@ -230,7 +241,7 @@
                     });
                 });
 
-              </script> 
+              </script>
               </div>
             </div>
             <div class="form-group" style="margin-bottom:10px;">
@@ -239,9 +250,9 @@
                 <select id="add-tasks-project-list" name="tasks_project_id" style="width:100%"
                         data-ajax-url="[conf.site_url]/admin/ajax/project-milestones-list" autocomplete="off">
                   <option selected>[lang.lang_select_project]</option>
-                              
+
                  <!--[lists.all_projects;noerr;htmlconv=no;protect=no;comm]-->
-                
+
                 </select>
               </div>
             </div>
@@ -296,10 +307,16 @@
           </div>
           <div class="modal-body">
             <div class="form-group" style="margin-bottom:10px;">
+              <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_task_title]</label>
+              <div class="col-lg-12">
+                <input type="text" class="form-control" name="tasks_title"  id="tasks_title">
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:10px;">
               <label class="control-label col-lg-12" style="width:150px;"> [lang.lang_description]</label>
               <div class="col-lg-12">
                 <!--<input type="text" class="form-control" id="task_text_edit" name="tasks_text" autocomplete="off">-->
-                <textarea class="form-control ckeditor" id="task_text_edit" name="tasks_text"></textarea>
+                <textarea class="form-control" id="task_text_edit" name="tasks_text"></textarea>
               <script>
                 $(function(){
                     $('.edit-task-modal').click(function(){
@@ -326,7 +343,7 @@
                     });
                 });
 
-              </script> 
+              </script>
               </div>
             </div>
             <div class="form-group" style="margin-bottom:10px;">
@@ -408,15 +425,15 @@
     $("#task-timer-status-list").select2({
         allowClear: true
     });
-	
+
     $("#projects-list").select2({
         allowClear: true
     });
-	
+
     $("#add-tasks-project-list").select2({
         allowClear: true
     });
-	
+
     $("#add-tasks-milestones-list").select2({
         allowClear: true
     });
@@ -488,10 +505,10 @@ $(document).ready(function(){
 	//REQUIRES: jquery.js
 	//ACTIONS-2: creates a pull down/select for each specified field (with preselected values)
     //REQUIRES-2: select2.js
-		
+
     //---edit item link clicked-------
     $(".edit-task-modal").click(function(){
-    
+
         //get variables from "edit link" data attributes
         var task_text_edit = $(this).attr("data-task-text");
 		var task_start_date_edit = $(this).attr("data-task-start-date");
@@ -502,6 +519,7 @@ $(document).ready(function(){
 		var task_milestone_id_edit = $(this).attr("data-task-milestone-id");
 		var task_status_preselected = $(this).attr("data-task-status");
 		var task_project_id_edit = $(this).attr("data-task-project-id");
+        var task_title = $(this).attr("data-task-title");
 
         //set modal input values dynamically
 		$('#task_text_edit').val(task_text_edit);
@@ -512,11 +530,12 @@ $(document).ready(function(){
 		$('#task_assigned_to_id_edit').val(task_assigned_to_id_edit);
 		$('#task_milestone_id_edit').val(task_milestone_id_edit);
 		$('#task_project_id_edit').val(task_project_id_edit);
+		$('#tasks_title').val(task_title);
 
        //pre-select data in pull down lists
-       $("#tasks-status-list-edit").select2().select2('val', task_status_preselected); 
+       $("#tasks-status-list-edit").select2().select2('val', task_status_preselected);
   });
-    
+
 });
 </script>
 <!--JS_EDIT_TASK_MODAL-->
